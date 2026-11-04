@@ -168,59 +168,59 @@ export function ContactFormSection() {
   return (
     <section
       id="contact-form"
-      className="py-20 md:py-28 bg-white relative scroll-mt-24"
+      className="py-20 md:py-28 bg-[#FDFBFF] relative scroll-mt-24"
       aria-labelledby="contact-form-heading"
     >
       <Container size="wide">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <SectionEyebrow theme="navy" className="justify-center mb-3">
+            <SectionEyebrow theme="charcoal" className="justify-center mb-3">
               DIRECT INQUIRY CHANNEL
             </SectionEyebrow>
             <h2
               id="contact-form-heading"
-              className="text-3xl sm:text-4xl font-serif text-[#171C56] font-semibold tracking-tight leading-[1.2]"
+              className="text-3xl sm:text-4xl font-serif text-[#242424] font-semibold tracking-tight leading-[1.2]"
             >
               Submit Your Details & Requirements
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-[#555555] font-light leading-relaxed">
+            <p className="mt-3 text-sm sm:text-base text-[#4A4A4A] font-light leading-relaxed">
               Every submission is catalogued in our advisory ledger and reviewed by a dedicated
               land specialist or partnership executive.
             </p>
           </div>
 
           {/* Form Card */}
-          <div className="bg-[#F6F6F4] border border-[#E7E7E7] rounded-[2px] p-8 sm:p-12 md:p-16 shadow-sm">
+          <div className="bg-[#F3F6FA] border border-[#E2E6EC] border-t-4 border-t-[#0099FF] rounded-[2px] p-8 sm:p-12 md:p-16 shadow-sm">
             {status === "success" ? (
               <div className="py-8 text-center space-y-6">
-                <div className="w-16 h-16 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto">
+                <div className="w-16 h-16 rounded-full bg-[#EDC455] text-[#242424] flex items-center justify-center mx-auto">
                   <CheckCircle2 className="w-10 h-10" />
                 </div>
 
                 <div className="space-y-2">
-                  <span className="text-xs font-semibold uppercase tracking-widest text-[#8B6C20]">
+                  <span className="inline-block px-2.5 py-0.5 bg-[#0099FF] text-xs font-semibold uppercase tracking-widest text-[#242424] rounded-xs">
                     Enquiry Catalogued
                   </span>
-                  <h3 className="text-2xl sm:text-3xl font-serif text-[#171C56] font-semibold">
+                  <h3 className="text-2xl sm:text-3xl font-serif text-[#242424] font-semibold">
                     Thank You for Reaching Out
                   </h3>
-                  <p className="text-sm sm:text-base text-[#555555] max-w-md mx-auto leading-relaxed">
+                  <p className="text-sm sm:text-base text-[#4A4A4A] max-w-md mx-auto leading-relaxed">
                     Your enquiry has been received and routed to the appropriate advisory desk.
                   </p>
                 </div>
 
                 {/* Reference Box */}
-                <div className="inline-block bg-white border border-[#E7E7E7] px-6 py-4 rounded-[2px] shadow-sm">
-                  <div className="text-xs uppercase tracking-wider text-[#555555] mb-1">
+                <div className="inline-block bg-[#FDFBFF] border border-[#E2E6EC] px-6 py-4 rounded-[2px] shadow-sm">
+                  <div className="text-xs uppercase tracking-wider text-[#4A4A4A] mb-1">
                     Tracking Reference ID
                   </div>
-                  <div className="text-xl sm:text-2xl font-mono font-semibold text-[#171C56] tracking-wider">
+                  <div className="text-xl sm:text-2xl font-mono font-semibold text-[#242424] tracking-wider">
                     {referenceId}
                   </div>
                 </div>
 
-                <p className="text-xs text-[#555555] max-w-sm mx-auto">
+                <p className="text-xs text-[#4A4A4A] max-w-sm mx-auto">
                   Please retain this reference number for any follow-up correspondence regarding
                   your enquiry.
                 </p>
@@ -228,7 +228,7 @@ export function ContactFormSection() {
                 <div className="pt-4">
                   <button
                     onClick={handleReset}
-                    className="inline-flex items-center gap-2 px-6 py-2.5 bg-white border border-[#171C56]/20 text-[#171C56] text-xs font-semibold uppercase tracking-wider rounded-[2px] hover:bg-[#171C56] hover:text-white transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#FDFBFF] border border-[#242424] text-[#242424] text-xs font-semibold uppercase tracking-wider rounded-[2px] hover:bg-[#242424] hover:text-[#FDFBFF] transition-colors cursor-pointer"
                   >
                     <RotateCcw className="w-3.5 h-3.5" />
                     <span>Submit Another Inquiry</span>
@@ -276,7 +276,7 @@ export function ContactFormSection() {
                   <div>
                     <label
                       htmlFor="fullName"
-                      className="block text-xs font-semibold uppercase tracking-wider text-[#171C56] mb-2"
+                      className="block text-xs font-semibold uppercase tracking-wider text-[#242424] mb-2"
                     >
                       Full Name <span className="text-[#B3261E]">*</span>
                     </label>
@@ -292,10 +292,10 @@ export function ContactFormSection() {
                       placeholder="e.g. Anand Vardhan"
                       aria-invalid={!!fieldErrors.fullName}
                       aria-describedby={fieldErrors.fullName ? "fullName-error" : undefined}
-                      className={`w-full bg-white border px-4 py-3 text-sm text-[#242424] rounded-[2px] outline-none transition-all ${
+                      className={`w-full bg-[#FDFBFF] border px-4 py-3 text-sm text-[#242424] rounded-[2px] outline-none transition-all ${
                         fieldErrors.fullName
                           ? "border-[#B3261E] focus:ring-1 focus:ring-[#B3261E]"
-                          : "border-[#E7E7E7] focus:border-[#EDC455] focus:ring-1 focus:ring-[#EDC455]"
+                          : "border-[#C8D0DA] focus:border-[#0099FF] focus:ring-1 focus:ring-[#0099FF]"
                       }`}
                     />
                     {fieldErrors.fullName && (
@@ -308,7 +308,7 @@ export function ContactFormSection() {
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-xs font-semibold uppercase tracking-wider text-[#171C56] mb-2"
+                      className="block text-xs font-semibold uppercase tracking-wider text-[#242424] mb-2"
                     >
                       Email Address <span className="text-[#B3261E]">*</span>
                     </label>
@@ -324,10 +324,10 @@ export function ContactFormSection() {
                       placeholder="e.g. anand@domain.com"
                       aria-invalid={!!fieldErrors.email}
                       aria-describedby={fieldErrors.email ? "email-error" : undefined}
-                      className={`w-full bg-white border px-4 py-3 text-sm text-[#242424] rounded-[2px] outline-none transition-all ${
+                      className={`w-full bg-[#FDFBFF] border px-4 py-3 text-sm text-[#242424] rounded-[2px] outline-none transition-all ${
                         fieldErrors.email
                           ? "border-[#B3261E] focus:ring-1 focus:ring-[#B3261E]"
-                          : "border-[#E7E7E7] focus:border-[#EDC455] focus:ring-1 focus:ring-[#EDC455]"
+                          : "border-[#C8D0DA] focus:border-[#0099FF] focus:ring-1 focus:ring-[#0099FF]"
                       }`}
                     />
                     {fieldErrors.email && (
@@ -343,16 +343,16 @@ export function ContactFormSection() {
                   <div>
                     <label
                       htmlFor="phone"
-                      className="block text-xs font-semibold uppercase tracking-wider text-[#171C56] mb-2"
+                      className="block text-xs font-semibold uppercase tracking-wider text-[#242424] mb-2"
                     >
-                      Telephone / WhatsApp <span className="text-[#555555] font-normal lowercase">(optional)</span>
+                      Telephone / WhatsApp <span className="text-[#4A4A4A] font-normal lowercase">(optional)</span>
                     </label>
                     <div className="flex gap-2">
                       <select
                         aria-label="Country Dial Code"
                         value={formData.countryCode}
                         onChange={(e) => setFormData({ ...formData, countryCode: e.target.value })}
-                        className="bg-white border border-[#E7E7E7] px-3 py-3 text-sm text-[#171C56] rounded-[2px] outline-none focus:border-[#EDC455]"
+                        className="bg-[#FDFBFF] border border-[#C8D0DA] px-3 py-3 text-sm text-[#242424] rounded-[2px] outline-none focus:border-[#0099FF]"
                       >
                         {COUNTRY_CODES.map((c) => (
                           <option key={c.code} value={c.code}>
@@ -373,10 +373,10 @@ export function ContactFormSection() {
                         placeholder="e.g. 98765 43210"
                         aria-invalid={!!fieldErrors.phone}
                         aria-describedby={fieldErrors.phone ? "phone-error" : undefined}
-                        className={`flex-1 bg-white border px-4 py-3 text-sm text-[#242424] rounded-[2px] outline-none transition-all ${
+                        className={`flex-1 bg-[#FDFBFF] border px-4 py-3 text-sm text-[#242424] rounded-[2px] outline-none transition-all ${
                           fieldErrors.phone
                             ? "border-[#B3261E] focus:ring-1 focus:ring-[#B3261E]"
-                            : "border-[#E7E7E7] focus:border-[#EDC455] focus:ring-1 focus:ring-[#EDC455]"
+                            : "border-[#C8D0DA] focus:border-[#0099FF] focus:ring-1 focus:ring-[#0099FF]"
                         }`}
                       />
                     </div>
@@ -390,7 +390,7 @@ export function ContactFormSection() {
                   <div>
                     <label
                       htmlFor="enquiryType"
-                      className="block text-xs font-semibold uppercase tracking-wider text-[#171C56] mb-2"
+                      className="block text-xs font-semibold uppercase tracking-wider text-[#242424] mb-2"
                     >
                       Enquiry Classification <span className="text-[#B3261E]">*</span>
                     </label>
@@ -403,7 +403,7 @@ export function ContactFormSection() {
                         if (fieldErrors.enquiryType)
                           setFieldErrors({ ...fieldErrors, enquiryType: "" });
                       }}
-                      className="w-full bg-white border border-[#E7E7E7] px-4 py-3 text-sm text-[#171C56] rounded-[2px] outline-none focus:border-[#EDC455] focus:ring-1 focus:ring-[#EDC455] cursor-pointer"
+                      className="w-full bg-[#FDFBFF] border border-[#C8D0DA] px-4 py-3 text-sm text-[#242424] rounded-[2px] outline-none focus:border-[#0099FF] focus:ring-1 focus:ring-[#0099FF] cursor-pointer"
                     >
                       {ENQUIRY_OPTIONS.map((opt) => (
                         <option key={opt} value={opt}>
@@ -421,7 +421,7 @@ export function ContactFormSection() {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-xs font-semibold uppercase tracking-wider text-[#171C56] mb-2"
+                    className="block text-xs font-semibold uppercase tracking-wider text-[#242424] mb-2"
                   >
                     Your Message / Specific Requirements <span className="text-[#B3261E]">*</span>
                   </label>
@@ -437,10 +437,10 @@ export function ContactFormSection() {
                     placeholder="Please describe your interest, preferred plot dimensions, timeline, or specific due diligence questions..."
                     aria-invalid={!!fieldErrors.message}
                     aria-describedby={fieldErrors.message ? "message-error" : undefined}
-                    className={`w-full bg-white border p-4 text-sm text-[#242424] rounded-[2px] outline-none transition-all leading-relaxed ${
+                    className={`w-full bg-[#FDFBFF] border p-4 text-sm text-[#242424] rounded-[2px] outline-none transition-all leading-relaxed ${
                       fieldErrors.message
                         ? "border-[#B3261E] focus:ring-1 focus:ring-[#B3261E]"
-                        : "border-[#E7E7E7] focus:border-[#EDC455] focus:ring-1 focus:ring-[#EDC455]"
+                        : "border-[#C8D0DA] focus:border-[#0099FF] focus:ring-1 focus:ring-[#0099FF]"
                     }`}
                   />
                   {fieldErrors.message && (
@@ -462,12 +462,12 @@ export function ContactFormSection() {
                         setFormData({ ...formData, consent: e.target.checked });
                         if (fieldErrors.consent) setFieldErrors({ ...fieldErrors, consent: "" });
                       }}
-                      className="mt-1 w-4 h-4 rounded-[2px] border-[#E7E7E7] text-[#171C56] focus:ring-[#EDC455] cursor-pointer"
+                      className="mt-1 w-4 h-4 rounded-[2px] border-[#C8D0DA] accent-[#0099FF] text-[#0099FF] focus:ring-[#0099FF] cursor-pointer"
                     />
-                    <span className="text-xs text-[#555555] leading-relaxed">
+                    <span className="text-xs text-[#4A4A4A] leading-relaxed">
                       I agree to be contacted by Starrbites Developments regarding this enquiry and
                       acknowledge that my details are processed strictly in accordance with the{" "}
-                      <span className="text-[#171C56] font-medium underline">
+                      <span className="text-[#242424] font-medium underline">
                         Starrbites Privacy Commitment
                       </span>
                       . Starrbites does not share contact information with external marketing brokers.
@@ -480,8 +480,10 @@ export function ContactFormSection() {
 
                 {/* Submit Button */}
                 <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <div className="flex items-center gap-2 text-xs text-[#555555]">
-                    <Shield className="w-3.5 h-3.5 text-[#EDC455]" />
+                  <div className="flex items-center gap-2 text-xs text-[#4A4A4A]">
+                    <div className="w-5 h-5 rounded-full bg-[#EDC455] flex items-center justify-center">
+                      <Shield className="w-3 h-3 text-[#242424]" />
+                    </div>
                     <span>Confidential & Direct Advisory Communication</span>
                   </div>
 
@@ -490,8 +492,8 @@ export function ContactFormSection() {
                     disabled={status === "submitting"}
                     className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 text-xs font-semibold uppercase tracking-wider rounded-[2px] transition-all duration-300 ${
                       status === "submitting"
-                        ? "bg-[#171C56]/70 text-white cursor-not-allowed"
-                        : "bg-[#171C56] text-[#EDC455] hover:bg-[#EDC455] hover:text-[#171C56] cursor-pointer shadow-md"
+                        ? "bg-[#0099FF]/70 text-[#242424] cursor-not-allowed"
+                        : "bg-[#0099FF] text-[#242424] hover:bg-[#EDC455] hover:text-[#242424] cursor-pointer shadow-md"
                     }`}
                   >
                     {status === "submitting" ? (

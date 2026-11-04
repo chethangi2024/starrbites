@@ -43,20 +43,20 @@ export function NriFaq() {
   return (
     <section
       id="faq"
-      className="py-24 sm:py-32 bg-[#F6F6F4] border-b border-[#E7E7E7]"
+      className="py-24 sm:py-32 bg-[#F3F6FA] border-b border-[#E2E6EC]"
     >
       <Container size="standard">
         {/* Section Header */}
         <div className="max-w-[720px] mx-auto text-center mb-16 sm:mb-20">
-          <SectionEyebrow theme="navy" className="justify-center mb-4">
+          <SectionEyebrow theme="charcoal" className="justify-center mb-4">
             Frequently Asked Questions
           </SectionEyebrow>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#171C56] font-normal leading-[1.15] mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#242424] font-normal leading-[1.15] mb-4">
             Guidance for Overseas Buyers
           </h2>
 
-          <p className="text-base sm:text-lg text-[#555555] font-light leading-relaxed">
+          <p className="text-base sm:text-lg text-[#4A4A4A] font-light leading-relaxed">
             Clear, factual answers to common questions regarding remote diligence,
             documentation access, and international coordination.
           </p>
@@ -72,7 +72,9 @@ export function NriFaq() {
             return (
               <div
                 key={index}
-                className="bg-white border border-[#E7E7E7] rounded-sm overflow-hidden transition-all duration-200 shadow-sm"
+                className={`bg-[#FDFBFF] border rounded-sm overflow-hidden transition-all duration-200 shadow-sm ${
+                  isOpen ? "border-[#0099FF]" : "border-[#E2E6EC]"
+                }`}
               >
                 <button
                   id={headerId}
@@ -80,16 +82,16 @@ export function NriFaq() {
                   aria-expanded={isOpen}
                   aria-controls={contentId}
                   onClick={() => toggleAccordion(index)}
-                  className="w-full px-6 sm:px-8 py-5 sm:py-6 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#171C56]"
+                  className="w-full px-6 sm:px-8 py-5 sm:py-6 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0099FF]"
                 >
-                  <span className="text-base sm:text-lg font-serif font-medium text-[#171C56] pr-4">
+                  <span className="text-base sm:text-lg font-serif font-medium text-[#242424] pr-4">
                     {faq.question}
                   </span>
                   <span
                     className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${
                       isOpen
-                        ? "bg-[#171C56] text-[#EDC455]"
-                        : "bg-[#F6F6F4] text-[#171C56]"
+                        ? "bg-[#0099FF] text-[#242424]"
+                        : "bg-[#F3F6FA] text-[#242424]"
                     }`}
                     aria-hidden="true"
                   >
@@ -106,7 +108,7 @@ export function NriFaq() {
                     id={contentId}
                     role="region"
                     aria-labelledby={headerId}
-                    className="px-6 sm:px-8 pb-6 sm:pb-8 pt-2 text-sm sm:text-base text-[#555555] font-light leading-relaxed border-t border-[#E7E7E7]/60 animate-in fade-in duration-300"
+                    className="px-6 sm:px-8 pb-6 sm:pb-8 pt-2 text-sm sm:text-base text-[#4A4A4A] font-light leading-relaxed border-t border-[#E2E6EC]/60 animate-in fade-in duration-300"
                   >
                     <p>{faq.answer}</p>
                   </div>
@@ -118,18 +120,18 @@ export function NriFaq() {
 
         {/* Advisory Help Footer */}
         <div className="mt-12 text-center">
-          <p className="text-xs text-[#555555] font-light">
+          <p className="text-xs text-[#4A4A4A] font-light">
             Have a question not addressed here? Contact our desk directly at{" "}
             <a
               href="mailto:contact@starrbites.com"
-              className="text-[#171C56] font-medium underline hover:text-[#C88218]"
+              className="text-[#242424] font-medium underline hover:text-[#4A4A4A]"
             >
               contact@starrbites.com
             </a>{" "}
             or telephone{" "}
             <a
               href="tel:+919740806357"
-              className="text-[#171C56] font-medium underline hover:text-[#C88218]"
+              className="text-[#242424] font-medium underline hover:text-[#4A4A4A]"
             >
               +91 97408 06357
             </a>

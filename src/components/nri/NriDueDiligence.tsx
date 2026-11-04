@@ -71,23 +71,23 @@ export function NriDueDiligence() {
     <section
       ref={sectionRef}
       id="due-diligence"
-      className="py-24 sm:py-32 bg-[#F6F6F4] border-b border-[#E7E7E7]"
+      className="py-24 sm:py-32 bg-[#F3F6FA] border-b border-[#E2E6EC]"
     >
       <Container size="wide">
         {/* Section Header */}
         <div className="max-w-[760px] mb-16 sm:mb-20">
-          <SectionEyebrow theme="navy" className="mb-4">
+          <SectionEyebrow theme="charcoal" className="mb-4">
             Buyer Due Diligence
           </SectionEyebrow>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#171C56] font-normal leading-[1.15] mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#242424] font-normal leading-[1.15] mb-6">
             Transparency, Governance &{" "}
-            <span className="italic font-light text-[#8B6C20]">
+            <span className="italic font-light text-[#242424] border-b-2 border-[#EDC455] pb-0.5">
               Independent Scrutiny
             </span>
           </h2>
 
-          <p className="text-base sm:text-lg text-[#555555] font-light leading-relaxed">
+          <p className="text-base sm:text-lg text-[#4A4A4A] font-light leading-relaxed">
             Acquiring real estate across borders requires meticulous documentary
             verification. We strongly advise every overseas buyer to approach land
             acquisition with systematic legal and regulatory diligence.
@@ -104,24 +104,24 @@ export function NriDueDiligence() {
             return (
               <div
                 key={idx}
-                className="bg-white p-8 rounded-sm border border-[#E7E7E7] hover:border-[#EDC455] hover:shadow-sm transition-all duration-300 flex flex-col justify-between"
+                className="bg-[#FDFBFF] p-8 rounded-sm border border-[#E2E6EC] hover:border-[#0099FF] hover:shadow-sm transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-10 h-10 rounded-sm bg-[#F6F6F4] border border-[#E7E7E7] flex items-center justify-center text-[#171C56] mb-6">
-                    <Icon className="w-5 h-5 text-[#C88218]" />
+                  <div className="w-10 h-10 rounded-sm bg-[#0099FF]/15 border border-[#0099FF]/30 flex items-center justify-center text-[#242424] mb-6">
+                    <Icon className="w-5 h-5 text-[#242424]" />
                   </div>
 
-                  <h3 className="text-lg font-serif font-normal text-[#171C56] mb-3">
+                  <h3 className="text-lg font-serif font-normal text-[#242424] mb-3">
                     {area.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-[#555555] font-light leading-relaxed mb-6">
+                  <p className="text-xs sm:text-sm text-[#4A4A4A] font-light leading-relaxed mb-6">
                     {area.summary}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-[#E7E7E7]">
-                  <span className="block text-[10px] uppercase tracking-wider text-[#171C56] font-semibold mb-0.5">
+                <div className="pt-4 border-t border-[#E2E6EC]">
+                  <span className="block text-[10px] uppercase tracking-wider text-[#4A4A4A] font-semibold mb-0.5">
                     Essential Verification
                   </span>
                   <span className="text-xs text-[#242424] font-medium">
@@ -134,14 +134,16 @@ export function NriDueDiligence() {
         </div>
 
         {/* Mandatory Educational Legal Disclaimer Box */}
-        <div className="p-6 sm:p-8 bg-white border-l-4 border-[#171C56] border-y border-r border-[#E7E7E7] rounded-sm max-w-[880px] mx-auto">
+        <div className="p-6 sm:p-8 bg-[#FDFBFF] border-l-4 border-[#0099FF] border-y border-r border-[#E2E6EC] rounded-sm max-w-[880px] mx-auto">
           <div className="flex items-start gap-4">
-            <Scale className="w-6 h-6 text-[#C88218] shrink-0 mt-0.5" />
+            <div className="w-9 h-9 rounded-sm bg-[#EDC455] flex items-center justify-center shrink-0 mt-0.5">
+              <Scale className="w-5 h-5 text-[#242424]" />
+            </div>
             <div className="space-y-2">
-              <h4 className="text-sm font-semibold text-[#171C56]">
+              <h4 className="text-sm font-semibold text-[#242424]">
                 General Educational Disclosure
               </h4>
-              <p className="text-xs sm:text-sm text-[#555555] font-light leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#4A4A4A] font-light leading-relaxed">
                 Starrbites provides factual project documentation and coordination
                 assistance to prospective buyers. The information presented on this
                 website is for general educational purposes only and must not be

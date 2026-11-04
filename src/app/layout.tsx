@@ -18,7 +18,7 @@ const inter = Inter({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#171C56",
+  themeColor: "#0099FF",
   width: "device-width",
   initialScale: 1,
 };
@@ -27,12 +27,13 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://starrbites.com"),
   title: "Real Estate Developer in Bangalore | Starrbites",
   description:
-    "Starrbites creates thoughtfully planned land destinations in Bangalore with verified titles, strategic location foresight, and long-term legacy value.",
+    "Starrbites is a Bangalore-based real-estate development company creating thoughtfully planned land and lifestyle destinations, including Tiiger Trail and Stay and Play.",
   keywords: [
     "real estate developer in bangalore",
+    "Starrbites developments",
     "curated plotted developments",
-    "farmland investment bangalore",
     "Tiiger Trail Lepakshi",
+    "Stay and Play Starrbites",
     "land due diligence karnataka",
     "NRI property investment india",
   ],
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Real Estate Developer in Bangalore | Starrbites",
     description:
-      "Building Land. Creating Legacy. Thoughtfully planned land destinations shaped by purposeful development and considered investment potential.",
+      "Building Land. Creating Legacy. Starrbites develops thoughtfully planned destinations built on clear documentation, strategic location selection, and lasting value.",
     url: "https://starrbites.com",
     siteName: "Starrbites",
     locale: "en_US",
@@ -50,14 +51,15 @@ export const metadata: Metadata = {
         url: "/images/stock/architecture/hero-contemporary-villa.jpg",
         width: 1200,
         height: 630,
-        alt: "Starrbites - Thoughtfully Planned Land Destinations",
+        alt: "Starrbites - Real Estate Development Company in Bangalore",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Real Estate Developer in Bangalore | Starrbites",
-    description: "Building Land. Creating Legacy. Curated plotted developments in Bengaluru.",
+    description:
+      "Building Land. Creating Legacy. Thoughtfully planned real-estate and land developments by Starrbites.",
   },
   icons: {
     icon: "/favicon.ico",
@@ -71,7 +73,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable} scroll-smooth`}>
-      <body className="min-h-screen flex flex-col bg-white text-[#242424] antialiased selection:bg-[#171C56] selection:text-[#EDC455]">
+      <body className="min-h-screen flex flex-col bg-[#FDFBFF] text-[#242424] antialiased selection:bg-[#0099FF] selection:text-[#242424]">
         {children}
       </body>
     </html>

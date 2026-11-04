@@ -95,50 +95,50 @@ export function AboutStory() {
     <section
       ref={sectionRef}
       id="story"
-      className="py-24 sm:py-32 bg-white border-b border-[#E7E7E7]"
+      className="py-24 sm:py-32 bg-[#FDFBFF] border-b border-[#E2E6EC]"
     >
       <Container size="wide">
         {/* Narrative Split */}
         <div
           ref={contentRef}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start pb-20 border-b border-[#E7E7E7]"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start pb-20 border-b border-[#E2E6EC]"
         >
           {/* Left: Section Header & Origin Perspective (5 cols) */}
           <div className="lg:col-span-5">
-            <SectionEyebrow theme="navy" className="mb-4">
-              Our Story & Heritage
+            <SectionEyebrow theme="charcoal" className="mb-4">
+              Our Story &amp; Leadership
             </SectionEyebrow>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#171C56] font-normal leading-[1.15] mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#242424] font-normal leading-[1.15] mb-6">
               Rooted in Design Thinking,{" "}
-              <span className="italic font-light text-[#8B6C20]">
-                Committed to Stewardship.
+              <span className="italic font-light text-[#242424] border-b-2 border-[#EDC455]">
+                Structured for Long-Term Development.
               </span>
             </h2>
-            <p className="text-sm font-medium tracking-wide uppercase text-[#C88218] border-l-2 border-[#EDC455] pl-4">
-              From spatial planning discipline to curated land destinations.
+            <p className="text-sm font-semibold tracking-wide uppercase text-[#242424] border-l-4 border-[#EDC455] pl-4">
+              From spatial execution roots to multi-project real-estate development.
             </p>
           </div>
 
           {/* Right: Narrative Context (7 cols) */}
-          <div className="lg:col-span-7 space-y-6 text-base sm:text-lg text-[#555555] font-light leading-relaxed">
+          <div className="lg:col-span-7 space-y-6 text-base sm:text-lg text-[#4A4A4A] font-light leading-relaxed">
             <p>
-              Starrbites was established with a singular conviction: that land
-              ownership in India could be approached with the same spatial care,
-              design integrity, and institutional transparency that characterizes
-              world-class property developments.
+              Starrbites was founded on a straightforward premise: that real-estate and land
+              development in India should combine rigorous spatial planning, verifiable title
+              documentation, and clear buyer communication.
             </p>
             <p>
-              Drawing on a professional foundation in interior architecture, spatial
-              execution, and strategic real-estate advisory, our leadership
-              recognized a critical gap in the regional market. While urban apartment
-              developments focused heavily on concrete density, land and plotted
-              opportunities often suffered from opaque documentation, arbitrary
-              layouts, and a lack of enduring infrastructure.
+              With professional foundations in interior design, spatial execution, and property
+              advisory in Bengaluru, our team observed that plotted and regional developments were
+              frequently marketed as raw parcels without cohesive site planning or transparent
+              documentary review. Starrbites evolved into a dedicated development company to
+              address these gaps methodically.
             </p>
-            <p className="text-sm sm:text-base text-[#242424] font-normal bg-[#F6F6F4] p-6 rounded-sm border-l-4 border-[#171C56]">
-              By combining rigorous legal scrutiny, environmental sensitivity, and
-              master-planned foresight, Starrbites creates destinations that protect
-              capital, nurture personal well-being, and stand the test of time.
+            <p className="text-sm sm:text-base text-[#242424] font-normal bg-[#F3F6FA] p-6 rounded-sm border-l-4 border-[#0099FF]">
+              Today, Starrbites develops distinct projects shaped around specific regional strengths
+              and ownership formats—including our flagship plotted nature development,{" "}
+              <strong className="font-semibold">Tiiger Trail</strong>, and our upcoming
+              recreational living development,{" "}
+              <strong className="font-semibold">Stay and Play</strong>.
             </p>
           </div>
         </div>
@@ -146,13 +146,13 @@ export function AboutStory() {
         {/* Leadership & Advisory Team */}
         <div ref={teamRef} className="pt-20" id="leadership">
           <div className="max-w-[720px] mb-12 sm:mb-16">
-            <SectionEyebrow theme="navy" className="mb-3">
+            <SectionEyebrow theme="charcoal" className="mb-3">
               Leadership & Advisory
             </SectionEyebrow>
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-serif text-[#171C56] font-normal leading-tight mb-4">
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-serif text-[#242424] font-normal leading-tight mb-4">
               Guided by Experience and Integrity
             </h3>
-            <p className="text-[#555555] text-sm sm:text-base font-light leading-relaxed">
+            <p className="text-[#4A4A4A] text-sm sm:text-base font-light leading-relaxed">
               Our multidisciplinary team brings together land acquisition specialists,
               legal advocates, project planners, and customer advisors to ensure
               uncompromising diligence across every development.
@@ -164,10 +164,10 @@ export function AboutStory() {
             {teamMembers.map((member) => (
               <div
                 key={member.name}
-                className="group bg-[#F6F6F4] rounded-sm border border-[#E7E7E7] overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-[#EDC455]/60 hover:-translate-y-1 flex flex-col"
+                className="group bg-[#F3F6FA] rounded-sm border border-[#E2E6EC] overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-[#0099FF] hover:-translate-y-1 flex flex-col"
               >
                 {/* Photo Aspect Ratio 1:1 */}
-                <div className="relative aspect-square w-full bg-[#EAEAEA] overflow-hidden">
+                <div className="relative aspect-square w-full bg-[#E8EEF5] overflow-hidden">
                   <Image
                     src={member.image}
                     alt={`${member.name} - ${member.role} at Starrbites`}
@@ -175,19 +175,19 @@ export function AboutStory() {
                     className="object-cover object-center grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#171C56]/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#242424]/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                 </div>
 
                 {/* Profile Details */}
-                <div className="p-5 flex-1 flex flex-col justify-between bg-white">
+                <div className="p-5 flex-1 flex flex-col justify-between bg-[#FDFBFF]">
                   <div>
-                    <h4 className="text-base font-semibold text-[#171C56] mb-0.5 group-hover:text-[#C88218] transition-colors">
+                    <h4 className="text-base font-semibold text-[#242424] mb-1.5 group-hover:text-[#007ACC] transition-colors">
                       {member.name}
                     </h4>
-                    <span className="block text-xs uppercase tracking-[0.14em] text-[#C88218] font-medium mb-3">
+                    <span className="inline-block text-[11px] uppercase tracking-[0.14em] bg-[#EDC455]/35 text-[#242424] px-2 py-0.5 rounded-[2px] font-semibold mb-3">
                       {member.role}
                     </span>
-                    <p className="text-xs text-[#555555] font-light leading-relaxed">
+                    <p className="text-xs text-[#4A4A4A] font-light leading-relaxed">
                       {member.description}
                     </p>
                   </div>

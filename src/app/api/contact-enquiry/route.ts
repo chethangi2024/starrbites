@@ -21,7 +21,19 @@ const MAX_REQUESTS_PER_WINDOW = 5;
 const VALID_ENQUIRY_TYPES = [
   "General Enquiry",
   "Tiiger Trail (Flagship Destination)",
+  "Tiiger Trail — Flagship Project",
+  "Tiiger Trail — Flagship Plotted Development",
+  "Stay and Play — Upcoming Project Enquiry",
+  "General Corporate Consultation",
+  "General Corporate & Portfolio Matters",
+  "General Corporate & Portfolio Enquiry",
+  "Corporate Leadership & Philosophy Consultation",
+  "General Corporate Advisory",
+  "Strategic & Land Development Partnerships",
   "NRI Land Advisory",
+  "NRI Investment & Remote Due Diligence",
+  "NRI Advisory & Remote Purchase",
+  "NRI Advisory & Documentation Guidance",
   "Business & Land Acquisition Partnership",
   "Other",
 ];
@@ -81,8 +93,8 @@ export async function POST(req: NextRequest) {
       errors.enquiryType = "Please select a valid enquiry classification.";
     }
 
-    if (!body.message || body.message.trim().length < 10) {
-      errors.message = "Message must be at least 10 characters detailing your requirement.";
+    if (!body.message || body.message.trim().length < 5) {
+      errors.message = "Message must be at least 5 characters detailing your requirement.";
     }
 
     if (!body.consent) {

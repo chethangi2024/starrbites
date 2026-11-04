@@ -67,23 +67,23 @@ export function FlagshipTrust() {
     <section
       ref={sectionRef}
       id="trust"
-      className="py-24 sm:py-32 bg-[#F6F6F4] border-b border-[#E7E7E7]"
+      className="py-24 sm:py-32 bg-[#F3F6FA] border-b border-[#E2E6EC]"
     >
       <Container size="wide">
         {/* Section Header */}
         <div className="max-w-[760px] mb-16 sm:mb-20">
-          <SectionEyebrow theme="navy" className="mb-4">
+          <SectionEyebrow theme="charcoal" className="mb-4">
             Sanctity & Governance
           </SectionEyebrow>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#171C56] font-normal leading-[1.15] mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#242424] font-normal leading-[1.15] mb-6">
             Documentary Transparency &{" "}
-            <span className="italic font-light text-[#8B6C20]">
+            <span className="italic font-light text-[#242424] border-b-2 border-[#EDC455] pb-0.5">
               Due Diligence
             </span>
           </h2>
 
-          <p className="text-base sm:text-lg text-[#555555] font-light leading-relaxed">
+          <p className="text-base sm:text-lg text-[#4A4A4A] font-light leading-relaxed">
             We adhere to rigorous legal diligence standards. We believe confidence is
             built on verifiable public records, clear boundaries, and uncompromising
             procedural honesty.
@@ -100,23 +100,24 @@ export function FlagshipTrust() {
             return (
               <div
                 key={idx}
-                className="bg-white p-8 rounded-sm border border-[#E7E7E7] hover:border-[#EDC455] hover:shadow-sm transition-all duration-300 flex flex-col justify-between"
+                className="bg-[#FDFBFF] p-8 rounded-sm border border-[#E2E6EC] hover:border-[#0099FF] hover:shadow-sm transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-10 h-10 rounded-sm bg-[#F6F6F4] border border-[#E7E7E7] flex items-center justify-center text-[#171C56] mb-6">
-                    <Icon className="w-5 h-5 text-[#C88218]" />
+                  <div className="w-10 h-10 rounded-sm bg-[#0099FF]/15 border border-[#0099FF]/30 flex items-center justify-center text-[#242424] mb-6">
+                    <Icon className="w-5 h-5 text-[#242424]" />
                   </div>
 
-                  <h3 className="text-lg font-serif font-normal text-[#171C56] mb-3">
+                  <h3 className="text-lg font-serif font-normal text-[#242424] mb-3">
                     {item.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-[#555555] font-light leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#4A4A4A] font-light leading-relaxed">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-[#E7E7E7] text-[11px] uppercase tracking-wider text-[#C88218] font-semibold">
+                <div className="pt-6 mt-6 border-t border-[#E2E6EC] flex items-center gap-2 text-[11px] uppercase tracking-wider text-[#242424] font-semibold">
+                  <span className="w-2 h-2 rounded-full bg-[#EDC455]" />
                   Verified Procedure
                 </div>
               </div>
@@ -125,11 +126,11 @@ export function FlagshipTrust() {
         </div>
 
         {/* Legal Disclaimer & Confirmation Flag */}
-        <div className="p-6 bg-white border border-[#E7E7E7] rounded-sm max-w-[880px] mx-auto text-center">
-          <span className="block text-[11px] uppercase tracking-[0.16em] text-[#C88218] font-semibold mb-1">
+        <div className="p-6 bg-[#FDFBFF] border border-[#E2E6EC] rounded-sm max-w-[880px] mx-auto text-center">
+          <span className="inline-block px-2 py-0.5 bg-[#EDC455] text-[10px] uppercase tracking-[0.16em] text-[#242424] font-semibold mb-2 rounded-xs">
             Buyer Advisory Notice
           </span>
-          <p className="text-xs text-[#555555] font-light leading-relaxed">
+          <p className="text-xs text-[#4A4A4A] font-light leading-relaxed">
             Project documentation, parent title certificates, and phase-specific
             statutory approvals are available for inspection at our registered
             corporate office in Bengaluru. Starrbites encourages all prospective buyers

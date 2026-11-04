@@ -1,13 +1,11 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
-import { ArrowRight, ShieldCheck, Heart, Sun, Globe2 } from "lucide-react";
+import { ShieldCheck, Heart, Sun, Globe2 } from "lucide-react";
 import { SectionEyebrow } from "../ui/SectionEyebrow";
 import { Button } from "../ui/Button";
 import { Container } from "../ui/Container";
-import gsap from "gsap";
-import { isReducedMotion, registerGSAP } from "@/lib/animations";
 
 export function AudienceSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -17,71 +15,71 @@ export function AudienceSection() {
     {
       id: "investors",
       icon: ShieldCheck,
-      tag: "Capital Appreciation",
+      tag: "Considered Land Ownership",
       title: "Smart Investors",
-      subtitle: "Strategic corridor positioning with transparent legal title mutations.",
-      body: "For investors seeking wealth preservation in inflation-resistant, tangible assets. We focus strictly on emerging infrastructure corridors—such as the Lepakshi-NH44 industrial belt—ensuring capital appreciation driven by genuine regional expansion.",
+      subtitle: "Evaluating corridor fundamentals and documented title clarity across projects.",
+      body: "For buyers interested in understanding tangible land ownership and long-term regional relevance. Across our project portfolio, we focus on highway connectivity, surrounding infrastructure activity, and verified parent deed and mutation records.",
       image: "/images/stock/architecture/architecture-minimalist-pavilion.jpg",
-      highlight: "100% Certified Mutation & Clear Deed Lineage",
+      highlight: "Verified Parent Deeds & Mutation Documentation",
     },
     {
       id: "second-home",
       icon: Heart,
-      tag: "Sanctuary & Leisure",
+      tag: "Retreat & Leisure",
       title: "Second-Home Seekers",
-      subtitle: "A peaceful weekend haven away from the congestion of Bengaluru.",
-      body: "Escape the velocity of urban life to slow down and create lasting family memories. Our plots offer expansive space to craft a bespoke farmhouse, private gardens, and an authentic weekend sanctuary surrounded by open horizons.",
+      subtitle: "Thoughtfully planned destinations away from urban density.",
+      body: "Whether envisioning a private countryside farmhouse at Tiiger Trail or exploring recreational retreat living through Stay and Play, our developments are planned for families and individuals seeking space outside the city.",
       image: "/images/stock/landscapes/landscape-golden-hour-retreat.jpg",
-      highlight: "Pre-Designed Villa Blueprints by Mayan Designs",
+      highlight: "Planned Estate Layouts & Retreat Concepts",
     },
     {
       id: "nature-lovers",
       icon: Sun,
-      tag: "Restorative Living",
+      tag: "Outdoor Connection",
       title: "Nature-Led Buyers",
-      subtitle: "Wide-open skies, fresh air, and a deep, revitalizing bond with the earth.",
-      body: "Immerse yourself in clean countryside air, native vegetation, and serene starlit nights. Designed for wellness-conscious individuals and families seeking an active outdoor lifestyle rooted in balance and natural quiet.",
+      subtitle: "Open skies, generous plot boundaries, and landscape-sensitive planning.",
+      body: "Designed for buyers who value low-density layouts, plantation avenues, and a closer everyday relationship with the outdoors—supported by organized site access and long-term layout stewardship.",
       image: "/images/stock/landscapes/landscape-rolling-countryside.jpg",
-      highlight: "Organic Farming Infrastructure & Plantation Avenues",
+      highlight: "Low-Density Master Planning & Green Buffers",
     },
     {
       id: "nri-buyers",
       icon: Globe2,
-      tag: "Global Ownership",
+      tag: "Overseas Guidance",
       title: "NRI & Global Buyers",
-      subtitle: "Seamless remote exploration with complete legal and advisory support.",
-      body: "For overseas Indians looking to anchor a generational asset back home. We provide comprehensive due diligence, virtual video site inspections, and clear guidance aligned with FEMA regulations.",
+      subtitle: "Clear information and structured coordination when exploring from abroad.",
+      body: "For overseas Indian buyers evaluating land and real-estate opportunities in India. Our Bengaluru advisory desk assists with initial consultations, digital document review, virtual walkthrough coordination, and procedural guidance.",
       image: "/images/stock/editorial/editorial-leadership-space.jpg",
-      highlight: "End-to-End Remote Acquisition Support",
+      highlight: "Structured Remote Advisory & Document Review",
     },
   ];
 
   return (
     <section
       ref={sectionRef}
-      className="py-24 sm:py-32 bg-white relative overflow-hidden"
+      className="py-24 sm:py-32 bg-[#FDFBFF] relative overflow-hidden"
       aria-labelledby="audience-heading"
     >
       <Container size="wide">
         {/* Section Header */}
         <div className="max-w-[760px] mb-14 sm:mb-16">
-          <SectionEyebrow theme="navy" className="mb-4">
+          <SectionEyebrow theme="charcoal" className="mb-4">
             Curated Ownership
           </SectionEyebrow>
           <h2
             id="audience-heading"
-            className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#171C56] font-semibold tracking-tight leading-[1.18]"
+            className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#242424] font-semibold tracking-tight leading-[1.18]"
           >
             Who We Serve
           </h2>
-          <p className="text-base sm:text-lg text-[#555555] font-light mt-4 leading-relaxed">
-            Every buyer comes to Starrbites with a unique aspiration. We design land destinations
-            tailored to your distinct life chapter and investment horizon.
+          <p className="text-base sm:text-lg text-[#4A4A4A] font-light mt-4 leading-relaxed">
+            Every buyer approaches real-estate and land ownership with a distinct objective. Our
+            project portfolio is planned to serve four primary buyer profiles.
           </p>
         </div>
 
         {/* Tab Selection Bar */}
-        <div className="flex items-center gap-2 sm:gap-4 overflow-x-auto pb-4 border-b border-[#E7E7E7] mb-12 scrollbar-none">
+        <div className="flex items-center gap-2 sm:gap-4 overflow-x-auto pb-4 border-b border-[#E2E6EC] mb-12 scrollbar-none">
           {audiences.map((aud, index) => {
             const Icon = aud.icon;
             const isSelected = activeTab === index;
@@ -91,12 +89,12 @@ export function AudienceSection() {
                 onClick={() => setActiveTab(index)}
                 className={`flex items-center gap-2.5 px-5 py-3 rounded-[2px] text-xs sm:text-sm font-semibold tracking-wide whitespace-nowrap transition-all duration-200 cursor-pointer ${
                   isSelected
-                    ? "bg-[#171C56] text-white shadow-sm"
-                    : "bg-[#F6F6F4] text-[#555555] hover:text-[#171C56] hover:bg-[#EEEEEC]"
+                    ? "bg-[#0099FF] text-[#242424] shadow-sm"
+                    : "bg-[#F3F6FA] text-[#4A4A4A] hover:text-[#242424] hover:bg-[#E6F4FF]"
                 }`}
               >
                 <Icon
-                  className={`w-4 h-4 ${isSelected ? "text-[#EDC455]" : "text-[#555555]"}`}
+                  className={`w-4 h-4 ${isSelected ? "text-[#242424]" : "text-[#4A4A4A]"}`}
                 />
                 <span>{aud.title}</span>
               </button>
@@ -105,42 +103,42 @@ export function AudienceSection() {
         </div>
 
         {/* Active Profile Detailed Display */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center bg-[#F6F6F4] border border-[#E7E7E7] p-8 sm:p-12 rounded-[2px]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center bg-[#F3F6FA] border border-[#E2E6EC] p-8 sm:p-12 rounded-[2px]">
           {/* Text Specification (7 Cols) */}
           <div className="lg:col-span-7 space-y-6">
             <div className="flex items-center gap-3">
-              <span className="text-xs uppercase tracking-[0.16em] font-semibold text-[#8B6C20] bg-[#EDC455]/20 px-3 py-1 rounded-[2px]">
+              <span className="text-xs uppercase tracking-[0.16em] font-semibold text-[#242424] bg-[#EDC455]/40 border-l-2 border-[#EDC455] px-3 py-1 rounded-[2px]">
                 {audiences[activeTab].tag}
               </span>
             </div>
 
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#171C56] font-semibold">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#242424] font-semibold">
               {audiences[activeTab].title}
             </h3>
 
-            <p className="text-base sm:text-lg text-[#171C56] font-medium leading-relaxed">
+            <p className="text-base sm:text-lg text-[#242424] font-medium leading-relaxed">
               {audiences[activeTab].subtitle}
             </p>
 
-            <p className="text-sm sm:text-base text-[#555555] font-light leading-relaxed">
+            <p className="text-sm sm:text-base text-[#4A4A4A] font-light leading-relaxed">
               {audiences[activeTab].body}
             </p>
 
-            <div className="pt-4 border-t border-[#E7E7E7] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div className="text-xs font-semibold text-[#171C56] flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#EDC455]" />
+            <div className="pt-4 border-t border-[#E2E6EC] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="text-xs font-semibold text-[#242424] flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#0099FF]" />
                 {audiences[activeTab].highlight}
               </div>
 
-              <Button variant="secondary" size="sm" href="/tiiger-trail/" withArrow>
-                Explore Matching Opportunities
+              <Button variant="primary" size="sm" href="#flagship-project" withArrow>
+                Explore Our Developments
               </Button>
             </div>
           </div>
 
           {/* Contextual Image (5 Cols) */}
           <div className="lg:col-span-5">
-            <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full overflow-hidden border border-[#E7E7E7] rounded-[2px] shadow-md">
+            <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full overflow-hidden border border-[#E2E6EC] rounded-[2px] shadow-md">
               <Image
                 src={audiences[activeTab].image}
                 alt={audiences[activeTab].title}

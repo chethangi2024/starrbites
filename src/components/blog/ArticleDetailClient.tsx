@@ -95,7 +95,7 @@ export function ArticleDetailClient({
     <>
       {/* Reading Progress Indicator */}
       <div
-        className="fixed top-0 left-0 h-[3px] bg-[#EDC455] z-50 transition-all duration-150 ease-out"
+        className="fixed top-0 left-0 h-[3px] bg-[#0099FF] z-50 transition-all duration-150 ease-out"
         style={{ width: `${readingProgress}%` }}
         aria-hidden="true"
       />
@@ -103,23 +103,23 @@ export function ArticleDetailClient({
       {/* Global Shared Header */}
       <Header onOpenEnquiry={() => handleOpenEnquiry(`Consultation via ${article.title}`)} />
 
-      <main className="flex-1 bg-white pt-28 sm:pt-36 pb-20">
+      <main className="flex-1 bg-[#FDFBFF] pt-28 sm:pt-36 pb-20">
         {/* Article Breadcrumbs & Back Navigation */}
-        <div className="border-b border-[#E7E7E7] bg-[#F6F6F4] py-4">
+        <div className="border-b border-[#E2E6EC] bg-[#F3F6FA] py-4">
           <Container size="wide">
-            <div className="flex flex-wrap items-center justify-between gap-4 text-xs text-[#555555]">
+            <div className="flex flex-wrap items-center justify-between gap-4 text-xs text-[#4A4A4A]">
               <div className="flex items-center gap-2">
                 <Link
                   href="/blog/"
-                  className="inline-flex items-center gap-1.5 font-medium text-[#171C56] hover:text-[#8B6C20] transition-colors"
+                  className="inline-flex items-center gap-1.5 font-medium text-[#242424] hover:underline transition-colors"
                 >
                   <ArrowLeft className="w-3.5 h-3.5" />
                   <span>The Starrbites Journal</span>
                 </Link>
-                <ChevronRight className="w-3 h-3 text-[#555555]" />
-                <span className="text-[#555555] hidden sm:inline">{article.category}</span>
-                <ChevronRight className="w-3 h-3 text-[#555555] hidden sm:inline" />
-                <span className="text-[#171C56] font-medium truncate max-w-[240px] sm:max-w-md">
+                <ChevronRight className="w-3 h-3 text-[#4A4A4A]" />
+                <span className="text-[#4A4A4A] hidden sm:inline">{article.category}</span>
+                <ChevronRight className="w-3 h-3 text-[#4A4A4A] hidden sm:inline" />
+                <span className="text-[#242424] font-medium truncate max-w-[240px] sm:max-w-md">
                   {article.title}
                 </span>
               </div>
@@ -127,7 +127,7 @@ export function ArticleDetailClient({
               <div className="flex items-center gap-3">
                 <button
                   onClick={handleCopyLink}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white border border-[#E7E7E7] rounded-[2px] text-xs text-[#171C56] hover:border-[#171C56] transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#FDFBFF] border border-[#E2E6EC] rounded-[2px] text-xs text-[#242424] hover:border-[#0099FF] transition-colors cursor-pointer"
                   title="Copy article link"
                 >
                   {copied ? (
@@ -137,7 +137,7 @@ export function ArticleDetailClient({
                     </>
                   ) : (
                     <>
-                      <Share2 className="w-3.5 h-3.5 text-[#555555]" />
+                      <Share2 className="w-3.5 h-3.5 text-[#4A4A4A]" />
                       <span>Share</span>
                     </>
                   )}
@@ -148,41 +148,41 @@ export function ArticleDetailClient({
         </div>
 
         {/* Article Header Section */}
-        <section className="pt-10 pb-12 sm:pt-14 sm:pb-16 bg-white" aria-label="Article Headline">
+        <section className="pt-10 pb-12 sm:pt-14 sm:pb-16 bg-[#FDFBFF]" aria-label="Article Headline">
           <Container size="wide">
             <div className="max-w-4xl mx-auto">
-              <div className="inline-block bg-[#171C56]/5 text-[#171C56] border border-[#171C56]/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-[2px] mb-6">
+              <div className="inline-block bg-[#0099FF]/15 text-[#242424] border border-[#0099FF]/30 px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-[2px] mb-6">
                 {article.category}
               </div>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#171C56] font-semibold leading-[1.2] tracking-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#242424] font-semibold leading-[1.2] tracking-tight">
                 {article.title}
               </h1>
 
-              <p className="mt-6 text-lg sm:text-xl text-[#555555] font-light leading-relaxed">
+              <p className="mt-6 text-lg sm:text-xl text-[#4A4A4A] font-light leading-relaxed">
                 {article.excerpt}
               </p>
 
               {/* Author and Date Bar */}
-              <div className="mt-8 pt-6 border-t border-[#E7E7E7] flex flex-wrap items-center justify-between gap-6">
+              <div className="mt-8 pt-6 border-t border-[#E2E6EC] flex flex-wrap items-center justify-between gap-6">
                 <div className="flex items-center gap-3.5">
-                  <div className="w-11 h-11 rounded-full bg-[#171C56] text-[#EDC455] flex items-center justify-center font-serif text-base font-semibold shadow-sm">
+                  <div className="w-11 h-11 rounded-full bg-[#0099FF] text-[#242424] flex items-center justify-center font-serif text-base font-semibold shadow-sm">
                     CN
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-[#171C56]">{article.author}</div>
-                    <div className="text-xs text-[#555555]">{article.authorRole}</div>
+                    <div className="text-sm font-semibold text-[#242424]">{article.author}</div>
+                    <div className="text-xs text-[#4A4A4A]">{article.authorRole}</div>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 text-xs sm:text-sm text-[#555555]">
+                <div className="flex items-center gap-4 text-xs sm:text-sm text-[#4A4A4A]">
                   <span className="flex items-center gap-1.5">
-                    <Calendar className="w-4 h-4 text-[#8B6C20]" />
+                    <Calendar className="w-4 h-4 text-[#242424]" />
                     {article.formattedDate}
                   </span>
                   <span>•</span>
                   <span className="flex items-center gap-1.5">
-                    <Clock className="w-4 h-4 text-[#8B6C20]" />
+                    <Clock className="w-4 h-4 text-[#242424]" />
                     {article.readTime}
                   </span>
                 </div>
@@ -195,7 +195,7 @@ export function ArticleDetailClient({
         <section className="pb-12 sm:pb-16">
           <Container size="wide">
             <div className="max-w-5xl mx-auto">
-              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[2px] border border-[#E7E7E7] shadow-lg">
+              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[2px] border border-[#E2E6EC] shadow-lg">
                 <Image
                   src={article.featuredImage}
                   alt={article.featuredImageAlt}
@@ -205,7 +205,7 @@ export function ArticleDetailClient({
                   sizes="(max-width: 1200px) 100vw, 1200px"
                 />
               </div>
-              <p className="text-xs text-[#555555] mt-3 text-center italic">
+              <p className="text-xs text-[#4A4A4A] mt-3 text-center italic">
                 Official documentation and verified land advisory intelligence from Starrbites Developments.
               </p>
             </div>
@@ -223,28 +223,28 @@ export function ArticleDetailClient({
                   {article.headings && article.headings.length > 0 && (
                     <nav
                       aria-label="Table of Contents"
-                      className="bg-[#F6F6F4] border border-[#E7E7E7] rounded-[2px] p-6"
+                      className="bg-[#F3F6FA] border border-[#E2E6EC] rounded-[2px] p-6"
                     >
-                      <div className="flex items-center gap-2 mb-4 pb-3 border-b border-[#E7E7E7]">
-                        <BookOpen className="w-4 h-4 text-[#8B6C20]" />
-                        <h2 className="text-xs font-semibold uppercase tracking-[0.15em] text-[#171C56]">
+                      <div className="flex items-center gap-2 mb-4 pb-3 border-b border-[#E2E6EC]">
+                        <BookOpen className="w-4 h-4 text-[#242424]" />
+                        <h2 className="text-xs font-semibold uppercase tracking-[0.15em] text-[#242424]">
                           Table of Contents
                         </h2>
                       </div>
-                      <ul className="space-y-2.5 text-xs text-[#555555]">
+                      <ul className="space-y-2.5 text-xs text-[#4A4A4A]">
                         {article.headings.map((h) => {
                           const isActive = activeHeadingId === h.id;
                           return (
                             <li
                               key={h.id}
-                              className={h.level === 3 ? "pl-3 border-l border-[#E7E7E7]" : ""}
+                              className={h.level === 3 ? "pl-3 border-l border-[#E2E6EC]" : ""}
                             >
                               <a
                                 href={`#${h.id}`}
                                 className={`block transition-colors leading-relaxed ${
                                   isActive
-                                    ? "text-[#171C56] font-semibold pl-1 border-l-2 border-[#EDC455]"
-                                    : "hover:text-[#171C56]"
+                                    ? "text-[#242424] font-semibold pl-2 border-l-2 border-[#0099FF]"
+                                    : "hover:text-[#242424]"
                                 }`}
                               >
                                 {h.text}
@@ -257,22 +257,22 @@ export function ArticleDetailClient({
                   )}
 
                   {/* Title Advisory Callout */}
-                  <div className="bg-[#171C56] text-white p-6 rounded-[2px] relative overflow-hidden">
+                  <div className="bg-[#242424] text-[#FDFBFF] p-6 rounded-[2px] border-t-4 border-[#0099FF] relative overflow-hidden">
                     <div className="relative z-10 space-y-3">
                       <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#EDC455]">
                         <ShieldCheck className="w-4 h-4" />
                         <span>Land Counsel</span>
                       </div>
-                      <h3 className="text-base font-serif font-semibold text-white leading-snug">
+                      <h3 className="text-base font-serif font-semibold text-[#FDFBFF] leading-snug">
                         Need Legal Verification on Your Land?
                       </h3>
-                      <p className="text-xs text-white/90 font-light leading-relaxed">
+                      <p className="text-xs text-[#FDFBFF]/90 font-light leading-relaxed">
                         Our title diligence team verifies 30-year encumbrances, RTC mutation chains,
                         and podi survey records.
                       </p>
                       <button
                         onClick={() => handleOpenEnquiry(`Title Verification: ${article.title}`)}
-                        className="w-full mt-2 inline-flex items-center justify-center gap-2 px-4 py-2 bg-[#EDC455] text-[#171C56] text-xs font-semibold uppercase tracking-wider rounded-[2px] hover:bg-white transition-colors cursor-pointer"
+                        className="w-full mt-2 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#0099FF] text-[#242424] text-xs font-semibold uppercase tracking-wider rounded-[2px] hover:bg-[#EDC455] transition-colors cursor-pointer"
                       >
                         <span>Schedule Due Diligence</span>
                         <ArrowRight className="w-3.5 h-3.5" />
@@ -290,16 +290,16 @@ export function ArticleDetailClient({
                 />
 
                 {/* Article Footer & Share Bar */}
-                <div className="mt-14 pt-8 border-t border-[#E7E7E7] flex flex-wrap items-center justify-between gap-4">
-                  <div className="text-xs text-[#555555]">
+                <div className="mt-14 pt-8 border-t border-[#E2E6EC] flex flex-wrap items-center justify-between gap-4">
+                  <div className="text-xs text-[#4A4A4A]">
                     Published in{" "}
-                    <span className="font-semibold text-[#171C56]">{article.category}</span> on{" "}
+                    <span className="font-semibold text-[#242424]">{article.category}</span> on{" "}
                     {article.formattedDate}
                   </div>
 
                   <button
                     onClick={handleCopyLink}
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-[#F6F6F4] border border-[#E7E7E7] rounded-[2px] text-xs font-medium text-[#171C56] hover:border-[#171C56] transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-[#F3F6FA] border border-[#E2E6EC] rounded-[2px] text-xs font-medium text-[#242424] hover:border-[#0099FF] transition-colors cursor-pointer"
                   >
                     {copied ? (
                       <>
@@ -308,7 +308,7 @@ export function ArticleDetailClient({
                       </>
                     ) : (
                       <>
-                        <Share2 className="w-3.5 h-3.5 text-[#8B6C20]" />
+                        <Share2 className="w-3.5 h-3.5 text-[#242424]" />
                         <span>Share Dissertation</span>
                       </>
                     )}
@@ -320,13 +320,13 @@ export function ArticleDetailClient({
                   {prevArticle && (
                     <Link
                       href={`/blog/${prevArticle.slug}/`}
-                      className="p-5 border border-[#E7E7E7] bg-[#F6F6F4] rounded-[2px] hover:border-[#EDC455] transition-all group"
+                      className="p-5 border border-[#E2E6EC] bg-[#F3F6FA] rounded-[2px] hover:border-[#0099FF] transition-all group"
                     >
-                      <div className="text-[11px] uppercase tracking-wider text-[#555555] mb-1 flex items-center gap-1">
+                      <div className="text-[11px] uppercase tracking-wider text-[#4A4A4A] mb-1 flex items-center gap-1">
                         <ArrowLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" />
                         <span>Previous Article</span>
                       </div>
-                      <div className="text-sm font-serif font-semibold text-[#171C56] group-hover:text-[#8B6C20] transition-colors line-clamp-2">
+                      <div className="text-sm font-serif font-semibold text-[#242424] group-hover:underline decoration-[#0099FF] transition-colors line-clamp-2">
                         {prevArticle.title}
                       </div>
                     </Link>
@@ -335,13 +335,13 @@ export function ArticleDetailClient({
                   {nextArticle && (
                     <Link
                       href={`/blog/${nextArticle.slug}/`}
-                      className="p-5 border border-[#E7E7E7] bg-[#F6F6F4] rounded-[2px] hover:border-[#EDC455] transition-all group sm:text-right"
+                      className="p-5 border border-[#E2E6EC] bg-[#F3F6FA] rounded-[2px] hover:border-[#0099FF] transition-all group sm:text-right"
                     >
-                      <div className="text-[11px] uppercase tracking-wider text-[#555555] mb-1 flex items-center gap-1 sm:justify-end">
+                      <div className="text-[11px] uppercase tracking-wider text-[#4A4A4A] mb-1 flex items-center gap-1 sm:justify-end">
                         <span>Next Article</span>
                         <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                       </div>
-                      <div className="text-sm font-serif font-semibold text-[#171C56] group-hover:text-[#8B6C20] transition-colors line-clamp-2">
+                      <div className="text-sm font-serif font-semibold text-[#242424] group-hover:underline decoration-[#0099FF] transition-colors line-clamp-2">
                         {nextArticle.title}
                       </div>
                     </Link>
@@ -354,24 +354,24 @@ export function ArticleDetailClient({
 
         {/* Related Articles Section */}
         {relatedArticles && relatedArticles.length > 0 && (
-          <section className="py-20 bg-[#F6F6F4] border-t border-[#E7E7E7]">
+          <section className="py-20 bg-[#F3F6FA] border-t border-[#E2E6EC]">
             <Container size="wide">
               <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
                 <div>
                   <div className="flex items-center gap-2 mb-2">
                     <span className="w-6 h-[2px] bg-[#EDC455]" />
-                    <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#171C56]">
+                    <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#242424]">
                       Further Intelligence
                     </span>
                   </div>
-                  <h2 className="text-2xl sm:text-3xl font-serif text-[#171C56] font-semibold">
+                  <h2 className="text-2xl sm:text-3xl font-serif text-[#242424] font-semibold">
                     Related Articles & Legal Guides
                   </h2>
                 </div>
 
                 <Link
                   href="/blog/"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#171C56] hover:text-[#8B6C20] transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#242424] hover:underline transition-colors"
                 >
                   <span>Explore All Insights</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -382,12 +382,12 @@ export function ArticleDetailClient({
                 {relatedArticles.map((rel) => (
                   <article
                     key={rel.slug}
-                    className="group flex flex-col justify-between bg-white border border-[#E7E7E7] rounded-[2px] overflow-hidden transition-all duration-300 hover:border-[#EDC455] hover:shadow-lg"
+                    className="group flex flex-col justify-between bg-[#FDFBFF] border border-[#E2E6EC] rounded-[2px] overflow-hidden transition-all duration-300 hover:border-[#0099FF] hover:shadow-lg"
                   >
                     <div>
                       <Link
                         href={`/blog/${rel.slug}/`}
-                        className="block relative aspect-[16/10] w-full overflow-hidden bg-[#171C56]/5"
+                        className="block relative aspect-[16/10] w-full overflow-hidden bg-[#0099FF]/5"
                         tabIndex={-1}
                       >
                         <Image
@@ -397,32 +397,32 @@ export function ArticleDetailClient({
                           className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                           sizes="(max-width: 768px) 100vw, 33vw"
                         />
-                        <div className="absolute top-3 left-3 bg-[#171C56]/90 backdrop-blur-sm text-white px-2 py-0.5 text-[10px] font-semibold tracking-wider uppercase rounded-[2px]">
+                        <div className="absolute top-3 left-3 bg-[#242424]/90 backdrop-blur-sm text-[#EDC455] px-2 py-0.5 text-[10px] font-semibold tracking-wider uppercase rounded-[2px]">
                           {rel.category}
                         </div>
                       </Link>
 
                       <div className="p-6 space-y-2.5">
-                        <div className="flex items-center gap-3 text-xs text-[#555555]">
+                        <div className="flex items-center gap-3 text-xs text-[#4A4A4A]">
                           <span>{rel.formattedDate}</span>
                           <span>•</span>
                           <span>{rel.readTime}</span>
                         </div>
 
-                        <h3 className="text-lg font-serif text-[#171C56] font-semibold leading-snug group-hover:text-[#8B6C20] transition-colors line-clamp-2">
+                        <h3 className="text-lg font-serif text-[#242424] font-semibold leading-snug group-hover:underline decoration-[#0099FF] transition-colors line-clamp-2">
                           <Link href={`/blog/${rel.slug}/`}>{rel.title}</Link>
                         </h3>
 
-                        <p className="text-xs text-[#555555] font-light leading-relaxed line-clamp-2">
+                        <p className="text-xs text-[#4A4A4A] font-light leading-relaxed line-clamp-2">
                           {rel.excerpt}
                         </p>
                       </div>
                     </div>
 
-                    <div className="px-6 pb-6 pt-2 border-t border-[#F6F6F4]">
+                    <div className="px-6 pb-6 pt-2 border-t border-[#F3F6FA]">
                       <Link
                         href={`/blog/${rel.slug}/`}
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#171C56] group-hover:text-[#8B6C20] transition-colors"
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#242424] transition-colors"
                       >
                         <span>Read Guide</span>
                         <ArrowUpRight className="w-3.5 h-3.5" />

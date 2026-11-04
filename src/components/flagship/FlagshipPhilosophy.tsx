@@ -77,23 +77,23 @@ export function FlagshipPhilosophy() {
     <section
       ref={sectionRef}
       id="planning-philosophy"
-      className="py-24 sm:py-32 bg-white border-b border-[#E7E7E7]"
+      className="py-24 sm:py-32 bg-[#FDFBFF] border-b border-[#E2E6EC]"
     >
       <Container size="wide">
         {/* Section Header */}
         <div className="max-w-[760px] mb-16 sm:mb-20">
-          <SectionEyebrow theme="navy" className="mb-4">
+          <SectionEyebrow theme="charcoal" className="mb-4">
             Planning Philosophy
           </SectionEyebrow>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#171C56] font-normal leading-[1.15] mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#242424] font-normal leading-[1.15] mb-6">
             Guiding Principles Behind{" "}
-            <span className="italic font-light text-[#555555]">
+            <span className="italic font-light text-[#4A4A4A]">
               Tiiger Trail
             </span>
           </h2>
 
-          <p className="text-base sm:text-lg text-[#555555] font-light leading-relaxed">
+          <p className="text-base sm:text-lg text-[#4A4A4A] font-light leading-relaxed">
             Our planning methodology rejects short-term commercial compromises in
             favour of environmental sensitivity, legal clarity, and lasting spatial
             elegance.
@@ -105,33 +105,33 @@ export function FlagshipPhilosophy() {
           {planningPillars.map((pillar) => (
             <div
               key={pillar.num}
-              className="flagship-principle-card bg-[#F6F6F4] p-8 rounded-sm border border-[#E7E7E7] hover:border-[#EDC455] hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
+              className="flagship-principle-card bg-[#F3F6FA] p-8 rounded-sm border border-[#E2E6EC] border-t-4 border-t-[#0099FF] hover:border-[#0099FF] hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
-                <div className="flex items-center justify-between pb-6 mb-6 border-b border-[#E7E7E7]">
-                  <span className="text-2xl font-serif font-light text-[#EDC455] group-hover:text-[#C88218] transition-colors">
+                <div className="flex items-center justify-between pb-6 mb-6 border-b border-[#E2E6EC]">
+                  <span className="text-lg font-serif font-medium text-[#242424] bg-[#EDC455] px-2.5 py-0.5 rounded-sm">
                     {pillar.num}
                   </span>
-                  <span className="text-[10px] uppercase tracking-[0.16em] text-[#555555] font-semibold">
+                  <span className="text-[10px] uppercase tracking-[0.16em] text-[#4A4A4A] font-semibold">
                     Core Standard
                   </span>
                 </div>
 
-                <h3 className="text-xl font-serif font-normal text-[#171C56] mb-2 group-hover:text-[#C88218] transition-colors">
+                <h3 className="text-xl font-serif font-normal text-[#242424] mb-2">
                   {pillar.title}
                 </h3>
 
-                <h4 className="text-xs font-semibold text-[#C88218] mb-4">
+                <h4 className="text-xs font-semibold text-[#242424] border-l-2 border-[#EDC455] pl-2.5 mb-4">
                   {pillar.headline}
                 </h4>
 
-                <p className="text-sm text-[#555555] font-light leading-relaxed mb-6">
+                <p className="text-sm text-[#4A4A4A] font-light leading-relaxed mb-6">
                   {pillar.description}
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-[#E7E7E7]/80">
-                <span className="block text-[10px] uppercase tracking-wider text-[#171C56] font-semibold mb-0.5">
+              <div className="pt-4 border-t border-[#E2E6EC]/80">
+                <span className="block text-[10px] uppercase tracking-wider text-[#4A4A4A] font-semibold mb-0.5">
                   Design Benchmark
                 </span>
                 <span className="text-xs text-[#242424] font-medium">
@@ -143,8 +143,8 @@ export function FlagshipPhilosophy() {
         </div>
 
         {/* Governance Disclaimer */}
-        <div className="p-4 bg-[#F6F6F4] border border-[#E7E7E7] rounded-sm text-center">
-          <p className="text-xs text-[#555555] font-light">
+        <div className="p-4 bg-[#F3F6FA] border border-[#E2E6EC] rounded-sm text-center">
+          <p className="text-xs text-[#4A4A4A] font-light">
             * Planning philosophy outlines our development commitments; physical amenities and phased infrastructure are delivered in alignment with approved project schedules.
           </p>
         </div>

@@ -42,12 +42,12 @@ export function NriFlagshipFeature() {
     <section
       ref={sectionRef}
       id="flagship-feature"
-      className="py-24 sm:py-32 bg-[#F6F6F4] border-b border-[#E7E7E7]"
+      className="py-24 sm:py-32 bg-[#F3F6FA] border-b border-[#E2E6EC]"
     >
       <Container size="wide">
         <div
           ref={cardRef}
-          className="bg-[#171C56] text-white rounded-sm overflow-hidden grid grid-cols-1 lg:grid-cols-12 shadow-xl"
+          className="bg-[#242424] text-[#FDFBFF] rounded-sm overflow-hidden grid grid-cols-1 lg:grid-cols-12 shadow-xl border-t-4 border-[#0099FF]"
         >
           {/* Left Column: Landscape Visual (5 cols) */}
           <div className="lg:col-span-5 relative min-h-[340px] sm:min-h-[420px] lg:min-h-full">
@@ -58,13 +58,13 @@ export function NriFlagshipFeature() {
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 40vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#171C56]/80 via-transparent to-transparent lg:hidden" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#242424]/80 via-transparent to-transparent lg:hidden" />
 
-            <div className="absolute bottom-4 left-4 right-4 p-3 bg-white/95 backdrop-blur-md rounded-sm border border-[#E7E7E7] text-left">
-              <span className="text-[10px] uppercase tracking-wider text-[#C88218] font-semibold block mb-0.5">
+            <div className="absolute bottom-4 left-4 right-4 p-3 bg-[#FDFBFF]/95 backdrop-blur-md rounded-sm border-l-4 border-[#0099FF] text-left">
+              <span className="text-[10px] uppercase tracking-wider text-[#242424] font-semibold block mb-0.5">
                 Conceptual Landscape Context
               </span>
-              <p className="text-[11px] text-[#171C56] font-medium leading-snug">
+              <p className="text-[11px] text-[#4A4A4A] font-medium leading-snug">
                 Peaceful agrarian setting characteristic of the Lepakshi countryside.
               </p>
             </div>
@@ -77,11 +77,11 @@ export function NriFlagshipFeature() {
                 The Flagship Project
               </SectionEyebrow>
 
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-white font-normal leading-[1.15] mb-6">
-                <span className="text-white">Tiiger Trail — A Nature-Led Destination</span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#FDFBFF] font-normal leading-[1.15] mb-6">
+                <span className="text-[#FDFBFF]">Tiiger Trail — A Nature-Led Destination</span>
               </h2>
 
-              <p className="text-white/90 text-base sm:text-lg font-light leading-relaxed mb-6">
+              <p className="text-[#FDFBFF]/90 text-base sm:text-lg font-light leading-relaxed mb-6">
                 For global Indians looking to maintain a meaningful connection with the
                 soil of their homeland, Tiiger Trail offers a thoughtfully planned
                 plotted retreat. Situated near Lepakshi off the NH-44 highway, the
@@ -89,33 +89,39 @@ export function NriFlagshipFeature() {
               </p>
 
               {/* 3 Verified Pillars */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 pb-6 border-y border-white/10 mb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 pb-6 border-y border-[#FDFBFF]/15 mb-8">
                 <div>
-                  <Compass className="w-5 h-5 text-[#EDC455] mb-2" />
-                  <h4 className="text-xs uppercase tracking-wider text-white font-semibold mb-1">
+                  <div className="w-8 h-8 rounded-sm bg-[#0099FF] flex items-center justify-center mb-3">
+                    <Compass className="w-4 h-4 text-[#242424]" />
+                  </div>
+                  <h4 className="text-xs uppercase tracking-wider text-[#EDC455] font-semibold mb-1">
                     North Bangalore Axis
                   </h4>
-                  <p className="text-xs text-white/85 font-normal">
+                  <p className="text-xs text-[#FDFBFF]/85 font-normal">
                     Direct access via the multi-lane NH-44 highway corridor
                   </p>
                 </div>
 
                 <div>
-                  <ShieldCheck className="w-5 h-5 text-[#EDC455] mb-2" />
-                  <h4 className="text-xs uppercase tracking-wider text-white font-semibold mb-1">
+                  <div className="w-8 h-8 rounded-sm bg-[#EDC455] flex items-center justify-center mb-3">
+                    <ShieldCheck className="w-4 h-4 text-[#242424]" />
+                  </div>
+                  <h4 className="text-xs uppercase tracking-wider text-[#EDC455] font-semibold mb-1">
                     Clear Title Dossiers
                   </h4>
-                  <p className="text-xs text-white/85 font-normal">
+                  <p className="text-xs text-[#FDFBFF]/85 font-normal">
                     Multi-decade parent deeds & individual mutation vetting
                   </p>
                 </div>
 
                 <div>
-                  <FileText className="w-5 h-5 text-[#EDC455] mb-2" />
-                  <h4 className="text-xs uppercase tracking-wider text-white font-semibold mb-1">
+                  <div className="w-8 h-8 rounded-sm bg-[#0099FF] flex items-center justify-center mb-3">
+                    <FileText className="w-4 h-4 text-[#242424]" />
+                  </div>
+                  <h4 className="text-xs uppercase tracking-wider text-[#EDC455] font-semibold mb-1">
                     Remote Advisory
                   </h4>
-                  <p className="text-xs text-white/85 font-normal">
+                  <p className="text-xs text-[#FDFBFF]/85 font-normal">
                     Digital paperwork sharing and video tour facilitation
                   </p>
                 </div>

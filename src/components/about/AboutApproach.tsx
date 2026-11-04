@@ -43,34 +43,34 @@ export function AboutApproach() {
     {
       step: "01",
       phase: "Discovery & Analysis",
-      title: "Strategic Corridor Selection",
+      title: "Corridor Selection",
       description:
-        "We identify regional land pockets situated along high-speed transportation corridors (such as the NH-44 North Bangalore corridor) that benefit from government-backed infrastructure, aerospace hubs, and long-term economic expansion.",
-      deliverable: "Corridor connectivity and accessibility audit",
+        "We evaluate regional land corridors situated along major transportation axes (such as the NH-44 North Bangalore–Lepakshi corridor), assessing highway access, surrounding civic and industrial activity, and long-term regional relevance.",
+      deliverable: "Corridor connectivity and location evaluation",
     },
     {
       step: "02",
       phase: "Legal Due Diligence",
-      title: "Title & Mutation Scrutiny",
+      title: "Title Diligence",
       description:
-        "Our legal advisory partners conduct rigorous multi-decade parent deed verifications, revenue survey map inspections, encumbrance tracking, and boundary validations to ensure unencumbered, clear ownership before any development.",
-      deliverable: "Independent legal opinion and title verification",
+        "Our legal and acquisition specialists examine parent deeds, revenue records, encumbrance histories, mutation status, and survey boundaries to verify clear ownership documentation prior to project development.",
+      deliverable: "Documented title and mutation verification",
     },
     {
       step: "03",
       phase: "Spatial Architecture",
-      title: "Topography-Led Master Planning",
+      title: "Master Planning",
       description:
-        "Rather than imposing rigid grids, we design master plans that respect natural drainage patterns, mature flora, and gentle contours. Plotted enclaves are complemented by planned plantation avenues and generous community buffers.",
-      deliverable: "Master plan layout with natural zoning",
+        "Rather than imposing arbitrary plot grids, we plan layouts that respect site topography, internal access roads, green buffers, and the specific lifestyle or recreational purpose of each development.",
+      deliverable: "Purpose-built site layout and zoning",
     },
     {
       step: "04",
       phase: "Client Stewardship",
       title: "Transparent Buyer Facilitation",
       description:
-        "From physical site walkthroughs and virtual 360° tours for NRI buyers to transparent paperwork handover and ongoing layout stewardship, our client experience team provides clear guidance through every milestone.",
-      deliverable: "Seamless documentation and continuous advisory",
+        "From on-site visits and remote video consultations—where available for overseas buyers—to clear documentation review and registration guidance, our Bengaluru team supports buyers at every stage.",
+      deliverable: "Clear documentation access and buyer guidance",
     },
   ];
 
@@ -78,21 +78,21 @@ export function AboutApproach() {
     <section
       ref={sectionRef}
       id="approach"
-      className="py-24 sm:py-32 bg-white border-b border-[#E7E7E7]"
+      className="py-24 sm:py-32 bg-[#FDFBFF] border-b border-[#E2E6EC]"
     >
       <Container size="wide">
         {/* Section Header */}
         <div className="max-w-[760px] mb-16 sm:mb-20">
-          <SectionEyebrow theme="navy" className="mb-4">
+          <SectionEyebrow theme="charcoal" className="mb-4">
             Our Methodology
           </SectionEyebrow>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#171C56] font-normal leading-[1.15] mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#242424] font-normal leading-[1.15] mb-6">
             A Disciplined, Intentional Approach to{" "}
-            <span className="italic font-light text-[#555555]">
+            <span className="italic font-light text-[#4A4A4A]">
               Land Development
             </span>
           </h2>
-          <p className="text-base sm:text-lg text-[#555555] font-light leading-relaxed">
+          <p className="text-base sm:text-lg text-[#4A4A4A] font-light leading-relaxed">
             Our development process combines analytical corridor assessment with
             uncompromising title diligence and sensitive spatial design, ensuring
             peace of mind for every landowner.
@@ -107,32 +107,32 @@ export function AboutApproach() {
           {steps.map((item) => (
             <div
               key={item.step}
-              className="approach-step-card bg-[#F6F6F4] p-8 rounded-sm border border-[#E7E7E7] hover:border-[#EDC455] hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
+              className="approach-step-card bg-[#F3F6FA] p-8 rounded-sm border-t-4 border-[#0099FF] border-x border-b border-[#E2E6EC] hover:border-[#EDC455] hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
-                <div className="flex items-center justify-between pb-6 mb-6 border-b border-[#E7E7E7]">
-                  <span className="text-2xl font-serif font-light text-[#EDC455] group-hover:text-[#C88218] transition-colors">
+                <div className="flex items-center justify-between pb-6 mb-6 border-b border-[#E2E6EC]">
+                  <span className="text-xl font-serif font-semibold bg-[#EDC455]/40 text-[#242424] px-2.5 py-0.5 rounded-[2px]">
                     {item.step}
                   </span>
-                  <span className="text-[11px] uppercase tracking-[0.16em] text-[#555555] font-medium">
+                  <span className="text-[11px] uppercase tracking-[0.16em] text-[#4A4A4A] font-semibold">
                     {item.phase}
                   </span>
                 </div>
 
-                <h3 className="text-xl font-serif font-normal text-[#171C56] mb-3 group-hover:text-[#C88218] transition-colors">
+                <h3 className="text-xl font-serif font-normal text-[#242424] mb-3 group-hover:text-[#007ACC] transition-colors">
                   {item.title}
                 </h3>
 
-                <p className="text-sm text-[#555555] font-light leading-relaxed mb-6">
+                <p className="text-sm text-[#4A4A4A] font-light leading-relaxed mb-6">
                   {item.description}
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-[#E7E7E7]/80">
-                <span className="block text-[10px] uppercase tracking-wider text-[#171C56] font-semibold mb-1">
+              <div className="pt-4 border-t border-[#E2E6EC]">
+                <span className="block text-[10px] uppercase tracking-wider text-[#242424] font-semibold mb-1">
                   Focus Outcome
                 </span>
-                <span className="text-xs text-[#242424] font-medium">
+                <span className="text-xs text-[#4A4A4A] font-medium">
                   {item.deliverable}
                 </span>
               </div>

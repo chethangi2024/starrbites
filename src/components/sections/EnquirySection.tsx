@@ -37,7 +37,6 @@ export function EnquirySection() {
     }
 
     try {
-      // Simulate real asynchronous submission to CRM / Notification API
       await new Promise((resolve) => setTimeout(resolve, 850));
       setStatus("success");
     } catch {
@@ -49,7 +48,7 @@ export function EnquirySection() {
   return (
     <section
       id="enquiry-section"
-      className="py-24 sm:py-32 bg-[#F6F6F4] relative border-t border-[#E7E7E7]"
+      className="py-24 sm:py-32 bg-[#F3F6FA] relative border-t border-[#E2E6EC]"
       aria-labelledby="enquiry-heading"
     >
       <Container size="wide">
@@ -57,29 +56,31 @@ export function EnquirySection() {
           {/* Left Column: Context & Contact Details (5 Cols) */}
           <div className="lg:col-span-5 space-y-8">
             <div>
-              <SectionEyebrow theme="navy" className="mb-4">
+              <SectionEyebrow theme="charcoal" className="mb-4">
                 Corporate Enquiries
               </SectionEyebrow>
               <h2
                 id="enquiry-heading"
-                className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#171C56] font-semibold tracking-tight leading-[1.16]"
+                className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#242424] font-semibold tracking-tight leading-[1.16]"
               >
                 Let&apos;s discuss what you&apos;re looking to build for the future.
               </h2>
-              <p className="text-base sm:text-lg text-[#555555] font-light mt-4 leading-relaxed">
-                Whether you are exploring a strategic land asset, considering a lifestyle farmhouse
-                at Tiiger Trail, or need NRI documentation guidance, our leadership team is at your
-                service.
+              <p className="text-base sm:text-lg text-[#4A4A4A] font-light mt-4 leading-relaxed">
+                Whether you are exploring plots at Tiiger Trail, registering interest in Stay and
+                Play, or discussing corporate and development partnerships, our Bengaluru advisory
+                team is here to assist you.
               </p>
             </div>
 
             {/* Direct Contact Points */}
-            <div className="space-y-6 pt-4 border-t border-[#E7E7E7]">
+            <div className="space-y-6 pt-4 border-t border-[#E2E6EC]">
               <div className="flex items-start gap-4">
-                <MapPin className="w-5 h-5 text-[#C88218] shrink-0 mt-1" />
+                <div className="w-9 h-9 rounded-[2px] bg-[#0099FF]/15 flex items-center justify-center shrink-0 mt-0.5">
+                  <MapPin className="w-5 h-5 text-[#242424]" />
+                </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-[#171C56]">Headquarters Office</h4>
-                  <p className="text-xs sm:text-sm text-[#555555] mt-1 leading-relaxed">
+                  <h4 className="text-sm font-semibold text-[#242424]">Headquarters Office</h4>
+                  <p className="text-xs sm:text-sm text-[#4A4A4A] mt-1 leading-relaxed">
                     No. 194, 3rd Main, 13th Cross, RMV 2nd Stage, HIG Dollars Colony, Bengaluru -
                     560094, Karnataka
                   </p>
@@ -87,14 +88,16 @@ export function EnquirySection() {
               </div>
 
               <div className="flex items-start gap-4">
-                <Phone className="w-5 h-5 text-[#C88218] shrink-0 mt-1" />
+                <div className="w-9 h-9 rounded-[2px] bg-[#EDC455]/30 flex items-center justify-center shrink-0 mt-0.5">
+                  <Phone className="w-5 h-5 text-[#242424]" />
+                </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-[#171C56]">Direct Telephone</h4>
+                  <h4 className="text-sm font-semibold text-[#242424]">Direct Telephone</h4>
                   <div className="flex flex-col gap-1 mt-1 text-xs sm:text-sm text-[#242424] font-medium">
-                    <a href="tel:+919740806357" className="hover:text-[#C88218] transition-colors">
+                    <a href="tel:+919740806357" className="hover:text-[#007ACC] transition-colors">
                       +91 97408 06357
                     </a>
-                    <a href="tel:+918861197979" className="hover:text-[#C88218] transition-colors">
+                    <a href="tel:+918861197979" className="hover:text-[#007ACC] transition-colors">
                       +91 88611 97979
                     </a>
                   </div>
@@ -102,12 +105,14 @@ export function EnquirySection() {
               </div>
 
               <div className="flex items-start gap-4">
-                <Mail className="w-5 h-5 text-[#C88218] shrink-0 mt-1" />
+                <div className="w-9 h-9 rounded-[2px] bg-[#0099FF]/15 flex items-center justify-center shrink-0 mt-0.5">
+                  <Mail className="w-5 h-5 text-[#242424]" />
+                </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-[#171C56]">Official Email</h4>
+                  <h4 className="text-sm font-semibold text-[#242424]">Official Email</h4>
                   <a
                     href="mailto:contact@starrbites.com"
-                    className="text-xs sm:text-sm text-[#242424] font-medium hover:text-[#C88218] transition-colors block mt-1"
+                    className="text-xs sm:text-sm text-[#242424] font-medium hover:text-[#007ACC] transition-colors block mt-1"
                   >
                     contact@starrbites.com
                   </a>
@@ -115,10 +120,12 @@ export function EnquirySection() {
               </div>
 
               <div className="flex items-start gap-4">
-                <Clock className="w-5 h-5 text-[#C88218] shrink-0 mt-1" />
+                <div className="w-9 h-9 rounded-[2px] bg-[#EDC455]/30 flex items-center justify-center shrink-0 mt-0.5">
+                  <Clock className="w-5 h-5 text-[#242424]" />
+                </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-[#171C56]">Advisory Availability</h4>
-                  <p className="text-xs sm:text-sm text-[#555555] mt-1">
+                  <h4 className="text-sm font-semibold text-[#242424]">Advisory Availability</h4>
+                  <p className="text-xs sm:text-sm text-[#4A4A4A] mt-1">
                     9:00 AM – 7:00 PM IST • Monday through Sunday
                   </p>
                 </div>
@@ -127,16 +134,16 @@ export function EnquirySection() {
           </div>
 
           {/* Right Column: High-Converting Form (7 Cols) */}
-          <div className="lg:col-span-7 bg-white border border-[#E7E7E7] p-8 sm:p-12 rounded-[2px] shadow-sm">
+          <div className="lg:col-span-7 bg-[#FDFBFF] border border-[#E2E6EC] p-8 sm:p-12 rounded-[2px] shadow-sm">
             {status === "success" ? (
               <div className="py-12 text-center space-y-5">
-                <div className="w-16 h-16 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto">
+                <div className="w-16 h-16 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center mx-auto">
                   <CheckCircle2 className="w-10 h-10" />
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-serif text-[#171C56] font-semibold">
+                <h3 className="text-2xl sm:text-3xl font-serif text-[#242424] font-semibold">
                   Thank You for Reaching Out
                 </h3>
-                <p className="text-sm sm:text-base text-[#555555] max-w-md mx-auto leading-relaxed">
+                <p className="text-sm sm:text-base text-[#4A4A4A] max-w-md mx-auto leading-relaxed">
                   Your enquiry has been received by Starrbites. Our relationship manager will review
                   your requirements regarding{" "}
                   <span className="font-semibold text-[#242424]">{formData.interest}</span> and
@@ -164,10 +171,10 @@ export function EnquirySection() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <h3 className="text-2xl font-serif text-[#171C56] font-semibold">
+                  <h3 className="text-2xl font-serif text-[#242424] font-semibold">
                     Request an Advisory Consultation
                   </h3>
-                  <p className="text-xs sm:text-sm text-[#555555] mt-1">
+                  <p className="text-xs sm:text-sm text-[#4A4A4A] mt-1">
                     Complete this brief request and an advisor will arrange your consultation or site
                     tour.
                   </p>
@@ -183,7 +190,7 @@ export function EnquirySection() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-xs font-semibold uppercase tracking-wider text-[#242424] mb-2">
-                      Full Name <span className="text-red-500">*</span>
+                      Full Name <span className="text-[#B3261E]">*</span>
                     </label>
                     <input
                       type="text"
@@ -191,13 +198,13 @@ export function EnquirySection() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Sunil Sharma"
-                      className="w-full px-4 py-3.5 border border-[#E7E7E7] text-sm text-[#242424] focus:outline-none focus:border-[#171C56] transition-colors rounded-[2px]"
+                      className="w-full px-4 py-3.5 bg-[#FDFBFF] border border-[#C8D0DA] text-sm text-[#242424] focus:outline-none focus:border-[#0099FF] transition-colors rounded-[2px]"
                     />
                   </div>
 
                   <div>
                     <label className="block text-xs font-semibold uppercase tracking-wider text-[#242424] mb-2">
-                      Phone Number <span className="text-red-500">*</span>
+                      Phone Number <span className="text-[#B3261E]">*</span>
                     </label>
                     <input
                       type="tel"
@@ -205,7 +212,7 @@ export function EnquirySection() {
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="+91 98765 43210"
-                      className="w-full px-4 py-3.5 border border-[#E7E7E7] text-sm text-[#242424] focus:outline-none focus:border-[#171C56] transition-colors rounded-[2px]"
+                      className="w-full px-4 py-3.5 bg-[#FDFBFF] border border-[#C8D0DA] text-sm text-[#242424] focus:outline-none focus:border-[#0099FF] transition-colors rounded-[2px]"
                     />
                   </div>
                 </div>
@@ -213,7 +220,7 @@ export function EnquirySection() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-xs font-semibold uppercase tracking-wider text-[#242424] mb-2">
-                      Email Address <span className="text-red-500">*</span>
+                      Email Address <span className="text-[#B3261E]">*</span>
                     </label>
                     <input
                       type="email"
@@ -221,7 +228,7 @@ export function EnquirySection() {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="name@domain.com"
-                      className="w-full px-4 py-3.5 border border-[#E7E7E7] text-sm text-[#242424] focus:outline-none focus:border-[#171C56] transition-colors rounded-[2px]"
+                      className="w-full px-4 py-3.5 bg-[#FDFBFF] border border-[#C8D0DA] text-sm text-[#242424] focus:outline-none focus:border-[#0099FF] transition-colors rounded-[2px]"
                     />
                   </div>
 
@@ -232,19 +239,22 @@ export function EnquirySection() {
                     <select
                       value={formData.interest}
                       onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
-                      className="w-full px-4 py-3.5 border border-[#E7E7E7] text-sm text-[#242424] bg-white focus:outline-none focus:border-[#171C56] transition-colors rounded-[2px]"
+                      className="w-full px-4 py-3.5 border border-[#C8D0DA] text-sm text-[#242424] bg-[#FDFBFF] focus:outline-none focus:border-[#0099FF] transition-colors rounded-[2px]"
                     >
                       <option value="Tiiger Trail — Flagship Project">
-                        Tiiger Trail — Flagship Nature Estate
+                        Tiiger Trail — Flagship Plotted Development
                       </option>
-                      <option value="Land Investment & Due Diligence">
-                        Land Investment & Title Due Diligence
+                      <option value="Stay and Play — Upcoming Project Enquiry">
+                        Stay and Play — Upcoming Project Enquiry
+                      </option>
+                      <option value="General Corporate & Portfolio Enquiry">
+                        General Corporate &amp; Portfolio Matters
+                      </option>
+                      <option value="Strategic & Land Development Partnerships">
+                        Strategic &amp; Land Development Partnerships
                       </option>
                       <option value="NRI Advisory & Remote Purchase">
-                        NRI Advisory & Remote Purchase Support
-                      </option>
-                      <option value="General Corporate Inquiry">
-                        General Corporate Partnership
+                        NRI Advisory &amp; Documentation Guidance
                       </option>
                     </select>
                   </div>
@@ -259,7 +269,7 @@ export function EnquirySection() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Tell us about your requirements, timeline, or preferred site visit dates..."
-                    className="w-full px-4 py-3.5 border border-[#E7E7E7] text-sm text-[#242424] focus:outline-none focus:border-[#171C56] transition-colors rounded-[2px]"
+                    className="w-full px-4 py-3.5 bg-[#FDFBFF] border border-[#C8D0DA] text-sm text-[#242424] focus:outline-none focus:border-[#0099FF] transition-colors rounded-[2px]"
                   />
                 </div>
 
@@ -269,9 +279,9 @@ export function EnquirySection() {
                     id="section-consent"
                     checked={formData.consent}
                     onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
-                    className="mt-1 accent-[#171C56]"
+                    className="mt-1 accent-[#0099FF]"
                   />
-                  <label htmlFor="section-consent" className="text-xs text-[#555555] leading-snug">
+                  <label htmlFor="section-consent" className="text-xs text-[#4A4A4A] leading-snug">
                     I consent to being contacted by Starrbites regarding my enquiry. We maintain
                     absolute confidentiality and never share contact details.
                   </label>

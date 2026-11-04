@@ -66,11 +66,11 @@ export function AboutJourney() {
     },
     {
       phase: "Phase 04",
-      badge: "Flagship Realization",
-      title: "Tiiger Trail — Phase I Launch",
+      badge: "Portfolio Horizon",
+      title: "Tiiger Trail Phase I & Multi-Project Growth",
       summary:
-        "Bringing our land philosophy to life near Lepakshi along the North Bangalore infrastructure corridor, establishing a benchmark for resort-inspired plotted estates.",
-      focus: "Active flagship destination & community creation",
+        "Advancing our flagship plotted nature destination, Tiiger Trail, along the NH-44 North Bangalore–Lepakshi corridor while expanding our real-estate development portfolio with Stay and Play.",
+      focus: "Flagship execution & portfolio expansion",
     },
   ];
 
@@ -78,20 +78,20 @@ export function AboutJourney() {
     <section
       ref={sectionRef}
       id="journey"
-      className="py-24 sm:py-32 bg-white border-b border-[#E7E7E7]"
+      className="py-24 sm:py-32 bg-[#FDFBFF] border-b border-[#E2E6EC]"
     >
       <Container size="wide">
         {/* Section Header */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end mb-16 sm:mb-20">
           <div className="lg:col-span-7">
-            <SectionEyebrow theme="navy" className="mb-4">
+            <SectionEyebrow theme="charcoal" className="mb-4">
               Evolution & Milestones
             </SectionEyebrow>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#171C56] font-normal leading-[1.15]">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#242424] font-normal leading-[1.15]">
               Our Evolutionary Journey
             </h2>
           </div>
-          <div className="lg:col-span-5 text-sm sm:text-base text-[#555555] font-light leading-relaxed">
+          <div className="lg:col-span-5 text-sm sm:text-base text-[#4A4A4A] font-light leading-relaxed">
             <p>
               A purposeful transition from interior architecture and spatial planning
               to curated plotted developments and enduring regional stewardship.
@@ -103,7 +103,7 @@ export function AboutJourney() {
         <div ref={timelineRef} className="relative max-w-[960px] mx-auto">
           {/* Central Vertical Guide Line (Desktop) */}
           <div
-            className="absolute top-0 bottom-0 left-6 md:left-1/2 w-[1px] bg-[#E7E7E7] -translate-x-1/2"
+            className="absolute top-0 bottom-0 left-6 md:left-1/2 w-[2px] bg-[#0099FF]/35 -translate-x-1/2"
             aria-hidden="true"
           />
 
@@ -119,10 +119,10 @@ export function AboutJourney() {
                 >
                   {/* Timeline Node */}
                   <div
-                    className="absolute left-6 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-white border-2 border-[#171C56] shadow-sm z-10 mt-1.5 flex items-center justify-center"
+                    className="absolute left-6 md:left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-[#FDFBFF] border-2 border-[#0099FF] shadow-sm z-10 mt-1.5 flex items-center justify-center"
                     aria-hidden="true"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#EDC455]" />
+                    <span className="w-2 h-2 rounded-full bg-[#EDC455]" />
                   </div>
 
                   {/* Content Card (Half Width on Desktop) */}
@@ -131,35 +131,35 @@ export function AboutJourney() {
                       isEven ? "md:pl-12 lg:pl-16 text-left" : "md:pr-12 lg:pr-16 md:text-right"
                     }`}
                   >
-                    <div className="bg-[#F6F6F4] p-6 sm:p-8 rounded-sm border border-[#E7E7E7] hover:border-[#EDC455] transition-colors duration-300">
+                    <div className="bg-[#F3F6FA] p-6 sm:p-8 rounded-sm border border-[#E2E6EC] hover:border-[#0099FF] transition-colors duration-300">
                       <div
-                        className={`flex items-center gap-2 mb-2 ${
+                        className={`flex items-center gap-2 mb-2.5 ${
                           isEven ? "justify-start" : "md:justify-end"
                         }`}
                       >
-                        <span className="text-xs uppercase tracking-[0.16em] text-[#C88218] font-semibold">
+                        <span className="text-xs uppercase tracking-[0.16em] bg-[#EDC455]/40 text-[#242424] px-2 py-0.5 rounded-[2px] font-semibold">
                           {item.phase}
                         </span>
-                        <span className="text-[#555555] text-xs">•</span>
-                        <span className="text-xs uppercase tracking-wider text-[#555555] font-medium">
+                        <span className="text-[#4A4A4A] text-xs">•</span>
+                        <span className="text-xs uppercase tracking-wider text-[#4A4A4A] font-medium">
                           {item.badge}
                         </span>
                       </div>
 
-                      <h3 className="text-xl sm:text-2xl font-serif font-normal text-[#171C56] mb-3">
+                      <h3 className="text-xl sm:text-2xl font-serif font-normal text-[#242424] mb-3">
                         {item.title}
                       </h3>
 
-                      <p className="text-sm text-[#555555] font-light leading-relaxed mb-4 text-left">
+                      <p className="text-sm text-[#4A4A4A] font-light leading-relaxed mb-4 text-left">
                         {item.summary}
                       </p>
 
                       <div
-                        className={`pt-3 border-t border-[#E7E7E7] text-xs font-medium text-[#171C56] ${
+                        className={`pt-3 border-t border-[#E2E6EC] text-xs font-medium text-[#242424] ${
                           isEven ? "text-left" : "md:text-right text-left"
                         }`}
                       >
-                        <span className="text-[#C88218]">Core Competency:</span>{" "}
+                        <span className="font-semibold text-[#007ACC]">Core Competency:</span>{" "}
                         {item.focus}
                       </div>
                     </div>
@@ -172,7 +172,7 @@ export function AboutJourney() {
 
         {/* Verification Note */}
         <div className="mt-16 text-center">
-          <p className="text-xs text-[#555555] font-light">
+          <p className="text-xs text-[#4A4A4A] font-light">
             * Milestone chronology structured around verified corporate ventures in the PRD; specific calendar years pending client archives confirmation.
           </p>
         </div>

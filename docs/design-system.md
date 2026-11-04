@@ -1,7 +1,7 @@
 # Starrbites Luxury Design System Specification
 
-**Version:** 1.0.0  
-**Status:** Approved Initial Direction  
+**Version:** 2.0.0 (Phase 1 Global Colour Identity Update)  
+**Status:** Active Official Brand System  
 **Aesthetic Theme:** Contemporary Architectural Luxury & Corporate Real Estate Editorial  
 **WCAG Compliance:** WCAG 2.2 Level AA  
 
@@ -12,10 +12,10 @@
 The Starrbites digital visual identity is created to evoke the prestige, confidence, and quiet authority of an established high-end land development institution and private architectural atelier. 
 
 ### The Four Pillars of the Visual System:
-1. **White Dominance:** Expansive, breathing white space (`#FFFFFF`) establishes purity, scale, clarity, and uncompromising luxury.
-2. **Navy Authority:** Corporate Navy (`#171C56`) delivers institutional gravitas, stability, and legal certainty. It replaces generic black for headlines, navigation bars, and primary CTAs.
-3. **Gold Precision:** Sampled directly from the official Starrbites emblem (`#EDC455`), gold is an accent of restraint. It is used exclusively for hairline dividers, micro-eyebrows, subtle indicators, and selected hover accents. It is never used in large background slabs.
-4. **Editorial Asymmetry:** Rhythmic interplay of oversized serif typography, asymmetric grid offsets, wide cinematic imagery, and structured negative space mimics high-end design monographs.
+1. **Cloudy White Dominance:** Expansive, breathing Cloudy White (`#FDFBFF`) and Soft Cloud (`#F3F6FA`) surfaces establish purity, scale, clarity, and uncompromising luxury.
+2. **Sky Blue Brand Presence:** Sky Blue (`#0099FF`) delivers contemporary energy, open-horizon optimism, and institutional clarity across hero backgrounds, feature highlights, active navigation indicators, and primary CTAs, always paired with Charcoal (`#242424`) typography (`5.17:1` contrast).
+3. **Gold Precision:** Sampled directly from the official Starrbites emblem (`#EDC455`), Gold is an accent of restraint used for headline highlight pills (`bg-[#EDC455] text-[#242424]`), premium buttons, hairline dividers, micro-eyebrows, and accents on dark Charcoal (`#242424`) sections.
+4. **Charcoal Editorial Authority:** Deep Charcoal (`#242424`) anchors all primary headings, body copy, and selected dark showcase sections with crisp WCAG AAA contrast (`15.09:1` on `#FDFBFF`).
 
 ---
 
@@ -24,51 +24,53 @@ The Starrbites digital visual identity is created to evoke the prestige, confide
 ### 2.1 Color Palette
 ```css
 :root {
-  /* Core Brand Colors */
-  --color-primary-navy: #171C56;
-  --color-primary-navy-dark: #0F1238;
-  --color-primary-navy-light: #202773;
+  /* Core Brand Sky Blue */
+  --color-primary-sky: #0099FF;
+  --color-primary-sky-hover: #007ACC;
+  --color-primary-sky-tint: #E6F5FF;
 
   /* Sampled Brand Gold (From Official Logo) */
   --color-gold-base: #EDC455;
   --color-gold-light: #FFE672;
-  --color-gold-muted: #9B7A2E;
-  --color-gold-deep: #C88218;
+  --color-gold-muted: #D4AC3A;
+  --color-gold-deep: #B89020;
 
   /* Surfaces & Backgrounds */
-  --color-surface-white: #FFFFFF;
-  --color-surface-soft: #F6F6F4;
-  --color-surface-subtle: #EEEEEC;
-  --color-surface-dark: #171C56;
+  --color-surface-white: #FDFBFF;
+  --color-surface-soft: #F3F6FA;
+  --color-surface-subtle: #EAEFF5;
+  --color-surface-dark: #242424;
 
   /* Text & Content */
   --color-text-primary: #242424;
-  --color-text-secondary: #686868;
-  --color-text-muted: #8E8E8E;
-  --color-text-inverse: #FFFFFF;
-  --color-text-inverse-muted: #D1D3E0;
+  --color-text-secondary: #4A4A4A;
+  --color-text-reading: #2D2D2D;
+  --color-text-muted: #595959;
+  --color-text-inverse: #FDFBFF;
+  --color-text-inverse-muted: #D6D8DC;
 
   /* Borders & Dividers */
-  --color-border-light: #E7E7E7;
-  --color-border-subtle: #F0F0EF;
-  --color-border-gold: rgba(237, 196, 85, 0.4);
-  --color-border-navy: rgba(23, 28, 86, 0.15);
+  --color-border-light: #E2E6EC;
+  --color-border-subtle: #EAEFF5;
+  --color-border-gold: rgba(237, 196, 85, 0.55);
+  --color-border-sky: rgba(0, 153, 255, 0.28);
 
   /* Semantic Feedback */
   --color-success: #1E6B47;
   --color-error: #B3261E;
-  --color-warning: #B26B00;
-  --color-info: #171C56;
+  --color-warning: #8A5200;
+  --color-info: #007ACC;
 }
 ```
 
 ### 2.2 Contrast & Accessibility Audit (WCAG 2.2 AA)
-- `#171C56` (Navy) on `#FFFFFF`: **14.2:1** (Passes AAA for all text sizes)
-- `#242424` (Primary Text) on `#FFFFFF`: **16.4:1** (Passes AAA for all text sizes)
-- `#686868` (Secondary Text) on `#FFFFFF`: **5.6:1** (Passes AA for all text sizes, AAA for large text)
-- `#FFFFFF` on `#171C56` (Navy Footer/Hero): **14.2:1** (Passes AAA)
-- `#EDC455` (Gold) on `#171C56` (Navy): **6.2:1** (Passes AA for text and graphic components)
-- *Rule:* Avoid placing gold text on white backgrounds; on white surfaces, use gold strictly for hairline borders, icons, or eyebrow borders.
+- `#242424` (Charcoal) on `#FDFBFF` (Cloudy White): **15.09:1** (Passes AAA for all text sizes)
+- `#4A4A4A` (Secondary Text) on `#FDFBFF` (Cloudy White): **8.61:1** (Passes AAA for all text sizes)
+- `#242424` (Charcoal) on `#0099FF` (Sky Blue): **5.17:1** (Passes AA for all text sizes)
+- `#242424` (Charcoal) on `#EDC455` (Gold Pill/Button): **9.33:1** (Passes AAA for all text sizes)
+- `#FDFBFF` (Cloudy White) on `#242424` (Charcoal Footer/Dark Section): **15.09:1** (Passes AAA)
+- `#EDC455` (Gold) on `#242424` (Charcoal): **9.33:1** (Passes AAA for text and graphic components)
+- *Rules:* Never place white text on `#0099FF` for normal text (`2.91:1`); always use Charcoal `#242424` on `#0099FF` (`5.17:1`). Avoid placing unbacked gold text on light backgrounds; use gold as a background pill (`bg-[#EDC455] text-[#242424]`), decorative rule, or on `#242424` surfaces.
 
 ---
 
@@ -110,7 +112,7 @@ The Starrbites digital visual identity is created to evoke the prestige, confide
 ```
 
 ### 3.3 Editorial Heading Usage Rules
-- **Eyebrows:** All caps, tracked out (`letter-spacing: 0.16em`), font-weight 600, color: `#171C56` or `#EDC455`. Frequently paired with a preceding or adjacent 24px horizontal hairline.
+- **Eyebrows:** All caps, tracked out (`letter-spacing: 0.16em`), font-weight 600, color: `#242424` (with `#EDC455` rule on light/sky surfaces) or `#EDC455` (on dark `#242424` surfaces).
 - **Display & H1:** Reserved for hero milestones and section title anchors. Never hyphenated; line breaks placed intentionally for balanced rhythm.
 - **Body Columns:** Constrained to a maximum reading line length of 65–75 characters (approx. 640–720px) to prevent eye fatigue.
 

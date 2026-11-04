@@ -43,8 +43,12 @@ export default function HomePage() {
         {/* Section 03: Philosophy and Principles */}
         <PhilosophySection />
 
-        {/* Section 04: Flagship Project — Tiiger Trail */}
-        <FlagshipSection />
+        {/* Section 04: Project Portfolio Showcase — Tiiger Trail & Stay and Play */}
+        <FlagshipSection
+          onOpenEnquiry={(topic) =>
+            handleOpenEnquiry(topic || "Stay and Play — Upcoming Project Enquiry")
+          }
+        />
 
         {/* Section 05: Our Journey */}
         <JourneySection />

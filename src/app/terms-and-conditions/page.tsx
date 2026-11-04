@@ -16,37 +16,37 @@ export default function TermsAndConditionsPage() {
     <>
       <Header onOpenEnquiry={() => setIsEnquiryModalOpen(true)} />
 
-      <main className="flex-1 bg-white pt-36 pb-24">
+      <main className="flex-1 bg-[#FDFBFF] pt-36 pb-24">
         {/* Editorial Legal Header */}
-        <section className="border-b border-[#E7E7E7] pb-14 bg-[#F6F6F4]">
+        <section className="border-b border-[#E2E6EC] pb-14 bg-[#F3F6FA]">
           <Container size="wide">
             <div className="max-w-4xl">
               <div className="flex items-center gap-2 mb-4">
                 <Link
                   href="/"
-                  className="inline-flex items-center gap-1.5 text-xs text-[#171C56] hover:text-[#8B6C20] font-medium transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs text-[#242424] hover:underline font-medium transition-colors"
                 >
                   <ArrowLeft className="w-3.5 h-3.5" />
                   <span>Return to Homepage</span>
                 </Link>
               </div>
 
-              <SectionEyebrow theme="navy" className="mb-3">
+              <SectionEyebrow theme="charcoal" className="mb-3">
                 TERMS OF USE & PROPERTY DISCLAIMERS
               </SectionEyebrow>
 
-              <h1 className="text-4xl sm:text-5xl font-serif text-[#171C56] font-semibold tracking-tight leading-[1.18]">
+              <h1 className="text-4xl sm:text-5xl font-serif text-[#242424] font-semibold tracking-tight leading-[1.18]">
                 Terms & Conditions
               </h1>
 
-              <div className="mt-6 flex flex-wrap items-center gap-6 text-xs sm:text-sm text-[#555555]">
+              <div className="mt-6 flex flex-wrap items-center gap-6 text-xs sm:text-sm text-[#4A4A4A]">
                 <span className="flex items-center gap-1.5">
-                  <Clock className="w-4 h-4 text-[#EDC455]" />
+                  <Clock className="w-4 h-4 text-[#242424]" />
                   Last Updated: October 2026
                 </span>
                 <span>•</span>
                 <span className="flex items-center gap-1.5">
-                  <Scale className="w-4 h-4 text-[#EDC455]" />
+                  <Scale className="w-4 h-4 text-[#242424]" />
                   Governing Use of starrbites.com
                 </span>
               </div>
@@ -61,12 +61,12 @@ export default function TermsAndConditionsPage() {
               {/* Summary Sidebar */}
               <aside className="lg:col-span-4 order-2 lg:order-1">
                 <div className="lg:sticky lg:top-28 space-y-6">
-                  <div className="bg-[#F6F6F4] border border-[#E7E7E7] rounded-[2px] p-6 space-y-4">
-                    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#171C56]">
-                      <ShieldAlert className="w-4 h-4 text-[#EDC455]" />
+                  <div className="bg-[#F3F6FA] border border-[#E2E6EC] border-t-4 border-t-[#0099FF] rounded-[2px] p-6 space-y-4">
+                    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#242424]">
+                      <ShieldAlert className="w-4 h-4 text-[#242424]" />
                       <span>Key Disclaimers</span>
                     </div>
-                    <ul className="space-y-3 text-xs text-[#555555] leading-relaxed">
+                    <ul className="space-y-3 text-xs text-[#4A4A4A] leading-relaxed">
                       <li className="flex items-start gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#EDC455] shrink-0 mt-1.5" />
                         <span>Website content is informational and does not replace formal legal deeds or conveyances.</span>
@@ -86,11 +86,11 @@ export default function TermsAndConditionsPage() {
                     </ul>
                   </div>
 
-                  <div className="bg-[#171C56] text-white p-6 rounded-[2px] space-y-3">
-                    <h3 className="text-sm font-serif font-semibold text-white">
+                  <div className="bg-[#242424] text-[#FDFBFF] p-6 rounded-[2px] border-t-4 border-[#0099FF] space-y-3">
+                    <h3 className="text-sm font-serif font-semibold text-[#FDFBFF]">
                       Legal Notice
                     </h3>
-                    <p className="text-xs text-[#F6F6F4]/80 font-light leading-relaxed">
+                    <p className="text-xs text-[#FDFBFF]/80 font-light leading-relaxed">
                       Parties interested in land acquisition are strongly advised to engage independent legal
                       counsel to review physical revenue records and encumbrance certificates prior to executing
                       formal agreements.
@@ -103,7 +103,7 @@ export default function TermsAndConditionsPage() {
               <article className="lg:col-span-8 order-1 lg:order-2 space-y-12 text-[#2D2D2D] leading-relaxed font-light">
                 {/* 1. Introduction */}
                 <div className="space-y-4">
-                  <h2 className="text-2xl font-serif font-semibold text-[#171C56]">
+                  <h2 className="text-2xl font-serif font-semibold text-[#242424]">
                     1. Acceptance of Terms
                   </h2>
                   <p>
@@ -120,7 +120,7 @@ export default function TermsAndConditionsPage() {
 
                 {/* 2. Informational Purpose */}
                 <div className="space-y-4">
-                  <h2 className="text-2xl font-serif font-semibold text-[#171C56]">
+                  <h2 className="text-2xl font-serif font-semibold text-[#242424]">
                     2. Nature of Website Content & Informational Purpose
                   </h2>
                   <p>
@@ -138,7 +138,7 @@ export default function TermsAndConditionsPage() {
 
                 {/* 3. Real Estate & Statutory Disclaimers */}
                 <div className="space-y-4">
-                  <h2 className="text-2xl font-serif font-semibold text-[#171C56]">
+                  <h2 className="text-2xl font-serif font-semibold text-[#242424]">
                     3. Property Approvals, Titling & Statutory Compliance
                   </h2>
                   <p>
@@ -146,7 +146,7 @@ export default function TermsAndConditionsPage() {
                     (including the Karnataka Land Revenue Act, municipal zoning regulations, and local planning
                     authority guidelines).
                   </p>
-                  <ul className="list-disc pl-5 space-y-2 text-sm text-[#333333]">
+                  <ul className="list-disc pl-5 space-y-2 text-sm text-[#2D2D2D]">
                     <li>
                       <strong>Statutory Documentation:</strong> Specific approvals, conversion orders, podi survey
                       sketches, and revenue mutation entries (Dakhil Kharij / RTC) are verified on an individual
@@ -163,7 +163,7 @@ export default function TermsAndConditionsPage() {
 
                 {/* 4. Investment & Appreciation Disclaimers */}
                 <div className="space-y-4">
-                  <h2 className="text-2xl font-serif font-semibold text-[#171C56]">
+                  <h2 className="text-2xl font-serif font-semibold text-[#242424]">
                     4. Investment, Appreciation & Agricultural Returns
                   </h2>
                   <p>
@@ -181,7 +181,7 @@ export default function TermsAndConditionsPage() {
 
                 {/* 5. Visual Representations */}
                 <div className="space-y-4">
-                  <h2 className="text-2xl font-serif font-semibold text-[#171C56]">
+                  <h2 className="text-2xl font-serif font-semibold text-[#242424]">
                     5. Visual Representations, Renders & Conceptual Media
                   </h2>
                   <p>
@@ -198,7 +198,7 @@ export default function TermsAndConditionsPage() {
 
                 {/* 6. Non-Binding Nature */}
                 <div className="space-y-4">
-                  <h2 className="text-2xl font-serif font-semibold text-[#171C56]">
+                  <h2 className="text-2xl font-serif font-semibold text-[#242424]">
                     6. Non-Binding Nature of Website Inquiries
                   </h2>
                   <p>
@@ -215,7 +215,7 @@ export default function TermsAndConditionsPage() {
 
                 {/* 7. Intellectual Property */}
                 <div className="space-y-4">
-                  <h2 className="text-2xl font-serif font-semibold text-[#171C56]">
+                  <h2 className="text-2xl font-serif font-semibold text-[#242424]">
                     7. Intellectual Property Rights
                   </h2>
                   <p>
@@ -228,7 +228,7 @@ export default function TermsAndConditionsPage() {
 
                 {/* 8. Third-Party Links */}
                 <div className="space-y-4">
-                  <h2 className="text-2xl font-serif font-semibold text-[#171C56]">
+                  <h2 className="text-2xl font-serif font-semibold text-[#242424]">
                     8. External Links & Third-Party Platforms
                   </h2>
                   <p>
@@ -241,7 +241,7 @@ export default function TermsAndConditionsPage() {
 
                 {/* 9. Governing Law */}
                 <div className="space-y-4">
-                  <h2 className="text-2xl font-serif font-semibold text-[#171C56]">
+                  <h2 className="text-2xl font-serif font-semibold text-[#242424]">
                     9. Governing Law & Jurisdiction
                   </h2>
                   <p>
@@ -249,7 +249,7 @@ export default function TermsAndConditionsPage() {
                     Any legal proceedings arising out of or in connection with the use of this website shall be
                     subject to the exclusive jurisdiction of the competent courts in Bengaluru, Karnataka, India.
                   </p>
-                  <p className="text-xs text-[#555555] italic">
+                  <p className="text-xs text-[#4A4A4A] italic">
                     Note: These provisions represent standard corporate terms and remain subject to periodic
                     review and updates by Starrbites legal counsel.
                   </p>
@@ -257,14 +257,14 @@ export default function TermsAndConditionsPage() {
 
                 {/* 10. Contact */}
                 <div className="space-y-4">
-                  <h2 className="text-2xl font-serif font-semibold text-[#171C56]">
+                  <h2 className="text-2xl font-serif font-semibold text-[#242424]">
                     10. Inquiries & Official Notices
                   </h2>
-                  <div className="p-6 bg-[#F6F6F4] border border-[#E7E7E7] rounded-[2px] space-y-2 text-sm">
-                    <div className="font-semibold text-[#171C56]">Starrbites Developments — Corporate Office</div>
-                    <div>Email: <a href="mailto:contact@starrbites.com" className="text-[#8B6C20] underline">contact@starrbites.com</a></div>
-                    <div>Telephone: <a href="tel:+919740806357" className="text-[#8B6C20] underline">+91 97408 06357</a></div>
-                    <div className="text-xs text-[#555555] pt-1">
+                  <div className="p-6 bg-[#F3F6FA] border border-[#E2E6EC] border-l-4 border-l-[#0099FF] rounded-[2px] space-y-2 text-sm">
+                    <div className="font-semibold text-[#242424]">Starrbites Developments — Corporate Office</div>
+                    <div>Email: <a href="mailto:contact@starrbites.com" className="text-[#242424] font-medium underline">contact@starrbites.com</a></div>
+                    <div>Telephone: <a href="tel:+919740806357" className="text-[#242424] font-medium underline">+91 97408 06357</a></div>
+                    <div className="text-xs text-[#4A4A4A] pt-1">
                       No. 194, 3rd Main, 13th Cross, RMV 2nd Stage, HIG Dollars Colony, Bengaluru - 560094, Karnataka, India
                     </div>
                   </div>

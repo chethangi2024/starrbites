@@ -1,41 +1,49 @@
 @import "tailwindcss";
 
 :root {
-  /* Core Brand Colors */
-  --color-primary-navy: #171C56;
-  --color-primary-navy-dark: #0F1238;
-  --color-primary-navy-light: #202773;
+  /* Core Brand Colors — Sky Blue, Cloudy White, Gold, Charcoal */
+  --color-primary-sky: #0099FF;
+  --color-primary-sky-dark: #007ACC;
+  --color-primary-sky-light: #E6F4FF;
+  --color-primary-sky-subtle: #F0F8FF;
+
+  /* Legacy alias mapped to Sky Blue / Charcoal to prevent stale navy references */
+  --color-primary-navy: #242424;
+  --color-primary-navy-dark: #1A1A1A;
+  --color-primary-navy-light: #0099FF;
 
   /* Sampled Brand Gold (From Official Logo) */
   --color-gold-base: #EDC455;
   --color-gold-light: #FFE672;
-  --color-gold-muted: #8B6C20;
-  --color-gold-deep: #8B6C20;
+  --color-gold-muted: #7A5C12;
+  --color-gold-deep: #6E520F;
 
   /* Surfaces & Backgrounds */
-  --color-surface-white: #FFFFFF;
-  --color-surface-soft: #F6F6F4;
-  --color-surface-subtle: #EEEEEC;
-  --color-surface-dark: #171C56;
+  --color-surface-white: #FDFBFF;
+  --color-surface-soft: #F3F6FA;
+  --color-surface-subtle: #E8EEF5;
+  --color-surface-sky: #0099FF;
+  --color-surface-dark: #242424;
 
   /* Text & Content */
   --color-text-primary: #242424;
-  --color-text-secondary: #555555;
-  --color-text-muted: #646464;
-  --color-text-inverse: #FFFFFF;
-  --color-text-inverse-muted: #D1D3E0;
+  --color-text-secondary: #4A4A4A;
+  --color-text-muted: #5C5C5C;
+  --color-text-inverse: #FDFBFF;
+  --color-text-inverse-muted: #E2E0E5;
 
   /* Borders & Dividers */
-  --color-border-light: #E7E7E7;
-  --color-border-subtle: #F0F0EF;
-  --color-border-gold: rgba(237, 196, 85, 0.45);
-  --color-border-navy: rgba(23, 28, 86, 0.15);
+  --color-border-light: #E2E6EC;
+  --color-border-subtle: #EDF0F5;
+  --color-border-gold: rgba(237, 196, 85, 0.55);
+  --color-border-sky: rgba(0, 153, 255, 0.35);
+  --color-border-navy: rgba(36, 36, 36, 0.15);
 
   /* Semantic Feedback */
   --color-success: #1E6B47;
   --color-error: #B3261E;
   --color-warning: #B26B00;
-  --color-info: #171C56;
+  --color-info: #0099FF;
 
   /* Container Widths */
   --max-width-wide: 1440px;
@@ -99,8 +107,8 @@ p, span, a, input, textarea, select, button, label, .font-sans {
 
 /* Selection */
 ::selection {
-  background-color: var(--color-primary-navy);
-  color: var(--color-gold-light);
+  background-color: var(--color-primary-sky);
+  color: var(--color-text-primary);
 }
 
 /* Architectural Utilities */
@@ -127,14 +135,14 @@ p, span, a, input, textarea, select, button, label, .font-sans {
 }
 
 .editorial-card:hover {
-  border-color: var(--color-border-gold);
-  box-shadow: 0 12px 36px rgba(23, 28, 86, 0.06);
+  border-color: var(--color-primary-sky);
+  box-shadow: 0 12px 36px rgba(0, 153, 255, 0.08);
   transform: translateY(-2px);
 }
 
 /* Accessible Focus Ring */
 *:focus-visible {
-  outline: 2px solid var(--color-primary-navy);
+  outline: 2px solid var(--color-primary-sky);
   outline-offset: 3px;
 }
 
@@ -150,7 +158,7 @@ p, span, a, input, textarea, select, button, label, .font-sans {
 
 /* Luxury Editorial Article Body Typography */
 .article-body {
-  color: #2D2D2D;
+  color: #242424;
   font-size: 1.0625rem;
   line-height: 1.8;
   letter-spacing: -0.01em;
@@ -161,11 +169,11 @@ p, span, a, input, textarea, select, button, label, .font-sans {
   font-size: 1.75rem;
   line-height: 1.3;
   font-weight: 600;
-  color: var(--color-primary-navy);
+  color: #242424;
   margin-top: 2.75rem;
   margin-bottom: 1rem;
   padding-top: 1.25rem;
-  border-top: 1px solid #ECECEC;
+  border-top: 1px solid var(--color-border-light);
   scroll-margin-top: 110px;
 }
 
@@ -180,7 +188,7 @@ p, span, a, input, textarea, select, button, label, .font-sans {
   font-size: 1.35rem;
   line-height: 1.4;
   font-weight: 600;
-  color: var(--color-primary-navy);
+  color: #242424;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
   scroll-margin-top: 110px;
@@ -188,14 +196,14 @@ p, span, a, input, textarea, select, button, label, .font-sans {
 
 .article-body p {
   margin-bottom: 1.5rem;
-  color: #3C3C3C;
+  color: #2D2D2D;
   font-weight: 350;
 }
 
 .article-body strong,
 .article-body b {
   font-weight: 600;
-  color: var(--color-primary-navy);
+  color: #242424;
 }
 
 .article-body ul {
@@ -219,7 +227,7 @@ p, span, a, input, textarea, select, button, label, .font-sans {
   top: 0.65rem;
   width: 6px;
   height: 6px;
-  background-color: var(--color-gold-base);
+  background-color: var(--color-primary-sky);
   border-radius: 50%;
 }
 
@@ -235,12 +243,12 @@ p, span, a, input, textarea, select, button, label, .font-sans {
 }
 
 .article-body blockquote {
-  border-left: 3px solid var(--color-gold-base);
+  border-left: 3px solid var(--color-primary-sky);
   padding: 1rem 1.5rem;
   margin: 2rem 0;
   background-color: var(--color-surface-soft);
   font-style: italic;
-  color: var(--color-primary-navy);
+  color: #242424;
 }
 
 .article-body table {
@@ -251,8 +259,8 @@ p, span, a, input, textarea, select, button, label, .font-sans {
 }
 
 .article-body th {
-  background-color: var(--color-primary-navy);
-  color: #FFFFFF;
+  background-color: var(--color-primary-sky);
+  color: #242424;
   text-align: left;
   padding: 0.75rem 1rem;
   font-weight: 600;
@@ -261,7 +269,7 @@ p, span, a, input, textarea, select, button, label, .font-sans {
 .article-body td {
   padding: 0.75rem 1rem;
   border-bottom: 1px solid var(--color-border-light);
-  color: #4A4A4A;
+  color: #383838;
 }
 
 .article-body tr:nth-child(even) td {
@@ -269,13 +277,15 @@ p, span, a, input, textarea, select, button, label, .font-sans {
 }
 
 .article-body a {
-  color: var(--color-gold-deep);
+  color: #242424;
+  font-weight: 500;
   text-decoration: underline;
+  text-decoration-color: var(--color-primary-sky);
   text-underline-offset: 3px;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
 
 .article-body a:hover {
-  color: var(--color-primary-navy);
+  background-color: var(--color-primary-sky-light);
+  color: #242424;
 }
-

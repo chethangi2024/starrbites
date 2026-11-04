@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import Image from "next/image";
 import { SectionEyebrow } from "../ui/SectionEyebrow";
 import { Container } from "../ui/Container";
 import gsap from "gsap";
@@ -42,49 +41,49 @@ export function PhilosophySection() {
       num: "01",
       title: "Purposeful Planning",
       description:
-        "Thoughtful consideration of how land is configured, naturally ventilated, accessed, and inhabited—ensuring each plot honors its surrounding topography.",
+        "Thoughtful consideration of how every project is organized, accessed, and experienced—ensuring site layouts respect natural contours and practical long-term use.",
     },
     {
       num: "02",
       title: "Strategic Perspective",
       description:
-        "Evaluating micro-locations, highway connectivity, industrial expansion zones, and upcoming infrastructure corridors for genuine long-term relevance.",
+        "Evaluating regional connectivity, highway axes, surrounding civic and industrial activity, and long-term relevance before selecting any development corridor.",
     },
     {
       num: "03",
-      title: "Transparency & Trust",
+      title: "Transparency and Trust",
       description:
-        "Rigorous verification of parent deeds, government mutation clearances, certified boundary surveys, and candid buyer advisory at every touchpoint.",
+        "Clear communication, verified parent deed and mutation documentation, accurate boundary records, and responsible buyer guidance at every stage.",
     },
     {
       num: "04",
       title: "Lasting Value",
       description:
-        "Creating tangible, inflation-resilient land assets that simultaneously enrich present weekend living and establish an enduring legacy for your family.",
+        "Developing destinations that balance immediate lifestyle utility with enduring ownership relevance for individuals, families, and long-term investors.",
     },
   ];
 
   return (
     <section
       ref={sectionRef}
-      className="py-24 sm:py-32 bg-[#F6F6F4] relative border-t border-b border-[#E7E7E7]"
+      className="py-24 sm:py-32 bg-[#F3F6FA] relative border-t border-b border-[#E2E6EC]"
       aria-labelledby="philosophy-heading"
     >
       <Container size="wide">
         {/* Section Header */}
         <div className="max-w-[760px] mb-16 sm:mb-20">
-          <SectionEyebrow theme="navy" className="mb-4">
-            Development Principles
+          <SectionEyebrow theme="charcoal" className="mb-4">
+            Development Philosophy
           </SectionEyebrow>
           <h2
             id="philosophy-heading"
-            className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#171C56] font-semibold tracking-tight leading-[1.18]"
+            className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#242424] font-semibold tracking-tight leading-[1.18]"
           >
-            The Principles Behind Our Stewardship
+            The Principles Behind Every Starrbites Project
           </h2>
-          <p className="text-base sm:text-lg text-[#555555] font-light mt-4 leading-relaxed">
-            Every destination we develop is grounded in four foundational pillars designed to
-            protect your investment and elevate your living experience.
+          <p className="text-base sm:text-lg text-[#4A4A4A] font-light mt-4 leading-relaxed">
+            Across our development portfolio, four core principles govern how we evaluate land,
+            structure documentation, and plan each destination.
           </p>
         </div>
 
@@ -96,26 +95,27 @@ export function PhilosophySection() {
           {principles.map((item, idx) => (
             <div
               key={item.num}
-              className="principle-item relative flex flex-col justify-between p-8 bg-white border border-[#E7E7E7] rounded-[2px] transition-all duration-300 hover:border-[#EDC455] hover:shadow-lg hover:-translate-y-1"
+              className="principle-item relative flex flex-col justify-between p-8 bg-[#FDFBFF] border border-[#E2E6EC] rounded-[2px] transition-all duration-300 hover:border-[#0099FF] hover:shadow-lg hover:-translate-y-1"
             >
               <div>
-                <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#F0F0EF]">
-                  <span className="text-2xl font-serif text-[#171C56] font-bold">
+                <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#EDF0F5]">
+                  <span className="text-2xl font-serif text-[#242424] font-bold">
                     {item.num}
                   </span>
-                  <span className="w-8 h-[1px] bg-[#EDC455]" />
+                  <span className="w-8 h-[2px] bg-[#EDC455]" />
                 </div>
-                <h3 className="text-xl font-serif text-[#171C56] font-semibold mb-4">
+                <h3 className="text-xl font-serif text-[#242424] font-semibold mb-4">
                   {item.title}
                 </h3>
-                <p className="text-sm text-[#555555] font-light leading-relaxed">
+                <p className="text-sm text-[#4A4A4A] font-light leading-relaxed">
                   {item.description}
                 </p>
               </div>
 
               {/* Accent footer element */}
-              <div className="pt-6 mt-8 border-t border-[#F0F0EF] text-[11px] uppercase tracking-wider text-[#8B6C20] font-medium">
-                Pillar {idx + 1} • Starrbites Core
+              <div className="pt-6 mt-8 border-t border-[#EDF0F5] flex items-center gap-2 text-[11px] uppercase tracking-wider text-[#242424] font-semibold">
+                <span className="w-2 h-2 rounded-full bg-[#0099FF]" />
+                <span>Pillar {idx + 1} • Starrbites Core</span>
               </div>
             </div>
           ))}

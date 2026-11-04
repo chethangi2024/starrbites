@@ -68,23 +68,23 @@ export function FlagshipLocation() {
     <section
       ref={sectionRef}
       id="location"
-      className="py-24 sm:py-32 bg-[#F6F6F4] border-b border-[#E7E7E7]"
+      className="py-24 sm:py-32 bg-[#0099FF] text-[#242424] border-b border-[#242424]/15"
     >
       <Container size="wide">
         {/* Section Header */}
         <div className="max-w-[760px] mb-16 sm:mb-20">
-          <SectionEyebrow theme="navy" className="mb-4">
+          <SectionEyebrow theme="charcoal" className="mb-4">
             Regional Setting & Growth Axis
           </SectionEyebrow>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#171C56] font-normal leading-[1.15] mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#242424] font-normal leading-[1.15] mb-6">
             The North Bangalore &{" "}
-            <span className="italic font-light text-[#8B6C20]">
+            <span className="italic font-light text-[#242424] bg-[#EDC455] px-2.5 py-0.5 rounded-sm box-decoration-clone">
               Lepakshi Corridor
             </span>
           </h2>
 
-          <p className="text-base sm:text-lg text-[#555555] font-light leading-relaxed">
+          <p className="text-base sm:text-lg text-[#242424] font-normal leading-relaxed">
             Positioned along the vibrant Karnataka–Andhra Pradesh border corridor off
             the NH-44 highway, Tiiger Trail benefits from both rural serenity and
             state-backed institutional investments.
@@ -94,7 +94,7 @@ export function FlagshipLocation() {
         {/* Featured Visual & Institutional Card */}
         <div
           ref={cardRef}
-          className="bg-white border border-[#E7E7E7] rounded-sm overflow-hidden shadow-sm grid grid-cols-1 lg:grid-cols-12 mb-12"
+          className="bg-[#FDFBFF] border border-[#242424]/15 rounded-sm overflow-hidden shadow-lg grid grid-cols-1 lg:grid-cols-12 mb-12"
         >
           {/* Left: Aerial Landscape View (6 cols) */}
           <div className="lg:col-span-6 relative min-h-[360px] sm:min-h-[440px] lg:min-h-full">
@@ -105,13 +105,13 @@ export function FlagshipLocation() {
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#171C56]/60 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#242424]/60 via-transparent to-transparent" />
 
-            <div className="absolute bottom-6 left-6 right-6 p-4 bg-white/95 backdrop-blur-md rounded-sm border border-[#E7E7E7]">
-              <span className="text-[10px] uppercase tracking-[0.18em] text-[#C88218] font-semibold block mb-0.5">
+            <div className="absolute bottom-6 left-6 right-6 p-4 bg-[#FDFBFF]/95 backdrop-blur-md rounded-sm border-l-4 border-[#0099FF]">
+              <span className="text-[10px] uppercase tracking-[0.18em] text-[#242424] font-semibold block mb-0.5">
                 Topographical Scale
               </span>
-              <p className="text-xs text-[#171C56] font-medium leading-snug">
+              <p className="text-xs text-[#4A4A4A] font-medium leading-snug">
                 Expansive countryside landscape anchored by major highway infrastructure.
               </p>
             </div>
@@ -120,10 +120,10 @@ export function FlagshipLocation() {
           {/* Right: Regional Drivers Grid (6 cols) */}
           <div className="lg:col-span-6 p-8 sm:p-12 flex flex-col justify-between">
             <div>
-              <h3 className="text-2xl font-serif font-normal text-[#171C56] mb-3">
+              <h3 className="text-2xl font-serif font-normal text-[#242424] mb-3">
                 Strategic Regional Anchors
               </h3>
-              <p className="text-xs sm:text-sm text-[#555555] font-light leading-relaxed mb-8">
+              <p className="text-xs sm:text-sm text-[#4A4A4A] font-light leading-relaxed mb-8">
                 The corridor surrounding Tiiger Trail is supported by planned government
                 infrastructure, research hubs, and national transit networks.
               </p>
@@ -133,13 +133,13 @@ export function FlagshipLocation() {
                   const Icon = driver.icon;
                   return (
                     <div key={idx} className="space-y-2">
-                      <div className="w-8 h-8 rounded-sm bg-[#F6F6F4] flex items-center justify-center text-[#171C56] border border-[#E7E7E7]">
-                        <Icon className="w-4 h-4 text-[#C88218]" />
+                      <div className="w-8 h-8 rounded-sm bg-[#0099FF]/15 flex items-center justify-center text-[#242424] border border-[#0099FF]/30">
+                        <Icon className="w-4 h-4 text-[#242424]" />
                       </div>
-                      <h4 className="text-sm font-semibold text-[#171C56]">
+                      <h4 className="text-sm font-semibold text-[#242424]">
                         {driver.title}
                       </h4>
-                      <p className="text-xs text-[#555555] font-light leading-relaxed">
+                      <p className="text-xs text-[#4A4A4A] font-light leading-relaxed">
                         {driver.description}
                       </p>
                     </div>
@@ -148,7 +148,7 @@ export function FlagshipLocation() {
               </div>
             </div>
 
-            <div className="pt-8 mt-8 border-t border-[#E7E7E7] text-xs text-[#555555] font-light">
+            <div className="pt-8 mt-8 border-t border-[#E2E6EC] text-xs text-[#4A4A4A] font-light">
               * Location positioning verified against official revenue maps and national highway corridor documentation.
             </div>
           </div>

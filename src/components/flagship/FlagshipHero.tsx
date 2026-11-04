@@ -58,7 +58,7 @@ export function FlagshipHero({ onOpenEnquiry }: FlagshipHeroProps) {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-[92vh] lg:min-h-screen flex flex-col justify-between pt-32 sm:pt-40 pb-16 bg-[#171C56] text-white overflow-hidden"
+      className="relative min-h-[92vh] lg:min-h-screen flex flex-col justify-between pt-32 sm:pt-40 pb-16 bg-[#242424] text-[#FDFBFF] overflow-hidden"
     >
       {/* Background Image with Deep Cinematic Scrim */}
       <div className="absolute inset-0 z-0">
@@ -71,8 +71,8 @@ export function FlagshipHero({ onOpenEnquiry }: FlagshipHeroProps) {
           sizes="100vw"
         />
         {/* Layered cinematic gradients for readable high contrast */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#171C56]/90 via-[#171C56]/70 to-[#171C56]/85" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#171C56] via-transparent to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#242424]/90 via-[#242424]/70 to-[#242424]/85" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#242424] via-transparent to-black/40" />
       </div>
 
       {/* Main Content Area */}
@@ -84,7 +84,7 @@ export function FlagshipHero({ onOpenEnquiry }: FlagshipHeroProps) {
 
           <h1
             ref={headlineRef}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-normal leading-[1.08] tracking-[-0.02em] text-white mb-6 sm:mb-8"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-normal leading-[1.08] tracking-[-0.02em] text-[#FDFBFF] mb-6 sm:mb-8"
           >
             Space to Grow. <br />
             <span className="italic font-light text-[#EDC455]">
@@ -94,7 +94,7 @@ export function FlagshipHero({ onOpenEnquiry }: FlagshipHeroProps) {
 
           <p
             ref={copyRef}
-            className="text-base sm:text-lg md:text-xl text-white/85 font-light leading-relaxed max-w-[680px] mb-8 sm:mb-10"
+            className="text-base sm:text-lg md:text-xl text-[#FDFBFF]/90 font-light leading-relaxed max-w-[680px] mb-8 sm:mb-10"
           >
             Tiiger Trail is Starrbites’ signature plotted destination near the
             heritage enclave of Lepakshi along the North Bangalore infrastructure
@@ -126,40 +126,46 @@ export function FlagshipHero({ onOpenEnquiry }: FlagshipHeroProps) {
       </Container>
 
       {/* Verified Project Spec Bar at Bottom */}
-      <div ref={statsRef} className="relative z-10 border-t border-white/15 pt-8 mt-12 sm:mt-16">
+      <div ref={statsRef} className="relative z-10 border-t border-[#FDFBFF]/15 pt-8 mt-12 sm:mt-16">
         <Container size="wide">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
             <div className="flex items-start gap-3">
-              <Compass className="w-5 h-5 text-[#EDC455] shrink-0 mt-0.5" />
+              <div className="w-8 h-8 rounded-sm bg-[#0099FF] flex items-center justify-center shrink-0 mt-0.5">
+                <Compass className="w-4 h-4 text-[#242424]" />
+              </div>
               <div>
                 <span className="block text-[11px] uppercase tracking-[0.16em] text-[#EDC455] font-semibold mb-1">
                   Regional Axis
                 </span>
-                <p className="text-xs sm:text-sm text-white/80 font-normal">
+                <p className="text-xs sm:text-sm text-[#FDFBFF]/85 font-normal">
                   North Bangalore / Lepakshi Corridor (Off NH-44)
                 </p>
               </div>
             </div>
 
             <div className="flex items-start gap-3">
-              <Trees className="w-5 h-5 text-[#EDC455] shrink-0 mt-0.5" />
+              <div className="w-8 h-8 rounded-sm bg-[#EDC455] flex items-center justify-center shrink-0 mt-0.5">
+                <Trees className="w-4 h-4 text-[#242424]" />
+              </div>
               <div>
                 <span className="block text-[11px] uppercase tracking-[0.16em] text-[#EDC455] font-semibold mb-1">
                   Destination Character
                 </span>
-                <p className="text-xs sm:text-sm text-white/80 font-normal">
+                <p className="text-xs sm:text-sm text-[#FDFBFF]/85 font-normal">
                   Low-Density Countryside & Plantation Avenues
                 </p>
               </div>
             </div>
 
             <div className="flex items-start gap-3">
-              <ShieldCheck className="w-5 h-5 text-[#EDC455] shrink-0 mt-0.5" />
+              <div className="w-8 h-8 rounded-sm bg-[#0099FF] flex items-center justify-center shrink-0 mt-0.5">
+                <ShieldCheck className="w-4 h-4 text-[#242424]" />
+              </div>
               <div>
                 <span className="block text-[11px] uppercase tracking-[0.16em] text-[#EDC455] font-semibold mb-1">
                   Documentary Sanctity
                 </span>
-                <p className="text-xs sm:text-sm text-white/80 font-normal">
+                <p className="text-xs sm:text-sm text-[#FDFBFF]/85 font-normal">
                   Clear Titles, Vetted RTCs & Individual Mutation
                 </p>
               </div>

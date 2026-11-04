@@ -94,23 +94,23 @@ export function FlagshipAudience() {
     <section
       ref={sectionRef}
       id="audiences"
-      className="py-24 sm:py-32 bg-white border-b border-[#E7E7E7]"
+      className="py-24 sm:py-32 bg-[#FDFBFF] border-b border-[#E2E6EC]"
     >
       <Container size="wide">
         {/* Section Header */}
         <div className="max-w-[760px] mb-16 sm:mb-20">
-          <SectionEyebrow theme="navy" className="mb-4">
+          <SectionEyebrow theme="charcoal" className="mb-4">
             Audience Relevance
           </SectionEyebrow>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#171C56] font-normal leading-[1.15] mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#242424] font-normal leading-[1.15] mb-6">
             Who Might Consider{" "}
-            <span className="italic font-light text-[#555555]">
+            <span className="italic font-light text-[#4A4A4A]">
               Tiiger Trail?
             </span>
           </h2>
 
-          <p className="text-base sm:text-lg text-[#555555] font-light leading-relaxed">
+          <p className="text-base sm:text-lg text-[#4A4A4A] font-light leading-relaxed">
             Tiiger Trail is intentionally developed for buyers with distinct long-term
             objectives, united by a desire for transparent ownership, environmental
             peace, and purposeful land stewardship.
@@ -124,30 +124,30 @@ export function FlagshipAudience() {
             return (
               <div
                 key={idx}
-                className="flagship-audience-card bg-[#F6F6F4] p-8 sm:p-10 rounded-sm border border-[#E7E7E7] hover:border-[#EDC455] hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
+                className="flagship-audience-card bg-[#F3F6FA] p-8 sm:p-10 rounded-sm border border-[#E2E6EC] hover:border-[#0099FF] hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
                   <div className="flex items-center gap-3.5 mb-6">
-                    <div className="w-10 h-10 rounded-sm bg-white border border-[#E7E7E7] flex items-center justify-center text-[#171C56] group-hover:border-[#EDC455] transition-colors">
-                      <Icon className="w-5 h-5 text-[#C88218]" />
+                    <div className="w-10 h-10 rounded-sm bg-[#0099FF]/15 border border-[#0099FF]/30 flex items-center justify-center text-[#242424] group-hover:bg-[#0099FF] transition-colors">
+                      <Icon className="w-5 h-5 text-[#242424]" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-serif font-normal text-[#171C56]">
+                      <h3 className="text-xl font-serif font-normal text-[#242424]">
                         {item.title}
                       </h3>
-                      <span className="text-xs uppercase tracking-wider text-[#C88218] font-medium block">
+                      <span className="text-xs uppercase tracking-wider text-[#4A4A4A] font-medium block">
                         {item.subtitle}
                       </span>
                     </div>
                   </div>
 
-                  <p className="text-sm text-[#555555] font-light leading-relaxed mb-6">
+                  <p className="text-sm text-[#4A4A4A] font-light leading-relaxed mb-6">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="pt-6 border-t border-[#E7E7E7]">
-                  <span className="block text-[11px] uppercase tracking-wider text-[#171C56] font-semibold mb-3">
+                <div className="pt-6 border-t border-[#E2E6EC]">
+                  <span className="block text-[11px] uppercase tracking-wider text-[#242424] font-semibold mb-3">
                     Project Alignment
                   </span>
                   <ul className="space-y-2 text-xs text-[#242424] font-normal">

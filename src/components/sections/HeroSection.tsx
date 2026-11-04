@@ -13,7 +13,7 @@ interface HeroSectionProps {
   onExploreClick?: () => void;
 }
 
-export function HeroSection({ onExploreClick }: HeroSectionProps) {
+export function HeroSection(_?: HeroSectionProps) {
   const heroRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const leadRef = useRef<HTMLParagraphElement>(null);
@@ -70,50 +70,55 @@ export function HeroSection({ onExploreClick }: HeroSectionProps) {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-[92vh] sm:min-h-screen flex items-center justify-center overflow-hidden bg-[#0F1238] pt-24 pb-16"
+      className="relative min-h-[92vh] sm:min-h-screen flex items-center justify-center overflow-hidden bg-[#0099FF] pt-28 pb-16"
       aria-label="Welcome to Starrbites"
     >
-      {/* Background Image Container */}
+      {/* Background Image Container with Sky Blue Brand Overlay */}
       <div ref={bgImageRef} className="absolute inset-0 z-0">
         <Image
           src="/images/stock/architecture/hero-contemporary-villa.jpg"
           alt="Contemporary luxury estate architecture at twilight"
           fill
           priority
-          className="object-cover object-center brightness-[0.72] contrast-[1.05]"
+          className="object-cover object-center opacity-25 mix-blend-luminosity"
           sizes="100vw"
         />
-        {/* Multilayer Gradients for Text Contrast */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0F1238]/95 via-black/40 to-black/30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0F1238]/80 via-transparent to-black/30" />
+        {/* Multilayer Sky Blue Gradients for Crisp Charcoal Text Contrast (5.17:1) */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0099FF] via-[#0099FF]/90 to-[#0099FF]/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0099FF]/95 via-[#0099FF]/85 to-[#0099FF]/65" />
       </div>
 
       {/* Hero Content */}
-      <Container size="wide" className="relative z-10 text-white mt-12 sm:mt-16">
+      <Container size="wide" className="relative z-10 text-[#242424] mt-10 sm:mt-14">
         <div className="max-w-[880px]">
           {/* Eyebrow */}
           <div className="hero-eyebrow mb-6 sm:mb-8">
-            <SectionEyebrow theme="gold">
-              THOUGHTFULLY PLANNED LAND DESTINATIONS
-            </SectionEyebrow>
+            <div className="inline-flex items-center gap-3 bg-[#FDFBFF]/90 backdrop-blur-sm px-4 py-1.5 rounded-[2px] border-l-4 border-[#EDC455] shadow-sm">
+              <SectionEyebrow theme="charcoal" line={false}>
+                STARRBITES REAL ESTATE DEVELOPMENTS
+              </SectionEyebrow>
+            </div>
           </div>
 
           {/* Main Headline */}
           <h1
             ref={headlineRef}
-            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-white font-medium tracking-tight leading-[1.08] mb-6 sm:mb-8 text-balance"
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-[#242424] font-medium tracking-tight leading-[1.08] mb-6 sm:mb-8 text-balance"
           >
-            <span className="text-white">Building Land.</span> <br />
-            <span className="italic font-normal text-[#EDC455]">Creating Legacy.</span>
+            <span className="text-[#242424]">Building Land.</span> <br />
+            <span className="italic font-normal text-[#242424] bg-[#EDC455] px-4 py-0.5 rounded-[2px] inline-block mt-2 shadow-sm">
+              Creating Legacy.
+            </span>
           </h1>
 
           {/* Supporting Copy */}
           <p
             ref={leadRef}
-            className="text-base sm:text-lg md:text-xl text-white/90 max-w-[680px] font-light leading-relaxed mb-10 sm:mb-12 text-balance"
+            className="text-base sm:text-lg md:text-xl text-[#242424] max-w-[680px] font-normal leading-relaxed mb-10 sm:mb-12 text-balance"
           >
-            Thoughtfully planned land destinations shaped by purposeful development, considered
-            investment potential, and a vision for lasting value.
+            Starrbites is a Bangalore-based real-estate development company creating thoughtfully
+            planned destinations and projects built on strategic location selection, clear
+            documentation, and lasting ownership value.
           </p>
 
           {/* Actions */}
@@ -132,11 +137,11 @@ export function HeroSection({ onExploreClick }: HeroSectionProps) {
             </Button>
 
             <Button
-              variant="inverted"
+              variant="secondary"
               size="lg"
               href="#flagship-project"
             >
-              Explore Tiiger Trail
+              Explore Our Projects
             </Button>
           </div>
         </div>
@@ -145,10 +150,10 @@ export function HeroSection({ onExploreClick }: HeroSectionProps) {
       {/* Scroll Down Indicator */}
       <button
         onClick={handleScrollDown}
-        className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white/70 hover:text-[#EDC455] transition-colors focus:outline-none"
+        className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-[#242424] hover:text-[#242424]/80 transition-colors focus:outline-none"
         aria-label="Scroll to company introduction"
       >
-        <span className="text-[10px] tracking-[0.2em] uppercase font-medium">Scroll</span>
+        <span className="text-[10px] tracking-[0.2em] uppercase font-semibold">Scroll</span>
         <ChevronDown className="w-4 h-4 animate-bounce" />
       </button>
     </section>
