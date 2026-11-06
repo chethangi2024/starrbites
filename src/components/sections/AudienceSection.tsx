@@ -28,7 +28,7 @@ export function AudienceSection() {
       tag: "Retreat & Leisure",
       title: "Second-Home Seekers",
       subtitle: "Thoughtfully planned destinations away from urban density.",
-      body: "Whether envisioning a private countryside farmhouse at Tiiger Trail or exploring recreational retreat living through Stay and Play, our developments are planned for families and individuals seeking space outside the city.",
+      body: "Whether envisioning a private countryside farmhouse at Tiiger Trail or exploring tranquil retreat living, our developments are planned for families and individuals seeking space and nature outside the city.",
       image: "/images/stock/landscapes/landscape-golden-hour-retreat.jpg",
       highlight: "Planned Estate Layouts & Retreat Concepts",
     },
@@ -57,29 +57,29 @@ export function AudienceSection() {
   return (
     <section
       ref={sectionRef}
-      className="py-24 sm:py-32 bg-[#FDFBFF] relative overflow-hidden"
+      className="py-24 sm:py-32 bg-[#F5F1E9] relative overflow-hidden"
       aria-labelledby="audience-heading"
     >
       <Container size="wide">
         {/* Section Header */}
         <div className="max-w-[760px] mb-14 sm:mb-16">
-          <SectionEyebrow theme="charcoal" className="mb-4">
+          <SectionEyebrow theme="slate" className="mb-4">
             Curated Ownership
           </SectionEyebrow>
           <h2
             id="audience-heading"
-            className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#242424] font-semibold tracking-tight leading-[1.18]"
+            className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#292D30] font-semibold tracking-tight leading-[1.18]"
           >
             Who We Serve
           </h2>
-          <p className="text-base sm:text-lg text-[#4A4A4A] font-light mt-4 leading-relaxed">
+          <p className="text-base sm:text-lg text-[#55534F] font-light mt-4 leading-relaxed">
             Every buyer approaches real-estate and land ownership with a distinct objective. Our
-            project portfolio is planned to serve four primary buyer profiles.
+            development portfolio is planned to serve four primary buyer profiles.
           </p>
         </div>
 
         {/* Tab Selection Bar */}
-        <div className="flex items-center gap-2 sm:gap-4 overflow-x-auto pb-4 border-b border-[#E2E6EC] mb-12 scrollbar-none">
+        <div className="flex items-center gap-2 sm:gap-4 overflow-x-auto pb-4 border-b border-[#DDD7CC] mb-12 scrollbar-none">
           {audiences.map((aud, index) => {
             const Icon = aud.icon;
             const isSelected = activeTab === index;
@@ -87,58 +87,58 @@ export function AudienceSection() {
               <button
                 key={aud.id}
                 onClick={() => setActiveTab(index)}
-                className={`flex items-center gap-2.5 px-5 py-3 rounded-[2px] text-xs sm:text-sm font-semibold tracking-wide whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                className={`inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-[2px] text-xs sm:text-sm font-semibold tracking-wide whitespace-nowrap flex-nowrap shrink-0 transition-all duration-200 cursor-pointer leading-none ${
                   isSelected
-                    ? "bg-[#0099FF] text-[#242424] shadow-sm"
-                    : "bg-[#F3F6FA] text-[#4A4A4A] hover:text-[#242424] hover:bg-[#E6F4FF]"
+                    ? "bg-[#354B5D] text-[#FFFFFF] shadow-sm"
+                    : "bg-[#EAE5DA] text-[#55534F] hover:text-[#292D30] hover:bg-[#DDD7CC]"
                 }`}
               >
                 <Icon
-                  className={`w-4 h-4 ${isSelected ? "text-[#242424]" : "text-[#4A4A4A]"}`}
+                  className={`w-4 h-4 shrink-0 ${isSelected ? "text-[#D4C3A6]" : "text-[#77736C]"}`}
                 />
-                <span>{aud.title}</span>
+                <span className="whitespace-nowrap">{aud.title}</span>
               </button>
             );
           })}
         </div>
 
         {/* Active Profile Detailed Display */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center bg-[#F3F6FA] border border-[#E2E6EC] p-8 sm:p-12 rounded-[2px]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center bg-[#FFFFFF] border border-[#DDD7CC] p-8 sm:p-12 rounded-[2px] shadow-sm">
           {/* Text Specification (7 Cols) */}
           <div className="lg:col-span-7 space-y-6">
             <div className="flex items-center gap-3">
-              <span className="text-xs uppercase tracking-[0.16em] font-semibold text-[#242424] bg-[#EDC455]/40 border-l-2 border-[#EDC455] px-3 py-1 rounded-[2px]">
+              <span className="text-xs uppercase tracking-[0.16em] font-semibold text-[#354B5D] bg-[#EAE5DA] border-l-2 border-[#526B80] px-3 py-1 rounded-[2px]">
                 {audiences[activeTab].tag}
               </span>
             </div>
 
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#242424] font-semibold">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#292D30] font-semibold">
               {audiences[activeTab].title}
             </h3>
 
-            <p className="text-base sm:text-lg text-[#242424] font-medium leading-relaxed">
+            <p className="text-base sm:text-lg text-[#292D30] font-medium leading-relaxed">
               {audiences[activeTab].subtitle}
             </p>
 
-            <p className="text-sm sm:text-base text-[#4A4A4A] font-light leading-relaxed">
+            <p className="text-sm sm:text-base text-[#55534F] font-light leading-relaxed">
               {audiences[activeTab].body}
             </p>
 
-            <div className="pt-4 border-t border-[#E2E6EC] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div className="text-xs font-semibold text-[#242424] flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#0099FF]" />
+            <div className="pt-4 border-t border-[#DDD7CC] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="text-xs font-semibold text-[#292D30] flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#A98556]" />
                 {audiences[activeTab].highlight}
               </div>
 
-              <Button variant="primary" size="sm" href="#flagship-project" withArrow>
-                Explore Our Developments
+              <Button variant="primary" size="sm" href="/tiiger-trail/" withArrow>
+                Explore Tiiger Trail
               </Button>
             </div>
           </div>
 
           {/* Contextual Image (5 Cols) */}
           <div className="lg:col-span-5">
-            <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full overflow-hidden border border-[#E2E6EC] rounded-[2px] shadow-md">
+            <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full overflow-hidden border border-[#DDD7CC] rounded-[2px] shadow-md">
               <Image
                 src={audiences[activeTab].image}
                 alt={audiences[activeTab].title}

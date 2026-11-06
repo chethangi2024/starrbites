@@ -61,29 +61,29 @@ export function NriHero() {
   return (
     <section
       ref={heroRef}
-      className="relative pt-32 sm:pt-40 pb-20 sm:pb-28 bg-[#0099FF] text-[#242424] border-b border-[#242424]/15 overflow-hidden"
+      className="relative pt-32 sm:pt-40 pb-20 sm:pb-28 bg-[#354B5D] text-[#FFFFFF] border-b border-[#FFFFFF]/15 overflow-hidden"
     >
       <Container size="wide">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Editorial Introduction (7 cols) */}
           <div className="lg:col-span-7 flex flex-col justify-center">
-            <SectionEyebrow theme="charcoal" className="mb-4 sm:mb-6">
+            <SectionEyebrow theme="gold" className="mb-4 sm:mb-6">
               Starrbites | For Global Indians
             </SectionEyebrow>
 
             <h1
               ref={headlineRef}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-serif font-normal text-[#242424] leading-[1.1] tracking-[-0.02em] mb-6 sm:mb-8"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-serif font-normal text-[#FFFFFF] leading-[1.1] tracking-[-0.02em] mb-6 sm:mb-8"
             >
               Closer to Your Roots. <br />
-              <span className="italic font-light text-[#242424] bg-[#EDC455] px-2.5 py-0.5 rounded-sm box-decoration-clone">
+              <span className="italic font-light text-[#A98556]">
                 Clearer About Your Next Step.
               </span>
             </h1>
 
             <p
               ref={copyRef}
-              className="text-base sm:text-lg text-[#242424] font-normal leading-relaxed max-w-[620px] mb-8 sm:mb-10"
+              className="text-base sm:text-lg text-[#FFFFFF]/85 font-light leading-relaxed max-w-[620px] mb-8 sm:mb-10"
             >
               Explore Starrbites&apos; approach to thoughtfully planned land
               destinations, wherever life takes you. Our Bengaluru advisory team can
@@ -100,13 +100,13 @@ export function NriHero() {
                 variant="gold"
                 size="lg"
                 onClick={handleScrollToForm}
-                className="gap-2"
               >
-                Start an Enquiry <ArrowDown className="w-4 h-4" />
+                <span>Start an Enquiry</span>
+                <ArrowDown className="w-4 h-4 shrink-0" />
               </Button>
 
               <Button
-                variant="secondary"
+                variant="inverted"
                 size="lg"
                 href="https://tiigertrail.com/"
                 isExternal
@@ -117,44 +117,44 @@ export function NriHero() {
             </div>
 
             {/* Remote Advisory Badges */}
-            <div className="pt-8 border-t border-[#242424]/20 grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="pt-8 border-t border-[#FFFFFF]/15 grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div className="flex items-start gap-2.5">
-                <div className="w-7 h-7 rounded-sm bg-[#EDC455] flex items-center justify-center shrink-0 mt-0.5">
-                  <FileSearch className="w-4 h-4 text-[#242424]" />
+                <div className="w-7 h-7 rounded-sm bg-[#292D30] border border-[#A98556]/40 flex items-center justify-center shrink-0 mt-0.5">
+                  <FileSearch className="w-3.5 h-3.5 text-[#A98556]" />
                 </div>
                 <div>
-                  <span className="block text-xs font-semibold text-[#242424]">
+                  <span className="block text-xs font-semibold text-[#A98556]">
                     Digital Due Diligence
                   </span>
-                  <span className="text-xs text-[#242424]/85 font-normal">
-                    Direct access to survey & title dossiers
+                  <span className="text-xs text-[#FFFFFF]/85 font-normal">
+                    Direct access to survey &amp; title dossiers
                   </span>
                 </div>
               </div>
 
               <div className="flex items-start gap-2.5">
-                <div className="w-7 h-7 rounded-sm bg-[#EDC455] flex items-center justify-center shrink-0 mt-0.5">
-                  <Video className="w-4 h-4 text-[#242424]" />
+                <div className="w-7 h-7 rounded-sm bg-[#292D30] border border-[#A98556]/40 flex items-center justify-center shrink-0 mt-0.5">
+                  <Video className="w-3.5 h-3.5 text-[#A98556]" />
                 </div>
                 <div>
-                  <span className="block text-xs font-semibold text-[#242424]">
-                    Virtual Site Consultations
+                  <span className="block text-xs font-semibold text-[#A98556]">
+                    Virtual Consultations
                   </span>
-                  <span className="text-xs text-[#242424]/85 font-normal">
-                    Live walkthroughs & remote briefing
+                  <span className="text-xs text-[#FFFFFF]/85 font-normal">
+                    Live walkthroughs &amp; remote briefing
                   </span>
                 </div>
               </div>
 
               <div className="flex items-start gap-2.5">
-                <div className="w-7 h-7 rounded-sm bg-[#EDC455] flex items-center justify-center shrink-0 mt-0.5">
-                  <ShieldCheck className="w-4 h-4 text-[#242424]" />
+                <div className="w-7 h-7 rounded-sm bg-[#292D30] border border-[#A98556]/40 flex items-center justify-center shrink-0 mt-0.5">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#A98556]" />
                 </div>
                 <div>
-                  <span className="block text-xs font-semibold text-[#242424]">
+                  <span className="block text-xs font-semibold text-[#A98556]">
                     Independent Counsel
                   </span>
-                  <span className="text-xs text-[#242424]/85 font-normal">
+                  <span className="text-xs text-[#FFFFFF]/85 font-normal">
                     Guidance on buyer legal verification
                   </span>
                 </div>
@@ -164,7 +164,7 @@ export function NriHero() {
 
           {/* Right Column: Architectural Visual Framing (5 cols) */}
           <div ref={imageRef} className="lg:col-span-5 relative">
-            <div className="relative aspect-[4/5] w-full rounded-sm overflow-hidden shadow-2xl border-2 border-[#FDFBFF]">
+            <div className="relative aspect-[4/5] w-full rounded-sm overflow-hidden shadow-2xl border-2 border-[#FFFFFF]">
               <Image
                 src="/images/stock/architecture/architecture-minimalist-pavilion.jpg"
                 alt="Contemporary minimalist architecture and serene landscape representing luxury retreat living"
@@ -173,14 +173,14 @@ export function NriHero() {
                 className="object-cover transition-transform duration-700 hover:scale-105"
                 sizes="(max-width: 1024px) 100vw, 40vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#242424]/55 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#292D30]/55 via-transparent to-transparent pointer-events-none" />
 
               {/* Inset Photo Card */}
-              <div className="absolute bottom-5 left-5 right-5 p-4 bg-[#FDFBFF]/95 backdrop-blur-md border-l-4 border-[#0099FF] shadow-lg rounded-sm">
-                <span className="block text-[10px] uppercase tracking-[0.18em] text-[#242424] font-semibold mb-0.5">
+              <div className="absolute bottom-5 left-5 right-5 p-4 bg-[#FFFFFF]/95 backdrop-blur-md border-l-4 border-[#A98556] shadow-lg rounded-sm">
+                <span className="block text-[10px] uppercase tracking-[0.18em] text-[#354B5D] font-semibold mb-0.5">
                   Global Perspective
                 </span>
-                <p className="text-xs text-[#4A4A4A] font-medium leading-snug">
+                <p className="text-xs text-[#55534F] font-medium leading-snug">
                   Securing enduring land legacy in India with complete transparency and peace of mind.
                 </p>
               </div>
@@ -188,7 +188,7 @@ export function NriHero() {
 
             {/* Offset Decorative Gold Hairline Frame */}
             <div
-              className="absolute -bottom-3 -right-3 w-full h-full border-2 border-[#EDC455] -z-10 rounded-sm hidden sm:block pointer-events-none"
+              className="absolute -bottom-3 -right-3 w-full h-full border-2 border-[#A98556] -z-10 rounded-sm hidden sm:block pointer-events-none"
               aria-hidden="true"
             />
           </div>

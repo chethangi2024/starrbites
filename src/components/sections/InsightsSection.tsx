@@ -44,23 +44,23 @@ export function InsightsSection() {
 
   return (
     <section
-      className="py-24 sm:py-32 bg-[#FDFBFF] relative overflow-hidden"
+      className="py-24 sm:py-32 bg-[#F5F1E9] relative overflow-hidden"
       aria-labelledby="insights-heading"
     >
       <Container size="wide">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
           <div className="max-w-[720px]">
-            <SectionEyebrow theme="charcoal" className="mb-4">
-              Knowledge & Research
+            <SectionEyebrow theme="slate" className="mb-4">
+              Knowledge &amp; Research
             </SectionEyebrow>
             <h2
               id="insights-heading"
-              className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#242424] font-semibold tracking-tight leading-[1.18]"
+              className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#292D30] font-semibold tracking-tight leading-[1.18]"
             >
-              Insights & Journal
+              Insights &amp; Journal
             </h2>
-            <p className="text-base sm:text-lg text-[#4A4A4A] font-light mt-3 leading-relaxed">
+            <p className="text-base sm:text-lg text-[#55534F] font-light mt-3 leading-relaxed">
               Curated perspectives on land documentation, legal due diligence, and infrastructure
               growth corridors for informed investors.
             </p>
@@ -76,7 +76,7 @@ export function InsightsSection() {
           {articles.map((art, idx) => (
             <article
               key={idx}
-              className="group flex flex-col justify-between bg-[#F3F6FA] border border-[#E2E6EC] rounded-[2px] overflow-hidden transition-all duration-300 hover:border-[#0099FF] hover:shadow-lg"
+              className="group flex flex-col justify-between bg-[#FFFFFF] border border-[#DDD7CC] rounded-[2px] overflow-hidden transition-all duration-300 hover:border-[#526B80] hover:shadow-lg"
             >
               <div>
                 {/* Image */}
@@ -93,27 +93,27 @@ export function InsightsSection() {
                     className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
-                  <div className="absolute top-4 left-4 bg-[#FDFBFF]/95 backdrop-blur-sm border-l-2 border-[#0099FF] px-2.5 py-1 text-[11px] font-semibold tracking-wider uppercase text-[#242424] rounded-[2px]">
+                  <div className="absolute top-4 left-4 bg-[#F5F1E9]/95 backdrop-blur-sm border-l-2 border-[#A98556] px-2.5 py-1 text-[11px] font-semibold tracking-wider uppercase text-[#354B5D] rounded-[2px] shadow-sm">
                     {art.category}
                   </div>
                 </Link>
 
                 {/* Content */}
                 <div className="p-6 sm:p-7 space-y-3">
-                  <div className="flex items-center gap-3 text-xs text-[#4A4A4A]">
+                  <div className="flex items-center gap-3 text-xs text-[#77736C]">
                     <span>{art.date}</span>
                     <span>•</span>
                     <span className="flex items-center gap-1">
-                      <Clock className="w-3 h-3 text-[#0099FF]" />
+                      <Clock className="w-3 h-3 text-[#A98556]" />
                       {art.readTime}
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-serif text-[#242424] font-semibold leading-snug group-hover:text-[#007ACC] transition-colors">
+                  <h3 className="text-xl font-serif text-[#292D30] font-semibold leading-snug group-hover:text-[#526B80] transition-colors">
                     <Link href={art.slug}>{art.title}</Link>
                   </h3>
 
-                  <p className="text-sm text-[#4A4A4A] font-light leading-relaxed">
+                  <p className="text-sm text-[#55534F] font-light leading-relaxed">
                     {art.excerpt}
                   </p>
                 </div>
@@ -123,10 +123,10 @@ export function InsightsSection() {
               <div className="px-6 pb-6 pt-2">
                 <Link
                   href={art.slug}
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#242424] group-hover:text-[#007ACC] transition-colors"
+                  className="inline-flex items-center gap-1.5 whitespace-nowrap flex-nowrap text-xs font-semibold uppercase tracking-wider text-[#526B80] group-hover:text-[#354B5D] transition-colors shrink-0"
                 >
-                  <span>Read Article</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <span className="whitespace-nowrap">Read Article</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Link>
               </div>
             </article>

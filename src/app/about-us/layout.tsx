@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Starrbites | Building Land. Creating Legacy | Bangalore",
   description:
-    "Learn about Starrbites, a Bangalore-based real-estate development company dedicated to purposeful planning, transparent documentation, and distinct projects including Tiiger Trail and Stay and Play.",
+    "Learn about Starrbites, a Bangalore-based real-estate development company dedicated to purposeful planning, transparent documentation, and flagship destination Tiiger Trail.",
   alternates: {
     canonical: "https://starrbites.com/about-us/",
   },

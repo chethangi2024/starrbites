@@ -6,10 +6,10 @@ import { Container } from "../ui/Container";
 
 export function Footer() {
   return (
-    <footer className="bg-[#242424] text-[#FDFBFF] pt-20 pb-12 border-t-2 border-[#0099FF]">
+    <footer className="bg-[#292D30] text-[#FFFFFF] pt-20 pb-12 border-t-2 border-[#526B80]">
       <Container size="wide">
         {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16 pb-16 border-b border-[#FDFBFF]/15">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16 pb-16 border-b border-[#FFFFFF]/15">
           {/* Column 1: Brand & Philosophy (5 Cols) */}
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
@@ -22,89 +22,80 @@ export function Footer() {
                   sizes="160px"
                 />
               </Link>
-              <p className="text-[#FDFBFF]/85 text-sm sm:text-base leading-relaxed max-w-[420px] font-light mb-6">
+              <p className="text-[#EAE5DA] text-sm sm:text-base leading-relaxed max-w-[420px] font-light mb-6">
                 Starrbites is a Bangalore-based land development firm dedicated to creating
                 curated plotted destinations that combine strategic location foresight,
                 purposeful spatial planning, and enduring legacy value.
               </p>
-              <div className="flex items-center gap-3 text-xs tracking-widest text-[#EDC455] font-semibold uppercase">
-                <span className="w-6 h-[2px] bg-[#0099FF]" />
+              <div className="flex items-center gap-3 text-xs tracking-widest text-[#D4C3A6] font-semibold uppercase font-mono">
+                <span className="w-5 h-[2px] bg-[#A98556]" />
                 Building Land. Creating Legacy.
               </div>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-[#FDFBFF]/15 text-xs text-[#FDFBFF]/85">
-              Flagship Project:{" "}
+            <div className="mt-8 pt-6 border-t border-[#FFFFFF]/15 text-xs text-[#EAE5DA]">
+              Flagship Destination:{" "}
               <a
                 href="https://tiigertrail.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#EDC455] hover:underline inline-flex items-center gap-1 font-medium ml-1"
+                className="text-[#D4C3A6] hover:underline inline-flex items-center gap-1 font-medium ml-1 whitespace-nowrap flex-nowrap shrink-0"
               >
-                Tiiger Trail — Phase I <ArrowUpRight className="w-3 h-3" />
+                <span>Tiiger Trail — Phase I</span>
+                <ArrowUpRight className="w-3 h-3 text-[#A98556] shrink-0" />
               </a>
             </div>
           </div>
 
           {/* Column 2: Navigation Links (2 Cols) */}
           <div className="lg:col-span-2">
-            <h4 className="text-xs uppercase tracking-[0.16em] text-[#EDC455] font-semibold mb-6">
+            <h4 className="text-xs uppercase tracking-[0.16em] text-[#D4C3A6] font-semibold mb-6 font-mono">
               Navigation
             </h4>
-            <ul className="space-y-3.5 text-sm text-[#FDFBFF]/85 font-normal">
+            <ul className="space-y-3.5 text-sm text-[#EAE5DA] font-normal">
               <li>
-                <Link href="/" className="hover:text-[#EDC455] transition-colors">
+                <Link href="/" className="hover:text-[#FFFFFF] transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/about-us/" className="hover:text-[#EDC455] transition-colors">
+                <Link href="/about-us/" className="hover:text-[#FFFFFF] transition-colors">
                   About Starrbites
                 </Link>
               </li>
               <li>
-                <Link href="/projects/" className="hover:text-[#EDC455] transition-colors">
-                  Our Projects
-                </Link>
-              </li>
-              <li>
-                <Link href="/investor-relations/" className="hover:text-[#EDC455] transition-colors">
-                  Investor Relations
-                </Link>
-              </li>
-              <li>
-                <Link href="/tiiger-trail/" className="hover:text-[#EDC455] transition-colors">
+                <Link href="/tiiger-trail/" className="hover:text-[#FFFFFF] transition-colors">
                   Tiiger Trail Flagship
                 </Link>
               </li>
               <li>
-                <Link href="/nri/" className="hover:text-[#EDC455] transition-colors">
-                  NRI Land Advisory
+                <Link href="/nri/" className="hover:text-[#FFFFFF] transition-colors">
+                  NRI Advisory
                 </Link>
               </li>
               <li>
-                <Link href="/blog/" className="hover:text-[#EDC455] transition-colors">
-                  Insights & Journal
+                <Link href="/blog/" className="hover:text-[#FFFFFF] transition-colors">
+                  Insights &amp; Journal
                 </Link>
               </li>
               <li>
-                <Link href="/contact-us/" className="hover:text-[#EDC455] transition-colors">
+                <Link href="/contact-us/" className="hover:text-[#FFFFFF] transition-colors">
                   Contact Us
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 3: Insights & Perspectives (2 Cols) */}
+          {/* Column 3: Selected Perspectives (2 Cols) */}
           <div className="lg:col-span-2">
-            <h4 className="text-xs uppercase tracking-[0.16em] text-[#EDC455] font-semibold mb-6">
+            <h4 className="text-xs uppercase tracking-[0.16em] text-[#D4C3A6] font-semibold mb-6 font-mono">
               Selected Topics
             </h4>
-            <ul className="space-y-3.5 text-sm text-[#FDFBFF]/85 font-normal">
+            <ul className="space-y-3.5 text-sm text-[#EAE5DA] font-normal">
               <li>
                 <Link
                   href="/blog/property-registration-will-not-give-you-ownership-in-2025/"
-                  className="hover:text-[#EDC455] transition-colors"
+                  className="hover:text-[#FFFFFF] transition-colors"
                 >
                   Land Documentation
                 </Link>
@@ -112,7 +103,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/blog/how-to-safely-verify-farmland-before-buying-2025/"
-                  className="hover:text-[#EDC455] transition-colors"
+                  className="hover:text-[#FFFFFF] transition-colors"
                 >
                   Verification Checklist
                 </Link>
@@ -120,7 +111,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/blog/how-2025-farmland-mutation-rules-are-changing/"
-                  className="hover:text-[#EDC455] transition-colors"
+                  className="hover:text-[#FFFFFF] transition-colors"
                 >
                   Mutation Standards
                 </Link>
@@ -128,7 +119,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/blog/satellite-town-ring-road-bengaluru-real-estate-growth-in-12-towns/"
-                  className="hover:text-[#EDC455] transition-colors"
+                  className="hover:text-[#FFFFFF] transition-colors"
                 >
                   Growth Corridors
                 </Link>
@@ -136,41 +127,41 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Contact & Office (3 Cols) */}
+          {/* Column 4: Headquarters & Advisory (3 Cols) */}
           <div className="lg:col-span-3">
-            <h4 className="text-xs uppercase tracking-[0.16em] text-[#EDC455] font-semibold mb-6">
+            <h4 className="text-xs uppercase tracking-[0.16em] text-[#D4C3A6] font-semibold mb-6 font-mono">
               Headquarters
             </h4>
-            <div className="space-y-4 text-xs sm:text-sm text-[#FDFBFF]/85">
+            <div className="space-y-4 text-xs sm:text-sm text-[#EAE5DA]">
               <div className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-[#EDC455] shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#A98556] shrink-0 mt-0.5" />
                 <span>
                   No. 194, 3rd Main, 13th Cross, RMV 2nd Stage, HIG Dollars Colony,
                   Bengaluru - 560094, Karnataka, India
                 </span>
               </div>
               <div className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-[#EDC455] shrink-0" />
+                <Phone className="w-4 h-4 text-[#A98556] shrink-0" />
                 <div className="flex flex-col gap-1">
-                  <a href="tel:+919740806357" className="hover:text-[#EDC455] transition-colors">
+                  <a href="tel:+919740806357" className="hover:text-[#FFFFFF] transition-colors">
                     +91 97408 06357
                   </a>
-                  <a href="tel:+918861197979" className="hover:text-[#EDC455] transition-colors">
+                  <a href="tel:+918861197979" className="hover:text-[#FFFFFF] transition-colors">
                     +91 88611 97979
                   </a>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-[#EDC455] shrink-0" />
+                <Mail className="w-4 h-4 text-[#A98556] shrink-0" />
                 <a
                   href="mailto:contact@starrbites.com"
-                  className="hover:text-[#EDC455] transition-colors"
+                  className="hover:text-[#FFFFFF] transition-colors"
                 >
                   contact@starrbites.com
                 </a>
               </div>
-              <div className="flex items-center gap-3 text-[#FDFBFF]/85">
-                <Clock className="w-4 h-4 text-[#EDC455] shrink-0" />
+              <div className="flex items-center gap-3 text-[#DDD7CC]">
+                <Clock className="w-4 h-4 text-[#A98556] shrink-0" />
                 <span>9:00 AM – 7:00 PM • 7 Days a Week</span>
               </div>
             </div>
@@ -178,20 +169,20 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar: Copyright & Legal */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#FDFBFF]/85">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#DDD7CC]">
           <div>
             © 2026 Starrbites Developments. All rights reserved.
           </div>
           <div className="flex items-center gap-6">
-            <Link href="/privacy-policy/" className="hover:text-[#EDC455] transition-colors">
+            <Link href="/privacy-policy/" className="hover:text-[#FFFFFF] transition-colors">
               Privacy Policy
             </Link>
-            <span className="text-[#0099FF]">•</span>
-            <Link href="/terms-and-conditions/" className="hover:text-[#EDC455] transition-colors">
-              Terms & Conditions
+            <span className="text-[#526B80]">•</span>
+            <Link href="/terms-and-conditions/" className="hover:text-[#FFFFFF] transition-colors">
+              Terms &amp; Conditions
             </Link>
-            <span className="text-[#0099FF]">•</span>
-            <span className="text-[#FDFBFF]/85">Bangalore, Karnataka</span>
+            <span className="text-[#526B80]">•</span>
+            <span className="text-[#DDD7CC]">Bengaluru, Karnataka</span>
           </div>
         </div>
       </Container>

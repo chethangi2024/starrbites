@@ -18,7 +18,7 @@ const inter = Inter({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#0099FF",
+  themeColor: "#354B5D",
   width: "device-width",
   initialScale: 1,
 };
@@ -27,13 +27,12 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://starrbites.com"),
   title: "Real Estate Developer in Bangalore | Starrbites",
   description:
-    "Starrbites is a Bangalore-based real-estate development company creating thoughtfully planned land and lifestyle destinations, including Tiiger Trail and Stay and Play.",
+    "Starrbites is a Bangalore-based real-estate development company creating thoughtfully planned land and lifestyle destinations, including flagship farm-resort community Tiiger Trail.",
   keywords: [
     "real estate developer in bangalore",
     "Starrbites developments",
     "curated plotted developments",
     "Tiiger Trail Lepakshi",
-    "Stay and Play Starrbites",
     "land due diligence karnataka",
     "NRI property investment india",
   ],
@@ -73,7 +72,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable} scroll-smooth`}>
-      <body className="min-h-screen flex flex-col bg-[#FDFBFF] text-[#242424] antialiased selection:bg-[#0099FF] selection:text-[#242424]">
+      <body className="min-h-screen flex flex-col bg-[#F5F1E9] text-[#292D30] antialiased selection:bg-[#526B80] selection:text-[#FFFFFF]">
         {children}
       </body>
     </html>

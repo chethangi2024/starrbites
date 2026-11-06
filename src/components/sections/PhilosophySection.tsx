@@ -66,22 +66,22 @@ export function PhilosophySection() {
   return (
     <section
       ref={sectionRef}
-      className="py-24 sm:py-32 bg-[#F3F6FA] relative border-t border-b border-[#E2E6EC]"
+      className="py-24 sm:py-32 bg-[#EAE5DA] relative border-t border-b border-[#DDD7CC]"
       aria-labelledby="philosophy-heading"
     >
       <Container size="wide">
         {/* Section Header */}
         <div className="max-w-[760px] mb-16 sm:mb-20">
-          <SectionEyebrow theme="charcoal" className="mb-4">
+          <SectionEyebrow theme="slate" className="mb-4">
             Development Philosophy
           </SectionEyebrow>
           <h2
             id="philosophy-heading"
-            className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#242424] font-semibold tracking-tight leading-[1.18]"
+            className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#292D30] font-semibold tracking-tight leading-[1.18]"
           >
             The Principles Behind Every Starrbites Project
           </h2>
-          <p className="text-base sm:text-lg text-[#4A4A4A] font-light mt-4 leading-relaxed">
+          <p className="text-base sm:text-lg text-[#55534F] font-light mt-4 leading-relaxed">
             Across our development portfolio, four core principles govern how we evaluate land,
             structure documentation, and plan each destination.
           </p>
@@ -95,26 +95,26 @@ export function PhilosophySection() {
           {principles.map((item, idx) => (
             <div
               key={item.num}
-              className="principle-item relative flex flex-col justify-between p-8 bg-[#FDFBFF] border border-[#E2E6EC] rounded-[2px] transition-all duration-300 hover:border-[#0099FF] hover:shadow-lg hover:-translate-y-1"
+              className="principle-item relative flex flex-col justify-between p-8 bg-[#FFFFFF] border border-[#DDD7CC] rounded-[2px] transition-all duration-300 hover:border-[#526B80] hover:shadow-lg hover:-translate-y-1"
             >
               <div>
-                <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#EDF0F5]">
-                  <span className="text-2xl font-serif text-[#242424] font-bold">
+                <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#DDD7CC]">
+                  <span className="text-2xl font-serif text-[#292D30] font-bold">
                     {item.num}
                   </span>
-                  <span className="w-8 h-[2px] bg-[#EDC455]" />
+                  <span className="w-8 h-[2px] bg-[#A98556]" />
                 </div>
-                <h3 className="text-xl font-serif text-[#242424] font-semibold mb-4">
+                <h3 className="text-xl font-serif text-[#292D30] font-semibold mb-4">
                   {item.title}
                 </h3>
-                <p className="text-sm text-[#4A4A4A] font-light leading-relaxed">
+                <p className="text-sm text-[#55534F] font-light leading-relaxed">
                   {item.description}
                 </p>
               </div>
 
               {/* Accent footer element */}
-              <div className="pt-6 mt-8 border-t border-[#EDF0F5] flex items-center gap-2 text-[11px] uppercase tracking-wider text-[#242424] font-semibold">
-                <span className="w-2 h-2 rounded-full bg-[#0099FF]" />
+              <div className="pt-6 mt-8 border-t border-[#DDD7CC] flex items-center gap-2 text-[11px] uppercase tracking-wider text-[#292D30] font-semibold">
+                <span className="w-2 h-2 rounded-full bg-[#526B80]" />
                 <span>Pillar {idx + 1} • Starrbites Core</span>
               </div>
             </div>

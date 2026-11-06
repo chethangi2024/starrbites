@@ -15,6 +15,21 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: '/projects',
+        destination: '/tiiger-trail',
+        permanent: true,
+      },
+      {
+        source: '/projects/:path*',
+        destination: '/tiiger-trail',
+        permanent: true,
+      },
+      {
+        source: '/investor-relations',
+        destination: '/contact-us',
+        permanent: true,
+      },
+      {
         source: '/property-registration-will-not-give-you-ownership-in-2025',
         destination: '/blog/property-registration-will-not-give-you-ownership-in-2025',
         permanent: true,

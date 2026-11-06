@@ -23,6 +23,7 @@ const VALID_ENQUIRY_TYPES = [
   "Tiiger Trail (Flagship Destination)",
   "Tiiger Trail — Flagship Project",
   "Tiiger Trail — Flagship Plotted Development",
+  "Tiiger Trail — Plotted Land Enquiry",
   "Stay and Play — Upcoming Project Enquiry",
   "General Corporate Consultation",
   "General Corporate & Portfolio Matters",
@@ -35,6 +36,9 @@ const VALID_ENQUIRY_TYPES = [
   "NRI Advisory & Remote Purchase",
   "NRI Advisory & Documentation Guidance",
   "Business & Land Acquisition Partnership",
+  "Follow-up Consultation",
+  "Privacy Policy Inquiry",
+  "Terms & Conditions Inquiry",
   "Other",
 ];
 
@@ -89,7 +93,13 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    if (!body.enquiryType || !VALID_ENQUIRY_TYPES.includes(body.enquiryType.trim())) {
+    const normalizeType = (s: string) =>
+      s.replace(/[\u2013\u2014\u2212]/g, "-").replace(/\s*-\s*/g, " - ").trim().toLowerCase();
+    const isValidType =
+      Boolean(body.enquiryType) &&
+      VALID_ENQUIRY_TYPES.some((vt) => normalizeType(vt) === normalizeType(body.enquiryType));
+
+    if (!isValidType) {
       errors.enquiryType = "Please select a valid enquiry classification.";
     }
 

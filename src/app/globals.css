@@ -1,49 +1,83 @@
 @import "tailwindcss";
 
 :root {
-  /* Core Brand Colors — Sky Blue, Cloudy White, Gold, Charcoal */
-  --color-primary-sky: #0099FF;
-  --color-primary-sky-dark: #007ACC;
-  --color-primary-sky-light: #E6F4FF;
-  --color-primary-sky-subtle: #F0F8FF;
+  /* ==========================================================================
+     STARRBITES OFFICIAL DESIGN TOKENS
+     Classic Slate Luxury: Slate Blue (#526B80), Deep Slate (#354B5D),
+     Charcoal (#292D30), Warm Ivory (#F5F1E9), Champagne (#D4C3A6), Bronze (#A98556)
+     ========================================================================== */
 
-  /* Legacy alias mapped to Sky Blue / Charcoal to prevent stale navy references */
-  --color-primary-navy: #242424;
-  --color-primary-navy-dark: #1A1A1A;
-  --color-primary-navy-light: #0099FF;
+  /* Brand */
+  --brand-slate: #526B80;
+  --brand-slate-deep: #354B5D;
+  --brand-charcoal: #292D30;
 
-  /* Sampled Brand Gold (From Official Logo) */
-  --color-gold-base: #EDC455;
-  --color-gold-light: #FFE672;
-  --color-gold-muted: #7A5C12;
-  --color-gold-deep: #6E520F;
+  /* Backgrounds */
+  --background-primary: #F5F1E9;
+  --background-secondary: #EAE5DA;
+  --background-white: #FFFFFF;
 
-  /* Surfaces & Backgrounds */
-  --color-surface-white: #FDFBFF;
-  --color-surface-soft: #F3F6FA;
-  --color-surface-subtle: #E8EEF5;
-  --color-surface-sky: #0099FF;
-  --color-surface-dark: #242424;
+  /* Accents */
+  --accent-champagne: #D4C3A6;
+  --accent-bronze: #A98556;
 
-  /* Text & Content */
-  --color-text-primary: #242424;
-  --color-text-secondary: #4A4A4A;
-  --color-text-muted: #5C5C5C;
-  --color-text-inverse: #FDFBFF;
-  --color-text-inverse-muted: #E2E0E5;
+  /* Typography */
+  --text-primary: #292D30;
+  --text-body: #55534F;
+  --text-muted: #77736C;
+  --text-on-dark: #FFFFFF;
 
-  /* Borders & Dividers */
-  --color-border-light: #E2E6EC;
-  --color-border-subtle: #EDF0F5;
-  --color-border-gold: rgba(237, 196, 85, 0.55);
-  --color-border-sky: rgba(0, 153, 255, 0.35);
-  --color-border-navy: rgba(36, 36, 36, 0.15);
+  /* Borders */
+  --border-light: #DDD7CC;
+  --border-dark: #526B80;
 
-  /* Semantic Feedback */
+  /* Buttons */
+  --button-primary-bg: #354B5D;
+  --button-primary-hover: #526B80;
+  --button-primary-text: #FFFFFF;
+
+  --button-secondary-bg: #F5F1E9;
+  --button-secondary-border: #526B80;
+  --button-secondary-text: #354B5D;
+
+  /* ==========================================================================
+     HARMONIZED SYSTEM ALIASES
+     ========================================================================== */
+  --color-primary-navy: #354B5D;
+  --color-primary-navy-dark: #292D30;
+  --color-primary-navy-light: #526B80;
+  --color-primary-navy-subtle: #EAE5DA;
+
+  --color-gold-base: #A98556;
+  --color-gold-light: #D4C3A6;
+  --color-gold-muted: #8E7023;
+  --color-gold-deep: #6E5314;
+  --color-gold-subtle: #F5F1E9;
+
+  --color-surface-white: #FFFFFF;
+  --color-surface-soft: #F5F1E9;
+  --color-surface-subtle: #EAE5DA;
+  --color-surface-dark: #354B5D;
+  --color-surface-darker: #292D30;
+  --color-surface-charcoal: #292D30;
+
+  --color-text-primary: #292D30;
+  --color-text-secondary: #55534F;
+  --color-text-muted: #77736C;
+  --color-text-inverse: #FFFFFF;
+  --color-text-inverse-muted: #DDD7CC;
+  --color-text-gold: #A98556;
+
+  --color-border-light: #DDD7CC;
+  --color-border-subtle: #EAE5DA;
+  --color-border-navy: rgba(53, 75, 93, 0.18);
+  --color-border-gold: rgba(169, 133, 86, 0.35);
+  --color-border-dark: rgba(255, 255, 255, 0.15);
+
   --color-success: #1E6B47;
   --color-error: #B3261E;
   --color-warning: #B26B00;
-  --color-info: #0099FF;
+  --color-info: #354B5D;
 
   /* Container Widths */
   --max-width-wide: 1440px;
@@ -81,8 +115,8 @@ html {
 }
 
 body {
-  background-color: var(--color-surface-white);
-  color: var(--color-text-primary);
+  background-color: var(--background-primary);
+  color: var(--text-primary);
   font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
   margin: 0;
@@ -107,42 +141,42 @@ p, span, a, input, textarea, select, button, label, .font-sans {
 
 /* Selection */
 ::selection {
-  background-color: var(--color-primary-sky);
-  color: var(--color-text-primary);
+  background-color: #526B80;
+  color: #FFFFFF;
 }
 
 /* Architectural Utilities */
 .editorial-line {
   display: inline-block;
   height: 1px;
-  background-color: var(--color-gold-base);
+  background-color: var(--accent-bronze);
   width: 32px;
   vertical-align: middle;
 }
 
 .editorial-divider {
   height: 1px;
-  background-color: var(--color-border-light);
+  background-color: var(--border-light);
   width: 100%;
 }
 
 .editorial-card {
-  background-color: var(--color-surface-white);
-  border: 1px solid var(--color-border-light);
+  background-color: var(--background-white);
+  border: 1px solid var(--border-light);
   transition: border-color var(--duration-fast) var(--ease-luxury),
               box-shadow var(--duration-fast) var(--ease-luxury),
               transform var(--duration-fast) var(--ease-luxury);
 }
 
 .editorial-card:hover {
-  border-color: var(--color-primary-sky);
-  box-shadow: 0 12px 36px rgba(0, 153, 255, 0.08);
+  border-color: var(--brand-slate);
+  box-shadow: 0 14px 40px rgba(53, 75, 93, 0.08);
   transform: translateY(-2px);
 }
 
 /* Accessible Focus Ring */
 *:focus-visible {
-  outline: 2px solid var(--color-primary-sky);
+  outline: 2px solid var(--brand-slate);
   outline-offset: 3px;
 }
 
@@ -158,7 +192,7 @@ p, span, a, input, textarea, select, button, label, .font-sans {
 
 /* Luxury Editorial Article Body Typography */
 .article-body {
-  color: #242424;
+  color: #292D30;
   font-size: 1.0625rem;
   line-height: 1.8;
   letter-spacing: -0.01em;
@@ -169,11 +203,11 @@ p, span, a, input, textarea, select, button, label, .font-sans {
   font-size: 1.75rem;
   line-height: 1.3;
   font-weight: 600;
-  color: #242424;
+  color: #354B5D;
   margin-top: 2.75rem;
   margin-bottom: 1rem;
   padding-top: 1.25rem;
-  border-top: 1px solid var(--color-border-light);
+  border-top: 1px solid var(--border-light);
   scroll-margin-top: 110px;
 }
 
@@ -188,7 +222,7 @@ p, span, a, input, textarea, select, button, label, .font-sans {
   font-size: 1.35rem;
   line-height: 1.4;
   font-weight: 600;
-  color: #242424;
+  color: #354B5D;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
   scroll-margin-top: 110px;
@@ -196,14 +230,14 @@ p, span, a, input, textarea, select, button, label, .font-sans {
 
 .article-body p {
   margin-bottom: 1.5rem;
-  color: #2D2D2D;
+  color: #55534F;
   font-weight: 350;
 }
 
 .article-body strong,
 .article-body b {
   font-weight: 600;
-  color: #242424;
+  color: #292D30;
 }
 
 .article-body ul {
@@ -227,7 +261,7 @@ p, span, a, input, textarea, select, button, label, .font-sans {
   top: 0.65rem;
   width: 6px;
   height: 6px;
-  background-color: var(--color-primary-sky);
+  background-color: var(--accent-bronze);
   border-radius: 50%;
 }
 
@@ -243,12 +277,12 @@ p, span, a, input, textarea, select, button, label, .font-sans {
 }
 
 .article-body blockquote {
-  border-left: 3px solid var(--color-primary-sky);
+  border-left: 3px solid var(--accent-bronze);
   padding: 1rem 1.5rem;
   margin: 2rem 0;
-  background-color: var(--color-surface-soft);
+  background-color: var(--background-secondary);
   font-style: italic;
-  color: #242424;
+  color: #354B5D;
 }
 
 .article-body table {
@@ -259,8 +293,8 @@ p, span, a, input, textarea, select, button, label, .font-sans {
 }
 
 .article-body th {
-  background-color: var(--color-primary-sky);
-  color: #242424;
+  background-color: #354B5D;
+  color: #FFFFFF;
   text-align: left;
   padding: 0.75rem 1rem;
   font-weight: 600;
@@ -268,24 +302,24 @@ p, span, a, input, textarea, select, button, label, .font-sans {
 
 .article-body td {
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--color-border-light);
-  color: #383838;
+  border-bottom: 1px solid var(--border-light);
+  color: #55534F;
 }
 
 .article-body tr:nth-child(even) td {
-  background-color: var(--color-surface-soft);
+  background-color: var(--background-secondary);
 }
 
 .article-body a {
-  color: #242424;
+  color: #526B80;
   font-weight: 500;
   text-decoration: underline;
-  text-decoration-color: var(--color-primary-sky);
+  text-decoration-color: var(--accent-bronze);
   text-underline-offset: 3px;
   transition: color 0.2s ease, background-color 0.2s ease;
 }
 
 .article-body a:hover {
-  background-color: var(--color-primary-sky-light);
-  color: #242424;
+  background-color: var(--accent-champagne);
+  color: #292D30;
 }

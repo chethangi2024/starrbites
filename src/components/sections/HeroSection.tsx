@@ -2,65 +2,112 @@
 
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
-import { ChevronDown, ArrowRight } from "lucide-react";
 import { SectionEyebrow } from "../ui/SectionEyebrow";
 import { Button } from "../ui/Button";
 import { Container } from "../ui/Container";
 import gsap from "gsap";
-import { isReducedMotion } from "@/lib/animations";
+import { isReducedMotion, registerGSAP } from "@/lib/animations";
 
 interface HeroSectionProps {
   onExploreClick?: () => void;
 }
 
-export function HeroSection(_?: HeroSectionProps) {
+export function HeroSection({ onExploreClick }: HeroSectionProps = {}) {
   const heroRef = useRef<HTMLDivElement>(null);
-  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const bgImageRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const eyebrowRef = useRef<HTMLDivElement>(null);
+  const headlineLine1Ref = useRef<HTMLSpanElement>(null);
+  const headlineLine2Ref = useRef<HTMLSpanElement>(null);
   const leadRef = useRef<HTMLParagraphElement>(null);
   const actionsRef = useRef<HTMLDivElement>(null);
-  const bgImageRef = useRef<HTMLDivElement>(null);
+  const scrollIndicatorRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
+    registerGSAP();
+
     if (isReducedMotion()) return;
 
     const ctx = gsap.context(() => {
+      // Stage 1 to 6 Carefully Choreographed Entrance Sequence
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
+      // Stage 1: Background Reveal (slow atmospheric scale settle)
       tl.fromTo(
         bgImageRef.current,
-        { scale: 1.08, opacity: 0.8 },
-        { scale: 1.0, opacity: 1, duration: 1.6, ease: "power2.out" }
+        { scale: 1.12, opacity: 0 },
+        { scale: 1.0, opacity: 1, duration: 2.0, ease: "power2.out" }
       )
+        // Overlay gradient smooth reveal
         .fromTo(
-          ".hero-eyebrow",
+          overlayRef.current,
+          { opacity: 0 },
+          { opacity: 1, duration: 1.5 },
+          "-=1.6"
+        )
+        // Stage 2: Brand Eyebrow fade and move into position
+        .fromTo(
+          eyebrowRef.current,
           { y: 20, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.6 },
+          { y: 0, opacity: 1, duration: 0.8 },
           "-=1.1"
         )
+        // Stage 3: Main Heading staggered reveal
         .fromTo(
-          headlineRef.current,
-          { y: 35, opacity: 0 },
+          headlineLine1Ref.current,
+          { y: 36, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.9 },
-          "-=0.5"
+          "-=0.6"
         )
+        .fromTo(
+          headlineLine2Ref.current,
+          { y: 36, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.9 },
+          "-=0.7"
+        )
+        // Stage 4: Supporting Description fade in with subtle upward movement
         .fromTo(
           leadRef.current,
           { y: 20, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.7 },
-          "-=0.5"
+          { y: 0, opacity: 1, duration: 0.85 },
+          "-=0.6"
         )
+        // Stage 5: CTA Buttons reveal with subtle stagger
         .fromTo(
           actionsRef.current,
-          { y: 15, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.6 },
-          "-=0.4"
+          { y: 18, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.75 },
+          "-=0.5"
+        )
+        // Stage 6: Supporting Visual Details (Scroll indicator)
+        .fromTo(
+          scrollIndicatorRef.current,
+          { opacity: 0, y: -8 },
+          { opacity: 1, y: 0, duration: 0.75 },
+          "-=0.3"
         );
+
+      // Restrained Parallax depth on scroll
+      gsap.to(bgImageRef.current, {
+        yPercent: 15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
     }, heroRef);
 
     return () => ctx.revert();
   }, []);
 
   const handleScrollDown = () => {
+    if (onExploreClick) {
+      onExploreClick();
+      return;
+    }
     const nextSection = document.getElementById("brand-intro");
     if (nextSection) {
       nextSection.scrollIntoView({ behavior: "smooth" });
@@ -70,91 +117,109 @@ export function HeroSection(_?: HeroSectionProps) {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-[92vh] sm:min-h-screen flex items-center justify-center overflow-hidden bg-[#0099FF] pt-28 pb-16"
+      className="relative min-h-[94vh] sm:min-h-screen flex items-center justify-center overflow-hidden bg-[#292D30] pt-32 pb-20"
       aria-label="Welcome to Starrbites"
     >
-      {/* Background Image Container with Sky Blue Brand Overlay */}
-      <div ref={bgImageRef} className="absolute inset-0 z-0">
+      {/* Background Architectural Canvas with Refined Parallax Depth */}
+      <div ref={bgImageRef} className="absolute inset-0 z-0 will-change-transform">
         <Image
           src="/images/stock/architecture/hero-contemporary-villa.jpg"
-          alt="Contemporary luxury estate architecture at twilight"
+          alt="Contemporary estate architecture at twilight"
           fill
           priority
-          className="object-cover object-center opacity-25 mix-blend-luminosity"
+          className="object-cover object-center brightness-[0.45] contrast-[1.05]"
           sizes="100vw"
         />
-        {/* Multilayer Sky Blue Gradients for Crisp Charcoal Text Contrast (5.17:1) */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0099FF] via-[#0099FF]/90 to-[#0099FF]/80" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0099FF]/95 via-[#0099FF]/85 to-[#0099FF]/65" />
+      </div>
+
+      {/* Multilayer Deep Slate Overlay & Vignette */}
+      <div
+        ref={overlayRef}
+        className="absolute inset-0 z-[1] pointer-events-none"
+        aria-hidden="true"
+      >
+        {/* Vertical gradient: Deep Slate top, Charcoal bottom */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#292D30]/85 via-[#354B5D]/65 to-[#292D30]/90" />
+        {/* Subtle radial vignette */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(41,45,48,0.7)_100%)]" />
+        {/* Architectural horizontal guide line */}
+        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#D4C3A6]/40 to-transparent" />
       </div>
 
       {/* Hero Content */}
-      <Container size="wide" className="relative z-10 text-[#242424] mt-10 sm:mt-14">
-        <div className="max-w-[880px]">
-          {/* Eyebrow */}
-          <div className="hero-eyebrow mb-6 sm:mb-8">
-            <div className="inline-flex items-center gap-3 bg-[#FDFBFF]/90 backdrop-blur-sm px-4 py-1.5 rounded-[2px] border-l-4 border-[#EDC455] shadow-sm">
-              <SectionEyebrow theme="charcoal" line={false}>
+      <Container size="wide" className="relative z-10 text-[#FFFFFF] mt-6 sm:mt-10">
+        <div className="max-w-[920px]">
+          {/* Stage 2: Eyebrow Badge */}
+          <div ref={eyebrowRef} className="mb-6 sm:mb-8">
+            <div className="inline-flex items-center gap-3 bg-[#FFFFFF]/10 backdrop-blur-md px-4 py-1.5 rounded-[2px] border border-[#DDD7CC]/20 border-l-4 border-l-[#A98556] shadow-sm">
+              <SectionEyebrow theme="champagne" line={false}>
                 STARRBITES REAL ESTATE DEVELOPMENTS
               </SectionEyebrow>
             </div>
           </div>
 
-          {/* Main Headline */}
-          <h1
-            ref={headlineRef}
-            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-[#242424] font-medium tracking-tight leading-[1.08] mb-6 sm:mb-8 text-balance"
-          >
-            <span className="text-[#242424]">Building Land.</span> <br />
-            <span className="italic font-normal text-[#242424] bg-[#EDC455] px-4 py-0.5 rounded-[2px] inline-block mt-2 shadow-sm">
+          {/* Stage 3: Main Heading with Staggered Kinetic Typography */}
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[80px] font-serif text-[#FFFFFF] font-medium tracking-tight leading-[1.1] mb-6 sm:mb-8 text-balance">
+            <span ref={headlineLine1Ref} className="block text-[#FFFFFF]">
+              Building Land.
+            </span>
+            <span
+              ref={headlineLine2Ref}
+              className="inline-block italic font-normal text-[#D4C3A6] mt-1 sm:mt-2"
+            >
               Creating Legacy.
             </span>
           </h1>
 
-          {/* Supporting Copy */}
+          {/* Stage 4: Supporting Narrative */}
           <p
             ref={leadRef}
-            className="text-base sm:text-lg md:text-xl text-[#242424] max-w-[680px] font-normal leading-relaxed mb-10 sm:mb-12 text-balance"
+            className="text-base sm:text-lg md:text-xl text-[#EAE5DA] max-w-[680px] font-light leading-relaxed mb-10 sm:mb-12 text-balance"
           >
             Starrbites is a Bangalore-based real-estate development company creating thoughtfully
-            planned destinations and projects built on strategic location selection, clear
-            documentation, and lasting ownership value.
+            planned destinations built on strategic growth corridors, uncompromising legal title
+            scrutiny, and enduring generational value.
           </p>
 
-          {/* Actions */}
+          {/* Stage 5: Action CTAs */}
           <div
             ref={actionsRef}
             className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5"
           >
             <Button
-              variant="gold"
+              variant="onDark"
               size="lg"
               onClick={handleScrollDown}
-              className="group"
+              withArrow
             >
-              <span>Discover Starrbites</span>
-              <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+              Discover Starrbites
             </Button>
 
             <Button
               variant="secondary"
               size="lg"
-              href="#flagship-project"
+              href="/tiiger-trail/"
+              withArrow
             >
-              Explore Our Projects
+              Explore Tiiger Trail
             </Button>
           </div>
         </div>
       </Container>
 
-      {/* Scroll Down Indicator */}
+      {/* Stage 6: Subtle Animated Scroll Indicator */}
       <button
+        ref={scrollIndicatorRef}
         onClick={handleScrollDown}
-        className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-[#242424] hover:text-[#242424]/80 transition-colors focus:outline-none"
+        className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-[#EAE5DA] hover:text-[#FFFFFF] transition-colors focus:outline-none cursor-pointer group"
         aria-label="Scroll to company introduction"
       >
-        <span className="text-[10px] tracking-[0.2em] uppercase font-semibold">Scroll</span>
-        <ChevronDown className="w-4 h-4 animate-bounce" />
+        <span className="text-[10px] tracking-[0.25em] uppercase font-mono font-medium opacity-80 group-hover:opacity-100">
+          Scroll Down
+        </span>
+        <div className="w-5 h-8 rounded-full border border-[#DDD7CC]/40 flex items-start justify-center p-1 group-hover:border-[#D4C3A6] transition-colors">
+          <span className="w-1 h-2 rounded-full bg-[#D4C3A6] animate-bounce" />
+        </div>
       </button>
     </section>
   );

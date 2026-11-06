@@ -3,7 +3,16 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 interface ButtonBaseProps {
-  variant?: "primary" | "secondary" | "outlined" | "inverted" | "gold" | "charcoal" | "link";
+  variant?:
+    | "primary"
+    | "secondary"
+    | "onDark"
+    | "inverted"
+    | "outline"
+    | "outlined"
+    | "gold"
+    | "charcoal"
+    | "link";
   size?: "sm" | "md" | "lg";
   withArrow?: boolean;
   className?: string;
@@ -21,7 +30,7 @@ type ButtonAsLink = ButtonBaseProps &
     isExternal?: boolean;
   };
 
-type ButtonProps = ButtonAsButton | ButtonAsLink;
+export type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 export function Button({
   variant = "primary",
@@ -31,43 +40,59 @@ export function Button({
   children,
   ...props
 }: ButtonProps) {
+  // Standardized dimensions across viewports:
+  // sm: 36px (h-9), px-4, text-xs
+  // md: 44px (h-11), px-6, text-[13px]
+  // lg: 50px (h-[50px]), px-7 sm:px-8, text-xs sm:text-[13px]
   const sizeStyles = {
-    sm: "px-5 py-2.5 text-[13px]",
-    md: "px-7 py-3.5 text-[14px]",
-    lg: "px-9 py-4 text-[15px]",
+    sm: "h-9 px-4 text-xs font-medium tracking-[0.04em]",
+    md: "h-11 px-6 text-[13px] font-medium tracking-[0.05em]",
+    lg: "h-[50px] px-7 sm:px-8 text-xs sm:text-[13px] font-medium tracking-[0.05em]",
   }[size];
 
-  // WCAG 2.2 AA Contrast Verified Variants:
-  // primary: #242424 on #0099FF (5.17:1), hover #242424 on #EDC455 (9.33:1)
-  // secondary: #242424 on #FDFBFF (15.09:1), hover #242424 on #0099FF (5.17:1)
-  // gold: #242424 on #EDC455 (9.33:1), hover #242424 on #FFE672 (11.8:1)
-  // charcoal: #FDFBFF on #242424 (15.09:1), hover #242424 on #EDC455 (9.33:1)
-  // inverted: #FDFBFF on dark charcoal backdrop (15.09:1), hover #242424 on #FDFBFF (15.09:1)
+  // =========================================================================
+  // CLASSIC SLATE LUXURY BUTTON SYSTEM
+  // Deep Slate (#354B5D), Slate Blue (#526B80), Warm Ivory (#F5F1E9)
+  // =========================================================================
   let variantStyles = "";
+
   if (variant === "primary") {
+    // Primary Button: Background #354B5D, Text #FFFFFF, Hover #526B80
     variantStyles =
-      "bg-[#0099FF] text-[#242424] border border-[#0099FF] hover:bg-[#EDC455] hover:border-[#EDC455] hover:text-[#242424] hover:-translate-y-[1px] active:translate-y-0 shadow-sm";
-  } else if (variant === "secondary" || variant === "outlined") {
+      "bg-[#354B5D] text-[#FFFFFF] border border-[#354B5D] hover:bg-[#526B80] hover:border-[#526B80] hover:shadow-[0_4px_16px_rgba(53,75,93,0.18)] hover:-translate-y-[1px] active:translate-y-0";
+  } else if (variant === "secondary" || variant === "outline" || variant === "outlined") {
+    // Secondary Button: Background #F5F1E9, Border #526B80, Text #354B5D, Hover #EAE5DA
     variantStyles =
-      "bg-[#FDFBFF] text-[#242424] border border-[#242424] hover:bg-[#0099FF] hover:text-[#242424] hover:border-[#0099FF] hover:-translate-y-[1px] active:translate-y-0";
-  } else if (variant === "inverted") {
+      "bg-[#F5F1E9] text-[#354B5D] border border-[#526B80] hover:bg-[#EAE5DA] hover:text-[#292D30] hover:border-[#354B5D] hover:-translate-y-[1px] active:translate-y-0";
+  } else if (variant === "onDark" || variant === "inverted" || variant === "gold") {
+    // Buttons on Dark Sections: Warm Ivory background (#F5F1E9), Text #354B5D, Hover #FFFFFF
     variantStyles =
-      "bg-transparent text-[#FDFBFF] border border-[#FDFBFF]/70 hover:bg-[#FDFBFF] hover:text-[#242424] hover:border-[#FDFBFF] hover:-translate-y-[1px] active:translate-y-0";
-  } else if (variant === "gold") {
-    variantStyles =
-      "bg-[#EDC455] text-[#242424] border border-[#EDC455] font-semibold hover:bg-[#FFE672] hover:border-[#FFE672] hover:text-[#242424] hover:-translate-y-[1px] active:translate-y-0 shadow-sm";
+      "bg-[#F5F1E9] text-[#354B5D] border border-[#F5F1E9] font-medium hover:bg-[#FFFFFF] hover:text-[#292D30] hover:border-[#FFFFFF] hover:shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:-translate-y-[1px] active:translate-y-0";
   } else if (variant === "charcoal") {
+    // Charcoal button: Background #292D30, Text #FFFFFF, Hover #354B5D
     variantStyles =
-      "bg-[#242424] text-[#FDFBFF] border border-[#242424] font-semibold hover:bg-[#EDC455] hover:text-[#242424] hover:border-[#EDC455] hover:-translate-y-[1px] active:translate-y-0 shadow-sm";
+      "bg-[#292D30] text-[#FFFFFF] border border-[#292D30] hover:bg-[#354B5D] hover:border-[#354B5D] hover:-translate-y-[1px] active:translate-y-0";
   } else if (variant === "link") {
+    // Text Link: Slate Blue #526B80, hover feedback #354B5D
     variantStyles =
-      "bg-transparent text-[#242424] p-0 font-semibold inline-flex items-center gap-2 group hover:text-[#007ACC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0099FF] focus-visible:ring-offset-2";
+      "bg-transparent text-[#526B80] p-0 font-medium inline-flex items-center gap-2 hover:text-[#354B5D] hover:underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#526B80] focus-visible:ring-offset-2";
   }
 
   const baseStyles =
     variant === "link"
-      ? variantStyles
-      : `inline-flex items-center justify-center font-semibold tracking-[0.03em] transition-all duration-300 ease-out cursor-pointer rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0099FF] focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ${sizeStyles} ${variantStyles}`;
+      ? `group whitespace-nowrap flex-nowrap ${variantStyles}`
+      : `group inline-flex items-center justify-center whitespace-nowrap flex-nowrap rounded-[2px] leading-none transition-all duration-200 ease-out select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#526B80] focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ${sizeStyles} ${variantStyles}`;
+
+  const renderContent = () => (
+    <span className="inline-flex items-center justify-center gap-2 whitespace-nowrap flex-nowrap leading-none shrink-0">
+      <span className="inline-flex items-center justify-center gap-2 whitespace-nowrap flex-nowrap leading-none">
+        {children}
+      </span>
+      {withArrow && (
+        <ArrowUpRight className="w-3.5 h-3.5 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-current opacity-90" />
+      )}
+    </span>
+  );
 
   if ("href" in props && props.href) {
     const { href, isExternal, ...anchorProps } = props as ButtonAsLink;
@@ -80,19 +105,13 @@ export function Button({
           className={`${baseStyles} ${className}`}
           {...anchorProps}
         >
-          <span>{children}</span>
-          {withArrow && (
-            <ArrowUpRight className="w-4 h-4 ml-1.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          )}
+          {renderContent()}
         </a>
       );
     }
     return (
       <Link href={href} className={`${baseStyles} ${className}`} {...anchorProps}>
-        <span>{children}</span>
-        {withArrow && (
-          <ArrowUpRight className="w-4 h-4 ml-1.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        )}
+        {renderContent()}
       </Link>
     );
   }
@@ -102,10 +121,7 @@ export function Button({
       className={`${baseStyles} ${className}`}
       {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
     >
-      <span>{children}</span>
-      {withArrow && (
-        <ArrowUpRight className="w-4 h-4 ml-1.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-      )}
+      {renderContent()}
     </button>
   );
 }

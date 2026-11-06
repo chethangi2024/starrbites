@@ -2,43 +2,59 @@ import React from "react";
 
 interface SectionEyebrowProps {
   children: React.ReactNode;
-  theme?: "navy" | "charcoal" | "gold" | "white" | "gold-dark";
-  line?: boolean;
+  theme?: "slate" | "bronze" | "champagne" | "charcoal" | "muted" | "gold" | "navy";
   className?: string;
+  line?: boolean;
 }
 
 export function SectionEyebrow({
   children,
-  theme = "charcoal",
-  line = true,
+  theme = "bronze",
   className = "",
+  line = true,
 }: SectionEyebrowProps) {
-  // WCAG 2.2 AA Verified Contrast:
-  // "charcoal" / "navy" / "gold-dark": #242424 text (15.09:1 on #FDFBFF, 5.17:1 on #0099FF) with #EDC455 decorative line
-  // "gold": #EDC455 text for dark #242424 surfaces (9.33:1 contrast)
-  // "white": #FDFBFF text for dark #242424 surfaces (15.09:1 contrast)
-  const colorClass =
-    theme === "gold"
-      ? "text-[#EDC455]"
-      : theme === "white"
-      ? "text-[#FDFBFF]"
-      : "text-[#242424]";
-
-  const lineColor = "bg-[#EDC455]";
+  const themeStyles = {
+    slate: {
+      text: "text-[#526B80]",
+      line: "bg-[#526B80]",
+    },
+    bronze: {
+      text: "text-[#A98556]",
+      line: "bg-[#A98556]",
+    },
+    champagne: {
+      text: "text-[#D4C3A6]",
+      line: "bg-[#D4C3A6]",
+    },
+    charcoal: {
+      text: "text-[#292D30]",
+      line: "bg-[#526B80]",
+    },
+    muted: {
+      text: "text-[#77736C]",
+      line: "bg-[#526B80]",
+    },
+    gold: {
+      text: "text-[#A98556]",
+      line: "bg-[#A98556]",
+    },
+    navy: {
+      text: "text-[#354B5D]",
+      line: "bg-[#526B80]",
+    },
+  }[theme];
 
   return (
-    <div className={`inline-flex items-center gap-3 ${className}`}>
+    <div
+      className={`inline-flex items-center gap-2.5 text-[11px] sm:text-[12px] font-semibold tracking-[0.2em] uppercase font-mono ${themeStyles.text} ${className}`}
+    >
       {line && (
         <span
-          className={`inline-block h-[2px] w-6 sm:w-8 ${lineColor}`}
+          className={`inline-block w-5 sm:w-6 h-[1.5px] ${themeStyles.line} shrink-0 opacity-80`}
           aria-hidden="true"
         />
       )}
-      <span
-        className={`text-[11px] sm:text-[12px] font-semibold tracking-[0.18em] uppercase ${colorClass}`}
-      >
-        {children}
-      </span>
+      <span>{children}</span>
     </div>
   );
 }

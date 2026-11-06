@@ -8,7 +8,7 @@ import { FeaturedArticleSpotlight } from "@/components/blog/FeaturedArticleSpotl
 import { JournalArticleGrid } from "@/components/blog/JournalArticleGrid";
 import { JournalCta } from "@/components/blog/JournalCta";
 import { EnquiryModal } from "@/components/sections/EnquiryModal";
-import { getAllArticles, getFeaturedArticle, getCategories } from "@/lib/articles";
+import { getAllArticles, getFeaturedArticle } from "@/lib/articles";
 
 export default function BlogListingPage() {
   const [isEnquiryModalOpen, setIsEnquiryModalOpen] = useState(false);
@@ -16,7 +16,6 @@ export default function BlogListingPage() {
 
   const articles = getAllArticles();
   const featuredArticle = getFeaturedArticle();
-  const categories = getCategories();
 
   const handleOpenEnquiry = (topic = "Journal Advisory Enquiry") => {
     setModalTopic(topic);
@@ -40,7 +39,7 @@ export default function BlogListingPage() {
         <FeaturedArticleSpotlight article={featuredArticle} />
 
         {/* Section C & D: Article Collection with Category Filters */}
-        <JournalArticleGrid articles={articles} categories={categories} />
+        <JournalArticleGrid articles={articles} />
 
         {/* Section E: Corporate Restrained CTA */}
         <JournalCta onOpenEnquiry={handleOpenEnquiry} />

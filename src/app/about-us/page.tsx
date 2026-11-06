@@ -54,7 +54,7 @@ export default function AboutUsPage() {
         {/* Section 07: Who We Serve (Four Curated Audiences) */}
         <AboutAudience />
 
-        {/* Section 08: Portfolio & Flagship Connection (Tiiger Trail & Stay and Play) */}
+        {/* Section 08: Portfolio & Flagship Connection (Tiiger Trail Flagship) */}
         <AboutFlagship
           onScheduleVisit={(topic) =>
             handleOpenEnquiry(topic || "Tiiger Trail — Flagship Project")

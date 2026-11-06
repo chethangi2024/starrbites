@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
-import { Compass, ShieldCheck, Trees, Layers } from "lucide-react";
+import { Compass, ShieldCheck, Trees } from "lucide-react";
 import gsap from "gsap";
 import { Container } from "../ui/Container";
 import { SectionEyebrow } from "../ui/SectionEyebrow";
@@ -46,12 +46,12 @@ export function AboutFlagship({ onScheduleVisit }: AboutFlagshipProps) {
     <section
       ref={sectionRef}
       id="flagship-connection"
-      className="py-24 sm:py-32 bg-[#FDFBFF] border-b border-[#E2E6EC]"
+      className="py-24 sm:py-32 bg-[#FFFFFF] border-b border-[#DDD7CC]"
     >
       <Container size="wide">
         <div
           ref={cardRef}
-          className="bg-[#242424] text-[#FDFBFF] border-t-4 border-[#0099FF] rounded-sm overflow-hidden grid grid-cols-1 lg:grid-cols-12 shadow-xl"
+          className="bg-[#292D30] text-[#FFFFFF] border-t-4 border-[#A98556] rounded-sm overflow-hidden grid grid-cols-1 lg:grid-cols-12 shadow-2xl"
         >
           {/* Left Column: Image Feature (5 cols) */}
           <div className="lg:col-span-5 relative min-h-[360px] lg:min-h-full">
@@ -62,12 +62,12 @@ export function AboutFlagship({ onScheduleVisit }: AboutFlagshipProps) {
               className="object-cover transition-transform duration-700 hover:scale-105"
               sizes="(max-width: 1024px) 100vw, 40vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#242424]/80 via-transparent to-transparent lg:hidden" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#292D30]/85 via-transparent to-transparent lg:hidden" />
 
             {/* Inset Badge */}
-            <div className="absolute top-6 left-6 bg-[#FDFBFF]/95 backdrop-blur-md px-4 py-2 rounded-sm border-l-4 border-[#0099FF] shadow-md">
-              <span className="text-[11px] uppercase tracking-[0.18em] text-[#242424] font-bold">
-                Starrbites Portfolio
+            <div className="absolute top-6 left-6 bg-[#FFFFFF]/95 backdrop-blur-md px-4 py-2 rounded-sm border-l-4 border-[#A98556] shadow-md">
+              <span className="text-[11px] uppercase tracking-[0.18em] text-[#354B5D] font-bold">
+                Flagship Estate
               </span>
             </div>
           </div>
@@ -79,71 +79,55 @@ export function AboutFlagship({ onScheduleVisit }: AboutFlagshipProps) {
                 Our Projects in Practice
               </SectionEyebrow>
 
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-normal text-[#FDFBFF] leading-tight mb-6">
-                <span className="text-[#FDFBFF]">
-                  Tiiger Trail &amp; Our Expanding Development Portfolio
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-normal text-[#FFFFFF] leading-tight mb-6">
+                <span>Tiiger Trail —</span>{" "}
+                <span className="italic font-normal text-[#A98556]">
+                  Where Nature and Soul Meet
                 </span>
               </h2>
 
-              <p className="text-[#FDFBFF]/90 text-base sm:text-lg font-light leading-relaxed mb-6">
+              <p className="text-[#FFFFFF]/85 text-base sm:text-lg font-light leading-relaxed mb-8">
                 Our development principles are best understood through the projects we bring forward.{" "}
-                <strong className="font-medium text-[#FDFBFF]">Tiiger Trail</strong> serves as our
+                <strong className="font-medium text-[#FFFFFF]">Tiiger Trail</strong> serves as our
                 flagship plotted nature destination near Lepakshi along the NH-44 North Bangalore
-                corridor, combining countryside surroundings with documented title and mutation
-                records.
+                growth corridor, combining countryside tranquility with certified titles and
+                comprehensive due diligence.
               </p>
 
-              {/* Second Project Portfolio Note */}
-              <div className="p-5 bg-[#FDFBFF]/5 border-l-4 border-[#EDC455] rounded-sm mb-8 flex items-start gap-3.5">
-                <Layers className="w-5 h-5 text-[#EDC455] shrink-0 mt-0.5" />
-                <div>
-                  <span className="text-xs uppercase tracking-wider text-[#EDC455] font-semibold block mb-1">
-                    Second Portfolio Project • Stay and Play
-                  </span>
-                  <p className="text-xs sm:text-sm text-[#FDFBFF]/85 font-light leading-relaxed">
-                    Alongside Tiiger Trail, Starrbites is advancing{" "}
-                    <strong className="font-medium text-[#FDFBFF]">Stay and Play</strong>, a
-                    distinct recreational and hospitality-oriented development. Official site
-                    coordinates, approved renderings, and project specifications will be published
-                    upon formal documentation release.
-                  </p>
-                </div>
-              </div>
-
               {/* Verified Pillars for Flagship Tiiger Trail */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 pb-8 border-y border-[#FDFBFF]/15 mb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 pb-8 border-y border-[#FFFFFF]/15 mb-8">
                 <div className="flex items-start gap-3">
-                  <Compass className="w-5 h-5 text-[#EDC455] shrink-0 mt-0.5" />
+                  <Compass className="w-5 h-5 text-[#A98556] shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="text-xs uppercase tracking-wider text-[#FDFBFF] font-semibold mb-1">
+                    <h4 className="text-xs uppercase tracking-wider text-[#FFFFFF] font-semibold mb-1">
                       North Bangalore Axis
                     </h4>
-                    <p className="text-xs text-[#FDFBFF]/85 font-normal">
-                      Tiiger Trail off NH-44 near Lepakshi growth corridor
+                    <p className="text-xs text-[#FFFFFF]/85 font-normal">
+                      Positioned off NH-44 near Lepakshi growth corridor
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <ShieldCheck className="w-5 h-5 text-[#EDC455] shrink-0 mt-0.5" />
+                  <ShieldCheck className="w-5 h-5 text-[#A98556] shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="text-xs uppercase tracking-wider text-[#FDFBFF] font-semibold mb-1">
+                    <h4 className="text-xs uppercase tracking-wider text-[#FFFFFF] font-semibold mb-1">
                       Documented Titles
                     </h4>
-                    <p className="text-xs text-[#FDFBFF]/85 font-normal">
-                      Parent deed scrutiny &amp; individual mutation records
+                    <p className="text-xs text-[#FFFFFF]/85 font-normal">
+                      30-year parent deed scrutiny &amp; mutation records
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Trees className="w-5 h-5 text-[#EDC455] shrink-0 mt-0.5" />
+                  <Trees className="w-5 h-5 text-[#A98556] shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="text-xs uppercase tracking-wider text-[#FDFBFF] font-semibold mb-1">
-                      Distinct Formats
+                    <h4 className="text-xs uppercase tracking-wider text-[#FFFFFF] font-semibold mb-1">
+                      Farm Retreat
                     </h4>
-                    <p className="text-xs text-[#FDFBFF]/85 font-normal">
-                      Plotted nature estates &amp; planned recreational living
+                    <p className="text-xs text-[#FFFFFF]/85 font-normal">
+                      Gated estate layout with curated farmhouse models
                     </p>
                   </div>
                 </div>
@@ -176,10 +160,10 @@ export function AboutFlagship({ onScheduleVisit }: AboutFlagshipProps) {
                   variant="inverted"
                   size="md"
                   onClick={() =>
-                    onScheduleVisit("Stay and Play — Upcoming Project Enquiry")
+                    onScheduleVisit("Tiiger Trail — Flagship Project")
                   }
                 >
-                  Enquire About Stay and Play
+                  Schedule Site Tour
                 </Button>
               )}
             </div>

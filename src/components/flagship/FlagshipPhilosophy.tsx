@@ -8,31 +8,29 @@ import { isReducedMotion, registerGSAP } from "@/lib/animations";
 
 export function FlagshipPhilosophy() {
   const sectionRef = useRef<HTMLElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     registerGSAP();
     if (isReducedMotion()) return;
 
     const ctx = gsap.context(() => {
-      const cards = gsap.utils.toArray<HTMLElement>(".flagship-principle-card");
-      cards.forEach((card, index) => {
-        gsap.fromTo(
-          card,
-          { opacity: 0, y: 25 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            delay: index * 0.12,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 85%",
-              once: true,
-            },
-          }
-        );
-      });
+      gsap.fromTo(
+        ".flagship-principle-card",
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: cardsRef.current,
+            start: "top 80%",
+            once: true,
+          },
+        }
+      );
     }, sectionRef);
 
     return () => ctx.revert();
@@ -41,32 +39,32 @@ export function FlagshipPhilosophy() {
   const planningPillars = [
     {
       num: "01",
-      title: "Thoughtful Land Planning",
-      headline: "Respecting the Terrain Over Rigid Grids",
+      title: "Harmonious Contours",
+      headline: "Working with Natural Topography",
       description:
-        "Every plot within Tiiger Trail is delineated to follow the natural contours of the land. We avoid invasive earth-cutting in favour of organic circulation and open sightlines that celebrate the countryside.",
-      focus: "Contour-sensitive plotted layouts",
+        "Rather than grading the land flat into monotonous plots, Tiiger Trail embraces natural drainage lines, gentle slopes, and existing rock outcrops to preserve countryside texture.",
+      focus: "Natural water retention & contour preservation",
     },
     {
       num: "02",
-      title: "Consideration of the Natural Setting",
-      headline: "Preserving Ecosystem Integrity",
+      title: "Generous Scale",
+      headline: "Low-Density Farmstead Plots",
       description:
-        "We plan generous plantation avenues, native tree buffers, and low-density boundaries. The layout is designed to allow soil, greenery, and wildlife habitats to flourish in mutual balance.",
-      focus: "Native vegetation & ecological buffers",
+        "Every plot is generously sized to support a personal farmhouse, private fruit orchard, and natural tree cover—ensuring expansive views and true spatial privacy.",
+      focus: "Spacious acreage & low built-up coverage",
     },
     {
       num: "03",
-      title: "Long-Term Perspective",
-      headline: "Designed for Generational Permanence",
+      title: "Enduring Form",
+      headline: "Architectural Stewardship",
       description:
-        "We approach land development with a multi-decade lens. Plotted parcels are prepared to accommodate family farmhouses, private organic farming, or quiet personal sanctuaries that retain enduring worth.",
-      focus: "Enduring lifestyle & asset utility",
+        "Developed in partnership with Mayan Designs, farmhouse concept typologies celebrate local stone, timber pergolas, and vernacular rooflines that harmonize with the regional climate.",
+      focus: "Vernacular materials & climate-responsive design",
     },
     {
       num: "04",
-      title: "Transparent Buyer Communication",
-      headline: "Complete Disclosure at Every Stage",
+      title: "Clear Boundaries",
+      headline: "Total Legal Certainty",
       description:
         "From individual survey demarcations to clear mutation filings and independent legal scrutiny, we provide prospective buyers with full transparency before any commitment is undertaken.",
       focus: "Vetted parent deeds & individual RTCs",
@@ -77,7 +75,7 @@ export function FlagshipPhilosophy() {
     <section
       ref={sectionRef}
       id="planning-philosophy"
-      className="py-24 sm:py-32 bg-[#FDFBFF] border-b border-[#E2E6EC]"
+      className="py-24 sm:py-32 bg-[#FFFFFF] border-b border-[#DDD7CC]"
     >
       <Container size="wide">
         {/* Section Header */}
@@ -86,14 +84,14 @@ export function FlagshipPhilosophy() {
             Planning Philosophy
           </SectionEyebrow>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#242424] font-normal leading-[1.15] mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#292D30] font-normal leading-[1.15] mb-6">
             Guiding Principles Behind{" "}
-            <span className="italic font-light text-[#4A4A4A]">
+            <span className="italic font-light text-[#55534F]">
               Tiiger Trail
             </span>
           </h2>
 
-          <p className="text-base sm:text-lg text-[#4A4A4A] font-light leading-relaxed">
+          <p className="text-base sm:text-lg text-[#55534F] font-light leading-relaxed">
             Our planning methodology rejects short-term commercial compromises in
             favour of environmental sensitivity, legal clarity, and lasting spatial
             elegance.
@@ -101,52 +99,45 @@ export function FlagshipPhilosophy() {
         </div>
 
         {/* 4-Column Card Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {planningPillars.map((pillar) => (
             <div
               key={pillar.num}
-              className="flagship-principle-card bg-[#F3F6FA] p-8 rounded-sm border border-[#E2E6EC] border-t-4 border-t-[#0099FF] hover:border-[#0099FF] hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
+              className="flagship-principle-card bg-[#F5F1E9] p-8 rounded-sm border border-[#DDD7CC] border-t-4 border-t-[#354B5D] hover:border-[#354B5D] hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
-                <div className="flex items-center justify-between pb-6 mb-6 border-b border-[#E2E6EC]">
-                  <span className="text-lg font-serif font-medium text-[#242424] bg-[#EDC455] px-2.5 py-0.5 rounded-sm">
+                <div className="flex items-center justify-between pb-6 mb-6 border-b border-[#DDD7CC]">
+                  <span className="text-lg font-serif font-medium text-[#354B5D] bg-[#A98556]/20 px-2.5 py-0.5 rounded-sm">
                     {pillar.num}
                   </span>
-                  <span className="text-[10px] uppercase tracking-[0.16em] text-[#4A4A4A] font-semibold">
+                  <span className="text-[10px] uppercase tracking-[0.16em] text-[#55534F] font-semibold">
                     Core Standard
                   </span>
                 </div>
 
-                <h3 className="text-xl font-serif font-normal text-[#242424] mb-2">
+                <h3 className="text-xl font-serif font-normal text-[#292D30] mb-2">
                   {pillar.title}
                 </h3>
 
-                <h4 className="text-xs font-semibold text-[#242424] border-l-2 border-[#EDC455] pl-2.5 mb-4">
+                <h4 className="text-xs font-semibold text-[#292D30] border-l-2 border-[#A98556] pl-2.5 mb-4">
                   {pillar.headline}
                 </h4>
 
-                <p className="text-sm text-[#4A4A4A] font-light leading-relaxed mb-6">
+                <p className="text-sm text-[#55534F] font-light leading-relaxed mb-6">
                   {pillar.description}
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-[#E2E6EC]/80">
-                <span className="block text-[10px] uppercase tracking-wider text-[#4A4A4A] font-semibold mb-0.5">
+              <div className="pt-4 border-t border-[#DDD7CC]/80">
+                <span className="block text-[10px] uppercase tracking-wider text-[#55534F] font-semibold mb-0.5">
                   Design Benchmark
                 </span>
-                <span className="text-xs text-[#242424] font-medium">
+                <span className="text-xs text-[#292D30] font-medium">
                   {pillar.focus}
                 </span>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Governance Disclaimer */}
-        <div className="p-4 bg-[#F3F6FA] border border-[#E2E6EC] rounded-sm text-center">
-          <p className="text-xs text-[#4A4A4A] font-light">
-            * Planning philosophy outlines our development commitments; physical amenities and phased infrastructure are delivered in alignment with approved project schedules.
-          </p>
         </div>
       </Container>
     </section>

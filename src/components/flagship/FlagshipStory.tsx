@@ -23,11 +23,11 @@ export function FlagshipStory() {
         {
           opacity: 1,
           x: 0,
-          duration: 1,
+          duration: 0.9,
           ease: "power3.out",
           scrollTrigger: {
             trigger: narrativeRef.current,
-            start: "top 85%",
+            start: "top 80%",
             once: true,
           },
         }
@@ -39,11 +39,11 @@ export function FlagshipStory() {
         {
           opacity: 1,
           x: 0,
-          duration: 1,
+          duration: 0.9,
           ease: "power3.out",
           scrollTrigger: {
             trigger: imageRef.current,
-            start: "top 85%",
+            start: "top 80%",
             once: true,
           },
         }
@@ -57,7 +57,7 @@ export function FlagshipStory() {
     <section
       ref={sectionRef}
       id="project-story"
-      className="py-24 sm:py-32 bg-[#FDFBFF] border-b border-[#E2E6EC]"
+      className="py-24 sm:py-32 bg-[#FFFFFF] border-b border-[#DDD7CC]"
     >
       <Container size="wide">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -65,14 +65,14 @@ export function FlagshipStory() {
           <div ref={narrativeRef} className="lg:col-span-6 space-y-6">
             <SectionEyebrow theme="charcoal">The Project Story</SectionEyebrow>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#242424] font-normal leading-[1.14]">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#292D30] font-normal leading-[1.14]">
               Where Nature and Purpose{" "}
-              <span className="italic font-light text-[#242424] border-b-2 border-[#EDC455] pb-0.5">
+              <span className="italic font-light text-[#292D30] border-b-2 border-[#A98556] pb-0.5">
                 Find Common Ground
               </span>
             </h2>
 
-            <p className="text-base sm:text-lg text-[#4A4A4A] font-light leading-relaxed">
+            <p className="text-base sm:text-lg text-[#55534F] font-light leading-relaxed">
               In an era defined by urban densification, high-rise isolation, and
               frenetic city rhythms, Tiiger Trail was conceived as an intentional
               counterpoint. It is Starrbites’ inaugural plotted retreat—a physical
@@ -80,7 +80,7 @@ export function FlagshipStory() {
               tranquility, and enduring land ownership.
             </p>
 
-            <p className="text-base sm:text-lg text-[#4A4A4A] font-light leading-relaxed">
+            <p className="text-base sm:text-lg text-[#55534F] font-light leading-relaxed">
               Situated within the serene countryside of the Lepakshi corridor, the
               destination is crafted for families, nature enthusiasts, and thoughtful
               investors who desire more than a plot of land. Here, landowners gain
@@ -89,11 +89,11 @@ export function FlagshipStory() {
             </p>
 
             {/* Editorial Inset Box */}
-            <div className="p-6 bg-[#F3F6FA] border-l-4 border-[#0099FF] rounded-sm">
-              <span className="inline-block px-2 py-0.5 bg-[#EDC455] text-[10px] uppercase tracking-[0.16em] text-[#242424] font-semibold mb-2 rounded-xs">
+            <div className="p-6 bg-[#F5F1E9] border-l-4 border-[#354B5D] rounded-sm">
+              <span className="inline-block px-2 py-0.5 bg-[#A98556]/20 text-[10px] uppercase tracking-[0.16em] text-[#354B5D] font-semibold mb-2 rounded-xs">
                 The Starrbites Difference
               </span>
-              <p className="text-sm text-[#242424] font-normal leading-relaxed">
+              <p className="text-sm text-[#292D30] font-normal leading-relaxed">
                 Every plot within Tiiger Trail is supported by clear title vetting,
                 individual mutation documentation, and planned infrastructure designed
                 to age gracefully alongside the surrounding environment.
@@ -103,7 +103,7 @@ export function FlagshipStory() {
 
           {/* Right Column: Editorial Visual (6 cols) */}
           <div ref={imageRef} className="lg:col-span-6 relative">
-            <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full rounded-sm overflow-hidden shadow-xl border border-[#E2E6EC]">
+            <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full rounded-sm overflow-hidden shadow-xl border border-[#DDD7CC]">
               <Image
                 src="/images/stock/landscapes/landscape-golden-hour-retreat.jpg"
                 alt="Countryside retreat in golden sunlight amid mature greenery"
@@ -111,14 +111,14 @@ export function FlagshipStory() {
                 className="object-cover transition-transform duration-700 hover:scale-105"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#242424]/45 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#292D30]/45 via-transparent to-transparent pointer-events-none" />
 
               {/* Inset Photo Caption */}
-              <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 p-4 bg-[#FDFBFF]/95 backdrop-blur-md border-l-4 border-[#0099FF] shadow-lg rounded-sm">
-                <span className="block text-[10px] uppercase tracking-[0.18em] text-[#242424] font-semibold mb-0.5">
+              <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 p-4 bg-[#FFFFFF]/95 backdrop-blur-md border-l-4 border-[#A98556] shadow-lg rounded-sm">
+                <span className="block text-[10px] uppercase tracking-[0.18em] text-[#354B5D] font-semibold mb-0.5">
                   Countryside Living
                 </span>
-                <p className="text-xs text-[#4A4A4A] font-medium leading-snug">
+                <p className="text-xs text-[#55534F] font-medium leading-snug">
                   Designed for quiet family retreats, wellness immersion, and natural privacy.
                 </p>
               </div>
@@ -126,7 +126,7 @@ export function FlagshipStory() {
 
             {/* Subtle Offset Frame Accent */}
             <div
-              className="absolute -bottom-3 -right-3 w-full h-full border border-[#EDC455]/70 -z-10 rounded-sm hidden sm:block pointer-events-none"
+              className="absolute -bottom-3 -right-3 w-full h-full border border-[#A98556]/70 -z-10 rounded-sm hidden sm:block pointer-events-none"
               aria-hidden="true"
             />
           </div>

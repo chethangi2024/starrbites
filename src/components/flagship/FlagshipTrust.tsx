@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { ShieldCheck, FileCheck, Scale, Eye } from "lucide-react";
+import { FileCheck, Shield, Scale, Eye } from "lucide-react";
 import gsap from "gsap";
 import { Container } from "../ui/Container";
 import { SectionEyebrow } from "../ui/SectionEyebrow";
@@ -26,7 +26,7 @@ export function FlagshipTrust() {
           ease: "power3.out",
           scrollTrigger: {
             trigger: cardRef.current,
-            start: "top 85%",
+            start: "top 80%",
             once: true,
           },
         }
@@ -38,22 +38,22 @@ export function FlagshipTrust() {
 
   const trustCheckpoints = [
     {
-      icon: Scale,
-      title: "Independent Title Scrutiny",
-      description:
-        "Every land parcel undergoes exhaustive multi-decade legal scrutiny by principal legal advocates to verify unencumbered lineage and lawful ownership flow.",
-    },
-    {
       icon: FileCheck,
-      title: "Revenue Map & RTC Vetting",
+      title: "30-Year Title Search",
       description:
-        "Survey boundaries and village revenue maps (Tippani & Akarbandh) are cross-verified to guarantee exact acreage and eliminate boundary discrepancies.",
+        "Comprehensive scrutiny of parent deeds, encumbrance history, revenue flow, and legal inheritance documentation conducted by high court advocates.",
     },
     {
-      icon: ShieldCheck,
-      title: "Individual Mutation Support",
+      icon: Shield,
+      title: "Individual RTC & Mutation",
       description:
-        "Post-registration, our legal operations team assists buyers through the formal mutation process to ensure revenue records reflect the buyer's name.",
+        "Every plot is delivered with clear individual mutation filings, certified revenue records (RTC), and precise survey demarcation.",
+    },
+    {
+      icon: Scale,
+      title: "Statutory & Conversion Compliance",
+      description:
+        "Adherence to state land laws, regional master-plan zoning regulations, and applicable agricultural conversion frameworks.",
     },
     {
       icon: Eye,
@@ -67,23 +67,23 @@ export function FlagshipTrust() {
     <section
       ref={sectionRef}
       id="trust"
-      className="py-24 sm:py-32 bg-[#F3F6FA] border-b border-[#E2E6EC]"
+      className="py-24 sm:py-32 bg-[#F5F1E9] border-b border-[#DDD7CC]"
     >
       <Container size="wide">
         {/* Section Header */}
         <div className="max-w-[760px] mb-16 sm:mb-20">
           <SectionEyebrow theme="charcoal" className="mb-4">
-            Sanctity & Governance
+            Sanctity &amp; Governance
           </SectionEyebrow>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#242424] font-normal leading-[1.15] mb-6">
-            Documentary Transparency &{" "}
-            <span className="italic font-light text-[#242424] border-b-2 border-[#EDC455] pb-0.5">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#292D30] font-normal leading-[1.15] mb-6">
+            Documentary Transparency &amp;{" "}
+            <span className="italic font-light text-[#292D30] border-b-2 border-[#A98556] pb-0.5">
               Due Diligence
             </span>
           </h2>
 
-          <p className="text-base sm:text-lg text-[#4A4A4A] font-light leading-relaxed">
+          <p className="text-base sm:text-lg text-[#55534F] font-light leading-relaxed">
             We adhere to rigorous legal diligence standards. We believe confidence is
             built on verifiable public records, clear boundaries, and uncompromising
             procedural honesty.
@@ -100,24 +100,24 @@ export function FlagshipTrust() {
             return (
               <div
                 key={idx}
-                className="bg-[#FDFBFF] p-8 rounded-sm border border-[#E2E6EC] hover:border-[#0099FF] hover:shadow-sm transition-all duration-300 flex flex-col justify-between"
+                className="bg-[#FFFFFF] p-8 rounded-sm border border-[#DDD7CC] hover:border-[#354B5D] hover:shadow-sm transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-10 h-10 rounded-sm bg-[#0099FF]/15 border border-[#0099FF]/30 flex items-center justify-center text-[#242424] mb-6">
-                    <Icon className="w-5 h-5 text-[#242424]" />
+                  <div className="w-10 h-10 rounded-sm bg-[#354B5D]/10 border border-[#354B5D]/20 flex items-center justify-center text-[#354B5D] mb-6">
+                    <Icon className="w-5 h-5 text-[#354B5D]" />
                   </div>
 
-                  <h3 className="text-lg font-serif font-normal text-[#242424] mb-3">
+                  <h3 className="text-lg font-serif font-normal text-[#292D30] mb-3">
                     {item.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-[#4A4A4A] font-light leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#55534F] font-light leading-relaxed">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-[#E2E6EC] flex items-center gap-2 text-[11px] uppercase tracking-wider text-[#242424] font-semibold">
-                  <span className="w-2 h-2 rounded-full bg-[#EDC455]" />
+                <div className="pt-6 mt-6 border-t border-[#DDD7CC] flex items-center gap-2 text-[11px] uppercase tracking-wider text-[#292D30] font-semibold">
+                  <span className="w-2 h-2 rounded-full bg-[#A98556]" />
                   Verified Procedure
                 </div>
               </div>
@@ -126,11 +126,11 @@ export function FlagshipTrust() {
         </div>
 
         {/* Legal Disclaimer & Confirmation Flag */}
-        <div className="p-6 bg-[#FDFBFF] border border-[#E2E6EC] rounded-sm max-w-[880px] mx-auto text-center">
-          <span className="inline-block px-2 py-0.5 bg-[#EDC455] text-[10px] uppercase tracking-[0.16em] text-[#242424] font-semibold mb-2 rounded-xs">
+        <div className="p-6 bg-[#FFFFFF] border border-[#DDD7CC] rounded-sm max-w-[880px] mx-auto text-center">
+          <span className="inline-block px-2 py-0.5 bg-[#A98556]/20 text-[10px] uppercase tracking-[0.16em] text-[#354B5D] font-semibold mb-2 rounded-xs">
             Buyer Advisory Notice
           </span>
-          <p className="text-xs text-[#4A4A4A] font-light leading-relaxed">
+          <p className="text-xs text-[#55534F] font-light leading-relaxed">
             Project documentation, parent title certificates, and phase-specific
             statutory approvals are available for inspection at our registered
             corporate office in Bengaluru. Starrbites encourages all prospective buyers

@@ -64,7 +64,7 @@ export function NriExploreIntro() {
     <section
       ref={sectionRef}
       id="informed-exploration"
-      className="py-24 sm:py-32 bg-[#FDFBFF] border-b border-[#E2E6EC]"
+      className="py-24 sm:py-32 bg-[#FFFFFF] border-b border-[#DDD7CC]"
     >
       <Container size="wide">
         <div
@@ -77,24 +77,24 @@ export function NriExploreIntro() {
               Methodical Guidance
             </SectionEyebrow>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#242424] font-normal leading-[1.15] mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#292D30] font-normal leading-[1.15] mb-6">
               An Informed Way to{" "}
-              <span className="italic font-light text-[#4A4A4A]">
+              <span className="italic font-light text-[#55534F]">
                 Explore from Abroad
               </span>
             </h2>
 
-            <p className="text-base sm:text-lg text-[#4A4A4A] font-light leading-relaxed mb-6">
+            <p className="text-base sm:text-lg text-[#55534F] font-light leading-relaxed mb-6">
               Acquiring land in India while residing overseas requires clear
               information, verifiable facts, and unhurried decision-making. We have
               structured our advisory process to prioritize transparency over haste.
             </p>
 
-            <div className="p-6 bg-[#F3F6FA] border-l-4 border-[#0099FF] rounded-sm">
-              <span className="inline-block px-2 py-0.5 bg-[#EDC455] text-[10px] uppercase tracking-[0.16em] text-[#242424] font-semibold mb-2 rounded-xs">
+            <div className="p-6 bg-[#F5F1E9] border-l-4 border-[#354B5D] rounded-sm">
+              <span className="inline-block px-2 py-0.5 bg-[#A98556]/20 text-[10px] uppercase tracking-[0.16em] text-[#354B5D] font-semibold mb-2 rounded-xs">
                 Custom Circumstances
               </span>
-              <p className="text-xs text-[#242424] font-normal leading-relaxed">
+              <p className="text-xs text-[#292D30] font-normal leading-relaxed">
                 Because foreign exchange regulations (FEMA) and property categories
                 depend on individual residency status and specific project titles,
                 our process is structured to accommodate each buyer&apos;s unique profile.
@@ -102,36 +102,30 @@ export function NriExploreIntro() {
             </div>
           </div>
 
-          {/* Right Column: 3 Structured Ideas (7 cols) */}
-          <div className="lg:col-span-7 space-y-8 sm:space-y-10">
-            {explorePillars.map((pillar) => {
-              const Icon = pillar.icon;
+          {/* Right Column: 3 Sequential Pillars (7 cols) */}
+          <div className="lg:col-span-7 space-y-8">
+            {explorePillars.map((item) => {
+              const Icon = item.icon;
               return (
                 <div
-                  key={pillar.num}
-                  className="bg-[#F3F6FA] p-8 sm:p-10 rounded-sm border border-[#E2E6EC] hover:border-[#0099FF] transition-all duration-300 flex flex-col sm:flex-row gap-6 items-start group"
+                  key={item.num}
+                  className="bg-[#F5F1E9] p-8 sm:p-10 rounded-sm border border-[#DDD7CC] hover:border-[#354B5D] hover:shadow-md transition-all duration-300 flex flex-col sm:flex-row gap-6 items-start group"
                 >
-                  <div className="w-12 h-12 rounded-sm bg-[#0099FF]/15 border border-[#0099FF]/30 flex items-center justify-center text-[#242424] shrink-0 group-hover:bg-[#0099FF] transition-colors">
-                    <Icon className="w-6 h-6 text-[#242424]" />
+                  <div className="flex sm:flex-col items-center gap-3 shrink-0">
+                    <span className="text-xl font-serif font-semibold bg-[#A98556]/20 text-[#354B5D] px-3 py-1 rounded-[2px]">
+                      {item.num}
+                    </span>
+                    <div className="w-10 h-10 rounded-sm bg-[#354B5D]/10 border border-[#354B5D]/20 flex items-center justify-center text-[#354B5D]">
+                      <Icon className="w-5 h-5" />
+                    </div>
                   </div>
 
-                  <div>
-                    <div className="flex items-center gap-2.5 mb-2">
-                      <span className="text-xs font-serif bg-[#EDC455] text-[#242424] px-2 py-0.5 rounded-xs font-semibold tracking-wider">
-                        Step {pillar.num}
-                      </span>
-                      <span className="text-[#C8D0DA]">•</span>
-                      <span className="text-[10px] uppercase tracking-[0.16em] text-[#4A4A4A] font-medium">
-                        Fundamental Review
-                      </span>
-                    </div>
-
-                    <h3 className="text-xl sm:text-2xl font-serif font-normal text-[#242424] mb-3">
-                      {pillar.title}
+                  <div className="space-y-3">
+                    <h3 className="text-xl sm:text-2xl font-serif font-normal text-[#292D30]">
+                      {item.title}
                     </h3>
-
-                    <p className="text-sm text-[#4A4A4A] font-light leading-relaxed">
-                      {pillar.description}
+                    <p className="text-sm text-[#55534F] font-light leading-relaxed">
+                      {item.description}
                     </p>
                   </div>
                 </div>

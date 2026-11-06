@@ -4,7 +4,6 @@ import {
   getAllArticles,
   getArticleBySlug,
   getRelatedArticles,
-  Article,
 } from "@/lib/articles";
 import { ArticleDetailClient } from "@/components/blog/ArticleDetailClient";
 
@@ -73,9 +72,9 @@ export default async function ArticlePage({ params }: PageProps) {
 
   const allArticles = getAllArticles();
   const currentIndex = allArticles.findIndex((a) => a.slug === slug);
-  const prevArticle = currentIndex > 0 ? allArticles[currentIndex - 1] : undefined;
+  const prevArticle = currentIndex > 0 ? allArticles[currentIndex - 1] : null;
   const nextArticle =
-    currentIndex < allArticles.length - 1 ? allArticles[currentIndex + 1] : undefined;
+    currentIndex < allArticles.length - 1 ? allArticles[currentIndex + 1] : null;
 
   const relatedArticles = getRelatedArticles(slug, article.category, 3);
 

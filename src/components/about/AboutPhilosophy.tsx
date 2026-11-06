@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import Image from "next/image";
 import gsap from "gsap";
 import { Container } from "../ui/Container";
 import { SectionEyebrow } from "../ui/SectionEyebrow";
@@ -9,32 +8,29 @@ import { isReducedMotion, registerGSAP } from "@/lib/animations";
 
 export function AboutPhilosophy() {
   const sectionRef = useRef<HTMLElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
+  const itemsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     registerGSAP();
     if (isReducedMotion()) return;
 
     const ctx = gsap.context(() => {
-      const items = gsap.utils.toArray<HTMLElement>(".philosophy-editorial-item");
-      items.forEach((item, index) => {
-        gsap.fromTo(
-          item,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.9,
-            delay: index * 0.1,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: item,
-              start: "top 85%",
-              once: true,
-            },
-          }
-        );
-      });
+      gsap.fromTo(
+        ".philosophy-editorial-item",
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.18,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: itemsRef.current,
+            start: "top 80%",
+            once: true,
+          },
+        }
+      );
     }, sectionRef);
 
     return () => ctx.revert();
@@ -43,35 +39,35 @@ export function AboutPhilosophy() {
   const principles = [
     {
       num: "01",
-      title: "Purposeful Planning",
-      headline: "Thoughtful consideration of how land is organised and experienced.",
+      pillar: "Purposeful Planning",
+      headline: "How Every Destination is Conceived",
       description:
-        "Whether planning a countryside plotted retreat or a recreational community, we pay close attention to natural contours, internal road hierarchy, green buffers, and shared spaces. We avoid arbitrary subdivision in favour of layouts that remain functional and welcoming over time.",
-      metric: "Cohesive site planning",
+        "Every Starrbites project begins with site-responsive land organization. Rather than imposing uniform grid blocks, we evaluate natural contours, solar orientation, internal road hierarchy, and green buffers to ensure spaces remain functional, tranquil, and sustainable decades from today.",
+      focus: "Master planning, topography respect & circulation design",
     },
     {
       num: "02",
-      title: "Strategic Perspective",
-      headline: "Evaluating location, accessibility, surrounding development, and long-term relevance.",
+      pillar: "Strategic Perspective",
+      headline: "Corridor Selection & Long-Term Growth",
       description:
-        "Before committing to any site, we study highway connectivity, regional employment and institutional drivers, and civic infrastructure plans. This perspective ensures each project is situated in a corridor with practical accessibility and long-term relevance.",
-      metric: "Corridor evaluation",
+        "We identify land in corridors benefiting from documented economic drivers, civic infrastructure, and expressway connectivity—such as the North Bangalore–Lepakshi corridor off NH-44. We evaluate regional trends before acquiring or recommending any site.",
+      focus: "Highway connectivity, regional economic drivers & corridor study",
     },
     {
       num: "03",
-      title: "Transparency and Trust",
-      headline: "Clear communication, documentation, and responsible customer guidance.",
+      pillar: "Transparency & Trust",
+      headline: "Documentary Clarity & Verification",
       description:
-        "Real-estate ownership requires clear documentation. Across our projects, our legal and acquisition teams review parent deeds, survey boundaries, and mutation records so buyers and their independent advisors can verify every detail prior to purchase.",
-      metric: "Documented due diligence",
+        "Land ownership is only as secure as its legal foundation. We conduct rigorous legal due diligence tracing parent deeds across 30 years, revenue mutations, RTC continuity, encumbrance certificates (EC), and boundary surveys. We encourage independent advocate verification.",
+      focus: "30-year title search, RTC & mutation verification, EC clearance",
     },
     {
       num: "04",
-      title: "Lasting Value",
-      headline: "Creating opportunities that consider lifestyle, ownership, and future possibilities.",
+      pillar: "Lasting Value",
+      headline: "Enduring Utility & Stewardship",
       description:
-        "We measure a development by how well it serves its owners years after handover. By combining clear title records with considered site planning, we create projects intended to hold lasting personal and family significance.",
-      metric: "Enduring ownership utility",
+        "Real-estate development should create assets that endure. Whether conceived for immediate retreat living, organic plantation cultivation, or long-term family wealth preservation, our projects balance tangible utility with documented security.",
+      focus: "Lifestyle utility, capital appreciation & multi-generational value",
     },
   ];
 
@@ -79,62 +75,58 @@ export function AboutPhilosophy() {
     <section
       ref={sectionRef}
       id="philosophy"
-      className="py-24 sm:py-32 bg-[#F3F6FA] border-b border-[#E2E6EC]"
+      className="py-24 sm:py-32 bg-[#F5F1E9] border-b border-[#DDD7CC]"
     >
       <Container size="wide">
         {/* Section Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end mb-16 sm:mb-20">
-          <div className="lg:col-span-7">
-            <SectionEyebrow theme="charcoal" className="mb-4">
-              Core Principles
-            </SectionEyebrow>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#242424] font-normal leading-[1.15]">
-              The Four Pillars That Shape{" "}
-              <span className="italic font-light text-[#242424] border-b-2 border-[#EDC455]">
-                Every Destination
-              </span>
-            </h2>
-          </div>
-          <div className="lg:col-span-5 text-sm sm:text-base text-[#4A4A4A] font-light leading-relaxed">
-            <p>
-              These documented principles serve as the non-negotiable benchmark for
-              every location we select, every master plan we design, and every buyer
-              relationship we steward.
-            </p>
-          </div>
+        <div className="max-w-[760px] mb-16 sm:mb-20">
+          <SectionEyebrow theme="charcoal" className="mb-4">
+            Development Philosophy
+          </SectionEyebrow>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#292D30] font-normal leading-[1.15]">
+            The Principles That Govern{" "}
+            <span className="italic font-light text-[#292D30] border-b-2 border-[#A98556] pb-0.5">
+              Every Decision We Make.
+            </span>
+          </h2>
+          <p className="text-[#55534F] text-base sm:text-lg font-light mt-5 leading-relaxed">
+            Our philosophy is built on four non-negotiable pillars. These are not marketing
+            aspirations—they are operational standards that determine which parcels we acquire, how
+            we structure documents, and how we plan our communities.
+          </p>
         </div>
 
-        {/* Editorial Layout: Alternating Staggered Rows with Visual Accent */}
-        <div ref={cardsRef} className="space-y-8 sm:space-y-12">
+        {/* 4 Editorial Principles */}
+        <div ref={itemsRef} className="space-y-6 sm:space-y-8">
           {principles.map((item) => (
             <div
               key={item.num}
-              className="philosophy-editorial-item bg-[#FDFBFF] border border-[#E2E6EC] p-8 sm:p-12 rounded-sm shadow-sm hover:border-[#0099FF] transition-all duration-300 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
+              className="philosophy-editorial-item bg-[#FFFFFF] border border-[#DDD7CC] p-8 sm:p-12 rounded-sm shadow-sm hover:border-[#354B5D] transition-all duration-300 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
             >
-              {/* Left Column: Number & Principle Title (4 cols) */}
-              <div className="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-[#E2E6EC] pb-6 lg:pb-0 lg:pr-8">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-2xl sm:text-3xl font-serif font-semibold bg-[#EDC455]/40 text-[#242424] px-3 py-1 rounded-[2px]">
+              {/* Left Column: Number & Pillar (4 cols) */}
+              <div className="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-[#DDD7CC] pb-6 lg:pb-0 lg:pr-8">
+                <div className="flex items-baseline gap-4 mb-4">
+                  <span className="text-2xl sm:text-3xl font-serif font-semibold bg-[#A98556]/20 text-[#354B5D] px-3 py-1 rounded-[2px]">
                     {item.num}
                   </span>
-                  <span className="text-xs uppercase tracking-[0.2em] text-[#242424] font-semibold">
-                    Principle
+                  <span className="text-xs uppercase tracking-[0.2em] text-[#354B5D] font-semibold">
+                    Core Standard
                   </span>
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-serif font-normal text-[#242424] mb-3">
-                  {item.title}
+                <h3 className="text-2xl sm:text-3xl font-serif font-normal text-[#292D30] mb-3">
+                  {item.pillar}
                 </h3>
-                <div className="inline-block bg-[#E6F4FF] px-3 py-1 text-[11px] uppercase tracking-wider text-[#242424] font-semibold rounded-sm">
-                  {item.metric}
+                <div className="inline-block bg-[#354B5D]/10 px-3 py-1 text-[11px] uppercase tracking-wider text-[#354B5D] font-semibold rounded-sm">
+                  {item.focus}
                 </div>
               </div>
 
-              {/* Right Column: Statement & In-depth Elaboration (8 cols) */}
-              <div className="lg:col-span-8 flex flex-col justify-center">
-                <h4 className="text-lg sm:text-xl font-serif text-[#242424] font-medium leading-snug mb-4">
-                  “{item.headline}”
+              {/* Right Column: Narrative (8 cols) */}
+              <div className="lg:col-span-8 space-y-3">
+                <h4 className="text-lg sm:text-xl font-serif text-[#292D30] font-medium leading-snug mb-4">
+                  {item.headline}
                 </h4>
-                <p className="text-sm sm:text-base text-[#4A4A4A] font-light leading-relaxed">
+                <p className="text-[#55534F] text-sm sm:text-base font-light leading-relaxed">
                   {item.description}
                 </p>
               </div>
@@ -142,28 +134,24 @@ export function AboutPhilosophy() {
           ))}
         </div>
 
-        {/* Tactile Material Accent Strip */}
-        <div className="mt-16 sm:mt-20 p-8 sm:p-10 bg-[#FDFBFF] border-l-4 border-[#0099FF] border-y border-r border-[#E2E6EC] rounded-sm grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-          <div className="md:col-span-3 relative aspect-[4/3] rounded-sm overflow-hidden hidden md:block">
-            <Image
-              src="/images/stock/textures/editorial-stone-light-shadow.jpg"
-              alt="Tactile stone texture and sunlight"
-              fill
-              className="object-cover"
-              sizes="300px"
-            />
-          </div>
-          <div className="md:col-span-9 space-y-2">
-            <span className="inline-block text-[11px] uppercase tracking-[0.18em] bg-[#EDC455]/35 text-[#242424] px-2.5 py-0.5 rounded-[2px] font-semibold">
-              Authentic Stewardship
+        {/* Operational Commitment Callout */}
+        <div className="mt-16 sm:mt-20 p-8 sm:p-10 bg-[#FFFFFF] border-l-4 border-[#354B5D] border-y border-r border-[#DDD7CC] rounded-sm grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+          <div className="md:col-span-8">
+            <span className="inline-block text-[11px] uppercase tracking-[0.18em] bg-[#A98556]/20 text-[#354B5D] px-2.5 py-0.5 rounded-[2px] font-semibold mb-2">
+              Our Development Promise
             </span>
-            <p className="text-base sm:text-lg font-serif text-[#242424] leading-relaxed">
-              “Lasting quality in real-estate development is not found in superficial
-              embellishments. It is found in clear documentation, thoughtful site planning, and
-              spaces designed for meaningful long-term use.”
+            <p className="text-base sm:text-lg font-serif text-[#292D30] leading-relaxed">
+              We never market or develop land without completed 30-year title tracing, certified
+              revenue records, clear conversion or agricultural mutation documentation, and
+              verified physical boundaries.
             </p>
-            <span className="block text-xs text-[#4A4A4A] font-light pt-2">
-              — Starrbites Development Charter
+          </div>
+          <div className="md:col-span-4 text-left md:text-right">
+            <span className="text-xs uppercase tracking-widest text-[#55534F] block">
+              Bengaluru Corporate Office
+            </span>
+            <span className="text-sm font-semibold text-[#292D30] block mt-1">
+              Documented Land Due Diligence
             </span>
           </div>
         </div>

@@ -95,32 +95,32 @@ export function AboutStory() {
     <section
       ref={sectionRef}
       id="story"
-      className="py-24 sm:py-32 bg-[#FDFBFF] border-b border-[#E2E6EC]"
+      className="py-24 sm:py-32 bg-[#FFFFFF] border-b border-[#DDD7CC]"
     >
       <Container size="wide">
         {/* Narrative Split */}
         <div
           ref={contentRef}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start pb-20 border-b border-[#E2E6EC]"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start pb-20 border-b border-[#DDD7CC]"
         >
           {/* Left: Section Header & Origin Perspective (5 cols) */}
           <div className="lg:col-span-5">
             <SectionEyebrow theme="charcoal" className="mb-4">
               Our Story &amp; Leadership
             </SectionEyebrow>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#242424] font-normal leading-[1.15] mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#292D30] font-normal leading-[1.15] mb-6">
               Rooted in Design Thinking,{" "}
-              <span className="italic font-light text-[#242424] border-b-2 border-[#EDC455]">
+              <span className="italic font-light text-[#292D30] border-b-2 border-[#A98556] pb-0.5">
                 Structured for Long-Term Development.
               </span>
             </h2>
-            <p className="text-sm font-semibold tracking-wide uppercase text-[#242424] border-l-4 border-[#EDC455] pl-4">
-              From spatial execution roots to multi-project real-estate development.
+            <p className="text-sm font-semibold tracking-wide uppercase text-[#292D30] border-l-4 border-[#A98556] pl-4">
+              From spatial execution roots to signature real-estate development.
             </p>
           </div>
 
           {/* Right: Narrative Context (7 cols) */}
-          <div className="lg:col-span-7 space-y-6 text-base sm:text-lg text-[#4A4A4A] font-light leading-relaxed">
+          <div className="lg:col-span-7 space-y-6 text-base sm:text-lg text-[#55534F] font-light leading-relaxed">
             <p>
               Starrbites was founded on a straightforward premise: that real-estate and land
               development in India should combine rigorous spatial planning, verifiable title
@@ -133,12 +133,11 @@ export function AboutStory() {
               documentary review. Starrbites evolved into a dedicated development company to
               address these gaps methodically.
             </p>
-            <p className="text-sm sm:text-base text-[#242424] font-normal bg-[#F3F6FA] p-6 rounded-sm border-l-4 border-[#0099FF]">
-              Today, Starrbites develops distinct projects shaped around specific regional strengths
-              and ownership formats—including our flagship plotted nature development,{" "}
-              <strong className="font-semibold">Tiiger Trail</strong>, and our upcoming
-              recreational living development,{" "}
-              <strong className="font-semibold">Stay and Play</strong>.
+            <p className="text-sm sm:text-base text-[#292D30] font-normal bg-[#F5F1E9] p-6 rounded-sm border-l-4 border-[#354B5D]">
+              Today, Starrbites is advancing our flagship plotted nature development,{" "}
+              <strong className="font-semibold text-[#292D30]">Tiiger Trail</strong> along the
+              North Bangalore–Lepakshi growth corridor, setting a new benchmark for countryside
+              living with certified titles and cohesive master planning.
             </p>
           </div>
         </div>
@@ -147,12 +146,12 @@ export function AboutStory() {
         <div ref={teamRef} className="pt-20" id="leadership">
           <div className="max-w-[720px] mb-12 sm:mb-16">
             <SectionEyebrow theme="charcoal" className="mb-3">
-              Leadership & Advisory
+              Leadership &amp; Advisory
             </SectionEyebrow>
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-serif text-[#242424] font-normal leading-tight mb-4">
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-serif text-[#292D30] font-normal leading-tight mb-4">
               Guided by Experience and Integrity
             </h3>
-            <p className="text-[#4A4A4A] text-sm sm:text-base font-light leading-relaxed">
+            <p className="text-[#55534F] text-sm sm:text-base font-light leading-relaxed">
               Our multidisciplinary team brings together land acquisition specialists,
               legal advocates, project planners, and customer advisors to ensure
               uncompromising diligence across every development.
@@ -164,10 +163,10 @@ export function AboutStory() {
             {teamMembers.map((member) => (
               <div
                 key={member.name}
-                className="group bg-[#F3F6FA] rounded-sm border border-[#E2E6EC] overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-[#0099FF] hover:-translate-y-1 flex flex-col"
+                className="group bg-[#F5F1E9] rounded-sm border border-[#DDD7CC] overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-[#354B5D] hover:-translate-y-1 flex flex-col"
               >
                 {/* Photo Aspect Ratio 1:1 */}
-                <div className="relative aspect-square w-full bg-[#E8EEF5] overflow-hidden">
+                <div className="relative aspect-square w-full bg-[#DDD7CC] overflow-hidden">
                   <Image
                     src={member.image}
                     alt={`${member.name} - ${member.role} at Starrbites`}
@@ -175,19 +174,19 @@ export function AboutStory() {
                     className="object-cover object-center grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#242424]/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#292D30]/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                 </div>
 
                 {/* Profile Details */}
-                <div className="p-5 flex-1 flex flex-col justify-between bg-[#FDFBFF]">
+                <div className="p-5 flex-1 flex flex-col justify-between bg-[#FFFFFF]">
                   <div>
-                    <h4 className="text-base font-semibold text-[#242424] mb-1.5 group-hover:text-[#007ACC] transition-colors">
+                    <h4 className="text-base font-semibold text-[#292D30] mb-1.5 group-hover:text-[#354B5D] transition-colors">
                       {member.name}
                     </h4>
-                    <span className="inline-block text-[11px] uppercase tracking-[0.14em] bg-[#EDC455]/35 text-[#242424] px-2 py-0.5 rounded-[2px] font-semibold mb-3">
+                    <span className="inline-block text-[11px] uppercase tracking-[0.14em] bg-[#A98556]/20 text-[#354B5D] px-2 py-0.5 rounded-[2px] font-semibold mb-3">
                       {member.role}
                     </span>
-                    <p className="text-xs text-[#4A4A4A] font-light leading-relaxed">
+                    <p className="text-xs text-[#55534F] font-light leading-relaxed">
                       {member.description}
                     </p>
                   </div>

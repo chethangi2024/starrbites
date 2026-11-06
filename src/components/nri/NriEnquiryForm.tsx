@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { CheckCircle2, AlertCircle, Loader2, Phone, Mail, Shield } from "lucide-react";
+import { CheckCircle2, AlertCircle, Loader2, Shield } from "lucide-react";
 import { Container } from "../ui/Container";
 import { SectionEyebrow } from "../ui/SectionEyebrow";
 import { Button } from "../ui/Button";
@@ -104,7 +104,7 @@ export function NriEnquiryForm() {
     }
 
     if (!formData.consent) {
-      errors.consent = "You must provide consent to be contacted regarding your enquiry.";
+      errors.consent = "You must provide consent for our team to contact you regarding your enquiry.";
     }
 
     setFieldErrors(errors);
@@ -113,37 +113,50 @@ export function NriEnquiryForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setServerMessage("");
+
+    if (formData.website_hp) {
+      // Honeypot hit: silently exit
+      setStatus("success");
+      setReferenceId("SB-NRI-" + Math.floor(100000 + Math.random() * 900000));
+      return;
+    }
 
     if (!validate()) {
       setStatus("error");
-      setServerMessage("Please correct the errors indicated above.");
+      setServerMessage("Please correct the highlighted fields before submitting.");
       return;
     }
 
     setStatus("submitting");
+    setServerMessage("");
 
     try {
-      const response = await fetch("/api/nri-enquiry", {
+      const response = await fetch("/api/contact-enquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.fullName,
+          email: formData.email,
+          phone: `${formData.countryCode} ${formData.phone}`,
+          project: `NRI Enquiry: ${formData.investmentInterest} (Resident: ${formData.countryOfResidence}, Channel: ${formData.preferredContactMethod})`,
+          message: formData.notes || "NRI Advisory Consultation Request",
+          sourcePage: "NRI Advisory Page (/nri/)",
+        }),
       });
 
       const data = await response.json();
 
       if (response.ok && data.success) {
         setStatus("success");
-        setReferenceId(data.referenceId || "CONFIRMED");
-        setServerMessage(data.message);
+        setReferenceId(data.leadId || "SB-NRI-" + Math.floor(100000 + Math.random() * 900000));
+        setServerMessage(
+          "Thank you for contacting Starrbites. Our Bengaluru NRI advisory team will review your request and reach out via your preferred channel within 24 business hours."
+        );
       } else {
         setStatus("error");
         setServerMessage(
-          data.error || "Unable to process enquiry. Please try again or telephone us directly."
+          data.error || "We could not register your enquiry. Please verify your entries or contact us directly."
         );
-        if (data.details) {
-          setFieldErrors(data.details);
-        }
       }
     } catch {
       setStatus("error");
@@ -156,21 +169,21 @@ export function NriEnquiryForm() {
   return (
     <section
       id="nri-enquiry-form"
-      className="py-24 sm:py-32 bg-[#FDFBFF] border-b border-[#E2E6EC] scroll-mt-24"
+      className="py-24 sm:py-32 bg-[#FFFFFF] border-b border-[#DDD7CC] scroll-mt-24"
     >
       <Container size="standard">
-        <div className="bg-[#F3F6FA] border border-[#E2E6EC] border-t-4 border-t-[#0099FF] rounded-sm p-8 sm:p-12 lg:p-16 shadow-sm">
+        <div className="bg-[#F5F1E9] border border-[#DDD7CC] border-t-4 border-t-[#354B5D] rounded-sm p-8 sm:p-12 lg:p-16 shadow-sm">
           {/* Form Header */}
           <div className="max-w-[680px] mb-10 sm:mb-12">
             <SectionEyebrow theme="charcoal" className="mb-3">
               Direct Advisory Channel
             </SectionEyebrow>
 
-            <h2 className="text-3xl sm:text-4xl font-serif text-[#242424] font-normal leading-tight mb-4">
+            <h2 className="text-3xl sm:text-4xl font-serif text-[#292D30] font-normal leading-tight mb-4">
               Connect with the Starrbites NRI Advisory Desk
             </h2>
 
-            <p className="text-sm sm:text-base text-[#4A4A4A] font-light leading-relaxed">
+            <p className="text-sm sm:text-base text-[#55534F] font-light leading-relaxed">
               Complete the enquiry details below to receive verified project
               dossiers, schedule virtual walkthroughs, or arrange a personal
               consultation.
@@ -179,37 +192,37 @@ export function NriEnquiryForm() {
 
           {/* Success State View */}
           {status === "success" ? (
-            <div className="bg-[#FDFBFF] border-2 border-[#0099FF] p-8 sm:p-12 rounded-sm text-center max-w-[620px] mx-auto space-y-5 animate-in fade-in duration-500">
-              <div className="w-14 h-14 rounded-full bg-[#EDC455] text-[#242424] flex items-center justify-center mx-auto mb-2">
-                <CheckCircle2 className="w-8 h-8 text-[#242424]" />
+            <div className="bg-[#FFFFFF] border-2 border-[#354B5D] p-8 sm:p-12 rounded-sm text-center max-w-[620px] mx-auto space-y-5 animate-in fade-in duration-500">
+              <div className="w-14 h-14 rounded-full bg-[#A98556]/20 text-[#354B5D] flex items-center justify-center mx-auto mb-2">
+                <CheckCircle2 className="w-8 h-8 text-[#354B5D]" />
               </div>
 
-              <span className="inline-block px-2.5 py-0.5 bg-[#0099FF] text-xs uppercase tracking-[0.2em] text-[#242424] font-bold rounded-xs">
+              <span className="inline-block px-2.5 py-0.5 bg-[#354B5D] text-xs uppercase tracking-[0.2em] text-[#FFFFFF] font-bold rounded-xs">
                 Enquiry Successfully Registered
               </span>
 
-              <h3 className="text-2xl font-serif text-[#242424] font-normal">
+              <h3 className="text-2xl font-serif text-[#292D30] font-normal">
                 Thank You, {formData.fullName}
               </h3>
 
-              <div className="inline-block bg-[#F3F6FA] px-4 py-1.5 rounded-sm border border-[#E2E6EC] text-xs font-mono text-[#242424]">
+              <div className="inline-block bg-[#F5F1E9] px-4 py-1.5 rounded-sm border border-[#DDD7CC] text-xs font-mono text-[#292D30]">
                 Reference ID: <span className="font-bold">{referenceId}</span>
               </div>
 
-              <p className="text-sm text-[#4A4A4A] font-light leading-relaxed">
+              <p className="text-sm text-[#55534F] font-light leading-relaxed">
                 {serverMessage}
               </p>
 
-              <div className="pt-6 border-t border-[#E2E6EC] text-xs text-[#4A4A4A] space-y-2">
+              <div className="pt-6 border-t border-[#DDD7CC] text-xs text-[#55534F] space-y-2">
                 <p>
                   Urgent consultation needed? You can also reach our Bengaluru desk directly:
                 </p>
-                <div className="flex flex-wrap items-center justify-center gap-4 text-[#242424] font-semibold">
-                  <a href="tel:+919740806357" className="hover:underline transition-colors">
+                <div className="flex flex-wrap items-center justify-center gap-4 text-[#292D30] font-semibold">
+                  <a href="tel:+919740806357" className="hover:text-[#A98556] transition-colors">
                     +91 97408 06357
                   </a>
                   <span>•</span>
-                  <a href="tel:+918861197979" className="hover:underline transition-colors">
+                  <a href="tel:+918861197979" className="hover:text-[#A98556] transition-colors">
                     +91 88611 97979
                   </a>
                 </div>
@@ -274,7 +287,7 @@ export function NriEnquiryForm() {
                 <div>
                   <label
                     htmlFor="fullName"
-                    className="block text-xs uppercase tracking-wider text-[#242424] font-semibold mb-2"
+                    className="block text-xs uppercase tracking-wider text-[#292D30] font-semibold mb-2"
                   >
                     Full Name <span className="text-[#B91C1C]">*</span>
                   </label>
@@ -288,8 +301,8 @@ export function NriEnquiryForm() {
                       if (fieldErrors.fullName) setFieldErrors({ ...fieldErrors, fullName: "" });
                     }}
                     placeholder="e.g. Anand Sharma"
-                    className={`w-full px-4 py-3 bg-[#FDFBFF] border text-sm text-[#242424] rounded-sm transition-colors focus:outline-none focus:ring-2 focus:ring-[#0099FF] ${
-                      fieldErrors.fullName ? "border-red-500" : "border-[#C8D0DA]"
+                    className={`w-full px-4 py-3 bg-[#FFFFFF] border text-sm text-[#292D30] rounded-sm transition-colors focus:outline-none focus:border-[#354B5D] ${
+                      fieldErrors.fullName ? "border-red-500" : "border-[#D1CEC4]"
                     }`}
                   />
                   {fieldErrors.fullName && (
@@ -302,7 +315,7 @@ export function NriEnquiryForm() {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-xs uppercase tracking-wider text-[#242424] font-semibold mb-2"
+                    className="block text-xs uppercase tracking-wider text-[#292D30] font-semibold mb-2"
                   >
                     Email Address <span className="text-[#B91C1C]">*</span>
                   </label>
@@ -315,9 +328,9 @@ export function NriEnquiryForm() {
                       setFormData({ ...formData, email: e.target.value });
                       if (fieldErrors.email) setFieldErrors({ ...fieldErrors, email: "" });
                     }}
-                    placeholder="e.g. anand.sharma@example.com"
-                    className={`w-full px-4 py-3 bg-[#FDFBFF] border text-sm text-[#242424] rounded-sm transition-colors focus:outline-none focus:ring-2 focus:ring-[#0099FF] ${
-                      fieldErrors.email ? "border-red-500" : "border-[#C8D0DA]"
+                    placeholder="anand.sharma@example.com"
+                    className={`w-full px-4 py-3 bg-[#FFFFFF] border text-sm text-[#292D30] rounded-sm transition-colors focus:outline-none focus:border-[#354B5D] ${
+                      fieldErrors.email ? "border-red-500" : "border-[#D1CEC4]"
                     }`}
                   />
                   {fieldErrors.email && (
@@ -328,30 +341,28 @@ export function NriEnquiryForm() {
                 </div>
               </div>
 
-              {/* Row 2: Phone with Country Code & Country of Residence */}
+              {/* Row 2: Contact Number (with Country Code) & Country of Residence */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label
                     htmlFor="phone"
-                    className="block text-xs uppercase tracking-wider text-[#242424] font-semibold mb-2"
+                    className="block text-xs uppercase tracking-wider text-[#292D30] font-semibold mb-2"
                   >
-                    Telephone / WhatsApp <span className="text-[#B91C1C]">*</span>
+                    Contact Telephone <span className="text-[#B91C1C]">*</span>
                   </label>
                   <div className="flex gap-2">
                     <select
                       id="countryCode"
                       value={formData.countryCode}
                       onChange={(e) => setFormData({ ...formData, countryCode: e.target.value })}
-                      aria-label="Country Calling Code"
-                      className="w-[140px] px-3 py-3 bg-[#FDFBFF] border border-[#C8D0DA] text-xs text-[#242424] rounded-sm focus:outline-none focus:ring-2 focus:ring-[#0099FF]"
+                      className="w-[140px] px-3 py-3 bg-[#FFFFFF] border border-[#D1CEC4] text-xs text-[#292D30] rounded-sm focus:outline-none focus:border-[#354B5D]"
                     >
-                      {countryCodes.map((item) => (
-                        <option key={item.code} value={item.code}>
-                          {item.country}
+                      {countryCodes.map((c) => (
+                        <option key={c.code} value={c.code}>
+                          {c.country}
                         </option>
                       ))}
                     </select>
-
                     <input
                       id="phone"
                       type="tel"
@@ -361,9 +372,9 @@ export function NriEnquiryForm() {
                         setFormData({ ...formData, phone: e.target.value });
                         if (fieldErrors.phone) setFieldErrors({ ...fieldErrors, phone: "" });
                       }}
-                      placeholder="e.g. 555-0199"
-                      className={`flex-1 px-4 py-3 bg-[#FDFBFF] border text-sm text-[#242424] rounded-sm transition-colors focus:outline-none focus:ring-2 focus:ring-[#0099FF] ${
-                        fieldErrors.phone ? "border-red-500" : "border-[#C8D0DA]"
+                      placeholder="415 555 2671"
+                      className={`flex-1 px-4 py-3 bg-[#FFFFFF] border text-sm text-[#292D30] rounded-sm transition-colors focus:outline-none focus:border-[#354B5D] ${
+                        fieldErrors.phone ? "border-red-500" : "border-[#D1CEC4]"
                       }`}
                     />
                   </div>
@@ -377,7 +388,7 @@ export function NriEnquiryForm() {
                 <div>
                   <label
                     htmlFor="countryOfResidence"
-                    className="block text-xs uppercase tracking-wider text-[#242424] font-semibold mb-2"
+                    className="block text-xs uppercase tracking-wider text-[#292D30] font-semibold mb-2"
                   >
                     Country of Residence <span className="text-[#B91C1C]">*</span>
                   </label>
@@ -385,7 +396,7 @@ export function NriEnquiryForm() {
                     id="countryOfResidence"
                     value={formData.countryOfResidence}
                     onChange={(e) => setFormData({ ...formData, countryOfResidence: e.target.value })}
-                    className="w-full px-4 py-3 bg-[#FDFBFF] border border-[#C8D0DA] text-sm text-[#242424] rounded-sm focus:outline-none focus:ring-2 focus:ring-[#0099FF]"
+                    className="w-full px-4 py-3 bg-[#FFFFFF] border border-[#D1CEC4] text-sm text-[#292D30] rounded-sm focus:outline-none focus:border-[#354B5D]"
                   >
                     {countries.map((c) => (
                       <option key={c} value={c}>
@@ -401,7 +412,7 @@ export function NriEnquiryForm() {
                 <div>
                   <label
                     htmlFor="investmentInterest"
-                    className="block text-xs uppercase tracking-wider text-[#242424] font-semibold mb-2"
+                    className="block text-xs uppercase tracking-wider text-[#292D30] font-semibold mb-2"
                   >
                     Investment Interest <span className="text-[#B91C1C]">*</span>
                   </label>
@@ -409,7 +420,7 @@ export function NriEnquiryForm() {
                     id="investmentInterest"
                     value={formData.investmentInterest}
                     onChange={(e) => setFormData({ ...formData, investmentInterest: e.target.value })}
-                    className="w-full px-4 py-3 bg-[#FDFBFF] border border-[#C8D0DA] text-sm text-[#242424] rounded-sm focus:outline-none focus:ring-2 focus:ring-[#0099FF]"
+                    className="w-full px-4 py-3 bg-[#FFFFFF] border border-[#D1CEC4] text-sm text-[#292D30] rounded-sm focus:outline-none focus:border-[#354B5D]"
                   >
                     {interests.map((interest) => (
                       <option key={interest} value={interest}>
@@ -422,7 +433,7 @@ export function NriEnquiryForm() {
                 <div>
                   <label
                     htmlFor="preferredContactMethod"
-                    className="block text-xs uppercase tracking-wider text-[#242424] font-semibold mb-2"
+                    className="block text-xs uppercase tracking-wider text-[#292D30] font-semibold mb-2"
                   >
                     Preferred Contact Channel <span className="text-[#B91C1C]">*</span>
                   </label>
@@ -430,7 +441,7 @@ export function NriEnquiryForm() {
                     id="preferredContactMethod"
                     value={formData.preferredContactMethod}
                     onChange={(e) => setFormData({ ...formData, preferredContactMethod: e.target.value })}
-                    className="w-full px-4 py-3 bg-[#FDFBFF] border border-[#C8D0DA] text-sm text-[#242424] rounded-sm focus:outline-none focus:ring-2 focus:ring-[#0099FF]"
+                    className="w-full px-4 py-3 bg-[#FFFFFF] border border-[#D1CEC4] text-sm text-[#292D30] rounded-sm focus:outline-none focus:border-[#354B5D]"
                   >
                     {contactMethods.map((method) => (
                       <option key={method} value={method}>
@@ -445,18 +456,17 @@ export function NriEnquiryForm() {
               <div>
                 <label
                   htmlFor="notes"
-                  className="block text-xs uppercase tracking-wider text-[#242424] font-semibold mb-2"
+                  className="block text-xs uppercase tracking-wider text-[#292D30] font-semibold mb-2"
                 >
-                  Specific Questions or Preferences{" "}
-                  <span className="text-xs text-[#4A4A4A] font-normal lowercase">(optional)</span>
+                  Specific Questions or Preferences (Optional)
                 </label>
                 <textarea
                   id="notes"
-                  rows={3}
+                  rows={4}
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                  placeholder="Share details on your intended timeline, location priorities, or questions for our legal/advisory desk."
-                  className="w-full px-4 py-3 bg-[#FDFBFF] border border-[#C8D0DA] text-sm text-[#242424] rounded-sm focus:outline-none focus:ring-2 focus:ring-[#0099FF] resize-y"
+                  placeholder="Share details on your preferred plot size, intended use (personal retreat, long-term asset), or suitable time window for a remote video consultation..."
+                  className="w-full px-4 py-3 bg-[#FFFFFF] border border-[#D1CEC4] text-sm text-[#292D30] rounded-sm focus:outline-none focus:border-[#354B5D] resize-y"
                 />
               </div>
 
@@ -470,13 +480,13 @@ export function NriEnquiryForm() {
                       setFormData({ ...formData, consent: e.target.checked });
                       if (fieldErrors.consent) setFieldErrors({ ...fieldErrors, consent: "" });
                     }}
-                    className="w-4 h-4 mt-0.5 rounded border-[#C8D0DA] accent-[#0099FF] text-[#0099FF] focus:ring-[#0099FF]"
+                    className="w-4 h-4 mt-0.5 rounded border-[#D1CEC4] accent-[#354B5D] text-[#354B5D] focus:ring-[#354B5D]"
                   />
-                  <span className="text-xs text-[#4A4A4A] font-light leading-relaxed">
+                  <span className="text-xs text-[#55534F] font-light leading-relaxed">
                     I consent to having Starrbites Developments contact me via my
                     preferred communication channel to provide project documentation and
                     coordinate my enquiry in accordance with the{" "}
-                    <Link href="/privacy-policy/" className="underline text-[#242424] font-medium hover:text-[#4A4A4A]">
+                    <Link href="/privacy-policy/" className="underline text-[#292D30] font-medium hover:text-[#A98556]">
                       Privacy Policy
                     </Link>
                     .
@@ -496,21 +506,21 @@ export function NriEnquiryForm() {
                   size="lg"
                   type="submit"
                   disabled={status === "submitting"}
-                  className="min-w-[200px] justify-center"
+                  className="w-full sm:w-auto min-w-[200px] justify-center"
                 >
                   {status === "submitting" ? (
-                    <span className="flex items-center gap-2">
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      Routing Enquiry...
+                    <span className="inline-flex items-center justify-center gap-2 whitespace-nowrap flex-nowrap">
+                      <Loader2 className="w-4 h-4 animate-spin shrink-0" />
+                      <span>Routing Enquiry...</span>
                     </span>
                   ) : (
                     "Submit NRI Enquiry"
                   )}
                 </Button>
 
-                <div className="flex items-center gap-2 text-xs text-[#4A4A4A] font-light">
-                  <div className="w-5 h-5 rounded-full bg-[#EDC455] flex items-center justify-center">
-                    <Shield className="w-3 h-3 text-[#242424]" />
+                <div className="flex items-center gap-2 text-xs text-[#55534F] font-light">
+                  <div className="w-5 h-5 rounded-full bg-[#A98556]/20 flex items-center justify-center">
+                    <Shield className="w-3 h-3 text-[#354B5D]" />
                   </div>
                   <span>Strict privacy. No unsolicited third-party sharing.</span>
                 </div>

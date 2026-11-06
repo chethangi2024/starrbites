@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ShieldCheck, Mail, MapPin, ArrowLeft, ArrowUpRight, Clock, FileText } from "lucide-react";
+import { ShieldCheck, ArrowLeft, Clock, FileText } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -16,37 +16,37 @@ export default function PrivacyPolicyPage() {
     <>
       <Header onOpenEnquiry={() => setIsEnquiryModalOpen(true)} />
 
-      <main className="flex-1 bg-[#FDFBFF] pt-36 pb-24">
+      <main className="flex-1 bg-[#FFFFFF] pt-36 pb-24">
         {/* Editorial Legal Header */}
-        <section className="border-b border-[#E2E6EC] pb-14 bg-[#F3F6FA]">
+        <section className="border-b border-[#DDD7CC] pb-14 bg-[#F5F1E9]">
           <Container size="wide">
             <div className="max-w-4xl">
               <div className="flex items-center gap-2 mb-4">
                 <Link
                   href="/"
-                  className="inline-flex items-center gap-1.5 text-xs text-[#242424] hover:underline font-medium transition-colors"
+                  className="inline-flex items-center gap-1.5 whitespace-nowrap flex-nowrap shrink-0 text-xs text-[#292D30] hover:text-[#526B80] font-medium transition-colors"
                 >
-                  <ArrowLeft className="w-3.5 h-3.5" />
-                  <span>Return to Homepage</span>
+                  <ArrowLeft className="w-3.5 h-3.5 shrink-0" />
+                  <span className="whitespace-nowrap">Return to Homepage</span>
                 </Link>
               </div>
 
-              <SectionEyebrow theme="charcoal" className="mb-3">
+              <SectionEyebrow theme="navy" className="mb-3">
                 GOVERNANCE & DATA PROTECTION
               </SectionEyebrow>
 
-              <h1 className="text-4xl sm:text-5xl font-serif text-[#242424] font-semibold tracking-tight leading-[1.18]">
+              <h1 className="text-4xl sm:text-5xl font-serif text-[#292D30] font-semibold tracking-tight leading-[1.18]">
                 Starrbites Privacy Policy
               </h1>
 
-              <div className="mt-6 flex flex-wrap items-center gap-6 text-xs sm:text-sm text-[#4A4A4A]">
+              <div className="mt-6 flex flex-wrap items-center gap-6 text-xs sm:text-sm text-[#55534F]">
                 <span className="flex items-center gap-1.5">
-                  <Clock className="w-4 h-4 text-[#242424]" />
+                  <Clock className="w-4 h-4 text-[#A98556]" />
                   Last Updated: October 2026
                 </span>
                 <span>•</span>
                 <span className="flex items-center gap-1.5">
-                  <ShieldCheck className="w-4 h-4 text-[#242424]" />
+                  <ShieldCheck className="w-4 h-4 text-[#A98556]" />
                   Direct Client Advisory Commitment
                 </span>
               </div>
@@ -61,41 +61,41 @@ export default function PrivacyPolicyPage() {
               {/* Quick Summary Sidebar */}
               <aside className="lg:col-span-4 order-2 lg:order-1">
                 <div className="lg:sticky lg:top-28 space-y-6">
-                  <div className="bg-[#F3F6FA] border border-[#E2E6EC] border-t-4 border-t-[#0099FF] rounded-[2px] p-6 space-y-4">
-                    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#242424]">
-                      <FileText className="w-4 h-4 text-[#242424]" />
+                  <div className="bg-[#F5F1E9] border border-[#DDD7CC] border-t-4 border-t-[#354B5D] rounded-[2px] p-6 space-y-4">
+                    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#292D30]">
+                      <FileText className="w-4 h-4 text-[#A98556]" />
                       <span>Summary Highlights</span>
                     </div>
-                    <ul className="space-y-3 text-xs text-[#4A4A4A] leading-relaxed">
+                    <ul className="space-y-3 text-xs text-[#55534F] leading-relaxed">
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#EDC455] shrink-0 mt-1.5" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#A98556] shrink-0 mt-1.5" />
                         <span>We collect only information submitted directly via inquiry forms.</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#EDC455] shrink-0 mt-1.5" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#A98556] shrink-0 mt-1.5" />
                         <span>Data is used solely for property advisory, project briefings, and due diligence follow-up.</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#EDC455] shrink-0 mt-1.5" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#A98556] shrink-0 mt-1.5" />
                         <span>We never sell or distribute client contacts to external marketing brokers.</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#EDC455] shrink-0 mt-1.5" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#A98556] shrink-0 mt-1.5" />
                         <span>You retain the right to request review, correction, or deletion of your records.</span>
                       </li>
                     </ul>
                   </div>
 
-                  <div className="bg-[#242424] text-[#FDFBFF] p-6 rounded-[2px] border-t-4 border-[#0099FF] space-y-3">
-                    <h3 className="text-sm font-serif font-semibold text-[#FDFBFF]">
+                  <div className="bg-[#354B5D] text-[#FFFFFF] p-6 rounded-[2px] border-t-4 border-[#A98556] space-y-3">
+                    <h3 className="text-sm font-serif font-semibold text-[#FFFFFF]">
                       Privacy Inquiries
                     </h3>
-                    <p className="text-xs text-[#FDFBFF]/80 font-light leading-relaxed">
+                    <p className="text-xs text-[#FFFFFF]/80 font-light leading-relaxed">
                       For any questions regarding personal data or to request record deletion:
                     </p>
                     <a
                       href="mailto:contact@starrbites.com"
-                      className="text-xs text-[#EDC455] underline block hover:text-[#FDFBFF] transition-colors"
+                      className="text-xs text-[#A98556] underline block hover:text-white transition-colors"
                     >
                       contact@starrbites.com
                     </a>
@@ -104,10 +104,10 @@ export default function PrivacyPolicyPage() {
               </aside>
 
               {/* Main Policy Content */}
-              <article className="lg:col-span-8 order-1 lg:order-2 space-y-12 text-[#2D2D2D] leading-relaxed font-light">
+              <article className="lg:col-span-8 order-1 lg:order-2 space-y-12 text-[#55534F] leading-relaxed font-light">
                 {/* 1. Introduction */}
                 <div className="space-y-4">
-                  <h2 className="text-2xl font-serif font-semibold text-[#242424]">
+                  <h2 className="text-2xl font-serif font-semibold text-[#292D30]">
                     1. Introduction & Organizational Scope
                   </h2>
                   <p>
@@ -125,7 +125,7 @@ export default function PrivacyPolicyPage() {
 
                 {/* 2. Information Collected */}
                 <div className="space-y-4">
-                  <h2 className="text-2xl font-serif font-semibold text-[#242424]">
+                  <h2 className="text-2xl font-serif font-semibold text-[#292D30]">
                     2. Information We Collect
                   </h2>
                   <p>
@@ -133,25 +133,25 @@ export default function PrivacyPolicyPage() {
                     with our advisory desk, submitting consultation requests, or inquiring about specific
                     land developments such as Tiiger Trail. This information includes:
                   </p>
-                  <ul className="list-disc pl-5 space-y-2 text-sm text-[#2D2D2D]">
+                  <ul className="list-disc pl-5 space-y-2 text-sm text-[#55534F]">
                     <li>
-                      <strong>Contact Identifiers:</strong> Your full name, email address, telephone and/or
+                      <strong className="text-[#292D30]">Contact Identifiers:</strong> Your full name, email address, telephone and/or
                       WhatsApp number, and international country code.
                     </li>
                     <li>
-                      <strong>Geographic & Residency Information:</strong> Your declared country and city
+                      <strong className="text-[#292D30]">Geographic & Residency Information:</strong> Your declared country and city
                       of residence, relevant for cross-border NRI title frameworks and time-zone coordination.
                     </li>
                     <li>
-                      <strong>Investment & Project Interests:</strong> Project preferences (e.g., Tiiger
+                      <strong className="text-[#292D30]">Investment & Project Interests:</strong> Project preferences (e.g., Tiiger
                       Trail, plotted farmland, joint ventures), investment horizon, and preferred contact channel.
                     </li>
                     <li>
-                      <strong>Specific Inquiries & Messages:</strong> Any details, requirements, or title
+                      <strong className="text-[#292D30]">Specific Inquiries & Messages:</strong> Any details, requirements, or title
                       queries included in your submitted message text.
                     </li>
                     <li>
-                      <strong>Technical Web Logs:</strong> Standard web server access logs (including IP
+                      <strong className="text-[#292D30]">Technical Web Logs:</strong> Standard web server access logs (including IP
                       addresses, browser user-agent strings, referring URLs, and access timestamps) recorded
                       automatically to ensure operational stability, rate limiting, and spam prevention.
                     </li>
@@ -160,14 +160,14 @@ export default function PrivacyPolicyPage() {
 
                 {/* 3. Purpose of Processing */}
                 <div className="space-y-4">
-                  <h2 className="text-2xl font-serif font-semibold text-[#242424]">
+                  <h2 className="text-2xl font-serif font-semibold text-[#292D30]">
                     3. How We Use Your Information
                   </h2>
                   <p>
                     Starrbites uses personal information strictly for legitimate commercial, advisory, and
                     administrative purposes, including:
                   </p>
-                  <ul className="list-disc pl-5 space-y-2 text-sm text-[#2D2D2D]">
+                  <ul className="list-disc pl-5 space-y-2 text-sm text-[#55534F]">
                     <li>Directly responding to your inquiries regarding land availability, layouts, and master plans.</li>
                     <li>Transmitting verified title dossiers, mutation process guidelines, and project brochures.</li>
                     <li>Scheduling private site inspections, video consultations, and in-person meetings at our Dollars Colony office.</li>
@@ -178,11 +178,11 @@ export default function PrivacyPolicyPage() {
 
                 {/* 4. Information Sharing & Third Parties */}
                 <div className="space-y-4">
-                  <h2 className="text-2xl font-serif font-semibold text-[#242424]">
+                  <h2 className="text-2xl font-serif font-semibold text-[#292D30]">
                     4. Information Sharing & Disclosure Policy
                   </h2>
                   <p>
-                    <strong>We do not sell, rent, monetize, or lease personal information to third-party marketing companies, brokers, or data aggregators.</strong>
+                    <strong className="text-[#292D30]">We do not sell, rent, monetize, or lease personal information to third-party marketing companies, brokers, or data aggregators.</strong>
                   </p>
                   <p>
                     Your information is accessed strictly on a need-to-know basis by authorized Starrbites
@@ -196,7 +196,7 @@ export default function PrivacyPolicyPage() {
 
                 {/* 5. Data Storage, Security & Retention */}
                 <div className="space-y-4">
-                  <h2 className="text-2xl font-serif font-semibold text-[#242424]">
+                  <h2 className="text-2xl font-serif font-semibold text-[#292D30]">
                     5. Data Storage, Security & Retention Practices
                   </h2>
                   <p>
@@ -215,7 +215,7 @@ export default function PrivacyPolicyPage() {
 
                 {/* 6. Cookies and Tracking */}
                 <div className="space-y-4">
-                  <h2 className="text-2xl font-serif font-semibold text-[#242424]">
+                  <h2 className="text-2xl font-serif font-semibold text-[#292D30]">
                     6. Cookies & Tracking Technologies
                   </h2>
                   <p>
@@ -227,7 +227,7 @@ export default function PrivacyPolicyPage() {
 
                 {/* 7. User Rights & Contact */}
                 <div className="space-y-4">
-                  <h2 className="text-2xl font-serif font-semibold text-[#242424]">
+                  <h2 className="text-2xl font-serif font-semibold text-[#292D30]">
                     7. Your Rights & Privacy Requests
                   </h2>
                   <p>
@@ -239,11 +239,11 @@ export default function PrivacyPolicyPage() {
                   <p>
                     To exercise any of these rights, please contact our administrative desk:
                   </p>
-                  <div className="p-6 bg-[#F3F6FA] border border-[#E2E6EC] border-l-4 border-l-[#0099FF] rounded-[2px] space-y-2 text-sm">
-                    <div className="font-semibold text-[#242424]">Starrbites Developments — Privacy Desk</div>
-                    <div>Email: <a href="mailto:contact@starrbites.com" className="text-[#242424] font-medium underline">contact@starrbites.com</a></div>
-                    <div>Telephone: <a href="tel:+919740806357" className="text-[#242424] font-medium underline">+91 97408 06357</a></div>
-                    <div className="text-xs text-[#4A4A4A] pt-1">
+                  <div className="p-6 bg-[#F5F1E9] border border-[#DDD7CC] border-l-4 border-l-[#354B5D] rounded-[2px] space-y-2 text-sm">
+                    <div className="font-semibold text-[#292D30]">Starrbites Developments — Privacy Desk</div>
+                    <div>Email: <a href="mailto:contact@starrbites.com" className="text-[#354B5D] font-medium underline">contact@starrbites.com</a></div>
+                    <div>Telephone: <a href="tel:+919740806357" className="text-[#354B5D] font-medium underline">+91 97408 06357</a></div>
+                    <div className="text-xs text-[#55534F] pt-1">
                       No. 194, 3rd Main, 13th Cross, RMV 2nd Stage, HIG Dollars Colony, Bengaluru - 560094, Karnataka, India
                     </div>
                   </div>
