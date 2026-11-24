@@ -1,0 +1,326 @@
+---
+import { NAV_LINKS, SITE } from '../data/site';
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (href: string) => {
+  const normalized = href.replace(/\/$/, '') || '/';
+  if (normalized === '/') return currentPath === '/';
+  return currentPath === normalized || currentPath.startsWith(`${normalized}/`);
+};
+
+const overlayLinks = [...NAV_LINKS, { label: 'Talk to us', href: '/contact' }];
+---
+
+<div
+  id="site-overlay-menu"
+  class="overlay-menu"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Site navigation"
+  hidden
+  data-overlay-menu
+>
+  <div class="container overlay-menu__inner">
+    <div class="overlay-menu__top">
+      <a href="/" class="overlay-menu__brand" aria-label={`${SITE.name} — Home`}>
+        <img
+          src="/brand/logo-light-400.png"
+          srcset="/brand/logo-light-400.png 1x, /brand/logo-light-800.png 2x"
+          alt={SITE.name}
+          width="132"
+          height="50"
+          decoding="async"
+        />
+      </a>
+
+      <button
+        type="button"
+        class="btn btn--outline overlay-menu__close"
+        data-menu-close
+        aria-label="Close navigation menu"
+      >
+        Close
+      </button>
+    </div>
+
+    <div class="overlay-menu__body">
+      <nav aria-label="Full-screen navigation">
+        <ul class="overlay-menu__list">
+          {
+            overlayLinks.map((item) => (
+              <li class="overlay-menu__item">
+                <a
+                  href={item.href}
+                  class:list={['overlay-menu__link', { 'is-active': isCurrent(item.href) }]}
+                  aria-current={isCurrent(item.href) ? 'page' : undefined}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <aside class="overlay-menu__meta" aria-label="Contact information">
+        <p class="eyebrow">Bengaluru Office</p>
+        <p class="overlay-menu__address">{SITE.address}</p>
+        <p class="overlay-menu__contact">
+          {
+            SITE.phones.map((phone, idx) => (
+              <>
+                <a href={phone.href}>{phone.display}</a>
+                {idx === 0 && <span aria-hidden="true"> / </span>}
+              </>
+            ))
+          }
+          <br />
+          <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+        </p>
+        <div class="overlay-menu__social">
+          {
+            SITE.social.map((item) => (
+              <a href={item.href} class="overlay-menu__social-link">
+                {item.label}
+              </a>
+            ))
+          }
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<style>
+  .overlay-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background-color: var(--color-surface-overlay);
+    color: var(--color-text-primary);
+    overflow-y: auto;
+    opacity: 0;
+    transition: opacity var(--motion-fast) var(--ease-out);
+  }
+
+  .overlay-menu.is-open {
+    opacity: 1;
+  }
+
+  .overlay-menu[hidden] {
+    display: none;
+  }
+
+  .overlay-menu__inner {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: var(--space-6);
+  }
+
+  .overlay-menu__top {
+    min-height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding-block: var(--space-3);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .overlay-menu__brand img {
+    width: auto;
+    height: 44px;
+  }
+
+  @media (min-width: 1024px) {
+    .overlay-menu__brand img {
+      height: 50px;
+    }
+  }
+
+  .overlay-menu__close {
+    min-height: 44px;
+    padding: var(--space-2) var(--space-4);
+  }
+
+  .overlay-menu__body {
+    flex: 1 1 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    align-content: center;
+    padding-block: var(--space-6);
+  }
+
+  @media (min-width: 1024px) {
+    .overlay-menu__body {
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.8fr);
+      align-items: end;
+      gap: var(--space-7);
+    }
+  }
+
+  .overlay-menu__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .overlay-menu__link {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: 500;
+    line-height: var(--leading-heading);
+    color: var(--color-text-primary);
+    transition: color var(--motion-fast) var(--ease-out),
+      transform var(--motion-fast) var(--ease-out);
+  }
+
+  @media (min-width: 640px) {
+    .overlay-menu__link {
+      font-size: var(--text-3xl);
+    }
+  }
+
+  .overlay-menu__link:hover,
+  .overlay-menu__link.is-active {
+    color: var(--color-accent);
+    opacity: 1;
+    transform: translateX(var(--space-2));
+  }
+
+  .overlay-menu__meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  @media (min-width: 1024px) {
+    .overlay-menu__meta {
+      padding-top: 0;
+      padding-left: var(--space-5);
+      border-top: 0;
+      border-left: 1px solid var(--color-border-subtle);
+    }
+  }
+
+  .overlay-menu__address,
+  .overlay-menu__contact {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+  }
+
+  .overlay-menu__contact a {
+    color: var(--color-text-primary);
+  }
+
+  .overlay-menu__contact a:hover {
+    color: var(--color-accent);
+  }
+
+  .overlay-menu__social {
+    display: flex;
+    gap: var(--space-4);
+    margin-top: var(--space-2);
+  }
+
+  .overlay-menu__social-link {
+    font-size: var(--text-md);
+    font-weight: 500;
+    color: var(--color-accent);
+  }
+</style>
+
+<script>
+  const overlay = document.querySelector<HTMLElement>('[data-overlay-menu]');
+  const openBtn = document.querySelector<HTMLButtonElement>('[data-menu-open]');
+  const closeBtn = overlay?.querySelector<HTMLButtonElement>('[data-menu-close]');
+
+  if (overlay && openBtn && closeBtn) {
+    const FOCUSABLE_SELECTOR =
+      'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+    let isOpen = false;
+
+    const getFocusable = () =>
+      Array.from(overlay.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)).filter(
+        (el) => !el.hasAttribute('hidden') && el.offsetParent !== null
+      );
+
+    const openMenu = () => {
+      if (isOpen) return;
+      isOpen = true;
+      overlay.hidden = false;
+      requestAnimationFrame(() => overlay.classList.add('is-open'));
+      openBtn.setAttribute('aria-expanded', 'true');
+      document.documentElement.classList.add('is-menu-open');
+      document.body.classList.add('is-menu-open');
+      window.__starrbitesMotion?.stopScroll();
+      closeBtn.focus();
+    };
+
+    const closeMenu = (restoreFocus = true) => {
+      if (!isOpen) return;
+      isOpen = false;
+      overlay.classList.remove('is-open');
+      openBtn.setAttribute('aria-expanded', 'false');
+      document.documentElement.classList.remove('is-menu-open');
+      document.body.classList.remove('is-menu-open');
+      window.__starrbitesMotion?.startScroll();
+
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced) {
+        overlay.hidden = true;
+      } else {
+        window.setTimeout(() => {
+          if (!isOpen) overlay.hidden = true;
+        }, 300);
+      }
+
+      if (restoreFocus) {
+        openBtn.focus();
+      }
+    };
+
+    const handleKeydown = (event: KeyboardEvent) => {
+      if (!isOpen) return;
+
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeMenu(true);
+        return;
+      }
+
+      if (event.key === 'Tab') {
+        const focusables = getFocusable();
+        if (focusables.length === 0) return;
+
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+    };
+
+    openBtn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', () => closeMenu(true));
+    document.addEventListener('keydown', handleKeydown);
+
+    overlay.querySelectorAll('a[href]').forEach((link) => {
+      link.addEventListener('click', () => closeMenu(false));
+    });
+  }
+</script>

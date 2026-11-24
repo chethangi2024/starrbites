@@ -1,0 +1,395 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import MediaSlot from '../../components/MediaSlot.astro';
+import ClosingCta from '../../components/home/ClosingCta.astro';
+
+export async function getStaticPaths() {
+  const allPosts = (await getCollection('insights', ({ data }) => !data.draft)).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  );
+
+  return allPosts.map((post) => {
+    const others = allPosts.filter((p) => p.id !== post.id);
+    const sameCategory = others.filter((p) => p.data.category === post.data.category);
+    const otherCategory = others.filter((p) => p.data.category !== post.data.category);
+    const related = [...sameCategory, ...otherCategory].slice(0, 2);
+
+    return {
+      params: { slug: post.id },
+      props: { post, related },
+    };
+  });
+}
+
+const { post, related } = Astro.props;
+const { Content } = await render(post);
+
+const cover = post.data.coverImage ?? `/media/insights/${post.id}.jpg`;
+const coverAlt = post.data.coverAlt ?? `Cover image for ${post.data.title}`;
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('en-IN', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  });
+const seoTitle =
+  post.data.title.length <= 46
+    ? `${post.data.title} · StarrBites`
+    : post.data.title.slice(0, 59);
+---
+
+<BaseLayout
+  title={seoTitle}
+  noTitleSuffix={true}
+  description={post.data.description.slice(0, 154)}
+  ogImage={cover}
+  ogType="article"
+  articleSchema={{
+    headline: post.data.title,
+    description: post.data.description,
+    datePublished: post.data.pubDate.toISOString(),
+    image: cover,
+    category: post.data.category,
+  }}
+>
+  <!-- Article Header (Dark) -->
+  <header class="article-hero">
+    <div class="container article-hero__inner">
+      <a href="/insights" class="article-hero__back">
+        <span aria-hidden="true">←</span> Back to Insights
+      </a>
+
+      <div class="article-hero__meta">
+        <span class="eyebrow">{post.data.category}</span>
+        <span class="article-hero__dot" aria-hidden="true">·</span>
+        <time datetime={post.data.pubDate.toISOString()} class="article-hero__date">
+          {formatDate(post.data.pubDate)}
+        </time>
+      </div>
+
+      <h1 class="article-hero__title">{post.data.title}</h1>
+      <p class="article-hero__lead">{post.data.description}</p>
+
+      <div class="article-hero__cover">
+        <MediaSlot src={cover} alt={coverAlt} ratio="16/9" eager={true} />
+      </div>
+    </div>
+  </header>
+
+  <!-- Article Body (Light Surface for Long-Form Readability) -->
+  <article class="section surface-light article-body-section">
+    <div class="container">
+      <div class="prose" data-reveal>
+        <Content />
+      </div>
+
+      <div class="article-footer-nav" data-reveal>
+        <a href="/insights" class="btn btn--outline">
+          <span aria-hidden="true">←</span> Back to Insights
+        </a>
+      </div>
+    </div>
+  </article>
+
+  <!-- Related Posts -->
+  {
+    related.length > 0 && (
+      <section class="section related-posts" aria-labelledby="related-posts-heading">
+        <div class="container">
+          <div class="related-posts__head" data-reveal>
+            <p class="eyebrow">Continue Reading</p>
+            <h2 id="related-posts-heading" class="related-posts__heading">
+              Related Insights
+            </h2>
+          </div>
+
+          <div class="related-posts__grid">
+            {related.map((item) => {
+              const itemCover = item.data.coverImage ?? `/media/insights/${item.id}.jpg`;
+              const itemAlt = item.data.coverAlt ?? `Cover image for ${item.data.title}`;
+              return (
+                <article class="related-card" data-reveal>
+                  <a href={`/insights/${item.id}`} class="related-card__link">
+                    <MediaSlot src={itemCover} alt={itemAlt} ratio="16/10" zoomOnHover={true} />
+                    <div class="related-card__body">
+                      <div class="related-card__meta">
+                        <span class="eyebrow">{item.data.category}</span>
+                        <time
+                          datetime={item.data.pubDate.toISOString()}
+                          class="related-card__date"
+                        >
+                          {formatDate(item.data.pubDate)}
+                        </time>
+                      </div>
+                      <h3 class="related-card__title">{item.data.title}</h3>
+                      <p class="related-card__desc">{item.data.description}</p>
+                      <span class="related-card__cta">
+                        Read more <span aria-hidden="true">→</span>
+                      </span>
+                    </div>
+                  </a>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <ClosingCta
+    heading="Questions about land ownership in Bengaluru?"
+    text="Talk directly with our team about plots, documentation, or NRI buying guidance."
+    ctaLabel="Talk to us"
+    ctaHref="/contact"
+  />
+</BaseLayout>
+
+<style>
+  .article-hero {
+    padding-top: calc(var(--header-height) + var(--space-6));
+    padding-bottom: var(--space-6);
+    background-color: var(--color-surface-base);
+  }
+
+  @media (min-width: 1024px) {
+    .article-hero {
+      padding-top: calc(var(--header-height) + var(--space-7));
+      padding-bottom: var(--space-7);
+    }
+  }
+
+  .article-hero__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .article-hero__back {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-md);
+    font-weight: 500;
+    color: var(--color-accent);
+  }
+
+  .article-hero__meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .article-hero__dot,
+  .article-hero__date {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+  }
+
+  .article-hero__title {
+    font-size: var(--text-2xl);
+    max-width: 24ch;
+  }
+
+  @media (min-width: 1024px) {
+    .article-hero__title {
+      font-size: var(--text-3xl);
+    }
+  }
+
+  .article-hero__lead {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+  }
+
+  .article-hero__cover {
+    width: 100%;
+    margin-top: var(--space-3);
+  }
+
+  /* Readable long-form article styling on warm light surface */
+  .prose {
+    max-width: var(--measure-max);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    color: var(--color-text-on-light);
+    font-size: var(--text-md);
+    line-height: var(--leading-body);
+  }
+
+  .prose :global(h2) {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: 500;
+    line-height: var(--leading-heading);
+    color: var(--color-text-on-light);
+    margin-top: var(--space-5);
+  }
+
+  .prose :global(h3) {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 500;
+    line-height: var(--leading-heading);
+    color: var(--color-text-on-light);
+    margin-top: var(--space-4);
+  }
+
+  .prose :global(p) {
+    margin: 0;
+    color: var(--color-text-on-light);
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    margin: 0;
+    padding-left: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .prose :global(li) {
+    color: var(--color-text-on-light);
+  }
+
+  .prose :global(blockquote) {
+    margin: var(--space-3) 0;
+    padding: var(--space-3) var(--space-4);
+    border-left: 3px solid var(--color-text-on-light);
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    line-height: 1.35;
+    color: var(--color-text-on-light);
+  }
+
+  .prose :global(a) {
+    color: var(--color-text-on-light);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    word-break: break-word;
+  }
+
+  .prose :global(a:hover) {
+    opacity: 0.75;
+  }
+
+  .article-footer-nav {
+    margin-top: var(--space-6);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--color-border-on-light);
+    max-width: var(--measure-max);
+  }
+
+  /* Related Posts */
+  .related-posts {
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .related-posts__head {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+  }
+
+  .related-posts__heading {
+    font-size: var(--text-2xl);
+  }
+
+  .related-posts__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  @media (min-width: 768px) {
+    .related-posts__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-4);
+    }
+  }
+
+  .related-card {
+    display: flex;
+  }
+
+  .related-card__link {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: var(--space-4);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface-raised);
+    border: 1px solid var(--color-border-subtle);
+    color: var(--color-text-primary);
+    transition:
+      border-color var(--motion-fast) var(--ease-out),
+      transform var(--motion-fast) var(--ease-out);
+  }
+
+  .related-card__link:hover {
+    opacity: 1;
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+
+  .related-card__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    gap: var(--space-3);
+    padding-top: var(--space-4);
+  }
+
+  .related-card__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+
+  .related-card__date {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+  }
+
+  .related-card__title {
+    font-size: var(--text-xl);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .related-card__desc {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+    flex: 1 1 auto;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .related-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+    font-size: var(--text-md);
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .related-card__link:hover {
+      transform: none;
+    }
+  }
+</style>

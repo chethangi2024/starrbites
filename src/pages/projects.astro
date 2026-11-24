@@ -1,0 +1,172 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import MediaSlot from '../components/MediaSlot.astro';
+import { SITE } from '../data/site';
+---
+
+<BaseLayout
+  title="Projects"
+  description="Curated plotted land destinations by StarrBites in and around Bengaluru."
+  transparentHero={true}
+>
+  <PageHero
+    eyebrow="Projects"
+    title="Our destinations"
+    lead="Plotted developments chosen for natural character, thoughtful planning, and long-term livability."
+    mediaSrc="/media/projects-hero.jpg"
+    mediaAlt="Aerial view of open plotted land surrounded by trees"
+  />
+
+  <section class="section" aria-labelledby="projects-list-heading">
+    <div class="container projects__stack">
+      <h2 id="projects-list-heading" class="sr-only">StarrBites destinations</h2>
+
+      <!-- Large Flagship Card: Tiiger Trail – Phase I -->
+      <article class="project-feature" data-reveal>
+        <div class="project-feature__media">
+          <MediaSlot
+            src="/media/tiiger-trail.jpg"
+            alt="Tiiger Trail – Phase I plotted development surrounded by greenery"
+            ratio="16/9"
+            zoomOnHover={true}
+          />
+        </div>
+
+        <div class="project-feature__body">
+          <p class="eyebrow">Flagship Destination</p>
+          <h3 class="project-feature__title">Tiiger Trail – Phase I</h3>
+          <p class="project-feature__tagline">Where Nature and Soul Meet</p>
+          <p class="project-feature__desc">
+            A premium plotted development shaped around greenery, quiet avenues, and open space — designed for families and investors looking for grounded land ownership near Bengaluru.
+          </p>
+          <div class="project-feature__actions">
+            <a
+              href={SITE.flagshipUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn--primary"
+            >
+              Visit Tiiger Trail
+              <span aria-hidden="true">↗</span>
+              <span class="sr-only"> (opens in a new tab)</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Smaller Upcoming Card -->
+      <article class="project-upcoming" data-reveal>
+        <div class="project-upcoming__content">
+          <p class="eyebrow">Upcoming</p>
+          <h3 class="project-upcoming__title">More destinations coming soon</h3>
+          <p class="project-upcoming__desc">
+            We are quietly curating our next plotted developments around Bengaluru. Leave your details to be notified when new phases open.
+          </p>
+        </div>
+        <div class="project-upcoming__action">
+          <a href="/contact" class="btn btn--outline">Talk to us to hear first</a>
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .projects__stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .project-feature {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    padding: var(--space-4);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface-raised);
+    border: 1px solid var(--color-border-subtle);
+  }
+
+  @media (min-width: 1024px) {
+    .project-feature {
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+      align-items: center;
+      gap: var(--space-6);
+      padding: var(--space-5);
+    }
+  }
+
+  .project-feature__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .project-feature__title {
+    font-size: var(--text-2xl);
+  }
+
+  @media (min-width: 1024px) {
+    .project-feature__title {
+      font-size: var(--text-3xl);
+    }
+  }
+
+  .project-feature__tagline {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    line-height: var(--leading-heading);
+    color: var(--color-accent);
+  }
+
+  .project-feature__desc {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+  }
+
+  .project-feature__actions {
+    margin-top: var(--space-2);
+  }
+
+  .project-upcoming {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: var(--space-5) var(--space-4);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface-base);
+    border: 1px solid var(--color-border-subtle);
+  }
+
+  @media (min-width: 1024px) {
+    .project-upcoming {
+      flex-direction: row;
+      align-items: center;
+      padding: var(--space-5) var(--space-6);
+    }
+  }
+
+  .project-upcoming__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .project-upcoming__title {
+    font-size: var(--text-xl);
+  }
+
+  .project-upcoming__desc {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+  }
+
+  .project-upcoming__action {
+    flex-shrink: 0;
+  }
+</style>

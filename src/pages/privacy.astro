@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../data/site';
+---
+
+<BaseLayout
+  title="Privacy Policy"
+  description="How StarrBites collects, uses, and protects enquiry form details and website information for visitors in India and abroad."
+>
+  <header class="legal-hero">
+    <div class="container legal-hero__inner">
+      <p class="eyebrow">Legal</p>
+      <h1 class="legal-hero__title">Privacy Policy</h1>
+      <p class="legal-hero__updated">Last updated: 24 November 2026</p>
+    </div>
+  </header>
+
+  <article class="section surface-light">
+    <div class="container">
+      <div class="prose" data-reveal>
+        <p>
+          StarrBites respects your privacy. This policy explains what information we collect through this website, why we collect it, how long we keep it, and how you can reach us regarding your data.
+        </p>
+
+        <h2>1. Information We Collect</h2>
+        <p>
+          When you submit an enquiry through our contact form, we collect the details you choose to share:
+        </p>
+        <ul>
+          <li>Full name</li>
+          <li>Phone number</li>
+          <li>Email address</li>
+          <li>Area of interest (Buying, Investing, or NRI)</li>
+          <li>Your message</li>
+        </ul>
+
+        <h2>2. Why We Use This Information</h2>
+        <p>
+          We use your enquiry details solely to respond to your message, share information about StarrBites plotted developments (including Tiiger Trail – Phase I), arrange calls or site visits, and provide requested NRI buying guidance. We do not sell or rent your personal details to third parties.
+        </p>
+
+        <h2>3. How Long We Keep Your Data</h2>
+        <p>
+          We retain enquiry information only for as long as needed to respond to your request, maintain active communications you have asked for, or comply with applicable Indian legal and record-keeping obligations. You may ask us to update or delete your enquiry details at any time.
+        </p>
+
+        <h2>4. Third-Party Services</h2>
+        <p>
+          Our contact form submissions are processed via Formspree, and our Contact page includes a lazy-loaded Google Map to help you locate our Bengaluru office. These providers handle technical data under their own privacy policies.
+        </p>
+
+        <h2>5. Cookies and Analytics</h2>
+        <p>
+          This website does not use advertising trackers or third-party marketing cookies. Basic server or browser logs may be generated automatically for security and performance. If analytics tools are added in the future, this policy will be updated accordingly.
+        </p>
+
+        <h2>6. General Information Notice</h2>
+        <p>
+          Content published on this website is for general informational purposes only and does not constitute a legal offer, financial advice, or legal or tax advice.
+        </p>
+
+        <h2>7. Who to Contact</h2>
+        <p>
+          To request access, correction, or deletion of your enquiry details, please contact StarrBites directly:
+        </p>
+        <ul>
+          <li>Email: <a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+          <li>
+            Phone: <a href={SITE.phones[0].href}>{SITE.phones[0].display}</a> /{' '}
+            <a href={SITE.phones[1].href}>{SITE.phones[1].display}</a>
+          </li>
+          <li>Address: {SITE.address}</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .legal-hero {
+    padding-top: calc(var(--header-height) + var(--space-7));
+    padding-bottom: var(--space-6);
+    background-color: var(--color-surface-base);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .legal-hero__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .legal-hero__title {
+    font-size: var(--text-3xl);
+  }
+
+  .legal-hero__updated {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+  }
+
+  .prose {
+    max-width: var(--measure-max);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    color: var(--color-text-on-light);
+    font-size: var(--text-md);
+    line-height: var(--leading-body);
+  }
+
+  .prose h2 {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: 500;
+    line-height: var(--leading-heading);
+    color: var(--color-text-on-light);
+    margin-top: var(--space-4);
+  }
+
+  .prose ul {
+    margin: 0;
+    padding-left: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .prose a {
+    color: var(--color-text-on-light);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

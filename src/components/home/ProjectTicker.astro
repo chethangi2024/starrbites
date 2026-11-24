@@ -1,0 +1,126 @@
+---
+const items = [
+  'Tiiger Trail',
+  'Phase I',
+  'Bengaluru',
+  'Curated Land',
+  'Invest from Anywhere',
+];
+---
+
+<section
+  class="ticker"
+  aria-label="StarrBites destinations and focus areas"
+  data-reveal
+>
+  <div class="ticker__viewport" tabindex="0">
+    <div class="ticker__track">
+      <ul class="ticker__group">
+        {
+          items.map((item) => (
+            <li class="ticker__item">
+              <span>{item}</span>
+              <span class="ticker__dot" aria-hidden="true">·</span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <ul class="ticker__group ticker__group--duplicate" aria-hidden="true">
+        {
+          items.map((item) => (
+            <li class="ticker__item">
+              <span>{item}</span>
+              <span class="ticker__dot">·</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ticker {
+    border-block: 1px solid var(--color-border-subtle);
+    background-color: var(--color-surface-raised);
+    padding-block: var(--space-4);
+    overflow: hidden;
+  }
+
+  .ticker__viewport {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .ticker__track {
+    display: flex;
+    width: max-content;
+    animation: ticker-scroll 34s linear infinite;
+  }
+
+  .ticker__viewport:hover .ticker__track,
+  .ticker__viewport:focus .ticker__track,
+  .ticker__viewport:focus-within .ticker__track {
+    animation-play-state: paused;
+  }
+
+  .ticker__group {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+  }
+
+  .ticker__item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding-inline: var(--space-4);
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 500;
+    line-height: var(--leading-heading);
+    color: var(--color-text-primary);
+    white-space: nowrap;
+  }
+
+  @media (min-width: 1024px) {
+    .ticker__item {
+      font-size: var(--text-2xl);
+    }
+  }
+
+  .ticker__dot {
+    color: var(--color-accent);
+  }
+
+  @keyframes ticker-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ticker__track {
+      animation: none;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .ticker__group {
+      flex-wrap: wrap;
+      justify-content: center;
+      row-gap: var(--space-2);
+    }
+
+    .ticker__group--duplicate {
+      display: none;
+    }
+  }
+</style>

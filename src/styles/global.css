@@ -1,0 +1,318 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  background-color: var(--color-surface-base);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  font-weight: 400;
+  line-height: var(--leading-body);
+  background-color: var(--color-surface-base);
+  color: var(--color-text-primary);
+  overflow-x: clip;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  line-height: var(--leading-heading);
+  color: var(--color-text-primary);
+}
+
+p {
+  margin: 0;
+  max-width: var(--measure-max);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--motion-fast) var(--ease-out),
+    opacity var(--motion-fast) var(--ease-out);
+}
+
+a:hover {
+  opacity: 0.85;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Light surface overrides — gold fails contrast on light; use navy for links, buttons & focus */
+.surface-light {
+  background-color: var(--color-surface-light);
+  color: var(--color-text-on-light);
+}
+
+.surface-light h1,
+.surface-light h2,
+.surface-light h3,
+.surface-light h4,
+.surface-light h5,
+.surface-light h6 {
+  color: var(--color-text-on-light);
+}
+
+.surface-light a {
+  color: var(--color-text-on-light);
+}
+
+.surface-light :focus-visible {
+  outline-color: var(--color-text-on-light);
+}
+
+/* Accessibility utilities */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: 1000;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-accent);
+  color: var(--color-accent-on-accent);
+  font-size: var(--text-md);
+  font-weight: 600;
+  transform: translateY(-200%);
+  transition: transform var(--motion-fast) var(--ease-out);
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid var(--color-text-primary);
+  outline-offset: 3px;
+}
+
+/* Layout helpers */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-inline: var(--space-5);
+  }
+}
+
+.section {
+  padding-block: var(--section-pad-y);
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.surface-light .eyebrow {
+  color: var(--color-text-on-light-muted);
+}
+
+.divider-gold {
+  height: 1px;
+  width: 100%;
+  border: 0;
+  background: var(--color-accent-gradient);
+  opacity: 0.6;
+}
+
+/* Buttons — pill shape, required interactive states */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 48px;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--motion-fast) var(--ease-out),
+    color var(--motion-fast) var(--ease-out),
+    border-color var(--motion-fast) var(--ease-out),
+    transform var(--motion-fast) var(--ease-out),
+    opacity var(--motion-fast) var(--ease-out);
+}
+
+.btn--primary {
+  background-color: var(--color-accent);
+  color: var(--color-accent-on-accent);
+  border-color: var(--color-accent);
+}
+
+.btn--primary:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.btn--primary:active {
+  transform: translateY(0);
+  opacity: 0.85;
+}
+
+.btn--outline {
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border-color: var(--color-border-subtle);
+}
+
+.btn--outline:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  opacity: 1;
+}
+
+.btn--outline:active {
+  transform: translateY(1px);
+}
+
+.surface-light .btn--primary {
+  background-color: var(--color-text-on-light);
+  color: var(--color-text-primary);
+  border-color: var(--color-text-on-light);
+}
+
+.surface-light .btn--outline {
+  color: var(--color-text-on-light);
+  border-color: var(--color-border-on-light);
+}
+
+.surface-light .btn--outline:hover {
+  border-color: var(--color-text-on-light);
+  color: var(--color-text-on-light);
+}
+
+.btn:disabled,
+.btn[aria-disabled='true'] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Neutral media placeholder block until real media is supplied */
+.media-placeholder {
+  position: relative;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
+  border: 1px dashed var(--color-border-subtle);
+  background: var(--color-surface-placeholder);
+  color: var(--color-text-secondary);
+  text-align: center;
+  padding: var(--space-5);
+}
+
+/* Placeholder page shell */
+.page-placeholder {
+  padding-top: calc(var(--header-height) + var(--space-7));
+  padding-bottom: var(--space-8);
+}
+
+.page-placeholder__stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.page-placeholder__title {
+  font-size: var(--text-3xl);
+}
+
+.page-placeholder__lead {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+}
+
+.page-placeholder__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+/* Scroll lock when overlay menu is open */
+html.is-menu-open,
+body.is-menu-open {
+  overflow: hidden;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

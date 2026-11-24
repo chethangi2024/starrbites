@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page not found" description="The page you are looking for could not be found.">
+  <section class="page-placeholder">
+    <div class="container page-placeholder__stack" data-reveal>
+      <p class="eyebrow">404</p>
+      <h1 class="page-placeholder__title">This page could not be found</h1>
+      <p class="page-placeholder__lead">
+        The link may be outdated, or the page may have moved. You can return to the home page or speak with our team directly.
+      </p>
+      <div class="page-placeholder__actions">
+        <a href="/" class="btn btn--outline">Back to Home</a>
+        <a href="/contact" class="btn btn--primary">Talk to us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

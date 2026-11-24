@@ -1,0 +1,166 @@
+---
+import MediaSlot from '../MediaSlot.astro';
+
+const pillars = [
+  {
+    eyebrow: '01 · Land Ownership',
+    title: 'Invest in Land',
+    description:
+      'Clear, thoughtfully located plotted developments shaped around real livability and enduring value.',
+    href: '/projects',
+    image: '/media/pillar-land.jpg',
+    alt: 'Open plotted land surrounded by trees near Bengaluru',
+  },
+  {
+    eyebrow: '02 · Curated Places',
+    title: 'Curated Destinations',
+    description:
+      'Settings selected for natural greenery, quiet roads, and balanced access to Bengaluru’s growth corridors.',
+    href: '/projects',
+    image: '/media/pillar-destinations.jpg',
+    alt: 'Tree-lined avenue through a green plotted development',
+  },
+  {
+    eyebrow: '03 · Global Buyers',
+    title: 'Invest from Anywhere',
+    description:
+      'Structured guidance, clear documentation, and responsive support tailored for NRIs and overseas families.',
+    href: '/nri',
+    image: '/media/pillar-nri.jpg',
+    alt: 'Morning light across open green Indian landscape',
+  },
+];
+---
+
+<section class="section pillars" aria-labelledby="pillars-heading">
+  <div class="container">
+    <div class="pillars__header" data-reveal>
+      <p class="eyebrow">How We Build</p>
+      <h2 id="pillars-heading" class="pillars__heading">Three Pillars of StarrBites</h2>
+    </div>
+
+    <div class="pillars__grid">
+      {
+        pillars.map((pillar) => (
+          <article class="pillar-card" data-reveal>
+            <a href={pillar.href} class="pillar-card__link">
+              <MediaSlot
+                src={pillar.image}
+                alt={pillar.alt}
+                ratio="16/10"
+                zoomOnHover={true}
+              />
+              <div class="pillar-card__body">
+                <p class="eyebrow">{pillar.eyebrow}</p>
+                <h3 class="pillar-card__title">{pillar.title}</h3>
+                <p class="pillar-card__desc">{pillar.description}</p>
+                <span class="pillar-card__cta">
+                  Explore more <span aria-hidden="true">→</span>
+                </span>
+              </div>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .pillars__header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+  }
+
+  .pillars__heading {
+    font-size: var(--text-2xl);
+  }
+
+  @media (min-width: 1024px) {
+    .pillars__heading {
+      font-size: var(--text-3xl);
+    }
+  }
+
+  .pillars__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  @media (min-width: 1024px) {
+    .pillars__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-4);
+    }
+  }
+
+  .pillar-card {
+    display: flex;
+  }
+
+  .pillar-card__link {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: var(--space-4);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface-raised);
+    border: 1px solid var(--color-border-subtle);
+    color: var(--color-text-primary);
+    transition:
+      border-color var(--motion-fast) var(--ease-out),
+      transform var(--motion-fast) var(--ease-out);
+  }
+
+  .pillar-card__link:hover {
+    opacity: 1;
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+
+  .pillar-card__link:active {
+    transform: translateY(0);
+  }
+
+  .pillar-card__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    gap: var(--space-3);
+    padding-top: var(--space-4);
+  }
+
+  .pillar-card__title {
+    font-size: var(--text-xl);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .pillar-card__desc {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+    flex: 1 1 auto;
+  }
+
+  .pillar-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+    font-size: var(--text-md);
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pillar-card__link:hover {
+      transform: none;
+    }
+  }
+</style>

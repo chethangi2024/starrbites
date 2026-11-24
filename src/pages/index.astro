@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/home/Hero.astro';
+import Statement from '../components/home/Statement.astro';
+import Pillars from '../components/home/Pillars.astro';
+import FeaturedProject from '../components/home/FeaturedProject.astro';
+import ProjectTicker from '../components/home/ProjectTicker.astro';
+import HomeInsights from '../components/home/HomeInsights.astro';
+import ClosingCta from '../components/home/ClosingCta.astro';
+---
+
+<BaseLayout
+  title="StarrBites · Curated Land Development in Bengaluru"
+  noTitleSuffix={true}
+  description="Curated plotted developments in and around Bengaluru, built for living, investing and long-term legacy."
+  transparentHero={true}
+>
+  <Hero />
+  <Statement />
+  <Pillars />
+  <FeaturedProject />
+  <ProjectTicker />
+  <HomeInsights />
+  <ClosingCta />
+</BaseLayout>

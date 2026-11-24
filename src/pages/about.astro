@@ -1,0 +1,339 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import MediaSlot from '../components/MediaSlot.astro';
+import ClosingCta from '../components/home/ClosingCta.astro';
+
+const philosophy = [
+  {
+    number: '01',
+    title: 'Long-Term Growth',
+    text: 'We look at land with a multi-decade lens — choosing locations for steady livability and lasting relevance rather than short-term speculation.',
+  },
+  {
+    number: '02',
+    title: 'Unhurried Lifestyle',
+    text: 'Space, light, and greenery shape how a place feels every day. We plan plotted communities around calm roads and room to breathe.',
+  },
+  {
+    number: '03',
+    title: 'Family Legacy',
+    text: 'A well-chosen piece of land can be held, built upon, and passed down. Our goal is to make ownership straightforward from the first conversation.',
+  },
+];
+
+const sustainability = [
+  {
+    title: 'Preserving Existing Trees',
+    text: 'Where mature trees already stand, our approach is to plan layouts around them rather than clearing a site flat before we begin.',
+  },
+  {
+    title: 'Water-Conscious Layouts',
+    text: 'We intend to design drainage, permeable surfaces, and rainwater capture into each layout so water stays with the land.',
+  },
+  {
+    title: 'Native Planting',
+    text: 'Our intention is to favour regional, drought-tolerant native species that belong to Bengaluru’s climate and support local biodiversity.',
+  },
+];
+
+const team = [
+  {
+    name: 'Team Member 01 (Placeholder)',
+    role: 'Role / Title — to be confirmed',
+    image: '/media/team-1.jpg',
+    alt: 'Portrait placeholder for StarrBites team member 1',
+  },
+  {
+    name: 'Team Member 02 (Placeholder)',
+    role: 'Role / Title — to be confirmed',
+    image: '/media/team-2.jpg',
+    alt: 'Portrait placeholder for StarrBites team member 2',
+  },
+  {
+    name: 'Team Member 03 (Placeholder)',
+    role: 'Role / Title — to be confirmed',
+    image: '/media/team-3.jpg',
+    alt: 'Portrait placeholder for StarrBites team member 3',
+  },
+  {
+    name: 'Team Member 04 (Placeholder)',
+    role: 'Role / Title — to be confirmed',
+    image: '/media/team-4.jpg',
+    alt: 'Portrait placeholder for StarrBites team member 4',
+  },
+];
+---
+
+<BaseLayout
+  title="About"
+  description="StarrBites is a Bengaluru land developer moving beyond traditional real estate toward curated land destinations."
+  transparentHero={true}
+>
+  <PageHero
+    eyebrow="About StarrBites"
+    title="Shaping land. Creating futures."
+    lead="A Bengaluru land developer focused on thoughtful, low-density plotted destinations."
+    mediaSrc="/media/about-hero.jpg"
+    mediaAlt="Open green landscape in the Bengaluru region"
+  />
+
+  <!-- Our Story -->
+  <section class="section surface-light story" aria-labelledby="story-heading">
+    <div class="container story__inner" data-reveal>
+      <p id="story-heading" class="eyebrow">Our Story</p>
+      <hr class="divider-gold story__rule" />
+      <p class="story__lead">
+        StarrBites is a Bengaluru land developer moving beyond traditional real estate toward curated land destinations.
+      </p>
+      <p class="story__body">
+        Rather than treating land as a short-lived transaction, we focus on selecting grounded settings, planning clean infrastructure, and guiding buyers — in India and abroad — with plain-spoken clarity.
+      </p>
+    </div>
+  </section>
+
+  <!-- Philosophy -->
+  <section class="section" aria-labelledby="philosophy-heading">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Philosophy</p>
+        <h2 id="philosophy-heading" class="section-head__title">
+          How We Think About Land
+        </h2>
+      </div>
+
+      <div class="three-col-grid">
+        {
+          philosophy.map((item) => (
+            <article class="info-card" data-reveal>
+              <p class="eyebrow">{item.number}</p>
+              <h3 class="info-card__title">{item.title}</h3>
+              <p class="info-card__text">{item.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Sustainability -->
+  <section class="section sustainability" aria-labelledby="sustainability-heading">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Sustainability</p>
+        <h2 id="sustainability-heading" class="section-head__title">
+          Our Approach to the Land
+        </h2>
+        <p class="section-head__lead">
+          Good land stewardship begins before the first road is laid. These are the principles we aim to carry into every destination we plan.
+        </p>
+      </div>
+
+      <div class="three-col-grid">
+        {
+          sustainability.map((item) => (
+            <article class="approach-item" data-reveal>
+              <h3 class="approach-item__title">{item.title}</h3>
+              <p class="approach-item__text">{item.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="section team" aria-labelledby="team-heading">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">People</p>
+        <h2 id="team-heading" class="section-head__title">Our Team</h2>
+        <p class="section-head__lead">
+          Placeholder leadership and advisory profiles — ready for names, roles, and portraits.
+        </p>
+      </div>
+
+      <div class="team__grid">
+        {
+          team.map((member) => (
+            <article class="team-card" data-reveal>
+              <MediaSlot
+                src={member.image}
+                alt={member.alt}
+                ratio="4/3"
+              />
+              <div class="team-card__body">
+                <h3 class="team-card__name">{member.name}</h3>
+                <p class="team-card__role">{member.role}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <ClosingCta
+    heading="Start a conversation with our team"
+    text="Whether you are exploring Tiiger Trail – Phase I or looking ahead to future destinations, we are glad to walk you through our approach."
+    ctaLabel="Talk to us"
+    ctaHref="/contact"
+  />
+</BaseLayout>
+
+<style>
+  .story__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .story__rule {
+    max-width: 120px;
+    margin: 0;
+  }
+
+  .story__lead {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--color-text-on-light);
+    max-width: 34ch;
+  }
+
+  @media (min-width: 1024px) {
+    .story__lead {
+      font-size: var(--text-2xl);
+    }
+  }
+
+  .story__body {
+    font-size: var(--text-lg);
+    color: var(--color-text-on-light-muted);
+  }
+
+  .section-head {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+  }
+
+  .section-head__title {
+    font-size: var(--text-2xl);
+  }
+
+  @media (min-width: 1024px) {
+    .section-head__title {
+      font-size: var(--text-3xl);
+    }
+  }
+
+  .section-head__lead {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+  }
+
+  .three-col-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  @media (min-width: 1024px) {
+    .three-col-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-5);
+    }
+  }
+
+  .info-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-5) var(--space-4);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface-raised);
+    border: 1px solid var(--color-border-subtle);
+  }
+
+  .info-card__title {
+    font-size: var(--text-xl);
+  }
+
+  .info-card__text {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+  }
+
+  .sustainability {
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .approach-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .approach-item__title {
+    font-size: var(--text-xl);
+  }
+
+  .approach-item__text {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+  }
+
+  .team {
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .team__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  @media (min-width: 640px) {
+    .team__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .team__grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .team-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface-raised);
+    border: 1px solid var(--color-border-subtle);
+  }
+
+  .team-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .team-card__name {
+    font-size: var(--text-xl);
+  }
+
+  .team-card__role {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+  }
+</style>

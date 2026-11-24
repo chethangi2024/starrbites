@@ -1,0 +1,250 @@
+---
+import { LEGAL_LINKS, NAV_LINKS, SITE } from '../data/site';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand-col">
+        <a href="/" class="site-footer__logo" aria-label={`${SITE.name} — Home`}>
+          <img
+            src="/brand/logo-light-400.png"
+            srcset="/brand/logo-light-400.png 1x, /brand/logo-light-800.png 2x"
+            alt={SITE.name}
+            width="148"
+            height="56"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
+        <p class="site-footer__blurb">{SITE.tagline}</p>
+        <div class="site-footer__social" aria-label="Social media">
+          {
+            SITE.social.map((item) => (
+              <a href={item.href} class="site-footer__social-link">
+                {item.label}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <nav class="site-footer__nav-col" aria-label="Footer navigation">
+        <h2 class="site-footer__heading">Quick Links</h2>
+        <ul class="site-footer__list">
+          {
+            NAV_LINKS.map((item) => (
+              <li>
+                <a href={item.href} class="site-footer__link">
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+          <li>
+            <a href="/contact" class="site-footer__link">Talk to us</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="site-footer__contact-col">
+        <h2 class="site-footer__heading">Contact</h2>
+        <address class="site-footer__nap" itemscope itemtype="https://schema.org/Organization">
+          <p class="site-footer__org-name" itemprop="name">{SITE.name}</p>
+          <p class="site-footer__address" itemprop="address">
+            {SITE.address}
+          </p>
+          <p class="site-footer__nap-plain">
+            <span itemprop="telephone">{SITE.phones[0].display}</span>
+            {' / '}
+            <span itemprop="telephone">{SITE.phones[1].display}</span>
+            {' · '}
+            <span itemprop="email">{SITE.email}</span>
+          </p>
+          <p class="site-footer__nap-actions">
+            <a href={SITE.phones[0].href} class="site-footer__link">Call {SITE.phones[0].display}</a>
+            <a href={SITE.phones[1].href} class="site-footer__link">Call {SITE.phones[1].display}</a>
+            <a href={`mailto:${SITE.email}`} class="site-footer__link">Email {SITE.email}</a>
+          </p>
+        </address>
+      </div>
+    </div>
+
+    <hr class="divider-gold" />
+
+    <div class="site-footer__bottom">
+      <p class="site-footer__copyright">&copy; {currentYear} {SITE.name}. All rights reserved.</p>
+      <ul class="site-footer__legal">
+        {
+          LEGAL_LINKS.map((item) => (
+            <li>
+              <a href={item.href} class="site-footer__legal-link">
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: var(--color-surface-base);
+    border-top: 1px solid var(--color-border-subtle);
+    padding-top: var(--space-7);
+    padding-bottom: var(--space-5);
+  }
+
+  .site-footer__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .site-footer__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 1024px) {
+    .site-footer__grid {
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.7fr) minmax(0, 1.3fr);
+      gap: var(--space-6);
+    }
+  }
+
+  .site-footer__brand-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .site-footer__logo img {
+    width: auto;
+    height: 52px;
+  }
+
+  .site-footer__blurb {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+  }
+
+  .site-footer__social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .site-footer__social-link {
+    font-size: var(--text-md);
+    font-weight: 500;
+    color: var(--color-accent);
+  }
+
+  .site-footer__heading {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--space-4);
+  }
+
+  .site-footer__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .site-footer__link {
+    display: inline-block;
+    padding-block: var(--space-1);
+    font-size: var(--text-md);
+    color: var(--color-text-primary);
+  }
+
+  .site-footer__link:hover {
+    color: var(--color-accent);
+    opacity: 1;
+  }
+
+  .site-footer__nap {
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .site-footer__org-name {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 500;
+    line-height: var(--leading-heading);
+    color: var(--color-text-primary);
+  }
+
+  .site-footer__address,
+  .site-footer__nap-plain {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+  }
+
+  .site-footer__nap-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: var(--space-4);
+    row-gap: var(--space-1);
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+  }
+
+  .site-footer__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+
+  @media (min-width: 640px) {
+    .site-footer__bottom {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .site-footer__copyright {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+  }
+
+  .site-footer__legal {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .site-footer__legal-link {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+  }
+
+  .site-footer__legal-link:hover {
+    color: var(--color-accent);
+    opacity: 1;
+  }
+</style>

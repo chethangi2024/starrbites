@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../data/site';
+---
+
+<BaseLayout
+  title="Terms of Use"
+  description="General terms of use for the StarrBites website, covering informational content, external project links, and enquiry communications."
+>
+  <header class="legal-hero">
+    <div class="container legal-hero__inner">
+      <p class="eyebrow">Legal</p>
+      <h1 class="legal-hero__title">Terms of Use</h1>
+      <p class="legal-hero__updated">Last updated: 24 November 2026</p>
+    </div>
+  </header>
+
+  <article class="section surface-light">
+    <div class="container">
+      <div class="prose" data-reveal>
+        <p>
+          By accessing and using this website (www.starrbites.com), you agree to the general terms below. If you do not agree with these terms, please refrain from using the site.
+        </p>
+
+        <h2>1. General Information Only</h2>
+        <p>
+          All text, imagery, articles, and guides on this website are provided for general informational purposes only. Nothing on this website constitutes a legal offer, contract, solicitation, investment recommendation, or legal or tax advice. Any purchase of land is governed strictly by the formal allotment, sale agreement, and registered transaction documents executed between the parties.
+        </p>
+
+        <h2>2. Accuracy and Updates</h2>
+        <p>
+          Project descriptions, availability, layouts, and regulatory references may change over time. While we aim to keep information accurate and plain, we encourage all buyers and NRIs to verify current details with our team and with independent legal or tax advisors before making any decision.
+        </p>
+
+        <h2>3. External Links</h2>
+        <p>
+          This website includes links to external websites — including <a href={SITE.flagshipUrl} target="_blank" rel="noopener noreferrer">tiigertrail.com</a> and reference articles cited in Insights. External sites operate under their own terms and privacy practices.
+        </p>
+
+        <h2>4. Enquiries and Communications</h2>
+        <p>
+          Information submitted through our contact form is handled in accordance with our <a href="/privacy">Privacy Policy</a>. Submitting an enquiry does not reserve a plot or create a binding obligation.
+        </p>
+
+        <h2>5. Intellectual Property</h2>
+        <p>
+          The StarrBites name, logo, and original website content belong to StarrBites and may not be reproduced or redistributed for commercial use without prior written permission.
+        </p>
+
+        <h2>6. Governing Law</h2>
+        <p>
+          These terms are governed by the laws of India. Any disputes arising from use of this website are subject to the jurisdiction of the courts in Bengaluru, Karnataka.
+        </p>
+
+        <h2>7. Contact</h2>
+        <p>
+          Questions regarding these terms may be sent to <a href={`mailto:${SITE.email}`}>{SITE.email}</a> or our office at {SITE.address}.
+        </p>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .legal-hero {
+    padding-top: calc(var(--header-height) + var(--space-7));
+    padding-bottom: var(--space-6);
+    background-color: var(--color-surface-base);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .legal-hero__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .legal-hero__title {
+    font-size: var(--text-3xl);
+  }
+
+  .legal-hero__updated {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+  }
+
+  .prose {
+    max-width: var(--measure-max);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    color: var(--color-text-on-light);
+    font-size: var(--text-md);
+    line-height: var(--leading-body);
+  }
+
+  .prose h2 {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: 500;
+    line-height: var(--leading-heading);
+    color: var(--color-text-on-light);
+    margin-top: var(--space-4);
+  }
+
+  .prose a {
+    color: var(--color-text-on-light);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

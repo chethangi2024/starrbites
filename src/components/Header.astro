@@ -1,0 +1,195 @@
+---
+import { NAV_LINKS, SITE } from '../data/site';
+
+interface Props {
+  transparentHero?: boolean;
+}
+
+const { transparentHero = false } = Astro.props;
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+const isCurrent = (href: string) => {
+  const normalized = href.replace(/\/$/, '') || '/';
+  if (normalized === '/') return currentPath === '/';
+  return currentPath === normalized || currentPath.startsWith(`${normalized}/`);
+};
+---
+
+<header
+  class:list={['site-header', { 'site-header--transparent': transparentHero }]}
+  data-site-header
+  data-transparent-hero={transparentHero ? 'true' : 'false'}
+>
+  <div class="container site-header__inner">
+    <a href="/" class="site-header__brand" aria-label={`${SITE.name} — Home`}>
+      <img
+        src="/brand/logo-light-400.png"
+        srcset="/brand/logo-light-400.png 1x, /brand/logo-light-800.png 2x"
+        alt={SITE.name}
+        width="132"
+        height="50"
+        decoding="async"
+        fetchpriority="high"
+      />
+    </a>
+
+    <nav class="site-header__nav" aria-label="Primary navigation">
+      <ul class="site-header__list">
+        {
+          NAV_LINKS.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class:list={['site-header__link', { 'is-active': isCurrent(item.href) }]}
+                aria-current={isCurrent(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="site-header__actions">
+      <a href="/contact" class="btn btn--primary site-header__cta">Talk to us</a>
+      <button
+        type="button"
+        class="btn btn--outline site-header__menu-btn"
+        data-menu-open
+        aria-haspopup="dialog"
+        aria-controls="site-overlay-menu"
+        aria-expanded="false"
+      >
+        <span>Menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline: 0;
+    z-index: 100;
+    min-height: var(--header-height);
+    display: flex;
+    align-items: center;
+    background-color: var(--color-surface-header-scrolled);
+    border-bottom: 1px solid var(--color-border-subtle);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition:
+      background-color var(--motion-fast) var(--ease-out),
+      border-color var(--motion-fast) var(--ease-out),
+      backdrop-filter var(--motion-fast) var(--ease-out);
+  }
+
+  .site-header--transparent:not(.is-scrolled) {
+    background-color: transparent;
+    border-bottom-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding-block: var(--space-3);
+  }
+
+  .site-header__brand {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .site-header__brand img {
+    width: auto;
+    height: 44px;
+  }
+
+  @media (min-width: 1024px) {
+    .site-header__brand img {
+      height: 50px;
+    }
+  }
+
+  .site-header__nav {
+    display: none;
+  }
+
+  .site-header__list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .site-header__link {
+    position: relative;
+    color: var(--color-text-primary);
+    font-size: var(--text-md);
+    font-weight: 500;
+    padding-block: var(--space-2);
+    transition: color var(--motion-fast) var(--ease-out);
+  }
+
+  .site-header__link:hover,
+  .site-header__link.is-active {
+    color: var(--color-accent);
+    opacity: 1;
+  }
+
+  .site-header__link.is-active::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    height: 1px;
+    background: var(--color-accent-gradient);
+  }
+
+  .site-header__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .site-header__cta {
+    display: none;
+    min-height: 44px;
+    padding: var(--space-2) var(--space-4);
+  }
+
+  .site-header__menu-btn {
+    min-height: 44px;
+    padding: var(--space-2) var(--space-4);
+  }
+
+  @media (min-width: 1024px) {
+    .site-header__nav {
+      display: block;
+    }
+
+    .site-header__cta {
+      display: inline-flex;
+    }
+  }
+</style>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-site-header]');
+  if (header && header.dataset.transparentHero === 'true') {
+    const updateScrollState = () => {
+      header.classList.toggle('is-scrolled', window.scrollY > 24);
+    };
+    updateScrollState();
+    window.addEventListener('scroll', updateScrollState, { passive: true });
+  }
+</script>

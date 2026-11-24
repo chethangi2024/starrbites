@@ -1,0 +1,604 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { SITE } from '../data/site';
+
+const mapQuery = encodeURIComponent(SITE.address);
+const mapEmbedUrl = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
+---
+
+<BaseLayout
+  title="Talk to us"
+  description="Contact StarrBites in Bengaluru for plotted developments, Tiiger Trail – Phase I enquiries, and NRI land investment support."
+  transparentHero={true}
+>
+  <PageHero
+    eyebrow="Contact"
+    title="Talk to us"
+    lead="Reach our Bengaluru team directly by form, phone, or email. We respond thoughtfully and without pressure."
+    mediaSrc="/media/contact-hero.jpg"
+    mediaAlt="Tree-lined road through greenery in Bengaluru"
+  />
+
+  <section class="section" aria-labelledby="contact-form-heading">
+    <div class="container contact-grid">
+      <!-- Form Column -->
+      <div class="contact-form-card" data-reveal>
+        <h2 id="contact-form-heading" class="contact-card__heading">
+          Send an enquiry
+        </h2>
+        <p class="contact-card__sub">
+          Share a few details and our team will get back to you.
+        </p>
+
+        <form
+          class="contact-form"
+          action="https://formspree.io/f/FORMSPREE_FORM_ID"
+          method="POST"
+          novalidate
+          data-contact-form
+        >
+          <!-- Spam honeypot field -->
+          <div class="contact-form__honeypot" aria-hidden="true">
+            <label for="contact-website">Leave this field empty</label>
+            <input
+              type="text"
+              id="contact-website"
+              name="_gotcha"
+              tabindex="-1"
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="contact-name" class="form-field__label">
+              Full name <span aria-hidden="true">*</span>
+            </label>
+            <input
+              type="text"
+              id="contact-name"
+              name="name"
+              autocomplete="name"
+              required
+              class="form-field__input"
+              aria-describedby="contact-name-error"
+            />
+            <p id="contact-name-error" class="form-field__error" role="alert" hidden></p>
+          </div>
+
+          <div class="form-field">
+            <label for="contact-phone" class="form-field__label">
+              Phone number (+91 or international) <span aria-hidden="true">*</span>
+            </label>
+            <input
+              type="tel"
+              id="contact-phone"
+              name="phone"
+              autocomplete="tel"
+              inputmode="tel"
+              placeholder="+91 98765 43210"
+              required
+              class="form-field__input"
+              aria-describedby="contact-phone-error"
+            />
+            <p id="contact-phone-error" class="form-field__error" role="alert" hidden></p>
+          </div>
+
+          <div class="form-field">
+            <label for="contact-email" class="form-field__label">
+              Email address <span aria-hidden="true">*</span>
+            </label>
+            <input
+              type="email"
+              id="contact-email"
+              name="email"
+              autocomplete="email"
+              required
+              class="form-field__input"
+              aria-describedby="contact-email-error"
+            />
+            <p id="contact-email-error" class="form-field__error" role="alert" hidden></p>
+          </div>
+
+          <div class="form-field">
+            <label for="contact-interest" class="form-field__label">
+              I am interested in <span aria-hidden="true">*</span>
+            </label>
+            <select
+              id="contact-interest"
+              name="interest"
+              required
+              class="form-field__input form-field__select"
+              aria-describedby="contact-interest-error"
+            >
+              <option value="">Select an option</option>
+              <option value="Buying">Buying</option>
+              <option value="Investing">Investing</option>
+              <option value="NRI">NRI</option>
+            </select>
+            <p id="contact-interest-error" class="form-field__error" role="alert" hidden></p>
+          </div>
+
+          <div class="form-field">
+            <label for="contact-message" class="form-field__label">
+              Message <span aria-hidden="true">*</span>
+            </label>
+            <textarea
+              id="contact-message"
+              name="message"
+              rows="5"
+              required
+              class="form-field__input form-field__textarea"
+              aria-describedby="contact-message-error"
+            ></textarea>
+            <p id="contact-message-error" class="form-field__error" role="alert" hidden></p>
+          </div>
+
+          <div class="contact-form__footer">
+            <button type="submit" class="btn btn--primary" data-submit-btn>
+              Send message
+            </button>
+          </div>
+
+          <div
+            class="contact-form__status"
+            data-form-status
+            role="status"
+            aria-live="polite"
+            hidden
+          ></div>
+        </form>
+      </div>
+
+      <!-- Direct Details Column -->
+      <aside class="contact-details" aria-labelledby="contact-details-heading" data-reveal>
+        <p class="eyebrow">Bengaluru Office</p>
+        <h2 id="contact-details-heading" class="contact-details__heading">
+          Direct Contact
+        </h2>
+
+        <address class="contact-details__address">
+          <div class="contact-details__block">
+            <p class="contact-details__label">Address</p>
+            <p class="contact-details__value">{SITE.address}</p>
+          </div>
+
+          <div class="contact-details__block">
+            <p class="contact-details__label">Phone</p>
+            <ul class="contact-details__list">
+              {
+                SITE.phones.map((phone) => (
+                  <li>
+                    <a href={phone.href} class="contact-details__link">
+                      {phone.display}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          <div class="contact-details__block">
+            <p class="contact-details__label">Email</p>
+            <p>
+              <a href={`mailto:${SITE.email}`} class="contact-details__link">
+                {SITE.email}
+              </a>
+            </p>
+          </div>
+        </address>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Embedded Map -->
+  <section class="section contact-map" aria-labelledby="contact-map-heading">
+    <div class="container" data-reveal>
+      <div class="contact-map__head">
+        <p class="eyebrow">Location</p>
+        <h2 id="contact-map-heading" class="contact-map__heading">
+          Find our office
+        </h2>
+      </div>
+
+      <div class="contact-map__frame">
+        <iframe
+          src={mapEmbedUrl}
+          title="Google Map of StarrBites office at No. 194, 3rd Main, 13th Cross, RMV 2nd Stage, HIG Dollars Colony, Bangalore-94"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    align-items: start;
+  }
+
+  @media (min-width: 1024px) {
+    .contact-grid {
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr);
+      gap: var(--space-7);
+    }
+  }
+
+  .contact-form-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-5) var(--space-4);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface-raised);
+    border: 1px solid var(--color-border-subtle);
+  }
+
+  @media (min-width: 1024px) {
+    .contact-form-card {
+      padding: var(--space-6);
+    }
+  }
+
+  .contact-card__heading,
+  .contact-details__heading,
+  .contact-map__heading {
+    font-size: var(--text-2xl);
+  }
+
+  .contact-card__sub {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-top: var(--space-2);
+  }
+
+  .contact-form__honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .form-field__label {
+    font-size: var(--text-md);
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+
+  .form-field__input {
+    width: 100%;
+    min-height: 48px;
+    padding: var(--space-3);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border-subtle);
+    background-color: var(--color-surface-input);
+    color: var(--color-text-primary);
+    font-size: var(--text-md);
+    transition: border-color var(--motion-fast) var(--ease-out);
+  }
+
+  .form-field__input::placeholder {
+    color: var(--color-text-secondary);
+    opacity: 0.7;
+  }
+
+  .form-field__input:hover {
+    border-color: var(--color-text-secondary);
+  }
+
+  .form-field__input[aria-invalid='true'] {
+    border-color: var(--color-status-error);
+  }
+
+  .form-field__select option {
+    background-color: var(--color-surface-base);
+    color: var(--color-text-primary);
+  }
+
+  .form-field__textarea {
+    min-height: 140px;
+    resize: vertical;
+  }
+
+  .form-field__error {
+    font-size: var(--text-sm);
+    color: var(--color-status-error);
+  }
+
+  .contact-form__footer {
+    margin-top: var(--space-2);
+  }
+
+  .contact-form__status {
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border-subtle);
+    font-size: var(--text-md);
+  }
+
+  .contact-form__status.is-success {
+    border-color: var(--color-status-success);
+    color: var(--color-status-success);
+  }
+
+  .contact-form__status.is-error {
+    border-color: var(--color-status-error);
+    color: var(--color-status-error);
+  }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding-top: var(--space-3);
+  }
+
+  .contact-details__address {
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .contact-details__block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .contact-details__label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .contact-details__value {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+  }
+
+  .contact-details__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .contact-details__link {
+    font-size: var(--text-lg);
+    color: var(--color-text-primary);
+  }
+
+  .contact-details__link:hover {
+    color: var(--color-accent);
+    opacity: 1;
+  }
+
+  .contact-map {
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .contact-map__head {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
+  }
+
+  .contact-map__frame {
+    width: 100%;
+    height: 360px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border: 1px solid var(--color-border-subtle);
+    background-color: var(--color-surface-raised);
+  }
+
+  @media (min-width: 1024px) {
+    .contact-map__frame {
+      height: 440px;
+    }
+  }
+
+  .contact-map__frame iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+</style>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
+  if (form) {
+    const submitBtn = form.querySelector<HTMLButtonElement>('[data-submit-btn]');
+    const statusBox = form.querySelector<HTMLElement>('[data-form-status]');
+
+    const fields = {
+      name: form.querySelector<HTMLInputElement>('#contact-name'),
+      phone: form.querySelector<HTMLInputElement>('#contact-phone'),
+      email: form.querySelector<HTMLInputElement>('#contact-email'),
+      interest: form.querySelector<HTMLSelectElement>('#contact-interest'),
+      message: form.querySelector<HTMLTextAreaElement>('#contact-message'),
+      honeypot: form.querySelector<HTMLInputElement>('#contact-website'),
+    };
+
+    const setFieldError = (
+      input: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | null,
+      message: string
+    ) => {
+      if (!input) return;
+      const errorEl = document.getElementById(`${input.id}-error`);
+      if (message) {
+        input.setAttribute('aria-invalid', 'true');
+        if (errorEl) {
+          errorEl.textContent = message;
+          errorEl.hidden = false;
+        }
+      } else {
+        input.removeAttribute('aria-invalid');
+        if (errorEl) {
+          errorEl.textContent = '';
+          errorEl.hidden = true;
+        }
+      }
+    };
+
+    const setStatus = (type: 'success' | 'error' | null, message = '') => {
+      if (!statusBox) return;
+      statusBox.classList.remove('is-success', 'is-error');
+      if (!type) {
+        statusBox.hidden = true;
+        statusBox.textContent = '';
+        return;
+      }
+      statusBox.classList.add(type === 'success' ? 'is-success' : 'is-error');
+      statusBox.textContent = message;
+      statusBox.hidden = false;
+    };
+
+    const validate = () => {
+      let firstInvalid: HTMLElement | null = null;
+
+      const nameVal = fields.name?.value.trim() ?? '';
+      if (nameVal.length < 2) {
+        setFieldError(fields.name, 'Please enter your full name.');
+        firstInvalid ??= fields.name;
+      } else {
+        setFieldError(fields.name, '');
+      }
+
+      const phoneVal = fields.phone?.value.trim() ?? '';
+      const phonePattern = /^[+\d][\d\s\-()]{6,20}$/;
+      if (!phonePattern.test(phoneVal)) {
+        setFieldError(
+          fields.phone,
+          'Please enter a valid phone number (e.g. +91 88611 97979 or international format).'
+        );
+        firstInvalid ??= fields.phone;
+      } else {
+        setFieldError(fields.phone, '');
+      }
+
+      const emailVal = fields.email?.value.trim() ?? '';
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(emailVal)) {
+        setFieldError(fields.email, 'Please enter a valid email address.');
+        firstInvalid ??= fields.email;
+      } else {
+        setFieldError(fields.email, '');
+      }
+
+      const interestVal = fields.interest?.value ?? '';
+      if (!interestVal) {
+        setFieldError(fields.interest, 'Please select your area of interest.');
+        firstInvalid ??= fields.interest;
+      } else {
+        setFieldError(fields.interest, '');
+      }
+
+      const messageVal = fields.message?.value.trim() ?? '';
+      if (messageVal.length < 10) {
+        setFieldError(fields.message, 'Please share a brief message (at least 10 characters).');
+        firstInvalid ??= fields.message;
+      } else {
+        setFieldError(fields.message, '');
+      }
+
+      if (firstInvalid) {
+        firstInvalid.focus();
+        return false;
+      }
+      return true;
+    };
+
+    Object.values(fields).forEach((field) => {
+      if (!field || field === fields.honeypot) return;
+      field.addEventListener('input', () => setFieldError(field, ''));
+      field.addEventListener('change', () => setFieldError(field, ''));
+    });
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      setStatus(null);
+
+      // Silently ignore spam bots filling the honeypot
+      if (fields.honeypot && fields.honeypot.value.trim() !== '') {
+        form.reset();
+        setStatus('success', 'Thank you. Your message has been received.');
+        return;
+      }
+
+      if (!validate()) return;
+
+      const defaultLabel = submitBtn?.textContent ?? 'Send message';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+      }
+
+      try {
+        const endpoint = form.getAttribute('action') ?? '';
+        if (endpoint.includes('FORMSPREE_FORM_ID')) {
+          throw new Error('FORMSPREE_NOT_CONFIGURED');
+        }
+
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+
+        if (!response.ok) {
+          throw new Error('SUBMISSION_FAILED');
+        }
+
+        form.reset();
+        setStatus(
+          'success',
+          'Thank you for reaching out. Our Bengaluru team will get back to you shortly.'
+        );
+      } catch (err) {
+        if (err instanceof Error && err.message === 'FORMSPREE_NOT_CONFIGURED') {
+          setStatus(
+            'error',
+            'Form endpoint is not configured yet (replace FORMSPREE_FORM_ID). You can reach us directly at info@starrbites.com or +91 88611 97979.'
+          );
+        } else {
+          setStatus(
+            'error',
+            'We could not send your message right now. Please try again or email info@starrbites.com.'
+          );
+        }
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = defaultLabel;
+        }
+      }
+    });
+  }
+</script>

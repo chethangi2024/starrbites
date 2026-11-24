@@ -1,0 +1,219 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+
+const videoSrc = '/media/hero.mp4';
+const hasWebpPoster = fs.existsSync(path.join(process.cwd(), 'public', 'media', 'hero-poster.webp'));
+const hasJpgPoster = fs.existsSync(path.join(process.cwd(), 'public', 'media', 'hero-poster.jpg'));
+const posterSrc = hasWebpPoster ? '/media/hero-poster.webp' : '/media/hero-poster.jpg';
+
+const hasVideo = fs.existsSync(path.join(process.cwd(), 'public', 'media', 'hero.mp4'));
+const hasPoster = hasWebpPoster || hasJpgPoster;
+---
+
+<section class="hero" aria-labelledby="home-hero-title">
+  <div class="hero__media" aria-hidden="true">
+    {
+      hasVideo ? (
+        <video
+          class="hero__video"
+          data-hero-video
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster={hasPoster ? posterSrc : undefined}
+        >
+          <source src={videoSrc} type="video/mp4" />
+        </video>
+      ) : hasPoster ? (
+        <img
+          src={posterSrc}
+          alt=""
+          width="1920"
+          height="1080"
+          class="hero__poster"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+      ) : (
+        <div class="hero__placeholder">
+          <span class="hero__placeholder-label">Video slot · media/hero.mp4 &amp; media/hero-poster.jpg</span>
+        </div>
+      )
+    }
+    <div class="hero__overlay"></div>
+  </div>
+
+  <div class="container hero__content">
+    <p class="eyebrow">StarrBites · Bengaluru</p>
+    <h1 id="home-hero-title" class="hero__title">Land That Grows With You</h1>
+    <p class="hero__lead">
+      Curated plotted developments in and around Bengaluru, built for living, investing and legacy.
+    </p>
+
+    <div class="hero__actions">
+      <a href="/projects" class="btn btn--primary">Explore Tiiger Trail</a>
+      <a href="/contact" class="btn btn--outline">Talk to us</a>
+    </div>
+  </div>
+
+  <div class="container hero__controls">
+    <button
+      type="button"
+      class="btn btn--outline hero__pause-btn"
+      data-hero-toggle
+      aria-pressed="false"
+      aria-label="Pause background video"
+      disabled={!hasVideo}
+    >
+      <span data-hero-toggle-label>{hasVideo ? 'Pause video' : 'Video slot ready'}</span>
+    </button>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-top: calc(var(--header-height) + var(--space-7));
+    padding-bottom: var(--space-6);
+    background-color: var(--color-surface-base);
+    overflow: hidden;
+  }
+
+  @media (min-width: 1024px) {
+    .hero {
+      padding-bottom: var(--space-7);
+    }
+  }
+
+  .hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero__video,
+  .hero__poster,
+  .hero__placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero__placeholder {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: calc(var(--header-height) + var(--space-4)) var(--space-5);
+    background-color: var(--color-surface-raised);
+  }
+
+  .hero__placeholder-label {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    opacity: 0.7;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--color-overlay-hero);
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .hero__title {
+    font-size: var(--text-4xl);
+    text-transform: uppercase;
+    max-width: 15ch;
+  }
+
+  .hero__lead {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    max-width: 52ch;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+  }
+
+  .hero__controls {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: var(--space-5);
+  }
+
+  .hero__pause-btn {
+    min-height: 44px;
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-sm);
+  }
+</style>
+
+<script>
+  const video = document.querySelector<HTMLVideoElement>('[data-hero-video]');
+  const toggleBtn = document.querySelector<HTMLButtonElement>('[data-hero-toggle]');
+  const toggleLabel = document.querySelector<HTMLElement>('[data-hero-toggle-label]');
+
+  if (video && toggleBtn && toggleLabel) {
+    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const syncUI = (paused: boolean) => {
+      toggleBtn.setAttribute('aria-pressed', String(paused));
+      toggleBtn.setAttribute(
+        'aria-label',
+        paused ? 'Play background video' : 'Pause background video'
+      );
+      toggleLabel.textContent = paused ? 'Play video' : 'Pause video';
+    };
+
+    const applyMotionPreference = () => {
+      if (reducedMotionQuery.matches) {
+        video.pause();
+        syncUI(true);
+      } else {
+        video
+          .play()
+          .then(() => syncUI(false))
+          .catch(() => syncUI(true));
+      }
+    };
+
+    applyMotionPreference();
+    reducedMotionQuery.addEventListener('change', applyMotionPreference);
+
+    toggleBtn.addEventListener('click', () => {
+      if (video.paused) {
+        video
+          .play()
+          .then(() => syncUI(false))
+          .catch(() => syncUI(true));
+      } else {
+        video.pause();
+        syncUI(true);
+      }
+    });
+  }
+</script>
