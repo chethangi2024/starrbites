@@ -3,8 +3,8 @@ title: "Property Registration Will Not Give You Ownership in 2025"
 description: "How 2025 Indian land rules make mutation (Dakhil Kharij) mandatory after property registration to establish legal ownership."
 pubDate: 2025-11-14
 category: "News"
-coverImage: "/media/insights/property-registration-will-not-give-you-ownership-in-2025.jpg"
-coverAlt: "Cover image for Property Registration Will Not Give You Ownership in 2025"
+coverImage: "/media/insights/property-registration-will-not-give-you-ownership-in-2025.webp"
+coverAlt: "Over-the-shoulder view of a buyer signing property registration documents at a wooden desk"
 oldUrl: "/property-registration-will-not-give-you-ownership-in-2025/"
 draft: false
 ---

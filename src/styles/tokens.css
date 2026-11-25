@@ -1,29 +1,38 @@
 :root {
-  /* Colour tokens — matched to StarrBites logo (navy #171C56 + gold #D69F38 -> #FEDE6E) */
-  --color-surface-base: #0B0E2A;
-  --color-surface-raised: #171C56;
-  --color-surface-light: #F4F1EA;
+  /* Colour tokens — light cream theme matched to StarrBites logo (navy #171C56 + gold #D69F38 -> #FEDE6E) */
+  --color-surface-base: #FAF7F0;
+  --color-surface-raised: #F3EDE1;
+  --color-surface-light: #FFFFFF;
 
-  --color-text-primary: #F2EFE8;
-  --color-text-secondary: #B9BCD0;
-  --color-text-on-light: #171C56;
-  --color-text-on-light-muted: #4A4F7A;
+  --color-text-primary: #171C56;
+  --color-text-secondary: #5E5A52;
 
   --color-accent: #E0B24C;
-  --color-accent-on-accent: #0B0E2A;
+  --color-accent-hover: #D69F38;
+  --color-accent-on-accent: #171C56;
+  --color-accent-border: #8A6420;
+  --color-accent-text: #8A6420;
+  --color-highlight: #F6E3B0;
   --color-accent-gradient: linear-gradient(90deg, #D69F38, #FEDE6E);
 
-  --color-border-subtle: rgba(242, 239, 232, 0.14);
-  --color-overlay-hero: linear-gradient(rgba(11, 14, 42, 0.25), rgba(11, 14, 42, 0.70));
+  --color-border-subtle: rgba(23, 28, 86, 0.12);
+  --color-border-input: rgba(23, 28, 86, 0.24);
 
-  /* Derived surface/interaction overlays using token palette */
-  --color-surface-header-scrolled: rgba(11, 14, 42, 0.94);
-  --color-surface-overlay: #0B0E2A;
-  --color-surface-placeholder: rgba(23, 28, 86, 0.45);
-  --color-surface-input: rgba(11, 14, 42, 0.72);
-  --color-border-on-light: rgba(23, 28, 86, 0.18);
-  --color-status-error: #F8A5A5;
-  --color-status-success: #9BE0B8;
+  /* Hero dark overlay & on-dark tokens (for full-bleed video/photo heroes only) */
+  --color-surface-hero-dark: #0B0E2A;
+  --color-overlay-hero: linear-gradient(rgba(11, 14, 42, 0.30), rgba(11, 14, 42, 0.72));
+  --color-text-on-dark: #FFFFFF;
+  --color-text-on-dark-muted: rgba(255, 255, 255, 0.88);
+  --color-border-on-dark: rgba(255, 255, 255, 0.72);
+  --color-surface-on-dark-hover: rgba(255, 255, 255, 0.14);
+
+  /* Derived surface & status tokens */
+  --color-surface-header-scrolled: rgba(250, 247, 240, 0.96);
+  --color-surface-overlay: #FAF7F0;
+  --color-surface-placeholder: #F3EDE1;
+  --color-surface-input: #FFFFFF;
+  --color-status-error: #B42318;
+  --color-status-success: #15623B;
 
   /* Typography */
   --font-heading: 'Cormorant Garamond', Georgia, serif;

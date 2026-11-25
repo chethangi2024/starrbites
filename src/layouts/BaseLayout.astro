@@ -18,6 +18,7 @@ interface Props {
   title: string;
   description?: string;
   transparentHero?: boolean;
+  heroMinimalHeader?: boolean;
   ogImage?: string;
   ogType?: 'website' | 'article';
   noTitleSuffix?: boolean;
@@ -28,6 +29,7 @@ const {
   title,
   description = SITE.tagline,
   transparentHero = false,
+  heroMinimalHeader = false,
   ogImage = '/brand/og-default.jpg',
   ogType = 'website',
   noTitleSuffix = false,
@@ -107,7 +109,7 @@ const articleJsonLd = articleSchema
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#0B0E2A" />
+    <meta name="theme-color" content="#FAF7F0" />
     <link rel="canonical" href={canonicalUrl} />
 
     <!-- Open Graph / Twitter -->
@@ -149,7 +151,7 @@ const articleJsonLd = articleSchema
   <body>
     <a href="#main-content" class="skip-link">Skip to content</a>
 
-    <Header transparentHero={transparentHero} />
+    <Header transparentHero={transparentHero} heroMinimalHeader={heroMinimalHeader} />
     <OverlayMenu />
 
     <main id="main-content" tabindex="-1">

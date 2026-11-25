@@ -10,8 +10,8 @@ const currentYear = new Date().getFullYear();
       <div class="site-footer__brand-col">
         <a href="/" class="site-footer__logo" aria-label={`${SITE.name} — Home`}>
           <img
-            src="/brand/logo-light-400.png"
-            srcset="/brand/logo-light-400.png 1x, /brand/logo-light-800.png 2x"
+            src="/brand/logo-400.png"
+            srcset="/brand/logo-400.png 1x, /brand/logo-800.png 2x"
             alt={SITE.name}
             width="148"
             height="56"
@@ -43,9 +43,6 @@ const currentYear = new Date().getFullYear();
               </li>
             ))
           }
-          <li>
-            <a href="/contact" class="site-footer__link">Talk to us</a>
-          </li>
         </ul>
       </nav>
 
@@ -56,18 +53,22 @@ const currentYear = new Date().getFullYear();
           <p class="site-footer__address" itemprop="address">
             {SITE.address}
           </p>
-          <p class="site-footer__nap-plain">
-            <span itemprop="telephone">{SITE.phones[0].display}</span>
-            {' / '}
-            <span itemprop="telephone">{SITE.phones[1].display}</span>
-            {' · '}
-            <span itemprop="email">{SITE.email}</span>
-          </p>
-          <p class="site-footer__nap-actions">
-            <a href={SITE.phones[0].href} class="site-footer__link">Call {SITE.phones[0].display}</a>
-            <a href={SITE.phones[1].href} class="site-footer__link">Call {SITE.phones[1].display}</a>
-            <a href={`mailto:${SITE.email}`} class="site-footer__link">Email {SITE.email}</a>
-          </p>
+          <ul class="site-footer__contact-list">
+            {
+              SITE.phones.map((phone) => (
+                <li>
+                  <a href={phone.href} class="site-footer__link" itemprop="telephone">
+                    {phone.display}
+                  </a>
+                </li>
+              ))
+            }
+            <li>
+              <a href={`mailto:${SITE.email}`} class="site-footer__link" itemprop="email">
+                {SITE.email}
+              </a>
+            </li>
+          </ul>
         </address>
       </div>
     </div>
@@ -93,7 +94,7 @@ const currentYear = new Date().getFullYear();
 
 <style>
   .site-footer {
-    background-color: var(--color-surface-base);
+    background-color: var(--color-surface-raised);
     border-top: 1px solid var(--color-border-subtle);
     padding-top: var(--space-7);
     padding-bottom: var(--space-5);
@@ -143,8 +144,8 @@ const currentYear = new Date().getFullYear();
 
   .site-footer__social-link {
     font-size: var(--text-md);
-    font-weight: 500;
-    color: var(--color-accent);
+    font-weight: 600;
+    color: var(--color-accent-text);
   }
 
   .site-footer__heading {
@@ -153,7 +154,7 @@ const currentYear = new Date().getFullYear();
     font-weight: 600;
     letter-spacing: var(--tracking-label);
     text-transform: uppercase;
-    color: var(--color-accent);
+    color: var(--color-accent-text);
     margin-bottom: var(--space-4);
   }
 
@@ -174,7 +175,7 @@ const currentYear = new Date().getFullYear();
   }
 
   .site-footer__link:hover {
-    color: var(--color-accent);
+    color: var(--color-accent-text);
     opacity: 1;
   }
 
@@ -193,20 +194,18 @@ const currentYear = new Date().getFullYear();
     color: var(--color-text-primary);
   }
 
-  .site-footer__address,
-  .site-footer__nap-plain {
+  .site-footer__address {
     font-size: var(--text-md);
     color: var(--color-text-secondary);
   }
 
-  .site-footer__nap-actions {
+  .site-footer__contact-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    column-gap: var(--space-4);
-    row-gap: var(--space-1);
-    font-size: var(--text-md);
-    color: var(--color-text-secondary);
+    flex-direction: column;
+    gap: var(--space-1);
   }
 
   .site-footer__bottom {
@@ -244,7 +243,7 @@ const currentYear = new Date().getFullYear();
   }
 
   .site-footer__legal-link:hover {
-    color: var(--color-accent);
+    color: var(--color-accent-text);
     opacity: 1;
   }
 </style>

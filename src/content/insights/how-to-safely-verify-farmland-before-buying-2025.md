@@ -3,8 +3,8 @@ title: "Step-by-step guide to verifying farmland before buying"
 description: "A practical 2025 checklist for verifying farmland in India: seller checks, digital land records, title documents, zoning, and physical surveys."
 pubDate: 2025-11-10
 category: "Guides"
-coverImage: "/media/insights/how-to-safely-verify-farmland-before-buying-2025.jpg"
-coverAlt: "Cover image for Step-by-step guide to verifying farmland before buying"
+coverImage: "/media/insights/how-to-safely-verify-farmland-before-buying-2025.webp"
+coverAlt: "Precision land surveying total-station instrument set up outdoors to measure plot boundaries"
 oldUrl: "/how-to-safely-verify-farmland-before-buying-2025/"
 draft: false
 ---

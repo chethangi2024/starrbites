@@ -3,9 +3,10 @@ import { NAV_LINKS, SITE } from '../data/site';
 
 interface Props {
   transparentHero?: boolean;
+  heroMinimalHeader?: boolean;
 }
 
-const { transparentHero = false } = Astro.props;
+const { transparentHero = false, heroMinimalHeader = false } = Astro.props;
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 const isCurrent = (href: string) => {
@@ -16,53 +17,112 @@ const isCurrent = (href: string) => {
 ---
 
 <header
-  class:list={['site-header', { 'site-header--transparent': transparentHero }]}
+  class:list={[
+    'site-header',
+    {
+      'site-header--transparent': transparentHero && !heroMinimalHeader,
+      'site-header--hero-minimal': heroMinimalHeader,
+    },
+  ]}
   data-site-header
-  data-transparent-hero={transparentHero ? 'true' : 'false'}
+  data-transparent-hero={transparentHero && !heroMinimalHeader ? 'true' : 'false'}
+  data-hero-minimal={heroMinimalHeader ? 'true' : 'false'}
 >
-  <div class="container site-header__inner">
-    <a href="/" class="site-header__brand" aria-label={`${SITE.name} — Home`}>
-      <img
-        src="/brand/logo-light-400.png"
-        srcset="/brand/logo-light-400.png 1x, /brand/logo-light-800.png 2x"
-        alt={SITE.name}
-        width="132"
-        height="50"
-        decoding="async"
-        fetchpriority="high"
-      />
-    </a>
+  {
+    heroMinimalHeader && (
+      <div class="site-header__minimal" data-header-minimal>
+        <div class="container site-header__minimal-inner">
+          <button
+            type="button"
+            class="site-header__hamburger"
+            data-menu-open
+            aria-label="Open navigation menu"
+            aria-haspopup="dialog"
+            aria-controls="site-overlay-menu"
+            aria-expanded="false"
+          >
+            <svg
+              width="26"
+              height="18"
+              viewBox="0 0 26 18"
+              fill="none"
+              aria-hidden="true"
+            >
+              <line x1="0" y1="2" x2="26" y2="2" stroke="currentColor" stroke-width="1.75" />
+              <line x1="0" y1="9" x2="26" y2="9" stroke="currentColor" stroke-width="1.75" />
+              <line x1="0" y1="16" x2="18" y2="16" stroke="currentColor" stroke-width="1.75" />
+            </svg>
+          </button>
 
-    <nav class="site-header__nav" aria-label="Primary navigation">
-      <ul class="site-header__list">
+          <a href="/contact" class="site-header__minimal-cta">
+            Talk to us
+          </a>
+        </div>
+      </div>
+    )
+  }
+
+  <div class="site-header__bar">
+    <div class="container site-header__inner">
+      <a href="/" class="site-header__brand" aria-label={`${SITE.name} — Home`}>
+        <img
+          src="/brand/logo-400.png"
+          srcset="/brand/logo-400.png 1x, /brand/logo-800.png 2x"
+          alt={SITE.name}
+          width="132"
+          height="50"
+          decoding="async"
+          fetchpriority="high"
+          class="site-header__logo site-header__logo--dark"
+        />
         {
-          NAV_LINKS.map((item) => (
-            <li>
-              <a
-                href={item.href}
-                class:list={['site-header__link', { 'is-active': isCurrent(item.href) }]}
-                aria-current={isCurrent(item.href) ? 'page' : undefined}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))
+          transparentHero && !heroMinimalHeader && (
+            <img
+              src="/brand/logo-light-400.png"
+              srcset="/brand/logo-light-400.png 1x, /brand/logo-light-800.png 2x"
+              alt=""
+              aria-hidden="true"
+              width="132"
+              height="50"
+              decoding="async"
+              fetchpriority="high"
+              class="site-header__logo site-header__logo--light"
+            />
+          )
         }
-      </ul>
-    </nav>
+      </a>
 
-    <div class="site-header__actions">
-      <a href="/contact" class="btn btn--primary site-header__cta">Talk to us</a>
-      <button
-        type="button"
-        class="btn btn--outline site-header__menu-btn"
-        data-menu-open
-        aria-haspopup="dialog"
-        aria-controls="site-overlay-menu"
-        aria-expanded="false"
-      >
-        <span>Menu</span>
-      </button>
+      <nav class="site-header__nav" aria-label="Primary navigation">
+        <ul class="site-header__list">
+          {
+            NAV_LINKS.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class:list={['site-header__link', { 'is-active': isCurrent(item.href) }]}
+                  aria-current={isCurrent(item.href) ? 'page' : undefined}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <a href="/contact" class="btn btn--primary site-header__cta">Talk to us</a>
+        <button
+          type="button"
+          class="btn btn--outline site-header__menu-btn"
+          data-menu-open
+          aria-haspopup="dialog"
+          aria-controls="site-overlay-menu"
+          aria-expanded="false"
+        >
+          <span>Menu</span>
+        </button>
+      </div>
     </div>
   </div>
 </header>
@@ -73,6 +133,9 @@ const isCurrent = (href: string) => {
     inset-block-start: 0;
     inset-inline: 0;
     z-index: 100;
+  }
+
+  .site-header__bar {
     min-height: var(--header-height);
     display: flex;
     align-items: center;
@@ -83,14 +146,128 @@ const isCurrent = (href: string) => {
     transition:
       background-color var(--motion-fast) var(--ease-out),
       border-color var(--motion-fast) var(--ease-out),
-      backdrop-filter var(--motion-fast) var(--ease-out);
+      backdrop-filter var(--motion-fast) var(--ease-out),
+      transform var(--motion-normal) var(--ease-out),
+      opacity var(--motion-normal) var(--ease-out),
+      visibility var(--motion-normal) var(--ease-out);
   }
 
-  .site-header--transparent:not(.is-scrolled) {
+  /* Standard transparent header on interior hero pages (About, Projects, NRI, Insights, Contact) */
+  .site-header--transparent:not(.is-scrolled) .site-header__bar {
     background-color: transparent;
     border-bottom-color: transparent;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+  }
+
+  /* Home two-stage hero minimal header */
+  .site-header--hero-minimal {
+    pointer-events: none;
+  }
+
+  .site-header__minimal {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline: 0;
+    min-height: var(--header-height);
+    display: flex;
+    align-items: center;
+    background: transparent;
+    pointer-events: auto;
+    opacity: 1;
+    visibility: visible;
+    transition:
+      opacity var(--motion-fast) var(--ease-out),
+      visibility var(--motion-fast) var(--ease-out);
+  }
+
+  .site-header__minimal-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding-block: var(--space-3);
+  }
+
+  .site-header__hamburger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: var(--space-2);
+    margin-left: calc(var(--space-2) * -1);
+    background: transparent;
+    border: 0;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-on-dark);
+    cursor: pointer;
+    transition:
+      opacity var(--motion-fast) var(--ease-out),
+      background-color var(--motion-fast) var(--ease-out);
+  }
+
+  .site-header__hamburger:hover {
+    background-color: var(--color-surface-on-dark-hover);
+  }
+
+  .site-header__hamburger:focus-visible,
+  .site-header__minimal-cta:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  .site-header__minimal-cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-block: var(--space-2);
+    font-family: var(--font-body);
+    font-size: var(--text-md);
+    font-weight: 500;
+    color: var(--color-text-on-dark);
+    position: relative;
+  }
+
+  .site-header__minimal-cta::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: var(--space-2);
+    height: 1px;
+    background: var(--color-accent-gradient);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform var(--motion-fast) var(--ease-out);
+  }
+
+  .site-header__minimal-cta:hover {
+    opacity: 1;
+  }
+
+  .site-header__minimal-cta:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* Full cream header slides in only after scrolling past the Home hero */
+  .site-header--hero-minimal:not(.is-past-hero) .site-header__bar {
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .site-header--hero-minimal.is-past-hero .site-header__bar {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .site-header--hero-minimal.is-past-hero .site-header__minimal {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
   }
 
   .site-header__inner {
@@ -107,13 +284,25 @@ const isCurrent = (href: string) => {
     flex-shrink: 0;
   }
 
-  .site-header__brand img {
+  .site-header__logo {
     width: auto;
     height: 44px;
   }
 
+  .site-header__logo--light {
+    display: none;
+  }
+
+  .site-header--transparent:not(.is-scrolled) .site-header__logo--dark {
+    display: none;
+  }
+
+  .site-header--transparent:not(.is-scrolled) .site-header__logo--light {
+    display: block;
+  }
+
   @media (min-width: 1024px) {
-    .site-header__brand img {
+    .site-header__logo {
       height: 50px;
     }
   }
@@ -142,7 +331,7 @@ const isCurrent = (href: string) => {
 
   .site-header__link:hover,
   .site-header__link.is-active {
-    color: var(--color-accent);
+    color: var(--color-accent-text);
     opacity: 1;
   }
 
@@ -151,8 +340,34 @@ const isCurrent = (href: string) => {
     position: absolute;
     inset-inline: 0;
     inset-block-end: 0;
-    height: 1px;
+    height: 2px;
     background: var(--color-accent-gradient);
+  }
+
+  /* Over dark hero before scroll on interior pages: white nav links and white outline menu button */
+  .site-header--transparent:not(.is-scrolled) .site-header__link {
+    color: var(--color-text-on-dark);
+  }
+
+  .site-header--transparent:not(.is-scrolled) .site-header__link:hover,
+  .site-header--transparent:not(.is-scrolled) .site-header__link.is-active {
+    color: var(--color-text-on-dark);
+    opacity: 0.92;
+  }
+
+  .site-header--transparent:not(.is-scrolled) .site-header__menu-btn {
+    color: var(--color-text-on-dark);
+    border-color: var(--color-border-on-dark);
+  }
+
+  .site-header--transparent:not(.is-scrolled) .site-header__menu-btn:hover {
+    background-color: var(--color-surface-on-dark-hover);
+    border-color: var(--color-text-on-dark);
+    color: var(--color-text-on-dark);
+  }
+
+  .site-header--transparent:not(.is-scrolled) :focus-visible {
+    outline-color: var(--color-accent);
   }
 
   .site-header__actions {
@@ -185,7 +400,21 @@ const isCurrent = (href: string) => {
 
 <script>
   const header = document.querySelector<HTMLElement>('[data-site-header]');
-  if (header && header.dataset.transparentHero === 'true') {
+
+  if (header && header.dataset.heroMinimal === 'true') {
+    const heroEndSentinel = document.querySelector<HTMLElement>('[data-hero-end]');
+
+    const updatePastHero = () => {
+      if (!heroEndSentinel) return;
+      const rect = heroEndSentinel.getBoundingClientRect();
+      const threshold = 80;
+      header.classList.toggle('is-past-hero', rect.top <= threshold);
+    };
+
+    updatePastHero();
+    window.addEventListener('scroll', updatePastHero, { passive: true });
+    window.addEventListener('resize', updatePastHero, { passive: true });
+  } else if (header && header.dataset.transparentHero === 'true') {
     const updateScrollState = () => {
       header.classList.toggle('is-scrolled', window.scrollY > 24);
     };

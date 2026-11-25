@@ -8,23 +8,25 @@ interface Props {
 }
 
 const {
-  eyebrow = 'Next Step',
+  eyebrow = 'Next step',
   heading = 'Start your land journey',
-  text = 'Speak directly with our Bengaluru team about Tiiger Trail – Phase I, site visits, or NRI buying support.',
+  text = 'Speak with our Bengaluru team about Tiiger Trail – Phase I, site visits, or investment enquiries.',
   ctaLabel = 'Talk to us',
   ctaHref = '/contact',
 } = Astro.props;
 ---
 
-<section class="section closing-cta" aria-labelledby="closing-cta-heading">
+<section class="closing-cta" aria-labelledby="closing-cta-heading">
   <div class="container">
-    <div class="closing-cta__panel" data-reveal>
-      <hr class="divider-gold closing-cta__rule" />
-      <p class="eyebrow">{eyebrow}</p>
-      <h2 id="closing-cta-heading" class="closing-cta__heading">
-        {heading}
-      </h2>
-      <p class="closing-cta__text">{text}</p>
+    <hr class="divider-gold closing-cta__rule" />
+    <div class="closing-cta__band" data-reveal>
+      <div class="closing-cta__copy">
+        <p class="eyebrow">{eyebrow}</p>
+        <h2 id="closing-cta-heading" class="closing-cta__heading">
+          {heading}
+        </h2>
+        <p class="closing-cta__text">{text}</p>
+      </div>
       <div class="closing-cta__actions">
         <a href={ctaHref} class="btn btn--primary">{ctaLabel}</a>
       </div>
@@ -33,26 +35,42 @@ const {
 </section>
 
 <style>
-  .closing-cta__panel {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-4);
-    padding: var(--space-6) var(--space-4);
-    border-radius: var(--radius-sm);
-    background-color: var(--color-surface-raised);
-    border: 1px solid var(--color-border-subtle);
+  .closing-cta {
+    padding-bottom: var(--space-6);
   }
 
   @media (min-width: 1024px) {
-    .closing-cta__panel {
-      padding: var(--space-7) var(--space-6);
+    .closing-cta {
+      padding-bottom: var(--space-8);
     }
   }
 
   .closing-cta__rule {
-    max-width: 120px;
     margin: 0;
+  }
+
+  .closing-cta__band {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-5);
+    padding-top: var(--space-6);
+  }
+
+  @media (min-width: 1024px) {
+    .closing-cta__band {
+      flex-direction: row;
+      align-items: flex-end;
+      padding-top: var(--space-8);
+    }
+  }
+
+  .closing-cta__copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
   }
 
   .closing-cta__heading {
@@ -71,6 +89,6 @@ const {
   }
 
   .closing-cta__actions {
-    margin-top: var(--space-2);
+    flex-shrink: 0;
   }
 </style>

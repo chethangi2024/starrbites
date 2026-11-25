@@ -3,31 +3,31 @@ import MediaSlot from '../MediaSlot.astro';
 
 const pillars = [
   {
-    eyebrow: '01 · Land Ownership',
-    title: 'Invest in Land',
+    eyebrow: '01 Land ownership',
+    title: 'Invest in land',
     description:
-      'Clear, thoughtfully located plotted developments shaped around real livability and enduring value.',
+      'Plotted developments chosen for daily living and long-term ownership.',
     href: '/projects',
     image: '/media/pillar-land.jpg',
-    alt: 'Open plotted land surrounded by trees near Bengaluru',
+    alt: 'Green fields and trees across rolling countryside in soft morning light.',
   },
   {
-    eyebrow: '02 · Curated Places',
-    title: 'Curated Destinations',
+    eyebrow: '02 Destinations',
+    title: 'Curated destinations',
     description:
-      'Settings selected for natural greenery, quiet roads, and balanced access to Bengaluru’s growth corridors.',
-    href: '/projects',
+      'Sites chosen for tree cover, calm internal roads, and road connectivity.',
+    href: '/projects/tiiger-trail',
     image: '/media/pillar-destinations.jpg',
-    alt: 'Tree-lined avenue through a green plotted development',
+    alt: 'Tree-lined road shaded by green canopy.',
   },
   {
-    eyebrow: '03 · Global Buyers',
-    title: 'Invest from Anywhere',
+    eyebrow: '03 Investors',
+    title: 'Investors',
     description:
-      'Structured guidance, clear documentation, and responsive support tailored for NRIs and overseas families.',
-    href: '/nri',
+      'Long-term land opportunities and partnership enquiries with our Bengaluru-based team.',
+    href: '/investors',
     image: '/media/pillar-nri.jpg',
-    alt: 'Morning light across open green Indian landscape',
+    alt: 'Morning light and mist over green hills in South India.',
   },
 ];
 ---
@@ -35,11 +35,11 @@ const pillars = [
 <section class="section pillars" aria-labelledby="pillars-heading">
   <div class="container">
     <div class="pillars__header" data-reveal>
-      <p class="eyebrow">How We Build</p>
-      <h2 id="pillars-heading" class="pillars__heading">Three Pillars of StarrBites</h2>
+      <p class="eyebrow">How we work</p>
+      <h2 id="pillars-heading" class="pillars__heading">Where we focus</h2>
     </div>
 
-    <div class="pillars__grid">
+    <div class="pillars__grid" data-reveal-group>
       {
         pillars.map((pillar) => (
           <article class="pillar-card" data-reveal>
@@ -88,13 +88,13 @@ const pillars = [
   .pillars__grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-5);
+    gap: var(--space-6);
   }
 
   @media (min-width: 1024px) {
     .pillars__grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: var(--space-4);
+      gap: var(--space-5);
     }
   }
 
@@ -106,24 +106,19 @@ const pillars = [
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: var(--space-4);
-    border-radius: var(--radius-sm);
-    background-color: var(--color-surface-raised);
-    border: 1px solid var(--color-border-subtle);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--color-border-subtle);
     color: var(--color-text-primary);
-    transition:
-      border-color var(--motion-fast) var(--ease-out),
-      transform var(--motion-fast) var(--ease-out);
+    transition: border-color var(--motion-fast) var(--ease-out);
   }
 
   .pillar-card__link:hover {
     opacity: 1;
-    border-color: var(--color-accent);
-    transform: translateY(-2px);
+    border-bottom-color: var(--color-accent-text);
   }
 
   .pillar-card__link:active {
-    transform: translateY(0);
+    opacity: 0.88;
   }
 
   .pillar-card__body {
@@ -155,11 +150,16 @@ const pillars = [
     margin-top: var(--space-2);
     font-size: var(--text-md);
     font-weight: 600;
-    color: var(--color-accent);
+    color: var(--color-accent-text);
+    transition: transform var(--motion-fast) var(--ease-out);
+  }
+
+  .pillar-card__link:hover .pillar-card__cta {
+    transform: translateX(var(--space-1));
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .pillar-card__link:hover {
+    .pillar-card__link:hover .pillar-card__cta {
       transform: none;
     }
   }

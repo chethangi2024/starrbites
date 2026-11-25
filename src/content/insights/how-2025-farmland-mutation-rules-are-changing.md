@@ -3,8 +3,8 @@ title: "How 2025 land mutation rules affect farmland investment"
 description: "How 2025 mutation rules and digital land record reforms are reshaping farmland investment in India, and what buyers and NRIs must check."
 pubDate: 2025-11-03
 category: "Guides"
-coverImage: "/media/insights/how-2025-farmland-mutation-rules-are-changing.jpg"
-coverAlt: "Cover image for How 2025 land mutation rules affect farmland investment"
+coverImage: "/media/insights/how-2025-farmland-mutation-rules-are-changing.webp"
+coverAlt: "Aerial view of demarcated agricultural land parcels with a curving road running alongside"
 oldUrl: "/how-2025-farmland-mutation-rules-are-changing/"
 draft: false
 ---

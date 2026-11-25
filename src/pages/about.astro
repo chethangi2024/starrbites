@@ -1,114 +1,439 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
-import MediaSlot from '../components/MediaSlot.astro';
 import ClosingCta from '../components/home/ClosingCta.astro';
 
-const philosophy = [
-  {
-    number: '01',
-    title: 'Long-Term Growth',
-    text: 'We look at land with a multi-decade lens — choosing locations for steady livability and lasting relevance rather than short-term speculation.',
-  },
-  {
-    number: '02',
-    title: 'Unhurried Lifestyle',
-    text: 'Space, light, and greenery shape how a place feels every day. We plan plotted communities around calm roads and room to breathe.',
-  },
-  {
-    number: '03',
-    title: 'Family Legacy',
-    text: 'A well-chosen piece of land can be held, built upon, and passed down. Our goal is to make ownership straightforward from the first conversation.',
-  },
+const todayBullets = [
+  'Premium plotted developments',
+  'High-growth land investment opportunities',
+  'Strategically located projects with connectivity to Bangalore',
+  'Community-driven planning and infrastructure',
 ];
 
-const sustainability = [
+const journey = [
   {
-    title: 'Preserving Existing Trees',
-    text: 'Where mature trees already stand, our approach is to plan layouts around them rather than clearing a site flat before we begin.',
+    label: 'Early years',
+    title: 'Foundation & Early Values',
+    paragraphs: [
+      'Our journey is rooted in strong values of discipline, performance, and excellence, shaped through early achievements and a foundation built on dedication, leadership, and continuous growth.',
+    ],
   },
   {
-    title: 'Water-Conscious Layouts',
-    text: 'We intend to design drainage, permeable surfaces, and rainwater capture into each layout so water stays with the land.',
+    label: 'Banking',
+    title: 'Early Professional Roots – Banking Excellence',
+    paragraphs: [
+      'Our journey began in the corporate world with Standard Chartered Bank, where performance-driven excellence was recognized with the Best Achiever Award. This phase instilled a deep understanding of strategy, financial discipline, and customer-centric thinking, principles that continue to define Starrbites today.',
+    ],
   },
   {
-    title: 'Native Planting',
-    text: 'Our intention is to favour regional, drought-tolerant native species that belong to Bengaluru’s climate and support local biodiversity.',
+    label: '2003',
+    title: 'The Beginning of Design Thinking',
+    paragraphs: [
+      'The foundation of Starrbites’ design philosophy began with the launch of Dinsignia – Architects & Interiors.',
+      'Recognized with the prestigious CERA Design Award, this venture established our commitment to creating spaces that seamlessly blend functionality, aesthetics, and purpose.',
+    ],
+  },
+  {
+    label: '2007–2015',
+    title: 'Understanding Materials & Execution',
+    paragraphs: [
+      'To strengthen our expertise in execution, we expanded into furniture manufacturing, managing end-to-end production and sales.',
+      'This phase helped us gain hands-on knowledge of materials, craftsmanship, and scalability, while also building strong, self-sustaining teams.',
+    ],
+  },
+  {
+    label: '2015–2022',
+    title: 'Nurturing Future Designers',
+    paragraphs: [
+      'With a vision to shape the next generation of creators, we founded PCOLE (Interior & Architecture School of Design).',
+      'Over 7 years, this initiative became a platform to nurture talent, encourage creativity, and build a strong ecosystem around design and innovation.',
+    ],
+  },
+  {
+    label: 'Expansion',
+    title: 'Hospitality & Technology Integration',
+    paragraphs: [
+      'Our journey further evolved with ventures like Ivlina Food and Hospitality Pvt Ltd, where we launched the hotel brand Swadakshni in Ahmedabad, strengthening our expertise in location value and customer experience.',
+      'Alongside, Brick and Beams Technology Pvt Ltd was established to integrate technology and innovation into modern development practices.',
+    ],
+  },
+  {
+    label: 'Today',
+    title: 'Starrbites & Land Development Vision',
+    paragraphs: [
+      'Today, Starrbites stands as a forward-thinking real estate and development company focused on thoughtfully planned land projects.',
+      'We go beyond conventional real estate by creating spaces that combine strategic location, lifestyle value, and long-term investment potential, building not just properties, but future-ready communities.',
+    ],
+  },
+  {
+    label: 'Flagship',
+    title: 'Flagship Vision – Tiiger Trail',
+    paragraphs: [
+      'This vision takes shape through our flagship project, Tiiger Trail, located in the Sri Sathya Sai District, on the Karnataka–Andhra Pradesh border.',
+      'Tiiger Trail represents a new way of land ownership, nature-led, sustainable, and purpose-driven, designed for those who seek more than just investment.',
+    ],
   },
 ];
 
 const team = [
   {
-    name: 'Team Member 01 (Placeholder)',
-    role: 'Role / Title — to be confirmed',
-    image: '/media/team-1.jpg',
-    alt: 'Portrait placeholder for StarrBites team member 1',
+    name: 'K. P. Rupesh Kumar',
+    role: 'Principal Advocate',
+    image: '/media/team/k-p-rupesh-kumar.webp',
+    alt: 'K. P. Rupesh Kumar, Principal Advocate',
   },
   {
-    name: 'Team Member 02 (Placeholder)',
-    role: 'Role / Title — to be confirmed',
-    image: '/media/team-2.jpg',
-    alt: 'Portrait placeholder for StarrBites team member 2',
+    name: 'Ashok',
+    role: 'Land Acquiring & Legal',
+    image: '/media/team/ashok.webp',
+    alt: 'Ashok, Land Acquiring & Legal',
   },
   {
-    name: 'Team Member 03 (Placeholder)',
-    role: 'Role / Title — to be confirmed',
-    image: '/media/team-3.jpg',
-    alt: 'Portrait placeholder for StarrBites team member 3',
+    name: 'Blesson George',
+    role: 'Customer Acquisition Expert',
+    image: '/media/team/blesson-george.webp',
+    alt: 'Blesson George, Customer Acquisition Expert',
   },
   {
-    name: 'Team Member 04 (Placeholder)',
-    role: 'Role / Title — to be confirmed',
-    image: '/media/team-4.jpg',
-    alt: 'Portrait placeholder for StarrBites team member 4',
+    name: 'Vaani',
+    role: 'Branding',
+    image: '/media/team/vaani.webp',
+    alt: 'Vaani, Branding',
+  },
+  {
+    name: 'Chethan',
+    role: 'Digital & CRM',
+    image: '/media/team/chethan.webp',
+    alt: 'Chethan, Digital & CRM',
+  },
+];
+
+const sustainability = [
+  {
+    title: 'Preserving existing trees',
+    text: 'Where mature trees stand, we aim to plan layouts around them instead of clearing the site flat.',
+  },
+  {
+    title: 'Water-conscious layouts',
+    text: 'We aim to build drainage and rainwater capture into each layout so rainwater recharges the ground.',
+  },
+  {
+    title: 'Native planting',
+    text: 'We aim to plant regional, drought-tolerant native species suited to the local climate.',
+  },
+];
+
+const testimonials = [
+  {
+    name: 'Priya Nair',
+    role: 'IT Professional, Bangalore',
+    quote:
+      'Buying our first plot felt overwhelming until we found Starrbites. Their team was transparent, responsive, and patient with all our questions. They helped us secure a prime location near Devanahalli, and we couldn’t be happier with the investment.',
+  },
+  {
+    name: 'Rakesh Shetty',
+    role: 'Entrepreneur, Bangalore',
+    quote:
+      'Starrbites made it seamless to expand my real estate portfolio. From shortlisting to documentation, their support was top-notch. I appreciated their in-depth market knowledge and clean dealings.',
+  },
+  {
+    name: 'Manjunath Hegde',
+    role: 'Retired PSU Officer, Mysore',
+    quote:
+      'wanted to invest in land for my children’s future. Starrbites guided me through every step, ensuring legal clarity and fair pricing. It’s rare to find such trustworthy people in the property space today.',
+  },
+  {
+    name: 'Ajit Sharma',
+    role: 'Architect, Hyderabad',
+    quote:
+      'As someone from the design industry, I had high expectations. Starrbites impressed me with their curated land listings and understanding of development potential. Their professionalism and integrity truly stood out.',
+  },
+];
+
+const faqs = [
+  {
+    id: 'faq-legal-verified',
+    question: 'Is the land legally verified and safe to invest in?',
+    answer:
+      'Yes, all our projects undergo thorough legal due diligence. We ensure clear titles, proper approvals, and complete transparency so you can invest with confidence and peace of mind.',
+  },
+  {
+    id: 'faq-land-vs-apartments',
+    question: 'Why should I invest in land instead of apartments?',
+    answer:
+      'Land is a scarce asset that typically offers higher long-term appreciation, zero maintenance costs, and greater flexibility. Unlike apartments, land value is not dependent on building depreciation, making it a strong investment choice.',
+  },
+  {
+    id: 'faq-what-makes-different',
+    question: 'What makes Starrbites different from other developers?',
+    answer:
+      'Starrbites focuses on strategic land development, transparency, and future growth potential. Our projects are carefully selected in high-appreciation zones and designed to offer both lifestyle value and strong investment returns.',
   },
 ];
 ---
 
 <BaseLayout
   title="About"
-  description="StarrBites is a Bengaluru land developer moving beyond traditional real estate toward curated land destinations."
+  description="Starrbites is a forward-thinking land development company based in Bangalore, focused on creating curated land destinations."
   transparentHero={true}
 >
   <PageHero
     eyebrow="About StarrBites"
-    title="Shaping land. Creating futures."
-    lead="A Bengaluru land developer focused on thoughtful, low-density plotted destinations."
+    title="Building land. Creating legacy."
+    lead="A forward-thinking land development company based in Bangalore, evolving beyond traditional real estate to become a developer of curated land destinations."
     mediaSrc="/media/about-hero.jpg"
-    mediaAlt="Open green landscape in the Bengaluru region"
+    mediaAlt="Morning light filtering through tall coconut palms."
   />
 
-  <!-- Our Story -->
-  <section class="section surface-light story" aria-labelledby="story-heading">
-    <div class="container story__inner" data-reveal>
-      <p id="story-heading" class="eyebrow">Our Story</p>
-      <hr class="divider-gold story__rule" />
-      <p class="story__lead">
-        StarrBites is a Bengaluru land developer moving beyond traditional real estate toward curated land destinations.
-      </p>
-      <p class="story__body">
-        Rather than treating land as a short-lived transaction, we focus on selecting grounded settings, planning clean infrastructure, and guiding buyers — in India and abroad — with plain-spoken clarity.
-      </p>
+  <!-- 1. Intro -->
+  <section class="section surface-light intro" aria-labelledby="intro-heading">
+    <div class="container">
+      <div class="intro__top" data-reveal>
+        <div class="intro__lead-col">
+          <p id="intro-heading" class="eyebrow">About StarrBites</p>
+          <hr class="divider-gold intro__rule" />
+          <p class="intro__lead">
+            Starrbites is a forward-thinking land development company based in Bangalore, focused on creating high-potential plotted developments that combine investment value, thoughtful planning, and future-ready infrastructure.
+          </p>
+        </div>
+
+        <div class="intro__body-col">
+          <p class="intro__body">
+            With a strong foundation in design, strategy, and real estate, Starrbites is built on a simple philosophy, land is not just an asset, it is a long-term opportunity to create growth, lifestyle, and legacy.
+          </p>
+          <p class="intro__body">
+            Today, Starrbites is evolving beyond traditional real estate to become a developer of <span class="highlight">curated land destinations</span>, designed for modern investors and global buyers.
+          </p>
+        </div>
+      </div>
+
+      <div class="intro__today" data-reveal>
+        <h2 class="sr-only">Company focus</h2>
+        <h3 class="intro__today-heading">What StarrBites is today</h3>
+        <p class="intro__body">
+          Today, Starrbites stands as a land development-focused company, specializing in:
+        </p>
+
+        <ul class="star-grid">
+          {
+            todayBullets.map((bullet) => (
+              <li class="star-grid__item">
+                <svg
+                  class="star-marker"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 1.5L14.3 9.7L22.5 12L14.3 14.3L12 22.5L9.7 14.3L1.5 12L9.7 9.7L12 1.5Z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <span>{bullet}</span>
+              </li>
+            ))
+          }
+        </ul>
+
+        <div class="intro__closing">
+          <p class="intro__body">
+            Our developments are designed not just for today, but for the future of urban expansion and lifestyle evolution.
+          </p>
+          <p class="intro__body">
+            We focus on creating legally clear, well-planned, and high-appreciation land assets that cater to both end-users and investors, including NRIs and global buyers.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Philosophy -->
-  <section class="section" aria-labelledby="philosophy-heading">
+  <!-- 2. Our journey -->
+  <section class="section journey" aria-labelledby="journey-heading">
     <div class="container">
       <div class="section-head" data-reveal>
-        <p class="eyebrow">Philosophy</p>
-        <h2 id="philosophy-heading" class="section-head__title">
-          How We Think About Land
-        </h2>
+        <p class="eyebrow">Timeline</p>
+        <h2 id="journey-heading" class="section-head__title">Our journey</h2>
       </div>
 
-      <div class="three-col-grid">
+      <ol class="timeline">
         {
-          philosophy.map((item) => (
-            <article class="info-card" data-reveal>
-              <p class="eyebrow">{item.number}</p>
-              <h3 class="info-card__title">{item.title}</h3>
-              <p class="info-card__text">{item.text}</p>
+          journey.map((step) => (
+            <li class="timeline__row" data-reveal>
+              <span class="timeline__dot" aria-hidden="true"></span>
+              <p class="timeline__label">{step.label}</p>
+              <div class="timeline__content">
+                <h3 class="timeline__title">{step.title}</h3>
+                {step.paragraphs.map((text) => (
+                  <p class="timeline__text">{text}</p>
+                ))}
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- 3. Vision, mission, philosophy -->
+  <section class="section vmp" aria-labelledby="vmp-heading">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Purpose</p>
+        <h2 id="vmp-heading" class="section-head__title">Vision, mission and philosophy</h2>
+      </div>
+
+      <div class="vmp__grid">
+        <article class="vmp__col" data-reveal>
+          <p class="eyebrow">01 Vision</p>
+          <h3 class="vmp__title">Our vision</h3>
+          <p class="vmp__text">
+            To become a globally trusted land development brand from India, known for creating premium land destinations that shape communities and generate lasting wealth.
+          </p>
+          <p class="vmp__sub">Our flagship vision</p>
+          <p class="vmp__text">Projects like Tiiger Trail represent our vision blending:</p>
+          <ul class="star-list">
+            <li>
+              <svg class="star-marker" width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 1.5L14.3 9.7L22.5 12L14.3 14.3L12 22.5L9.7 14.3L1.5 12L9.7 9.7L12 1.5Z" fill="currentColor" />
+              </svg>
+              <span>Nature and lifestyle</span>
+            </li>
+            <li>
+              <svg class="star-marker" width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 1.5L14.3 9.7L22.5 12L14.3 14.3L12 22.5L9.7 14.3L1.5 12L9.7 9.7L12 1.5Z" fill="currentColor" />
+              </svg>
+              <span>Investment and growth</span>
+            </li>
+            <li>
+              <svg class="star-marker" width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 1.5L14.3 9.7L22.5 12L14.3 14.3L12 22.5L9.7 14.3L1.5 12L9.7 9.7L12 1.5Z" fill="currentColor" />
+              </svg>
+              <span>Design and long-term value</span>
+            </li>
+          </ul>
+          <p class="vmp__text">
+            Each project is developed with a clear intent: To create destinations, not just layouts.
+          </p>
+        </article>
+
+        <article class="vmp__col" data-reveal>
+          <p class="eyebrow">02 Mission</p>
+          <h3 class="vmp__title">Our mission</h3>
+          <p class="vmp__text">
+            To develop high-quality land projects that deliver long-term value, transparency, and meaningful investment opportunities for modern buyers.
+          </p>
+          <p class="vmp__text">
+            We aim to simplify land investment while ensuring every project reflects integrity, planning, and future potential.
+          </p>
+        </article>
+
+        <article class="vmp__col" data-reveal>
+          <p class="eyebrow">03 Philosophy</p>
+          <h3 class="vmp__title">Our philosophy</h3>
+          <p class="vmp__text">At Starrbites, we believe:</p>
+          <ul class="star-list">
+            <li>
+              <svg class="star-marker" width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 1.5L14.3 9.7L22.5 12L14.3 14.3L12 22.5L9.7 14.3L1.5 12L9.7 9.7L12 1.5Z" fill="currentColor" />
+              </svg>
+              <span>Land is the foundation of all growth</span>
+            </li>
+            <li>
+              <svg class="star-marker" width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 1.5L14.3 9.7L22.5 12L14.3 14.3L12 22.5L9.7 14.3L1.5 12L9.7 9.7L12 1.5Z" fill="currentColor" />
+              </svg>
+              <span>Design defines experience</span>
+            </li>
+            <li>
+              <svg class="star-marker" width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 1.5L14.3 9.7L22.5 12L14.3 14.3L12 22.5L9.7 14.3L1.5 12L9.7 9.7L12 1.5Z" fill="currentColor" />
+              </svg>
+              <span>Transparency builds trust</span>
+            </li>
+            <li>
+              <svg class="star-marker" width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 1.5L14.3 9.7L22.5 12L14.3 14.3L12 22.5L9.7 14.3L1.5 12L9.7 9.7L12 1.5Z" fill="currentColor" />
+              </svg>
+              <span>Investment should create both value and vision</span>
+            </li>
+          </ul>
+          <p class="vmp__text">
+            We don’t just develop land, we create opportunities for people to grow, invest, and build their future.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Founder's note -->
+  <section class="section surface-light founder" aria-labelledby="founder-heading">
+    <div class="container founder__grid" data-reveal>
+      <div class="founder__profile">
+        <div class="portrait-frame">
+          <img
+            src="/media/team/sunil-yadav.webp"
+            alt="Sunil Yadav, Founder"
+            width="456"
+            height="570"
+            loading="lazy"
+            decoding="async"
+            class="portrait-frame__img"
+          />
+        </div>
+        <div class="founder__meta">
+          <p class="founder__name">Sunil Yadav (Founder)</p>
+          <p class="founder__title">Land Development Strategist · Design Visionary · Award-Winning Leader</p>
+        </div>
+      </div>
+
+      <div class="founder__note">
+        <p class="eyebrow">Leadership</p>
+        <h2 id="founder-heading" class="section-head__title">Founder’s note</h2>
+        <blockquote class="founder__pullquote">
+          “Our vision has always been simple to create spaces that hold meaning, value, and purpose.”
+        </blockquote>
+        <p class="founder__text">
+          Every project we undertake is not just about land or development, but about building experiences that grow with people over time.
+        </p>
+        <p class="founder__text">
+          With Tiiger Trail, we take a step closer to that vision, bringing together nature, sustainability, and thoughtful planning into one cohesive idea of living.
+        </p>
+        <p class="founder__text">
+          We believe that when you invest in the right space, you’re not just securing land, you’re shaping a future.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Team -->
+  <section class="section team" aria-labelledby="team-heading">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">People</p>
+        <h2 id="team-heading" class="section-head__title">Our team</h2>
+      </div>
+
+      <div class="team__grid" data-reveal-group>
+        {
+          team.map((member) => (
+            <article class="team-member" data-reveal>
+              <div class="portrait-frame">
+                <img
+                  src={member.image}
+                  alt={member.alt}
+                  width="720"
+                  height="900"
+                  loading="lazy"
+                  decoding="async"
+                  class="portrait-frame__img"
+                />
+              </div>
+              <div class="team-member__meta">
+                <h3 class="team-member__name">{member.name}</h3>
+                <p class="team-member__role">{member.role}</p>
+              </div>
             </article>
           ))
         }
@@ -116,20 +441,22 @@ const team = [
     </div>
   </section>
 
-  <!-- Sustainability -->
+  <!-- 6. Sustainability -->
   <section class="section sustainability" aria-labelledby="sustainability-heading">
     <div class="container">
-      <div class="section-head" data-reveal>
-        <p class="eyebrow">Sustainability</p>
-        <h2 id="sustainability-heading" class="section-head__title">
-          Our Approach to the Land
-        </h2>
+      <div class="section-head--split" data-reveal>
+        <div class="section-head">
+          <p class="eyebrow">Sustainability</p>
+          <h2 id="sustainability-heading" class="section-head__title">
+            Our approach to the land
+          </h2>
+        </div>
         <p class="section-head__lead">
-          Good land stewardship begins before the first road is laid. These are the principles we aim to carry into every destination we plan.
+          Good land stewardship begins before we lay the first road. These are the principles we aim to bring to every project.
         </p>
       </div>
 
-      <div class="three-col-grid">
+      <div class="sustainability__grid" data-reveal-group>
         {
           sustainability.map((item) => (
             <article class="approach-item" data-reveal>
@@ -142,84 +469,116 @@ const team = [
     </div>
   </section>
 
-  <!-- Team -->
-  <section class="section team" aria-labelledby="team-heading">
+  <!-- 7. Testimonials -->
+  <section class="section surface-light testimonials" aria-labelledby="testimonials-heading">
     <div class="container">
-      <div class="section-head" data-reveal>
-        <p class="eyebrow">People</p>
-        <h2 id="team-heading" class="section-head__title">Our Team</h2>
+      <div class="section-head--split" data-reveal>
+        <div class="section-head">
+          <p class="eyebrow">Client voices</p>
+          <h2 id="testimonials-heading" class="section-head__title">Excellent service</h2>
+        </div>
         <p class="section-head__lead">
-          Placeholder leadership and advisory profiles — ready for names, roles, and portraits.
+          At Starrbites, client satisfaction is our top priority. We listen, understand, and tailor every solution to meet your needs. Our goal is to deliver a seamless, transparent, and rewarding real estate experience every time.
         </p>
       </div>
 
-      <div class="team__grid">
+      <div class="testimonials__grid">
         {
-          team.map((member) => (
-            <article class="team-card" data-reveal>
-              <MediaSlot
-                src={member.image}
-                alt={member.alt}
-                ratio="4/3"
-              />
-              <div class="team-card__body">
-                <h3 class="team-card__name">{member.name}</h3>
-                <p class="team-card__role">{member.role}</p>
-              </div>
-            </article>
+          testimonials.map((item) => (
+            <figure class="testimonial" data-reveal>
+              <span class="testimonial__mark" aria-hidden="true">“</span>
+              <blockquote class="testimonial__quote">{item.quote}</blockquote>
+              <figcaption class="testimonial__author">
+                <span class="testimonial__name">{item.name}</span>
+                <span class="testimonial__role">{item.role}</span>
+              </figcaption>
+            </figure>
           ))
         }
       </div>
     </div>
   </section>
 
+  <!-- 8. FAQ -->
+  <section class="section about-faq" aria-labelledby="about-faq-heading">
+    <div class="container faq__layout">
+      <div class="faq__intro" data-reveal>
+        <p class="eyebrow">Frequently asked questions</p>
+        <h2 id="about-faq-heading" class="section-head__title">Clarity before you invest</h2>
+        <p class="section-head__lead">
+          Find answers to the most important questions about our projects and process.
+        </p>
+      </div>
+
+      <div class="faq-list" data-faq-accordion data-reveal>
+        {
+          faqs.map((item) => (
+            <div class="faq-item">
+              <h3 class="faq-item__heading">
+                <button
+                  type="button"
+                  class="faq-item__trigger"
+                  id={`${item.id}-trigger`}
+                  aria-expanded="false"
+                  aria-controls={`${item.id}-panel`}
+                  data-faq-trigger
+                >
+                  <span>{item.question}</span>
+                  <span class="faq-item__icon" aria-hidden="true" data-faq-icon>+</span>
+                </button>
+              </h3>
+              <div
+                id={`${item.id}-panel`}
+                class="faq-item__panel"
+                role="region"
+                aria-labelledby={`${item.id}-trigger`}
+                hidden
+              >
+                <p class="faq-item__answer">{item.answer}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Closing CTA -->
   <ClosingCta
     heading="Start a conversation with our team"
-    text="Whether you are exploring Tiiger Trail – Phase I or looking ahead to future destinations, we are glad to walk you through our approach."
+    text="Ask our team about Tiiger Trail – Phase I or upcoming land destinations."
     ctaLabel="Talk to us"
     ctaHref="/contact"
   />
 </BaseLayout>
 
 <style>
-  .story__inner {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-4);
-  }
-
-  .story__rule {
-    max-width: 120px;
-    margin: 0;
-  }
-
-  .story__lead {
-    font-family: var(--font-heading);
-    font-size: var(--text-xl);
-    font-weight: 500;
-    line-height: 1.3;
-    color: var(--color-text-on-light);
-    max-width: 34ch;
-  }
-
-  @media (min-width: 1024px) {
-    .story__lead {
-      font-size: var(--text-2xl);
-    }
-  }
-
-  .story__body {
-    font-size: var(--text-lg);
-    color: var(--color-text-on-light-muted);
-  }
-
+  /* Shared editorial headers */
   .section-head {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-3);
     margin-bottom: var(--space-6);
+  }
+
+  .section-head--split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    align-items: end;
+    margin-bottom: var(--space-6);
+  }
+
+  .section-head--split .section-head {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 1024px) {
+    .section-head--split {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: var(--space-6);
+    }
   }
 
   .section-head__title {
@@ -237,40 +596,468 @@ const team = [
     color: var(--color-text-secondary);
   }
 
-  .three-col-grid {
+  /* Gold star marker for editorial lists */
+  .star-marker {
+    flex-shrink: 0;
+    color: var(--color-accent-text);
+    margin-top: 6px;
+  }
+
+  /* 1. Intro */
+  .intro__top {
     display: grid;
     grid-template-columns: 1fr;
+    gap: var(--space-5);
+    align-items: start;
+  }
+
+  @media (min-width: 1024px) {
+    .intro__top {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: var(--space-7);
+    }
+  }
+
+  .intro__lead-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .intro__rule {
+    max-width: 96px;
+    margin: 0;
+  }
+
+  .intro__lead {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--color-text-primary);
+    max-width: 34ch;
+  }
+
+  @media (min-width: 1024px) {
+    .intro__lead {
+      font-size: var(--text-2xl);
+    }
+  }
+
+  .intro__body-col {
+    display: flex;
+    flex-direction: column;
     gap: var(--space-4);
   }
 
   @media (min-width: 1024px) {
-    .three-col-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: var(--space-5);
+    .intro__body-col {
+      padding-top: var(--space-5);
     }
   }
 
-  .info-card {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    padding: var(--space-5) var(--space-4);
-    border-radius: var(--radius-sm);
-    background-color: var(--color-surface-raised);
-    border: 1px solid var(--color-border-subtle);
-  }
-
-  .info-card__title {
-    font-size: var(--text-xl);
-  }
-
-  .info-card__text {
+  .intro__body {
     font-size: var(--text-md);
     color: var(--color-text-secondary);
   }
 
+  .intro__today {
+    margin-top: var(--space-6);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-border-subtle);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .intro__today-heading {
+    font-size: var(--text-xl);
+  }
+
+  @media (min-width: 1024px) {
+    .intro__today-heading {
+      font-size: var(--text-2xl);
+    }
+  }
+
+  .star-grid {
+    list-style: none;
+    margin: var(--space-2) 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  @media (min-width: 640px) {
+    .star-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: var(--space-6);
+    }
+  }
+
+  .star-grid__item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding-block: var(--space-4);
+    border-bottom: 1px solid var(--color-border-subtle);
+    font-size: var(--text-md);
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+
+  .intro__closing {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+    max-width: var(--measure-max);
+  }
+
+  /* 2. Our journey — full-width vertical timeline */
+  .journey {
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    inset-block: var(--space-4);
+    inset-inline-start: 4px;
+    width: 1px;
+    background: var(--color-accent-gradient);
+  }
+
+  .timeline__row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+    padding-left: var(--space-5);
+    padding-block: var(--space-5);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .timeline__row:first-child {
+    padding-top: var(--space-2);
+  }
+
+  .timeline__row:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  @media (min-width: 1024px) {
+    .timeline__row {
+      grid-template-columns: minmax(140px, 220px) minmax(0, 1fr);
+      gap: var(--space-6);
+      padding-left: var(--space-6);
+    }
+  }
+
+  .timeline__dot {
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: calc(var(--space-5) + 6px);
+    width: 9px;
+    height: 9px;
+    border-radius: var(--radius-pill);
+    background-color: var(--color-accent);
+    border: 1px solid var(--color-accent-border);
+  }
+
+  .timeline__row:first-child .timeline__dot {
+    inset-block-start: calc(var(--space-2) + 6px);
+  }
+
+  .timeline__label {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-accent-text);
+    padding-top: 2px;
+  }
+
+  .timeline__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .timeline__title {
+    font-size: var(--text-xl);
+  }
+
+  @media (min-width: 1024px) {
+    .timeline__title {
+      font-size: var(--text-2xl);
+    }
+  }
+
+  .timeline__text {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+  }
+
+  /* 3. Vision, mission, philosophy — borderless 3 columns with hairline dividers */
+  .vmp {
+    background-color: var(--color-surface-raised);
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .vmp__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .vmp__col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .vmp__col:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  @media (min-width: 1024px) {
+    .vmp__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0;
+    }
+
+    .vmp__col {
+      padding-top: 0;
+      border-top: 0;
+      padding-inline: var(--space-5);
+      border-left: 1px solid var(--color-border-subtle);
+    }
+
+    .vmp__col:first-child {
+      padding-left: 0;
+      border-left: 0;
+    }
+
+    .vmp__col:last-child {
+      padding-right: 0;
+    }
+  }
+
+  .vmp__title {
+    font-size: var(--text-2xl);
+  }
+
+  .vmp__sub {
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-accent-text);
+    margin-top: var(--space-2);
+  }
+
+  .vmp__text {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+  }
+
+  .star-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .star-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    font-size: var(--text-md);
+    color: var(--color-text-primary);
+  }
+
+  /* 4. Founder's note */
+  .founder {
+    border-block: 1px solid var(--color-border-subtle);
+  }
+
+  .founder__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    align-items: start;
+  }
+
+  @media (min-width: 1024px) {
+    .founder__grid {
+      grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+      gap: var(--space-7);
+    }
+  }
+
+  .founder__profile {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    max-width: 360px;
+  }
+
+  .founder__meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .founder__name {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+
+  .founder__title {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-accent-text);
+    line-height: 1.5;
+  }
+
+  .founder__note {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .founder__pullquote {
+    margin: var(--space-2) 0;
+    padding-left: var(--space-4);
+    border-left: 2px solid var(--color-accent);
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--color-text-primary);
+    max-width: 32ch;
+  }
+
+  @media (min-width: 1024px) {
+    .founder__pullquote {
+      font-size: var(--text-2xl);
+    }
+  }
+
+  .founder__text {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+  }
+
+  /* Shared 4:5 portrait framing (Founder + Team) */
+  .portrait-frame {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface-raised);
+  }
+
+  .portrait-frame__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  /* 5. Team — 5 columns desktop, 3 columns tablet, 2 columns mobile (last centred) */
+  .team__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5) var(--space-4);
+  }
+
+  @media (max-width: 639px) {
+    .team-member:last-child {
+      grid-column: 1 / -1;
+      width: calc(50% - (var(--space-4) / 2));
+      justify-self: center;
+    }
+  }
+
+  @media (min-width: 640px) {
+    .team__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-5) var(--space-4);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .team__grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: var(--space-4);
+    }
+  }
+
+  .team-member {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    width: 100%;
+  }
+
+  .team-member__meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .team-member__name {
+    font-size: var(--text-xl);
+  }
+
+  .team-member__role {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-accent-text);
+  }
+
+  /* 6. Sustainability */
   .sustainability {
     border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .sustainability__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  @media (min-width: 1024px) {
+    .sustainability__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-5);
+    }
   }
 
   .approach-item {
@@ -290,50 +1077,218 @@ const team = [
     color: var(--color-text-secondary);
   }
 
-  .team {
+  /* 7. Testimonials — 2x2 hairline grid on desktop, stacked on mobile */
+  .testimonials {
+    border-block: 1px solid var(--color-border-subtle);
+  }
+
+  .testimonials__grid {
+    display: grid;
+    grid-template-columns: 1fr;
     border-top: 1px solid var(--color-border-subtle);
   }
 
-  .team__grid {
-    display: grid;
-    grid-template-columns: 1fr;
+  .testimonial {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
     gap: var(--space-4);
+    padding-block: var(--space-5);
+    border-bottom: 1px solid var(--color-border-subtle);
   }
 
-  @media (min-width: 640px) {
-    .team__grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+  .testimonial:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
   }
 
   @media (min-width: 1024px) {
-    .team__grid {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+    .testimonials__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .testimonial {
+      padding: var(--space-6) var(--space-5);
+    }
+
+    .testimonial:nth-child(odd) {
+      padding-left: 0;
+    }
+
+    .testimonial:nth-child(even) {
+      padding-right: 0;
+      border-left: 1px solid var(--color-border-subtle);
+    }
+
+    .testimonial:nth-last-child(-n + 2) {
+      border-bottom: 0;
+      padding-bottom: 0;
     }
   }
 
-  .team-card {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    padding: var(--space-4);
-    border-radius: var(--radius-sm);
-    background-color: var(--color-surface-raised);
-    border: 1px solid var(--color-border-subtle);
+  .testimonial__mark {
+    font-family: var(--font-heading);
+    font-size: var(--text-3xl);
+    line-height: 0.7;
+    color: var(--color-accent-text);
   }
 
-  .team-card__body {
+  .testimonial__quote {
+    margin: 0;
+    flex: 1 1 auto;
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--color-text-primary);
+  }
+
+  .testimonial__author {
     display: flex;
     flex-direction: column;
     gap: var(--space-1);
+    margin-top: var(--space-2);
   }
 
-  .team-card__name {
+  .testimonial__name {
+    font-family: var(--font-body);
+    font-size: var(--text-md);
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .testimonial__role {
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-accent-text);
+  }
+
+  /* 8. FAQ — balanced two-column desktop layout */
+  .faq__layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    align-items: start;
+  }
+
+  @media (min-width: 1024px) {
+    .faq__layout {
+      grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+      gap: var(--space-7);
+    }
+  }
+
+  .faq__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--color-border-subtle);
+    width: 100%;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .faq-item__heading {
+    margin: 0;
+  }
+
+  .faq-item__trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding-block: var(--space-4);
+    padding-inline: 0;
+    background: transparent;
+    border: 0;
+    text-align: left;
+    font-family: var(--font-heading);
     font-size: var(--text-xl);
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition: color var(--motion-fast) var(--ease-out);
   }
 
-  .team-card__role {
+  .faq-item__trigger:hover {
+    color: var(--color-accent-text);
+  }
+
+  .faq-item__trigger:active {
+    opacity: 0.85;
+  }
+
+  .faq-item__icon {
+    flex-shrink: 0;
+    font-family: var(--font-body);
+    font-size: var(--text-xl);
+    font-weight: 400;
+    line-height: 1;
+    color: var(--color-accent-text);
+  }
+
+  .faq-item__panel {
+    padding-bottom: var(--space-4);
+  }
+
+  .faq-item__answer {
     font-size: var(--text-md);
     color: var(--color-text-secondary);
   }
 </style>
+
+<script>
+  const accordion = document.querySelector<HTMLElement>('[data-faq-accordion]');
+  if (accordion) {
+    const triggers = Array.from(
+      accordion.querySelectorAll<HTMLButtonElement>('[data-faq-trigger]')
+    );
+
+    triggers.forEach((trigger, index) => {
+      trigger.addEventListener('click', () => {
+        const expanded = trigger.getAttribute('aria-expanded') === 'true';
+        const nextExpanded = !expanded;
+        const panelId = trigger.getAttribute('aria-controls');
+        const panel = panelId ? document.getElementById(panelId) : null;
+        const icon = trigger.querySelector<HTMLElement>('[data-faq-icon]');
+
+        trigger.setAttribute('aria-expanded', String(nextExpanded));
+        if (panel) {
+          panel.hidden = !nextExpanded;
+        }
+        if (icon) {
+          icon.textContent = nextExpanded ? '−' : '+';
+        }
+      });
+
+      trigger.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowDown') {
+          event.preventDefault();
+          triggers[(index + 1) % triggers.length]?.focus();
+        } else if (event.key === 'ArrowUp') {
+          event.preventDefault();
+          triggers[(index - 1 + triggers.length) % triggers.length]?.focus();
+        } else if (event.key === 'Home') {
+          event.preventDefault();
+          triggers[0]?.focus();
+        } else if (event.key === 'End') {
+          event.preventDefault();
+          triggers[triggers.length - 1]?.focus();
+        }
+      });
+    });
+  }
+</script>

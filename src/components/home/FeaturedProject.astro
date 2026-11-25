@@ -1,19 +1,18 @@
 ---
 import MediaSlot from '../MediaSlot.astro';
-import { SITE } from '../../data/site';
 
 const highlights = [
   {
-    label: '01 · Location Advantage',
-    text: 'Positioned with calm separation from city noise while keeping Bengaluru’s key corridors within practical reach.',
+    label: '01 Location advantage',
+    text: 'Located in Sri Sathya Sai District on the Karnataka–Andhra Pradesh border, with highway connectivity to Bengaluru and surrounding regions.',
   },
   {
-    label: '02 · Nature & Lifestyle',
-    text: 'Planned around open green cover, mature trees, and wide quiet streets designed for unhurried living.',
+    label: '02 Nature and lifestyle',
+    text: 'Planned with open green cover, mature trees, and wide internal roads for daily living.',
   },
   {
-    label: '03 · Long-Term Value',
-    text: 'A considered plotted development conceived for families and investors thinking in decades, not quarters.',
+    label: '03 Long-term value',
+    text: 'A plotted development built for families and investors who plan to hold land for decades.',
   },
 ];
 ---
@@ -22,30 +21,32 @@ const highlights = [
   <div class="container featured__inner">
     <div class="featured__top" data-reveal>
       <div class="featured__title-block">
-        <p class="eyebrow">Featured Project</p>
+        <p class="eyebrow">Featured project</p>
         <h2 id="featured-project-heading" class="featured__heading">
           Tiiger Trail – Phase I
         </h2>
         <p class="featured__tagline">Where Nature and Soul Meet</p>
       </div>
       <p class="featured__summary">
-        A premium plotted development shaped around openness, greenery, and quiet permanence — our flagship destination in the Bengaluru region.
+        Our flagship plotted development in Sri Sathya Sai District on the Karnataka–Andhra Pradesh border, planned around open space and greenery.
       </p>
     </div>
 
-    <div class="featured__media" data-reveal>
+    <div class="featured__media">
       <MediaSlot
-        src="/media/tiiger-trail.jpg"
-        alt="Wide view of Tiiger Trail – Phase I plotted development surrounded by greenery"
-        ratio="16/9"
+        src="/media/tiiger-trail.webp"
+        alt="Aerial view of green trees, palms, and open land parcels in soft light."
+        ratio="21/9"
+        objectPosition="center 55%"
         zoomOnHover={true}
+        revealScale={true}
       />
     </div>
 
-    <div class="featured__highlights" data-reveal>
+    <div class="featured__highlights" data-reveal-group>
       {
         highlights.map((item) => (
-          <div class="featured__highlight">
+          <div class="featured__highlight" data-reveal>
             <h3 class="featured__highlight-label">{item.label}</h3>
             <p class="featured__highlight-text">{item.text}</p>
           </div>
@@ -54,15 +55,8 @@ const highlights = [
     </div>
 
     <div class="featured__actions" data-reveal>
-      <a
-        href={SITE.flagshipUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn btn--primary"
-      >
-        Visit Tiiger Trail
-        <span aria-hidden="true">↗</span>
-        <span class="sr-only"> (opens in a new tab)</span>
+      <a href="/projects/tiiger-trail" class="btn btn--primary">
+        Explore Tiiger Trail
       </a>
       <a href="/projects" class="btn btn--outline">View all projects</a>
     </div>
@@ -116,7 +110,7 @@ const highlights = [
     font-size: var(--text-xl);
     font-weight: 500;
     line-height: var(--leading-heading);
-    color: var(--color-accent);
+    color: var(--color-accent-text);
   }
 
   .featured__summary {
@@ -151,7 +145,7 @@ const highlights = [
     font-weight: 600;
     letter-spacing: var(--tracking-label);
     text-transform: uppercase;
-    color: var(--color-accent);
+    color: var(--color-accent-text);
   }
 
   .featured__highlight-text {

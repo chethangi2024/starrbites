@@ -1,0 +1,627 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import MediaSlot from '../components/MediaSlot.astro';
+---
+
+<BaseLayout
+  title="Investors"
+  description="Invest with StarrBites. Explore Tiiger Trail – Phase I and connect with our Bengaluru team for land investment and partnership enquiries."
+  transparentHero={true}
+>
+  <PageHero
+    eyebrow="Investors"
+    title="Invest with StarrBites"
+    lead="Long-term land opportunities and strategic partnerships with a Bengaluru-based developer."
+    mediaSrc="/media/nri-hero.jpg"
+    mediaAlt="Misty sunrise over open fields in soft morning light."
+  />
+
+  <!-- Investment Opportunities & Project Status -->
+  <section class="section" aria-labelledby="opportunities-heading">
+    <div class="container opportunities__stack">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Opportunities</p>
+        <h2 id="opportunities-heading" class="section-head__title">
+          Current investment opportunity
+        </h2>
+        <p class="section-head__lead">
+          We focus on thoughtfully planned land destinations designed for long-term ownership. Speak with our team for current availability and documentation.
+        </p>
+      </div>
+
+      <article class="opportunity-card" data-reveal>
+        <div class="opportunity-card__media">
+          <a href="/projects/tiiger-trail" aria-label="Explore Tiiger Trail – Phase I">
+            <MediaSlot
+              src="/media/tiiger-trail.webp"
+              alt="Aerial view of green trees, palms, and open land parcels at Tiiger Trail."
+              ratio="16/9"
+              zoomOnHover={true}
+            />
+          </a>
+        </div>
+
+        <div class="opportunity-card__body">
+          <div class="opportunity-card__badges">
+            <span class="eyebrow">Flagship destination</span>
+            <span class="status-badge">Phase I — pre-launch</span>
+          </div>
+
+          <h3 class="opportunity-card__title">Tiiger Trail – Phase I</h3>
+          <p class="opportunity-card__location">
+            Sri Sathya Sai District, Karnataka–Andhra Pradesh border
+          </p>
+          <p class="opportunity-card__desc">
+            A curated plotted development with greenery, open space, and highway connectivity to Bengaluru and surrounding regions, planned for families and long-term land investors.
+          </p>
+          <p class="opportunity-card__status-note">
+            Project status placeholder (“Phase I — pre-launch”) — confirm current phase availability with our team.
+          </p>
+
+          <div class="opportunity-card__actions">
+            <a href="/projects/tiiger-trail" class="btn btn--primary">
+              Explore Tiiger Trail
+            </a>
+            <a href="#investor-enquiry" class="btn btn--outline">
+              Investor enquiry
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Partnership & Investor Enquiry Form -->
+  <section
+    id="investor-enquiry"
+    class="section surface-light investor-form-section"
+    aria-labelledby="investor-form-heading"
+  >
+    <div class="container investor-form-grid">
+      <div class="investor-form-intro" data-reveal>
+        <p class="eyebrow">Partnerships &amp; Enquiries</p>
+        <h2 id="investor-form-heading" class="section-head__title">
+          Connect with our team
+        </h2>
+        <p class="investor-form-intro__text">
+          Whether you are evaluating a plot purchase, a long-term land investment, or a development partnership, share your details below and our Bengaluru team will respond directly.
+        </p>
+        <ul class="investor-form-intro__list">
+          <li>Direct conversation with our leadership and advisory team</li>
+          <li>Project documentation and master plan walkthroughs</li>
+          <li>Scheduled site visits to Tiiger Trail – Phase I</li>
+        </ul>
+      </div>
+
+      <div class="investor-form-card" data-reveal>
+        <h3 class="investor-form-card__title">Investor &amp; partnership enquiry</h3>
+        <form
+          class="investor-form"
+          action="https://formspree.io/f/FORMSPREE_FORM_ID"
+          method="POST"
+          novalidate
+          data-investor-form
+        >
+          <input type="hidden" name="source" value="Investors page" />
+
+          <!-- Spam honeypot -->
+          <div class="investor-form__honeypot" aria-hidden="true">
+            <label for="inv-website">Leave this field empty</label>
+            <input
+              type="text"
+              id="inv-website"
+              name="_gotcha"
+              tabindex="-1"
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="inv-name" class="form-field__label">
+              Full name <span aria-hidden="true">*</span>
+            </label>
+            <input
+              type="text"
+              id="inv-name"
+              name="name"
+              autocomplete="name"
+              required
+              class="form-field__input"
+              aria-describedby="inv-name-error"
+            />
+            <p id="inv-name-error" class="form-field__error" role="alert" hidden></p>
+          </div>
+
+          <div class="form-field">
+            <label for="inv-phone" class="form-field__label">
+              Phone number (+91 or international) <span aria-hidden="true">*</span>
+            </label>
+            <input
+              type="tel"
+              id="inv-phone"
+              name="phone"
+              autocomplete="tel"
+              inputmode="tel"
+              placeholder="+91 98765 43210"
+              required
+              class="form-field__input"
+              aria-describedby="inv-phone-error"
+            />
+            <p id="inv-phone-error" class="form-field__error" role="alert" hidden></p>
+          </div>
+
+          <div class="form-field">
+            <label for="inv-email" class="form-field__label">
+              Email address <span aria-hidden="true">*</span>
+            </label>
+            <input
+              type="email"
+              id="inv-email"
+              name="email"
+              autocomplete="email"
+              required
+              class="form-field__input"
+              aria-describedby="inv-email-error"
+            />
+            <p id="inv-email-error" class="form-field__error" role="alert" hidden></p>
+          </div>
+
+          <div class="form-field">
+            <label for="inv-type" class="form-field__label">
+              Enquiry type <span aria-hidden="true">*</span>
+            </label>
+            <select
+              id="inv-type"
+              name="enquiry_type"
+              required
+              class="form-field__input form-field__select"
+              aria-describedby="inv-type-error"
+            >
+              <option value="">Select an option</option>
+              <option value="Buy a plot">Buy a plot</option>
+              <option value="Investment">Investment</option>
+              <option value="Partnership">Partnership</option>
+            </select>
+            <p id="inv-type-error" class="form-field__error" role="alert" hidden></p>
+          </div>
+
+          <div class="form-field">
+            <label for="inv-message" class="form-field__label">
+              Message <span aria-hidden="true">*</span>
+            </label>
+            <textarea
+              id="inv-message"
+              name="message"
+              rows="5"
+              required
+              class="form-field__input form-field__textarea"
+              aria-describedby="inv-message-error"
+            ></textarea>
+            <p id="inv-message-error" class="form-field__error" role="alert" hidden></p>
+          </div>
+
+          <div class="investor-form__footer">
+            <button type="submit" class="btn btn--primary" data-submit-btn>
+              Send enquiry
+            </button>
+          </div>
+
+          <div
+            class="investor-form__status"
+            data-form-status
+            role="status"
+            aria-live="polite"
+            hidden
+          ></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .opportunities__stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .section-head {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .section-head__title {
+    font-size: var(--text-2xl);
+  }
+
+  @media (min-width: 1024px) {
+    .section-head__title {
+      font-size: var(--text-3xl);
+    }
+  }
+
+  .section-head__lead {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+  }
+
+  .opportunity-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    padding: var(--space-4);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface-raised);
+    border: 1px solid var(--color-border-subtle);
+  }
+
+  @media (min-width: 1024px) {
+    .opportunity-card {
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      align-items: center;
+      gap: var(--space-6);
+      padding: var(--space-5);
+    }
+  }
+
+  .opportunity-card__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .opportunity-card__badges {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .status-badge {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    background-color: var(--color-highlight);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-pill);
+  }
+
+  .opportunity-card__title {
+    font-size: var(--text-2xl);
+  }
+
+  .opportunity-card__location {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .opportunity-card__desc {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+  }
+
+  .opportunity-card__status-note {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm);
+    border: 1px dashed var(--color-border-input);
+    background-color: var(--color-surface-base);
+  }
+
+  .opportunity-card__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+  }
+
+  /* Form Section */
+  .investor-form-section {
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .investor-form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    align-items: start;
+  }
+
+  @media (min-width: 1024px) {
+    .investor-form-grid {
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: var(--space-7);
+    }
+  }
+
+  .investor-form-intro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .investor-form-intro__text {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+  }
+
+  .investor-form-intro__list {
+    margin: 0;
+    padding-left: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    color: var(--color-text-primary);
+  }
+
+  .investor-form-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-5) var(--space-4);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface-raised);
+    border: 1px solid var(--color-border-subtle);
+  }
+
+  @media (min-width: 1024px) {
+    .investor-form-card {
+      padding: var(--space-6);
+    }
+  }
+
+  .investor-form-card__title {
+    font-size: var(--text-2xl);
+  }
+
+  .investor-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .investor-form__honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .form-field__label {
+    font-size: var(--text-md);
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+
+  .form-field__input {
+    width: 100%;
+    min-height: 48px;
+    padding: var(--space-3);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border-input);
+    background-color: var(--color-surface-input);
+    color: var(--color-text-primary);
+    font-size: var(--text-md);
+    transition: border-color var(--motion-fast) var(--ease-out);
+  }
+
+  .form-field__input::placeholder {
+    color: var(--color-text-secondary);
+    opacity: 0.7;
+  }
+
+  .form-field__input:hover {
+    border-color: var(--color-text-secondary);
+  }
+
+  .form-field__input[aria-invalid='true'] {
+    border-color: var(--color-status-error);
+  }
+
+  .form-field__textarea {
+    min-height: 132px;
+    resize: vertical;
+  }
+
+  .form-field__error {
+    font-size: var(--text-sm);
+    color: var(--color-status-error);
+  }
+
+  .investor-form__footer {
+    margin-top: var(--space-2);
+  }
+
+  .investor-form__status {
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border-subtle);
+    font-size: var(--text-md);
+  }
+
+  .investor-form__status.is-success {
+    border-color: var(--color-status-success);
+    color: var(--color-status-success);
+  }
+
+  .investor-form__status.is-error {
+    border-color: var(--color-status-error);
+    color: var(--color-status-error);
+  }
+</style>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-investor-form]');
+  if (form) {
+    const submitBtn = form.querySelector<HTMLButtonElement>('[data-submit-btn]');
+    const statusBox = form.querySelector<HTMLElement>('[data-form-status]');
+
+    const fields = {
+      name: form.querySelector<HTMLInputElement>('#inv-name'),
+      phone: form.querySelector<HTMLInputElement>('#inv-phone'),
+      email: form.querySelector<HTMLInputElement>('#inv-email'),
+      type: form.querySelector<HTMLSelectElement>('#inv-type'),
+      message: form.querySelector<HTMLTextAreaElement>('#inv-message'),
+      honeypot: form.querySelector<HTMLInputElement>('#inv-website'),
+    };
+
+    const setFieldError = (
+      input: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement | null,
+      message: string
+    ) => {
+      if (!input) return;
+      const errorEl = document.getElementById(`${input.id}-error`);
+      if (message) {
+        input.setAttribute('aria-invalid', 'true');
+        if (errorEl) {
+          errorEl.textContent = message;
+          errorEl.hidden = false;
+        }
+      } else {
+        input.removeAttribute('aria-invalid');
+        if (errorEl) {
+          errorEl.textContent = '';
+          errorEl.hidden = true;
+        }
+      }
+    };
+
+    const setStatus = (type: 'success' | 'error' | null, message = '') => {
+      if (!statusBox) return;
+      statusBox.classList.remove('is-success', 'is-error');
+      if (!type) {
+        statusBox.hidden = true;
+        statusBox.textContent = '';
+        return;
+      }
+      statusBox.classList.add(type === 'success' ? 'is-success' : 'is-error');
+      statusBox.textContent = message;
+      statusBox.hidden = false;
+    };
+
+    const validate = () => {
+      let firstInvalid: HTMLElement | null = null;
+
+      if ((fields.name?.value.trim() ?? '').length < 2) {
+        setFieldError(fields.name, 'Please enter your full name.');
+        firstInvalid ??= fields.name;
+      } else {
+        setFieldError(fields.name, '');
+      }
+
+      const phonePattern = /^[+\d][\d\s\-()]{6,20}$/;
+      if (!phonePattern.test(fields.phone?.value.trim() ?? '')) {
+        setFieldError(
+          fields.phone,
+          'Please enter a valid phone number (e.g. +91 88611 97979 or international format).'
+        );
+        firstInvalid ??= fields.phone;
+      } else {
+        setFieldError(fields.phone, '');
+      }
+
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(fields.email?.value.trim() ?? '')) {
+        setFieldError(fields.email, 'Please enter a valid email address.');
+        firstInvalid ??= fields.email;
+      } else {
+        setFieldError(fields.email, '');
+      }
+
+      if (!(fields.type?.value ?? '')) {
+        setFieldError(fields.type, 'Please select your enquiry type.');
+        firstInvalid ??= fields.type;
+      } else {
+        setFieldError(fields.type, '');
+      }
+
+      if ((fields.message?.value.trim() ?? '').length < 10) {
+        setFieldError(fields.message, 'Please share a brief message (at least 10 characters).');
+        firstInvalid ??= fields.message;
+      } else {
+        setFieldError(fields.message, '');
+      }
+
+      if (firstInvalid) {
+        firstInvalid.focus();
+        return false;
+      }
+      return true;
+    };
+
+    Object.values(fields).forEach((field) => {
+      if (!field || field === fields.honeypot) return;
+      field.addEventListener('input', () => setFieldError(field, ''));
+      field.addEventListener('change', () => setFieldError(field, ''));
+    });
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      setStatus(null);
+
+      if (fields.honeypot && fields.honeypot.value.trim() !== '') {
+        form.reset();
+        setStatus('success', 'Thank you. Your enquiry has been received.');
+        return;
+      }
+
+      if (!validate()) return;
+
+      const defaultLabel = submitBtn?.textContent ?? 'Send enquiry';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+      }
+
+      try {
+        const endpoint = form.getAttribute('action') ?? '';
+        if (endpoint.includes('FORMSPREE_FORM_ID')) {
+          throw new Error('FORMSPREE_NOT_CONFIGURED');
+        }
+
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+
+        if (!response.ok) throw new Error('SUBMISSION_FAILED');
+
+        form.reset();
+        setStatus('success', 'Thank you for your enquiry. Our Bengaluru team will reply soon.');
+      } catch (err) {
+        if (err instanceof Error && err.message === 'FORMSPREE_NOT_CONFIGURED') {
+          setStatus(
+            'error',
+            'Form endpoint is not configured yet (replace FORMSPREE_FORM_ID). You can reach us directly at info@starrbites.com or +91 88611 97979.'
+          );
+        } else {
+          setStatus(
+            'error',
+            'We could not send your enquiry right now. Please try again or email info@starrbites.com.'
+          );
+        }
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = defaultLabel;
+        }
+      }
+    });
+  }
+</script>

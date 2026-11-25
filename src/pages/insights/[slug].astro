@@ -173,8 +173,8 @@ const seoTitle =
     align-items: center;
     gap: var(--space-2);
     font-size: var(--text-md);
-    font-weight: 500;
-    color: var(--color-accent);
+    font-weight: 600;
+    color: var(--color-accent-text);
   }
 
   .article-hero__meta {
@@ -211,13 +211,13 @@ const seoTitle =
     margin-top: var(--space-3);
   }
 
-  /* Readable long-form article styling on warm light surface */
+  /* Readable long-form article styling on white panel */
   .prose {
     max-width: var(--measure-max);
     display: flex;
     flex-direction: column;
     gap: var(--space-4);
-    color: var(--color-text-on-light);
+    color: var(--color-text-primary);
     font-size: var(--text-md);
     line-height: var(--leading-body);
   }
@@ -227,7 +227,7 @@ const seoTitle =
     font-size: var(--text-2xl);
     font-weight: 500;
     line-height: var(--leading-heading);
-    color: var(--color-text-on-light);
+    color: var(--color-text-primary);
     margin-top: var(--space-5);
   }
 
@@ -236,13 +236,13 @@ const seoTitle =
     font-size: var(--text-xl);
     font-weight: 500;
     line-height: var(--leading-heading);
-    color: var(--color-text-on-light);
+    color: var(--color-text-primary);
     margin-top: var(--space-4);
   }
 
   .prose :global(p) {
     margin: 0;
-    color: var(--color-text-on-light);
+    color: var(--color-text-primary);
   }
 
   .prose :global(ul),
@@ -255,21 +255,21 @@ const seoTitle =
   }
 
   .prose :global(li) {
-    color: var(--color-text-on-light);
+    color: var(--color-text-primary);
   }
 
   .prose :global(blockquote) {
     margin: var(--space-3) 0;
     padding: var(--space-3) var(--space-4);
-    border-left: 3px solid var(--color-text-on-light);
+    border-left: 3px solid var(--color-accent-text);
     font-family: var(--font-heading);
     font-size: var(--text-xl);
     line-height: 1.35;
-    color: var(--color-text-on-light);
+    color: var(--color-text-primary);
   }
 
   .prose :global(a) {
-    color: var(--color-text-on-light);
+    color: var(--color-accent-text);
     text-decoration: underline;
     text-underline-offset: 3px;
     word-break: break-word;
@@ -282,7 +282,7 @@ const seoTitle =
   .article-footer-nav {
     margin-top: var(--space-6);
     padding-top: var(--space-5);
-    border-top: 1px solid var(--color-border-on-light);
+    border-top: 1px solid var(--color-border-subtle);
     max-width: var(--measure-max);
   }
 
@@ -335,7 +335,7 @@ const seoTitle =
 
   .related-card__link:hover {
     opacity: 1;
-    border-color: var(--color-accent);
+    border-color: var(--color-accent-text);
     transform: translateY(-2px);
   }
 
@@ -384,7 +384,7 @@ const seoTitle =
     margin-top: var(--space-2);
     font-size: var(--text-md);
     font-weight: 600;
-    color: var(--color-accent);
+    color: var(--color-accent-text);
   }
 
   @media (prefers-reduced-motion: reduce) {

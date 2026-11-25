@@ -66,7 +66,7 @@ p {
 }
 
 a {
-  color: var(--color-accent);
+  color: var(--color-accent-text);
   text-decoration: none;
   transition: color var(--motion-fast) var(--ease-out),
     opacity var(--motion-fast) var(--ease-out);
@@ -77,31 +77,25 @@ a:hover {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-accent-text);
   outline-offset: 3px;
 }
 
-/* Light surface overrides — gold fails contrast on light; use navy for links, buttons & focus */
+/* White panel surface */
 .surface-light {
   background-color: var(--color-surface-light);
-  color: var(--color-text-on-light);
+  color: var(--color-text-primary);
 }
 
-.surface-light h1,
-.surface-light h2,
-.surface-light h3,
-.surface-light h4,
-.surface-light h5,
-.surface-light h6 {
-  color: var(--color-text-on-light);
-}
-
-.surface-light a {
-  color: var(--color-text-on-light);
-}
-
-.surface-light :focus-visible {
-  outline-color: var(--color-text-on-light);
+/* Soft gold highlight marker for 1–2 key phrases per page */
+.highlight {
+  display: inline;
+  background-color: var(--color-highlight);
+  color: var(--color-text-primary);
+  padding: 0.04em 0.22em;
+  border-radius: 4px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 /* Accessibility utilities */
@@ -124,6 +118,7 @@ a:hover {
   z-index: 1000;
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-pill);
+  border: 1px solid var(--color-accent-border);
   background-color: var(--color-accent);
   color: var(--color-accent-on-accent);
   font-size: var(--text-md);
@@ -164,11 +159,7 @@ a:hover {
   font-weight: 600;
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
-  color: var(--color-accent);
-}
-
-.surface-light .eyebrow {
-  color: var(--color-text-on-light-muted);
+  color: var(--color-accent-text);
 }
 
 .divider-gold {
@@ -176,7 +167,7 @@ a:hover {
   width: 100%;
   border: 0;
   background: var(--color-accent-gradient);
-  opacity: 0.6;
+  opacity: 0.85;
 }
 
 /* Buttons — pill shape, required interactive states */
@@ -205,49 +196,38 @@ a:hover {
 .btn--primary {
   background-color: var(--color-accent);
   color: var(--color-accent-on-accent);
-  border-color: var(--color-accent);
+  border-color: var(--color-accent-border);
 }
 
 .btn--primary:hover {
-  opacity: 0.92;
+  background-color: var(--color-accent-hover);
+  color: var(--color-accent-on-accent);
+  border-color: var(--color-accent-border);
+  opacity: 1;
   transform: translateY(-1px);
 }
 
 .btn--primary:active {
+  background-color: var(--color-accent-hover);
   transform: translateY(0);
-  opacity: 0.85;
+  opacity: 0.92;
 }
 
 .btn--outline {
   background-color: transparent;
   color: var(--color-text-primary);
-  border-color: var(--color-border-subtle);
+  border-color: var(--color-text-primary);
 }
 
 .btn--outline:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
+  background-color: var(--color-surface-raised);
+  border-color: var(--color-text-primary);
+  color: var(--color-text-primary);
   opacity: 1;
 }
 
 .btn--outline:active {
   transform: translateY(1px);
-}
-
-.surface-light .btn--primary {
-  background-color: var(--color-text-on-light);
-  color: var(--color-text-primary);
-  border-color: var(--color-text-on-light);
-}
-
-.surface-light .btn--outline {
-  color: var(--color-text-on-light);
-  border-color: var(--color-border-on-light);
-}
-
-.surface-light .btn--outline:hover {
-  border-color: var(--color-text-on-light);
-  color: var(--color-text-on-light);
 }
 
 .btn:disabled,

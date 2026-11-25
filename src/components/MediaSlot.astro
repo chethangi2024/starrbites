@@ -6,9 +6,11 @@ interface Props {
   src: string;
   alt: string;
   placeholderLabel?: string;
-  ratio?: '16/10' | '16/9' | '4/3';
+  ratio?: '16/10' | '16/9' | '21/9' | '4/3';
+  objectPosition?: string;
   eager?: boolean;
   zoomOnHover?: boolean;
+  revealScale?: boolean;
   class?: string;
 }
 
@@ -17,14 +19,17 @@ const {
   alt,
   placeholderLabel,
   ratio = '16/10',
+  objectPosition = 'center center',
   eager = false,
   zoomOnHover = false,
+  revealScale = false,
   class: className = '',
 } = Astro.props;
 
 const dimensions = {
   '16/10': { width: 1600, height: 1000 },
   '16/9': { width: 1600, height: 900 },
+  '21/9': { width: 2100, height: 900 },
   '4/3': { width: 1200, height: 900 },
 }[ratio];
 
@@ -39,8 +44,16 @@ const displayLabel = placeholderLabel ?? relativePath;
 ---
 
 <div
-  class:list={['media-slot', { 'media-slot--zoom': zoomOnHover }, className]}
-  style={`--media-ratio: ${ratio};`}
+  class:list={[
+    'media-slot',
+    {
+      'media-slot--zoom': zoomOnHover,
+      'media-slot--cinematic': ratio === '21/9',
+    },
+    className,
+  ]}
+  style={`--media-ratio: ${ratio === '21/9' ? '16 / 10' : ratio}; --media-pos: ${objectPosition};`}
+  data-reveal-scale={revealScale ? '' : undefined}
 >
   {
     resolvedSrc ? (
@@ -74,6 +87,12 @@ const displayLabel = placeholderLabel ?? relativePath;
     border: 1px solid var(--color-border-subtle);
   }
 
+  @media (min-width: 768px) {
+    .media-slot--cinematic {
+      aspect-ratio: 21 / 9;
+    }
+  }
+
   .media-slot__img,
   .media-slot__placeholder {
     width: 100%;
@@ -83,6 +102,7 @@ const displayLabel = placeholderLabel ?? relativePath;
 
   .media-slot__img {
     object-fit: cover;
+    object-position: var(--media-pos, center center);
   }
 
   .media-slot__placeholder {
@@ -93,9 +113,7 @@ const displayLabel = placeholderLabel ?? relativePath;
     gap: var(--space-2);
     padding: var(--space-4);
     text-align: center;
-    background:
-      var(--color-overlay-hero),
-      var(--color-surface-raised);
+    background-color: var(--color-surface-raised);
   }
 
   .media-slot__badge {
@@ -103,7 +121,7 @@ const displayLabel = placeholderLabel ?? relativePath;
     font-weight: 600;
     letter-spacing: var(--tracking-label);
     text-transform: uppercase;
-    color: var(--color-accent);
+    color: var(--color-accent-text);
   }
 
   .media-slot__file {

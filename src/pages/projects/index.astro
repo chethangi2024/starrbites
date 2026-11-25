@@ -1,67 +1,78 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import PageHero from '../components/PageHero.astro';
-import MediaSlot from '../components/MediaSlot.astro';
-import { SITE } from '../data/site';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import MediaSlot from '../../components/MediaSlot.astro';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout
   title="Projects"
-  description="Curated plotted land destinations by StarrBites in and around Bengaluru."
+  description="Curated land developments by StarrBites, starting with Tiiger Trail – Phase I in Sri Sathya Sai District."
   transparentHero={true}
 >
   <PageHero
     eyebrow="Projects"
     title="Our destinations"
-    lead="Plotted developments chosen for natural character, thoughtful planning, and long-term livability."
+    lead="Plotted developments planned for daily living and long-term ownership."
     mediaSrc="/media/projects-hero.jpg"
-    mediaAlt="Aerial view of open plotted land surrounded by trees"
+    mediaAlt="Aerial view of green fields with long tree shadows at sunset."
   />
 
   <section class="section" aria-labelledby="projects-list-heading">
     <div class="container projects__stack">
       <h2 id="projects-list-heading" class="sr-only">StarrBites destinations</h2>
 
-      <!-- Large Flagship Card: Tiiger Trail – Phase I -->
-      <article class="project-feature" data-reveal>
-        <div class="project-feature__media">
-          <MediaSlot
-            src="/media/tiiger-trail.jpg"
-            alt="Tiiger Trail – Phase I plotted development surrounded by greenery"
-            ratio="16/9"
-            zoomOnHover={true}
-          />
-        </div>
+      {
+        projects.map((project) => (
+          <article class="project-feature" data-reveal>
+            <div class="project-feature__media">
+              <a href={`/projects/${project.id}`} aria-label={`Explore ${project.data.title}`}>
+                <MediaSlot
+                  src={project.data.heroImage}
+                  alt={project.data.heroAlt}
+                  ratio="16/9"
+                  zoomOnHover={true}
+                />
+              </a>
+            </div>
 
-        <div class="project-feature__body">
-          <p class="eyebrow">Flagship Destination</p>
-          <h3 class="project-feature__title">Tiiger Trail – Phase I</h3>
-          <p class="project-feature__tagline">Where Nature and Soul Meet</p>
-          <p class="project-feature__desc">
-            A premium plotted development shaped around greenery, quiet avenues, and open space — designed for families and investors looking for grounded land ownership near Bengaluru.
-          </p>
-          <div class="project-feature__actions">
-            <a
-              href={SITE.flagshipUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn btn--primary"
-            >
-              Visit Tiiger Trail
-              <span aria-hidden="true">↗</span>
-              <span class="sr-only"> (opens in a new tab)</span>
-            </a>
-          </div>
-        </div>
-      </article>
+            <div class="project-feature__body">
+              <p class="eyebrow">Flagship destination</p>
+              <h3 class="project-feature__title">{project.data.title}</h3>
+              <p class="project-feature__tagline">{project.data.tagline}</p>
+              <p class="project-feature__location">{project.data.location}</p>
+              <p class="project-feature__desc">{project.data.summary}</p>
+              <div class="project-feature__actions">
+                <a href={`/projects/${project.id}`} class="btn btn--primary">
+                  View project details
+                </a>
+                {project.data.externalUrl && (
+                  <a
+                    href={project.data.externalUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn--outline"
+                  >
+                    Visit tiigertrail.com
+                    <span aria-hidden="true">↗</span>
+                    <span class="sr-only"> (opens in a new tab)</span>
+                  </a>
+                )}
+              </div>
+            </div>
+          </article>
+        ))
+      }
 
-      <!-- Smaller Upcoming Card -->
+      <!-- Upcoming Card -->
       <article class="project-upcoming" data-reveal>
         <div class="project-upcoming__content">
           <p class="eyebrow">Upcoming</p>
           <h3 class="project-upcoming__title">More destinations coming soon</h3>
           <p class="project-upcoming__desc">
-            We are quietly curating our next plotted developments around Bengaluru. Leave your details to be notified when new phases open.
+            We are planning our next curated land destinations. Leave your details if you would like to hear when new phases open.
           </p>
         </div>
         <div class="project-upcoming__action">
@@ -119,7 +130,13 @@ import { SITE } from '../data/site';
     font-family: var(--font-heading);
     font-size: var(--text-xl);
     line-height: var(--leading-heading);
-    color: var(--color-accent);
+    color: var(--color-accent-text);
+  }
+
+  .project-feature__location {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
   }
 
   .project-feature__desc {
@@ -128,6 +145,9 @@ import { SITE } from '../data/site';
   }
 
   .project-feature__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
     margin-top: var(--space-2);
   }
 

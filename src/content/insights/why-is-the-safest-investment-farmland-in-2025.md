@@ -3,8 +3,8 @@ title: "Why Farmland is the Safest Investment of 2025"
 description: "In an investment landscape often marked by volatility, farmland stands out as one of the most stable and rewarding options in 2025."
 pubDate: 2025-10-20
 category: "Guides"
-coverImage: "/media/insights/why-is-the-safest-investment-farmland-in-2025.jpg"
-coverAlt: "Cover image for Why Farmland is the Safest Investment of 2025"
+coverImage: "/media/insights/why-is-the-safest-investment-farmland-in-2025.webp"
+coverAlt: "Mature tree standing in the middle of an open sunlit green field under soft morning light"
 oldUrl: "/why-is-the-safest-investment-farmland-in-2025/"
 draft: false
 ---

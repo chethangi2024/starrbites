@@ -1,4 +1,13 @@
 # Legacy URL redirects (301 Permanent)
+/nri /investors 301
+/nri/ /investors 301
+/about-us /about 301
+/about-us/ /about 301
+/our-team /about 301
+/our-team/ /about 301
+/sustainability /about 301
+/sustainability/ /about 301
+
 /blog /insights 301
 /blog/ /insights 301
 /latest-news /insights 301

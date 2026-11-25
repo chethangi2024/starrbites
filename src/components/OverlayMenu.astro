@@ -8,7 +8,7 @@ const isCurrent = (href: string) => {
   return currentPath === normalized || currentPath.startsWith(`${normalized}/`);
 };
 
-const overlayLinks = [...NAV_LINKS, { label: 'Talk to us', href: '/contact' }];
+const overlayLinks = NAV_LINKS;
 ---
 
 <div
@@ -24,8 +24,8 @@ const overlayLinks = [...NAV_LINKS, { label: 'Talk to us', href: '/contact' }];
     <div class="overlay-menu__top">
       <a href="/" class="overlay-menu__brand" aria-label={`${SITE.name} — Home`}>
         <img
-          src="/brand/logo-light-400.png"
-          srcset="/brand/logo-light-400.png 1x, /brand/logo-light-800.png 2x"
+          src="/brand/logo-400.png"
+          srcset="/brand/logo-400.png 1x, /brand/logo-800.png 2x"
           alt={SITE.name}
           width="132"
           height="50"
@@ -60,6 +60,9 @@ const overlayLinks = [...NAV_LINKS, { label: 'Talk to us', href: '/contact' }];
             ))
           }
         </ul>
+        <div class="overlay-menu__cta-wrap">
+          <a href="/contact" class="btn btn--primary overlay-menu__cta">Talk to us</a>
+        </div>
       </nav>
 
       <aside class="overlay-menu__meta" aria-label="Contact information">
@@ -189,9 +192,13 @@ const overlayLinks = [...NAV_LINKS, { label: 'Talk to us', href: '/contact' }];
 
   .overlay-menu__link:hover,
   .overlay-menu__link.is-active {
-    color: var(--color-accent);
+    color: var(--color-accent-text);
     opacity: 1;
     transform: translateX(var(--space-2));
+  }
+
+  .overlay-menu__cta-wrap {
+    margin-top: var(--space-5);
   }
 
   .overlay-menu__meta {
@@ -222,7 +229,7 @@ const overlayLinks = [...NAV_LINKS, { label: 'Talk to us', href: '/contact' }];
   }
 
   .overlay-menu__contact a:hover {
-    color: var(--color-accent);
+    color: var(--color-accent-text);
   }
 
   .overlay-menu__social {
@@ -233,33 +240,35 @@ const overlayLinks = [...NAV_LINKS, { label: 'Talk to us', href: '/contact' }];
 
   .overlay-menu__social-link {
     font-size: var(--text-md);
-    font-weight: 500;
-    color: var(--color-accent);
+    font-weight: 600;
+    color: var(--color-accent-text);
   }
 </style>
 
 <script>
   const overlay = document.querySelector<HTMLElement>('[data-overlay-menu]');
-  const openBtn = document.querySelector<HTMLButtonElement>('[data-menu-open]');
+  const openBtns = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-menu-open]'));
   const closeBtn = overlay?.querySelector<HTMLButtonElement>('[data-menu-close]');
 
-  if (overlay && openBtn && closeBtn) {
+  if (overlay && openBtns.length > 0 && closeBtn) {
     const FOCUSABLE_SELECTOR =
       'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
     let isOpen = false;
+    let lastTrigger: HTMLButtonElement | null = openBtns[0];
 
     const getFocusable = () =>
       Array.from(overlay.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)).filter(
         (el) => !el.hasAttribute('hidden') && el.offsetParent !== null
       );
 
-    const openMenu = () => {
+    const openMenu = (trigger: HTMLButtonElement) => {
       if (isOpen) return;
       isOpen = true;
+      lastTrigger = trigger;
       overlay.hidden = false;
       requestAnimationFrame(() => overlay.classList.add('is-open'));
-      openBtn.setAttribute('aria-expanded', 'true');
+      openBtns.forEach((btn) => btn.setAttribute('aria-expanded', 'true'));
       document.documentElement.classList.add('is-menu-open');
       document.body.classList.add('is-menu-open');
       window.__starrbitesMotion?.stopScroll();
@@ -270,7 +279,7 @@ const overlayLinks = [...NAV_LINKS, { label: 'Talk to us', href: '/contact' }];
       if (!isOpen) return;
       isOpen = false;
       overlay.classList.remove('is-open');
-      openBtn.setAttribute('aria-expanded', 'false');
+      openBtns.forEach((btn) => btn.setAttribute('aria-expanded', 'false'));
       document.documentElement.classList.remove('is-menu-open');
       document.body.classList.remove('is-menu-open');
       window.__starrbitesMotion?.startScroll();
@@ -284,8 +293,8 @@ const overlayLinks = [...NAV_LINKS, { label: 'Talk to us', href: '/contact' }];
         }, 300);
       }
 
-      if (restoreFocus) {
-        openBtn.focus();
+      if (restoreFocus && lastTrigger) {
+        lastTrigger.focus();
       }
     };
 
@@ -315,7 +324,9 @@ const overlayLinks = [...NAV_LINKS, { label: 'Talk to us', href: '/contact' }];
       }
     };
 
-    openBtn.addEventListener('click', openMenu);
+    openBtns.forEach((btn) => {
+      btn.addEventListener('click', () => openMenu(btn));
+    });
     closeBtn.addEventListener('click', () => closeMenu(true));
     document.addEventListener('keydown', handleKeydown);
 

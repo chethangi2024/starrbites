@@ -32,6 +32,54 @@
 
 # Legacy URL redirects (301 Permanent)
 [[redirects]]
+  from = "/nri"
+  to = "/investors"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nri/"
+  to = "/investors"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about-us"
+  to = "/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about-us/"
+  to = "/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/our-team"
+  to = "/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/our-team/"
+  to = "/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sustainability"
+  to = "/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sustainability/"
+  to = "/about"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/blog"
   to = "/insights"
   status = 301

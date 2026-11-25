@@ -3,8 +3,8 @@ title: "IT sector growth driving Bengaluru residential demand"
 description: "How Bengaluru’s flourishing IT sector continues to drive residential real estate demand, housing preferences, and investment opportunities in 2025."
 pubDate: 2025-09-08
 category: "News"
-coverImage: "/media/insights/bengaluru-residential-real-estate-demand-2025.jpg"
-coverAlt: "Cover image for IT sector growth driving Bengaluru residential demand"
+coverImage: "/media/insights/bengaluru-residential-real-estate-demand-2025.webp"
+coverAlt: "Bengaluru city skyline silhouetted against a warm golden-hour sunset"
 oldUrl: "/bengaluru-residential-real-estate-demand-2025/"
 draft: false
 ---
