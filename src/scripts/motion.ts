@@ -27,6 +27,12 @@ function initMotion() {
   const heroLetters = homeHero
     ? Array.from(homeHero.querySelectorAll<HTMLElement>('[data-hero-letter]'))
     : [];
+  const heroWord1Letters = homeHero
+    ? Array.from(homeHero.querySelectorAll<HTMLElement>('[data-hero-word="1"] [data-hero-letter]'))
+    : [];
+  const heroWord2Letters = homeHero
+    ? Array.from(homeHero.querySelectorAll<HTMLElement>('[data-hero-word="2"] [data-hero-letter]'))
+    : [];
   const heroScrollCue = homeHero?.querySelector<HTMLElement>('[data-hero-scroll-cue]') ?? null;
 
   const revealGroups = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal-group]'));
@@ -107,7 +113,21 @@ function initMotion() {
           0.25
         );
       }
-      if (heroLetters.length > 0) {
+      if (heroWord1Letters.length > 0 && heroWord2Letters.length > 0) {
+        heroIntroTl.fromTo(
+          heroWord1Letters,
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.6, stagger: 0.055 },
+          0.28
+        );
+        // Slight pause between "STARR" and "BITES"
+        heroIntroTl.fromTo(
+          heroWord2Letters,
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.6, stagger: 0.055 },
+          0.68
+        );
+      } else if (heroLetters.length > 0) {
         heroIntroTl.fromTo(
           heroLetters,
           { opacity: 0, y: 12 },
@@ -120,7 +140,7 @@ function initMotion() {
           heroScrollCue,
           { opacity: 0, y: 8 },
           { opacity: 1, y: 0, duration: 0.6 },
-          0.85
+          1.05
         );
       }
 

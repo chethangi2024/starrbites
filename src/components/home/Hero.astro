@@ -10,7 +10,8 @@ const posterSrc = hasWebpPoster ? '/media/hero-poster.webp' : '/media/hero-poste
 const hasVideo = fs.existsSync(path.join(process.cwd(), 'public', 'media', 'hero.mp4'));
 const hasPoster = hasWebpPoster || hasJpgPoster;
 
-const wordmarkLetters = 'STARRBITES'.split('');
+const word1Letters = 'STARR'.split('');
+const word2Letters = 'BITES'.split('');
 ---
 
 <section class="hero" data-home-hero aria-labelledby="home-hero-title">
@@ -65,7 +66,7 @@ const wordmarkLetters = 'STARRBITES'.split('');
   <!-- Stage 1: Opening Screen -->
   <div class="hero__stage hero__stage--1" data-hero-stage-1>
     <div class="container hero__opening">
-      <h1 id="home-hero-title" class="hero__opening-title" aria-label="Welcome to StarrBites">
+      <h1 id="home-hero-title" class="hero__opening-title" aria-label="Welcome to Starr Bites">
         <span class="hero__welcome" aria-hidden="true" data-hero-welcome>Welcome to</span>
 
         <span class="hero__star" aria-hidden="true" data-hero-star>
@@ -84,13 +85,24 @@ const wordmarkLetters = 'STARRBITES'.split('');
         </span>
 
         <span class="hero__wordmark" aria-hidden="true">
-          {
-            wordmarkLetters.map((letter) => (
-              <span class="hero__letter" data-hero-letter>
-                {letter}
-              </span>
-            ))
-          }
+          <span class="hero__word" data-hero-word="1">
+            {
+              word1Letters.map((letter) => (
+                <span class="hero__letter" data-hero-letter>
+                  {letter}
+                </span>
+              ))
+            }
+          </span>
+          <span class="hero__word" data-hero-word="2">
+            {
+              word2Letters.map((letter) => (
+                <span class="hero__letter" data-hero-letter>
+                  {letter}
+                </span>
+              ))
+            }
+          </span>
         </span>
       </h1>
     </div>
@@ -251,31 +263,45 @@ const wordmarkLetters = 'STARRBITES'.split('');
   }
 
   .hero__wordmark {
+    --letter-gap: clamp(0.42em, 3.8vw, 0.72em);
     display: inline-flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-wrap: nowrap;
+    row-gap: var(--space-3);
     max-width: 100%;
     font-family: var(--font-heading);
     font-weight: 500;
     line-height: 1;
     text-transform: uppercase;
     color: var(--color-text-on-dark);
-    font-size: clamp(1.625rem, 5vw, 2.25rem);
-    gap: clamp(0.16em, 1.5vw, 0.32em);
+    font-size: clamp(2.25rem, 10vw, 3rem);
+  }
+
+  .hero__word {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: var(--letter-gap);
   }
 
   @media (min-width: 640px) {
     .hero__wordmark {
-      font-size: clamp(2.25rem, 4.8vw, 3.5rem);
-      gap: clamp(0.45em, 3.2vw, 2.2rem);
+      --letter-gap: clamp(0.6rem, 2.4vw, 1.5rem);
+      flex-direction: row;
+      flex-wrap: nowrap;
+      column-gap: calc(var(--letter-gap) * 2.5);
+      row-gap: 0;
+      font-size: clamp(2rem, 4.4vw, 3.25rem);
     }
   }
 
   @media (min-width: 1024px) {
     .hero__wordmark {
-      font-size: clamp(3rem, 4.4vw, 4.5rem);
-      gap: clamp(1.8rem, 4.4vw, 3.75rem);
+      --letter-gap: clamp(1.25rem, 3.2vw, 2.75rem);
+      column-gap: calc(var(--letter-gap) * 2.5);
+      font-size: clamp(2.75rem, 4.2vw, 4.25rem);
     }
   }
 
